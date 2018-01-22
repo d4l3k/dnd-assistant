@@ -1,11 +1,12 @@
 import React from 'react'
 import { Platform, StyleSheet, Text, View, StatusBar, ToolbarAndroid } from 'react-native'
 import SpellBook from './SpellBook.js'
+import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.outer}>
         <StatusBar
           style={styles.statusbar}
           backgroundColor="blue"
@@ -18,8 +19,13 @@ export default class App extends React.Component {
             //actions={[{title: 'Settings', icon: require('./icon_settings.png'), show: 'always'}]}
             onActionSelected={this.onActionSelected}
           />
-          <SpellBook>
-          </SpellBook>
+          <ScrollableTabView>
+            <View tabLabel="Character">
+              <Text>Character</Text>
+            </View>
+            <SpellBook tabLabel="Spells">
+            </SpellBook>
+          </ScrollableTabView>
         </View>
       </View>
     )
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   statusbar: {
   },

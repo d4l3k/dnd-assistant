@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList, TouchableNativeFeedback } from 'react
 import spells from './dnd-spells/spells.json'
 
 class SpellItem extends React.Component {
-  render() {
+  render () {
     return (
       <View>
         <TouchableNativeFeedback

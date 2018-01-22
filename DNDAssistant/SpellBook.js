@@ -1,13 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import SpellBook from './SpellBook.js'
+import spells from '../dnd-spells/spells.json'
 
-export default class App extends React.Component {
+export default class SpellBook extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SpellBook>
-        </SpellBook>
+        <Text>SpellBook ... </Text>
+        <Text>blahhh</Text>
       </View>
     )
   }

@@ -1,3 +1,6 @@
 [submodule "dnd-spells"]
 	path = dnd-spells
 	url = https://github.com/JamieIrvine/dnd-spells.git
+[submodule "DNDAssistant/dnd-spells"]
+	path = DNDAssistant/dnd-spells
+	url = https://github.com/JamieIrvine/dnd-spells.git

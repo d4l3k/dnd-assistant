@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, FlatList, TouchableNativeFeedback } from 'react-native'
+import { StyleSheet, Text, View, SectionList, TouchableNativeFeedback, Button } from 'react-native'
 import spells from './dnd-spells/spells.json'
 import ActionButton from 'react-native-action-button'
 import HTMLView from 'react-native-htmlview'
@@ -77,7 +77,7 @@ class SpellItem extends React.Component {
           {this.props.spell.material ? <View style={styles.grow}>
             <Text style={styles.bold}>Material</Text>
             <Text>{this.props.spell.material}</Text>
-            </View> : ''}
+            </View> : <View />}
         </View>
 
         <View style={styles.row}>
@@ -101,6 +101,8 @@ class SpellItem extends React.Component {
         </Quote>
 
         {this.higherLevel()}
+
+        <Button title="Add" />
       </View>
     )
   }
@@ -129,15 +131,40 @@ class SpellItem extends React.Component {
   }
 }
 
+class SpellHeader extends React.Component {
+  render () {
+    return (
+      <View style={styles.header}>
+        <Text style={styles.bold}>{this.props.title}</Text>
+      </View>
+    )
+  }
+}
+
 class SpellList extends React.Component {
   render () {
     return (
-      <FlatList
-        data={spells}
+      <SectionList
+        sections={this.groupSpells(this.props.spells)}
         keyExtractor={this.spellExtractor}
-        renderItem={({item}) => <SpellItem spell={item}/>}
+        renderSectionHeader={({section}) => <SpellHeader title={section.title} />}
+        renderItem={({item}) => <SpellItem spell={item} />}
       />
     )
+  }
+
+  groupSpells (spells) {
+    const sections = {}
+    spells.forEach(spell => {
+      sections[spell.level] = (sections[spell.level] || []).concat(spell)
+    })
+
+    return Object.keys(sections).sort().map(section => {
+      return {
+        title: section,
+        data: sections[section]
+      }
+    })
   }
 
   spellExtractor (spell) {
@@ -145,11 +172,33 @@ class SpellList extends React.Component {
   }
 }
 
-export default class SpellBook extends React.Component {
+export class KnownSpellsScreen extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <SpellList />
+        <SpellList spells={[]} />
+
+        <ActionButton
+          buttonColor="rgba(231,76,60,1)"
+          onPress={this._onPress.bind(this)}
+        />
+      </View>
+    )
+  }
+
+  _onPress () {
+    this.props.navigator.push({
+      screen: 'dnd.AddSpellScreen',
+      title: 'Add Spell'
+    });
+  }
+}
+
+export class AddSpellScreen extends React.Component {
+  render () {
+    return (
+      <View style={styles.container}>
+        <SpellList spells={spells} />
 
         <ActionButton
           buttonColor="rgba(231,76,60,1)"
@@ -187,5 +236,11 @@ const styles = StyleSheet.create({
   },
   grow: {
     flexGrow: 10000,
+  },
+  header: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    backgroundColor: '#eee',
+    padding: 10
   }
 })

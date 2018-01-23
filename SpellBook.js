@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SectionList, TouchableNativeFeedback, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, SectionList, TouchableNativeFeedback, ScrollView, Button } from 'react-native'
 import spells from './dnd-spells/spells.json'
 import ActionButton from 'react-native-action-button'
 import HTMLView from 'react-native-htmlview'
@@ -156,6 +156,12 @@ class SpellItem extends React.Component {
     this.spell.set({active}, {merge: true})
   }
 
+  _castSpell () {
+    this.spell.set({
+      cast: (this.state.spellData.cast || 0) + 1
+    }, {merge: true})
+  }
+
   _prepareSpell (prepared) {
     this.spell.set({prepared}, {merge: true})
   }
@@ -232,6 +238,20 @@ export class KnownSpellsScreen extends React.Component {
     this.state = {
       spells: []
     }
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+  }
+
+  onNavigatorEvent (event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'slots') {
+        this.props.navigator.push({
+          screen: 'dnd.SlotsScreen',
+          title: 'Slots'
+        })
+      } else if (event.id === 'filter') {
+      }
+    }
   }
 
   componentDidMount () {
@@ -270,7 +290,7 @@ export class KnownSpellsScreen extends React.Component {
     this.props.navigator.push({
       screen: 'dnd.AddSpellScreen',
       title: 'Add Spell'
-    });
+    })
   }
 }
 
@@ -289,6 +309,68 @@ export class AddSpellScreen extends React.Component {
   }
 }
 
+export class SlotsScreen extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      slots: {}
+    }
+  }
+
+  componentDidMount () {
+    onLogin(() => {
+      this.slots = getCharacter().collection('slots')
+      this.slots.onSnapshot(snapshot => {
+        const slots = {}
+        snapshot.forEach(slot => {
+          const data = slot.data()
+          slots[slot.id] = data
+        })
+        this.setState(state => {
+          return {slots}
+        })
+      })
+    })
+  }
+
+  _setSlots (i, text) {
+    var count = parseInt(text || 0)
+    if (count < 0) {
+      count = 0
+    }
+    this.slots.doc('' + i).set({count}, {merge: true})
+    this.setState(prev => {
+      if (!prev.slots[i]) {
+        prev.slots[i] = {}
+      }
+      prev.slots[i].count = count
+      return {
+        slots: prev.slots
+      }
+    })
+  }
+
+  render () {
+    const slots = []
+    for (let i = 1; i <= 9; i++) {
+      slots.push(<View key={i}>
+        <Text>Level {i}</Text>
+        <TextInput
+          value={'' + (this.state.slots[i] || {count: 0}).count}
+          onChangeText={text => this._setSlots(i, text)}
+          keyboardType={'numeric'}
+        />
+      </View>)
+    }
+    return (
+      <ScrollView style={styles.padding}>
+        {slots}
+      </ScrollView>
+    )
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -299,6 +381,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#eee'
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   row: {
     flex: 1,
@@ -321,6 +408,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
     backgroundColor: '#eee',
+    padding: 10
+  },
+  padding: {
     padding: 10
   }
 })

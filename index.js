@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, Text, View } from 'react-native'
-import { KnownSpellsScreen, AddSpellScreen }  from './SpellBook.js'
+import { KnownSpellsScreen, AddSpellScreen, SlotsScreen }  from './SpellBook.js'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import { Navigation } from 'react-native-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -10,9 +10,11 @@ import {CharacterScreen, CharacterMenu, GearScreen} from './Character.js'
 // here we use active, big, small, very-big..
 const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const icons = {
-  "md-person": [30, "#bbb"],
-  "md-book": [30, "#bbb"],
-  "md-basket": [30, "#bbb"]
+  "md-person": [30, "black"],
+  "md-book": [30, "black"],
+  "md-basket": [30, "black"],
+  "md-settings": [30, "black"],
+  "md-funnel": [30, "black"],
 }
 
 const defaultIconProvider = Ionicons
@@ -53,6 +55,7 @@ function startApp () {
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
   Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
+  Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
 
   Navigation.startTabBasedApp({
     appStyle: {
@@ -76,7 +79,21 @@ function startApp () {
         label: 'Spells',
         screen: 'dnd.KnownSpellsScreen',
         icon: iconsMap['md-book'],
-        title: 'Spells'
+        title: 'Spells',
+        navigatorButtons: {
+          rightButtons: [
+            {
+              id: 'slots',
+              title: 'Slots',
+              icon: iconsMap['md-settings']
+            },
+            {
+              id: 'filter',
+              title: 'Filter',
+              icon: iconsMap['md-funnel']
+            }
+          ]
+        }
       }
     ],
     drawer: {

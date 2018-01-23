@@ -45,11 +45,13 @@ export const slugify = (str) => {
 }
 
 export const onLogin = (f) => {
-  const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+  var unsubscribe = firebase.auth().onAuthStateChanged(user => {
     if (!user) {
       return
     }
     f(user)
-    unsubscribe()
+    if (unsubscribe) {
+      unsubscribe()
+    }
   })
 }

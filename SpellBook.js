@@ -3,6 +3,12 @@ import { StyleSheet, Text, View, SectionList, TouchableNativeFeedback, Button } 
 import spells from './dnd-spells/spells.json'
 import ActionButton from 'react-native-action-button'
 import HTMLView from 'react-native-htmlview'
+import {getCharacter, slugify, onLogin} from './auth'
+
+const spellMap = {}
+spells.forEach(spell => {
+  spellMap[slugify(spell.name)] = spell
+})
 
 class Quote extends React.Component {
   render () {
@@ -25,8 +31,18 @@ class SpellItem extends React.Component {
     super(props)
 
     this.state = {
-      showDetail: false
+      showDetail: false,
+      spellData: {}
     }
+  }
+
+  componentDidMount () {
+    this.spell = getCharacter().collection('spells').doc(slugify(this.props.spell.name))
+    this.spell.onSnapshot(spell => {
+      this.setState(state => {
+        return {spellData: spell.data() || {}}
+      })
+    })
   }
 
   render () {
@@ -102,9 +118,46 @@ class SpellItem extends React.Component {
 
         {this.higherLevel()}
 
-        <Button title="Add" />
+        <View style={styles.row}>
+          <Button
+            title="Cast"
+            onPress={() => this._castSpell()}
+          />
+
+          {
+            this.state.spellData.prepared ?
+            <Button
+              title="Unprepare"
+              onPress={() => this._prepareSpell(false)}
+            /> :
+            <Button
+              title="Prepare"
+              onPress={() => this._prepareSpell(true)}
+            />
+          }
+
+          {
+            this.state.spellData.active ?
+            <Button
+              title="Remove"
+              onPress={() => this._addSpell(false)}
+            /> :
+            <Button
+              title="Add"
+              onPress={() => this._addSpell(true)}
+            />
+          }
+        </View>
       </View>
     )
+  }
+
+  _addSpell (active) {
+    this.spell.set({active}, {merge: true})
+  }
+
+  _prepareSpell (prepared) {
+    this.spell.set({prepared}, {merge: true})
   }
 
   higherLevel () {
@@ -173,10 +226,37 @@ class SpellList extends React.Component {
 }
 
 export class KnownSpellsScreen extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      spells: []
+    }
+  }
+
+  componentDidMount () {
+    onLogin(() => {
+      this.spells = getCharacter().collection('spells')
+      this.spells.onSnapshot(snapshot => {
+        const spells = []
+        snapshot.forEach(spell => {
+          const data = spell.data()
+          if (!data.active) {
+            return
+          }
+          spells.push(spellMap[spell.id])
+        })
+        this.setState(state => {
+          return {spells}
+        })
+      })
+    })
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <SpellList spells={[]} />
+        <SpellList spells={this.state.spells} />
 
         <ActionButton
           buttonColor="rgba(231,76,60,1)"

@@ -1,68 +1,18 @@
 import React from 'react'
-import { Platform, StyleSheet, Text, View, StatusBar, ToolbarAndroid } from 'react-native'
+import { Platform, Text, View } from 'react-native'
 import { KnownSpellsScreen, AddSpellScreen }  from './SpellBook.js'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import { Navigation } from 'react-native-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-
-/*
-export default class App extends React.Component {
-  render () {
-    return (
-      <View>
-        <Text>Blah</Text>
-      </View>
-    )
-  }
-}
-*/
-/*
-  render () {
-    return (
-      <View style={styles.outer}>
-        <StatusBar
-          style={styles.statusbar}
-          backgroundColor='#0384C3'
-          barStyle='light-content'
-        />
-        <View style={styles.container}>
-          <ToolbarAndroid
-            style={styles.toolbar}
-            title="Tristan's DND Assistant"
-            onActionSelected={this.onActionSelected}
-            titleColor='white'
-          />
-          <ScrollableTabView
-            tabBarBackgroundColor='#039be5'
-            tabBarActiveTextColor='white'
-            tabBarInactiveTextColor='white'>
-
-            <SpellBook tabLabel='Spells'>
-            </SpellBook>
-          </ScrollableTabView>
-        </View>
-      </View>
-    )
-  }
-}
-*/
-
-class Character extends React.Component {
-  render () {
-    return (
-      <View>
-        <Text>Character</Text>
-      </View>
-    )
-  }
-}
+import {CharacterScreen, CharacterMenu, GearScreen} from './Character.js'
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
 const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const icons = {
   "md-person": [30, "#bbb"],
-  "md-book": [30, "#bbb"]
+  "md-book": [30, "#bbb"],
+  "md-basket": [30, "#bbb"]
 }
 
 const defaultIconProvider = Ionicons
@@ -98,7 +48,9 @@ function startApp () {
   // <Image source={iconsMap['ios-person--active--big']} />
   // Or use them with react-native-navigation
 
-  Navigation.registerComponent('dnd.CharacterScreen', () => Character)
+  Navigation.registerComponent('dnd.CharacterScreen', () => CharacterScreen)
+  Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
+  Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
   Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
 
@@ -115,32 +67,23 @@ function startApp () {
         title: 'Character'
       },
       {
+        label: 'Gear',
+        screen: 'dnd.GearScreen', // this is a registered name for a screen
+        icon: iconsMap['md-basket'],
+        title: 'Gear'
+      },
+      {
         label: 'Spells',
         screen: 'dnd.KnownSpellsScreen',
         icon: iconsMap['md-book'],
         title: 'Spells'
       }
-    ]
+    ],
+    drawer: {
+      left: {
+        screen: 'dnd.CharacterMenu',
+        fixedWidth: 800
+      }
+    }
   })
 }
-
-const styles = StyleSheet.create({
-  outer: {
-    flex: 1
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  },
-  statusbar: {
-  },
-  toolbar: {
-    backgroundColor: '#039be5',
-    height: 56,
-    ...Platform.select({
-      android: {
-        marginTop: StatusBar.currentHeight
-      }
-    })
-  }
-})

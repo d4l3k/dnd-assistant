@@ -3,6 +3,7 @@ package com.dndassistant;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.react.ReactNativeHost;
@@ -19,6 +20,7 @@ import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
 
 public class MainApplication extends NavigationApplication {
 	@Override
@@ -35,7 +37,8 @@ public class MainApplication extends NavigationApplication {
 				 new RNFirebasePackage(),
 				 new RNFirebaseFirestorePackage(),
 				 new RNFirebaseAuthPackage(),
-				 new RNGoogleSigninPackage()
+				 new RNGoogleSigninPackage(),
+				 new ReactNativeRestartPackage()
 				);
 	}
 

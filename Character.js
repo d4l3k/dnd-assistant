@@ -1,39 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, View, TextInput, ScrollView } from 'react-native'
 import {googleLogin, getCharacter} from './auth'
 import firebase from 'react-native-firebase'
-
-export class CharacterMenu extends React.Component {
-  render () {
-    return (
-      <View style={styles.menu}>
-        <Text>Character 0</Text>
-      </View>
-    )
-  }
-}
-
-export class GearScreen extends React.Component {
-  render () {
-    return (
-      <View style={styles.screen}>
-        <Text>Gear</Text>
-      </View>
-    )
-  }
-}
+import {BaseText} from './styles.js'
 
 export class StatInput extends React.Component {
   render () {
     return (
       <View style={styles.stat}>
-        <Text>{this.props.name}</Text>
+        <BaseText>{this.props.name}</BaseText>
         <TextInput
           value={this.props.value}
           onChangeText={this.props.onChangeText}
           keyboardType={'numeric'}
         />
-        <Text>{this.modifier(this.props.value)}</Text>
+        <BaseText>{this.modifier(this.props.value)}</BaseText>
       </View>
     )
   }
@@ -77,10 +58,12 @@ export class CharacterScreen extends React.Component {
   }
 
   userLoggedIn (user) {
-    this.character = getCharacter()
-    this.character.onSnapshot(character => {
-      this.setState(state => {
-        return {character: character.data()}
+    getCharacter().then(character => {
+      this.character = character
+      this.character.onSnapshot(character => {
+        this.setState(state => {
+          return {character: character.data()}
+        })
       })
     })
   }
@@ -88,7 +71,7 @@ export class CharacterScreen extends React.Component {
   render () {
     return (
       <ScrollView style={styles.screen}>
-        <Text>Character Name</Text>
+        <BaseText>Character Name</BaseText>
         <TextInput
           value={this.state.character.name}
           onChangeText={name => this.set({name})}
@@ -142,11 +125,6 @@ export class CharacterScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  menu: {
-    backgroundColor: 'white',
-    padding: 10,
-    flex: 1
-  },
   screen: {
     padding: 10
   },

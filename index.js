@@ -122,7 +122,7 @@ function startApp () {
         fixedWidth: 800
       },
       right: {
-        screen: 'dnd.CharacterMenu',
+        screen: 'dnd.DiceScreen',
         fixedWidth: 800
       }
     }

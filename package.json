@@ -29,6 +29,8 @@
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-storage": "^0.2.2",
     "react-native-vector-icons": "^4.5.0",
-    "react-navigation": "^1.0.0-beta.27"
+    "react-navigation": "^1.0.0-beta.27",
+    "roll": "^1.2.0",
+    "util": "^0.10.3"
   }
 }

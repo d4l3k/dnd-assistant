@@ -1,7 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableNativeFeedback, ScrollView, Button } from 'react-native'
+import {Linking, StyleSheet, Text, View, TouchableNativeFeedback, ScrollView, Button} from 'react-native'
 import {getUser, onLogin, setCharacter, characterID} from './auth'
 import {colors, BaseText, B} from './styles.js'
+
+const feedbackURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfBjIkfj6EpZnRgg5IXn9ajUA4ErPUg9vZlVacVxwbrijDjTg/viewform?usp=sf_link'
 
 export class CharacterMenu extends React.Component {
   constructor (props) {
@@ -43,34 +45,45 @@ export class CharacterMenu extends React.Component {
 
   render () {
     return (
-      <ScrollView style={styles.menu}>
-        <Text style={styles.header}>
-          Tristan's DND Assistant
-        </Text>
+      <View style={styles.menu}>
+        <ScrollView>
+          <Text style={styles.header}>
+            Tristan's DND Assistant
+          </Text>
 
-        <View>
-          {
-            this.state.characters.map(c => (
-              <TouchableNativeFeedback
-                key={c.id}
-                onPress={() => this._pressed(c)}
-                background={TouchableNativeFeedback.SelectableBackground()}>
+          <View>
+            {
+              this.state.characters.map(c => (
+                <TouchableNativeFeedback
+                  key={c.id}
+                  onPress={() => this._pressed(c)}
+                  background={TouchableNativeFeedback.SelectableBackground()}>
 
-                <View style={styles.characterItem}>
-                  {
-                    c.active ? <B>{c.name}</B> : <BaseText>{c.name}</BaseText>
-                  }
-                </View>
-              </TouchableNativeFeedback>
-            ))
-          }
+                  <View style={styles.characterItem}>
+                    {
+                      c.active ? <B>{c.name}</B> : <BaseText>{c.name}</BaseText>
+                    }
+                  </View>
+                </TouchableNativeFeedback>
+              ))
+            }
+          </View>
+
+          <Button
+            title="New"
+            onPress={() => this.newCharacter()}
+          />
+        </ScrollView>
+
+        <View style={styles.flexend}>
+          <Button
+            title="Send Feedback"
+            color={colors.secondaryText}
+
+            onPress={() => Linking.openURL(feedbackURL)}
+          />
         </View>
-
-        <Button
-          title="New"
-          onPress={() => this.newCharacter()}
-        />
-      </ScrollView>
+      </View>
     )
   }
 
@@ -99,6 +112,10 @@ const styles = StyleSheet.create({
     fontSize: 32,
     padding: 10,
     backgroundColor: colors.primary,
-    color: colors.textPrimary,
+    color: colors.textPrimary
+  },
+  flexend: {
+    flex: 1,
+    justifyContent: 'flex-end'
   }
 })

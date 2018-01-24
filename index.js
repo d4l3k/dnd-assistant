@@ -57,6 +57,13 @@ function startApp () {
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
 
+  const leftButtons = [
+    {
+      id: 'sideMenu'
+    }
+  ]
+
+
   Navigation.startTabBasedApp({
     appStyle: {
       navBarBackgroundColor: colors.primary,
@@ -72,7 +79,10 @@ function startApp () {
         label: 'Character',
         screen: 'dnd.CharacterScreen', // this is a registered name for a screen
         icon: iconsMap['md-person'],
-        title: 'Character'
+        title: 'Character',
+        navigatorButtons: {
+          leftButtons: leftButtons
+        }
       },
       {
         label: 'Gear',
@@ -86,7 +96,8 @@ function startApp () {
             collapsedIconColor: colors.textPrimary,
             backgroundColor: colors.accent,
             animated: true
-          }
+          },
+          leftButtons: leftButtons
         }
       },
       {
@@ -113,7 +124,8 @@ function startApp () {
               title: 'Filter',
               icon: iconsMap['md-funnel']
             }
-          ]
+          ],
+          leftButtons: leftButtons
         }
       }
     ],

@@ -1,6 +1,6 @@
 import React from 'react'
-import {Alert, Button, Dimensions, StyleSheet, View, FlatList, TextInput} from 'react-native'
-import {colors, BaseText, B, H1} from './styles.js'
+import {Alert, Button, StyleSheet, View, FlatList, TextInput} from 'react-native'
+import {colors, BaseText, B, H1, LightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -14,8 +14,7 @@ export class AddGearScreen extends React.Component {
   }
 
   render () {
-    return <View style={styles.lightbox}>
-      <H1>Add Gear</H1>
+    return <LightBox title="Add Gear">
       <BaseText>Name</BaseText>
       <TextInput
         value={this.state.text}
@@ -25,7 +24,7 @@ export class AddGearScreen extends React.Component {
         title={'Add'}
         onPress={() => this._add()}
       />
-    </View>
+    </LightBox>
   }
 
   _setText (text) {
@@ -103,7 +102,8 @@ export class GearScreen extends React.Component {
 
         <FlatList
           data={this.state.gear}
-          renderItem={({item}) => <View key={item.id} style={styles.row}>
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => <View style={styles.row}>
             <B>{item.name}</B>
             <View style={styles.rowend}>
               <TextInput
@@ -163,9 +163,9 @@ export class GearScreen extends React.Component {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         this.props.navigator.showLightBox({
-          screen: "dnd.AddGearScreen",
+          screen: 'dnd.AddGearScreen',
           style: {
-            backgroundBlur: "dark",
+            backgroundBlur: 'dark',
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
             tapBackgroundToDismiss: true
           }
@@ -199,13 +199,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
-  },
-  lightbox: {
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    padding: 16,
-    width: Dimensions.get('window').width - 20,
-    minHeight: 200,
-    borderRadius: 4
   }
 })

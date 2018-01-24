@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import {CharacterScreen} from './Character.js'
 import {AddGearScreen, GearScreen} from './GearScreen.js'
 import {CharacterMenu} from './CharacterMenu.js'
-import {DiceScreen} from './DiceScreen.js'
+import {DiceScreen, AddDieScreen} from './DiceScreen.js'
 import {colors} from './styles.js'
 
 // define your suffixes by yourself..
@@ -55,6 +55,7 @@ function startApp () {
   Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
+  Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
 
   Navigation.startTabBasedApp({
     appStyle: {

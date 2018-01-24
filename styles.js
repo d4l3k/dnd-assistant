@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Dimensions, Text} from 'react-native'
 
 export const colors = {
   darkPrimary: '#0288D1',
@@ -42,14 +42,49 @@ export class H1 extends React.Component {
   }
 }
 
+export class Error extends React.Component {
+  render () {
+    return (
+      <View>
+        { this.props.error
+          ? <P>
+            <Text style={{color: 'red'}}>
+              Error: {this.props.error}
+            </Text>
+          </P>
+          : null
+        }
+      </View>
+    )
+  }
+}
+
 export class B extends React.Component {
   render () {
     return (
       <BaseText>
-        <Text style={{fontWeight: 'bold'}}>
+        <Text style={{fontWeight: 'bold', fontSize: 18}}>
           {this.props.children}
         </Text>
       </BaseText>
     )
+  }
+}
+
+export class LightBox extends React.Component {
+  render () {
+    return <View style={{
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+        padding: 16,
+        width: Dimensions.get('window').width - 20,
+        minHeight: 250,
+        borderRadius: 4
+      }}>
+
+      <H1>{this.props.title}</H1>
+
+      {this.props.children}
+    </View>
   }
 }

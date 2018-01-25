@@ -71,6 +71,18 @@ export class B extends React.Component {
   }
 }
 
+export class Center extends React.Component {
+  render () {
+    return (
+      <Text style={{textAlign: 'center'}}>
+        <BaseText>
+          {this.props.children}
+        </BaseText>
+      </Text>
+    )
+  }
+}
+
 export class LightBox extends React.Component {
   render () {
     return <View style={{
@@ -84,6 +96,25 @@ export class LightBox extends React.Component {
 
       <H1>{this.props.title}</H1>
 
+      {this.props.children}
+    </View>
+  }
+}
+
+export class Field extends React.Component {
+  render () {
+    return <View style={{
+      flex: 1,
+      borderWidth: 1,
+      borderColor: colors.border,
+      padding: 10,
+      alignItems: 'stretch',
+      margin: 5,
+      borderRadius: 4,
+      justifyContent: 'space-between'
+    }}>
+
+      <Center>{this.props.name}</Center>
       {this.props.children}
     </View>
   }

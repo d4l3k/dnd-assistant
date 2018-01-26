@@ -1,10 +1,10 @@
-import { KnownSpellsScreen, AddSpellScreen, SlotsScreen } from './SpellBook.js'
-import { Navigation } from 'react-native-navigation'
+import {Navigation} from 'react-native-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {CharacterScreen} from './Character.js'
 import {AddGearScreen, GearScreen} from './GearScreen.js'
 import {CharacterMenu} from './CharacterMenu.js'
 import {DiceScreen, AddDieScreen} from './DiceScreen.js'
+import {KnownSpellsScreen, AddSpellScreen, SlotsScreen, CastSpellScreen} from './SpellBook.js'
 import {colors} from './styles.js'
 
 // define your suffixes by yourself..
@@ -51,11 +51,12 @@ function startApp () {
   Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
-  Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
+  Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
   Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
+  Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
 
   const leftButtons = [
     {

@@ -119,3 +119,15 @@ export class Field extends React.Component {
     </View>
   }
 }
+
+export const showLightBox = (navigator, screen, props) => {
+  navigator.showLightBox({
+    screen: screen,
+    passProps: props,
+    style: {
+      backgroundBlur: 'dark',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      tapBackgroundToDismiss: true
+    }
+  })
+}

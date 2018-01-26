@@ -3,12 +3,45 @@ import { StyleSheet, Text, TextInput, View, SectionList, TouchableNativeFeedback
 import spells from './dnd-spells/spells.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
 
 const spellMap = {}
 spells.forEach(spell => {
   spellMap[slugify(spell.name)] = spell
 })
+
+export class CastSpellScreen extends React.Component {
+  render () {
+    return <LightBox title='Cast Spell'>
+      {
+        Object.values(this.props.slots).map((slot, i) => <View
+          key={i}
+          style={styles.buttonMargin}>
+
+          <Button
+            title={this._title(slot)}
+            onPress={() => this._cast(slot)}
+          />
+        </View>)
+      }
+    </LightBox>
+  }
+
+  _cast (slot) {
+    getCharacter().then(character => {
+      character.collection('slots').doc(slot.id).collection('spells').add({
+        spell: this.props.spell.name
+      }).then(() => {
+        this.props.navigator.dismissLightBox()
+      })
+    })
+  }
+
+  _title (slot) {
+    const used = (slot.spells || []).length
+    return `Level ${slot.id} (used ${used} / ${slot.count})`
+  }
+}
 
 class Quote extends React.Component {
   render () {
@@ -86,90 +119,76 @@ class SpellItem extends React.Component {
       return
     }
 
-    return (
-      <View style={styles.detail}>
-        <View style={styles.row}>
-          <View style={styles.grow}>
-            <B>Duration</B>
-            <BaseText>{this.props.spell.duration}</BaseText>
-          </View>
-
-          <View style={styles.grow}>
-            <B>Range</B>
-            <BaseText>{this.props.spell.range}</BaseText>
-          </View>
-
-          {this.props.spell.material ? <View style={styles.grow}>
-            <B>Material</B>
-            <BaseText>{this.props.spell.material}</BaseText>
-            </View> : <View />}
+    return <View style={styles.detail}>
+      <View style={styles.row}>
+        <View style={styles.grow}>
+          <B>Duration</B>
+          <BaseText>{this.props.spell.duration}</BaseText>
         </View>
 
-        <View style={styles.row}>
-          <View style={styles.grow}>
-            <B>Concentration</B>
-            <BaseText>{this.props.spell.concentration}</BaseText>
-          </View>
-
-          <View style={styles.grow}>
-            <B>Ritual</B>
-            <BaseText>{this.props.spell.ritual}</BaseText>
-          </View>
+        <View style={styles.grow}>
+          <B>Range</B>
+          <BaseText>{this.props.spell.range}</BaseText>
         </View>
 
+        {this.props.spell.material ? <View style={styles.grow}>
+          <B>Material</B>
+          <BaseText>{this.props.spell.material}</BaseText>
+          </View> : <View />}
+      </View>
 
-        <B>Description</B>
-        <Quote>
-          <HTMLView
-            value={this.props.spell.desc}
-          />
-        </Quote>
+      <View style={styles.row}>
+        <View style={styles.grow}>
+          <B>Concentration</B>
+          <BaseText>{this.props.spell.concentration}</BaseText>
+        </View>
 
-        {this.higherLevel()}
-
-        <View style={styles.row}>
-          <View style={styles.narrowrow}>
-            <Button
-              title={'Cast' + (
-                this.state.spellData.cast > 0 ? ' (' + this.state.spellData.cast + ')' : ''
-              )}
-              onPress={() => this._castSpell()}
-            />
-            {
-              this.state.spellData.cast > 0 ?
-              <Button
-                title="X"
-                onPress={() => this._clearCasts()}
-              /> : null
-            }
-          </View>
-
-          {
-            this.state.spellData.prepared ?
-            <Button
-              title="Unprepare"
-              onPress={() => this._prepareSpell(false)}
-            /> :
-            <Button
-              title="Prepare"
-              onPress={() => this._prepareSpell(true)}
-            />
-          }
-
-          {
-            this.state.spellData.active ?
-            <Button
-              title="Remove"
-              onPress={() => this._addSpell(false)}
-            /> :
-            <Button
-              title="Add"
-              onPress={() => this._addSpell(true)}
-            />
-          }
+        <View style={styles.grow}>
+          <B>Ritual</B>
+          <BaseText>{this.props.spell.ritual}</BaseText>
         </View>
       </View>
-    )
+
+      <B>Description</B>
+      <Quote>
+        <HTMLView
+          value={this.props.spell.desc}
+        />
+      </Quote>
+
+      {this.higherLevel()}
+
+      <View style={styles.row}>
+        <Button
+          title='Cast'
+          onPress={() => this._castSpell()}
+        />
+
+        {
+          this.state.spellData.prepared
+            ? <Button
+              title='Unprepare'
+              onPress={() => this._prepareSpell(false)}
+            />
+            : <Button
+              title='Prepare'
+              onPress={() => this._prepareSpell(true)}
+            />
+        }
+
+        {
+          this.state.spellData.active
+            ? <Button
+              title='Remove'
+              onPress={() => this._addSpell(false)}
+            />
+            : <Button
+              title='Add'
+              onPress={() => this._addSpell(true)}
+            />
+        }
+      </View>
+    </View>
   }
 
   _addSpell (active) {
@@ -177,9 +196,10 @@ class SpellItem extends React.Component {
   }
 
   _castSpell () {
-    this.spell.set({
-      cast: (this.state.spellData.cast || 0) + 1
-    }, {merge: true})
+    showLightBox(this.props.navigator, 'dnd.CastSpellScreen', {
+      slots: this.props.slots,
+      spell: this.props.spell
+    })
   }
 
   _clearCasts () {
@@ -222,12 +242,20 @@ class SpellHeader extends React.Component {
       <View style={styles.header}>
         <BaseText style={styles.bold}>{this.props.title}</BaseText>
         {
-          this.props.slots ?
-          <BaseText>{this.props.slotsUsed} / {this.props.slots}</BaseText> :
-          <BaseText />
+          this.props.slot ?
+          <BaseText>Slots Used {this.slotsUsed()} / {this.props.slot.count}</BaseText> :
+          null
         }
       </View>
     )
+  }
+
+  slotsUsed () {
+    const spells = this.props.slot.spells
+    if (!spells) {
+      return
+    }
+    return spells.length
   }
 }
 
@@ -241,15 +269,43 @@ class SpellList extends React.Component {
   }
 
   componentDidMount () {
+    this.slotListeners = {}
+
     getCharacter().then(character => {
       this.slots = character.collection('slots')
       this.unsubscribe = this.slots.onSnapshot(snapshot => {
-        const slots = {}
-        snapshot.forEach(slot => {
-          const data = slot.data()
-          slots[slot.id] = data
-        })
         this.setState(state => {
+          const oldSlots = state.slots
+          const slots = {}
+          snapshot.forEach(slot => {
+            const data = slot.data()
+            data.id = slot.id
+            const prevSlot = oldSlots[slot.id]
+            if (prevSlot) {
+              data.spells = prevSlot.spells
+            }
+            slots[slot.id] = data
+
+            if (!this.slotListeners[slot.id]) {
+              this.slotListeners[slot.id] = this.slots.doc(slot.id)
+                .collection('spells')
+                .onSnapshot(snapshot => {
+                  const spells = []
+                  snapshot.forEach(spell => {
+                    const data = spell.data()
+                    data.id = spell.id
+                    spells.push(data)
+                  })
+                  this.setState(state => {
+                    const slots = {...state.slots}
+                    const s = {...slots[slot.id]}
+                    s.spells = spells
+                    slots[slot.id] = s
+                    return {slots}
+                  })
+                })
+            }
+          })
           return {slots}
         })
       })
@@ -261,6 +317,10 @@ class SpellList extends React.Component {
       this.unsubscribe()
       this.unsubscribe = null
     }
+    Object.values(this.slotListeners).forEach(unsubscribe => {
+      unsubscribe()
+    })
+    this.slotListeners = {}
   }
 
   render () {
@@ -271,35 +331,16 @@ class SpellList extends React.Component {
         renderSectionHeader={({section}) => (
           <SpellHeader
             title={section.title}
-            slots={section.slots}
-            slotsUsed={section.slotsUsed}
+            slot={section.slot}
           />
         )}
-        renderItem={({item}) => <SpellItem spell={item} />}
+        renderItem={({item}) => <SpellItem
+          navigator={this.props.navigator}
+          slots={this.state.slots}
+          spell={item}
+        />}
       />
     )
-  }
-
-  slotsTotal (section) {
-    const n = parseInt(section.title)
-    if (!n) {
-      return 0
-    }
-    const slot = this.state.slots[n] || {}
-    return slot.count || 0
-  }
-
-  slotsUsed (section) {
-    if (!this.props.spellData) {
-      return 0
-    }
-
-    let used = 0
-    section.data.forEach(spell => {
-      const data = this.props.spellData[slugify(spell.name)] || {}
-      used += spell.cast || 0
-    })
-    return used
   }
 
   groupSpells (spells) {
@@ -317,14 +358,20 @@ class SpellList extends React.Component {
       }
       return a < b ? -1 : 1
     }).map(section => {
-      const s = {
+      return {
         title: section,
-        data: sections[section]
+        data: sections[section],
+        slot: this.getSlot(section)
       }
-      s.slots = this.slotsTotal(s)
-      s.slotsUsed = this.slotsUsed(s)
-      return s
     })
+  }
+
+  getSlot (section) {
+    const n = parseInt(section)
+    if (!n) {
+      return
+    }
+    return this.state.slots[n]
   }
 
   spellExtractor (spell) {
@@ -402,6 +449,7 @@ export class KnownSpellsScreen extends React.Component {
         }
 
         <SpellList
+          navigator={this.props.navigator}
           spells={this.state.spells}
           spellData={this.state.spellData}
         />
@@ -415,7 +463,10 @@ export class AddSpellScreen extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <SpellList spells={spells} />
+        <SpellList
+          navigator={this.props.navigator}
+          spells={spells}
+        />
       </View>
     )
   }
@@ -542,5 +593,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
+  },
+  buttonMargin: {
+    marginTop: 5,
+    marginBottom: 5
   }
 })

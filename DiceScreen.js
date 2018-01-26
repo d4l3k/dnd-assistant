@@ -1,7 +1,7 @@
 import React from 'react'
 import {Alert, Text, StyleSheet, View, ScrollView, Button, TouchableNativeFeedback, TextInput} from 'react-native'
 import {getCharacter} from './auth'
-import {colors, BaseText, B, LightBox, H1, Error} from './styles.js'
+import {colors, BaseText, B, LightBox, H1, Error, showLightBox} from './styles.js'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Roll from 'roll'
@@ -104,14 +104,7 @@ export class DiceScreen extends React.Component {
   }
 
   newDie () {
-    this.props.navigator.showLightBox({
-      screen: 'dnd.AddDieScreen',
-      style: {
-        backgroundBlur: 'dark',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        tapBackgroundToDismiss: true
-      }
-    })
+    showLightBox(this.props.navigator, 'dnd.AddDieScreen')
   }
 
   _roll (die, i) {

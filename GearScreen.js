@@ -1,6 +1,6 @@
 import React from 'react'
 import {Alert, Button, StyleSheet, View, FlatList, TextInput} from 'react-native'
-import {colors, BaseText, B, H1, LightBox} from './styles.js'
+import {colors, BaseText, B, H1, LightBox, showLightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -162,14 +162,7 @@ export class GearScreen extends React.Component {
   onNavigatorEvent (event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
-        this.props.navigator.showLightBox({
-          screen: 'dnd.AddGearScreen',
-          style: {
-            backgroundBlur: 'dark',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            tapBackgroundToDismiss: true
-          }
-        })
+        showLightBox(this.props.navigator, 'dnd.AddGearScreen')
       }
     }
   }

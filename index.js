@@ -1,5 +1,6 @@
 import {Navigation} from 'react-native-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {CharacterScreen} from './Character.js'
 import {AddGearScreen, GearScreen} from './GearScreen.js'
 import {CharacterMenu} from './CharacterMenu.js'
@@ -17,6 +18,7 @@ const icons = {
   'md-settings': [30, 'black'],
   'md-funnel': [30, 'black'],
   'md-add': [30, 'black'],
+  'clear-all': [30, 'black', MaterialIcons],
 }
 
 const defaultIconProvider = Ionicons
@@ -119,6 +121,11 @@ function startApp () {
               id: 'slots',
               title: 'Slots',
               icon: iconsMap['md-settings']
+            },
+            {
+              id: 'resetSlots',
+              title: 'Reset Slots',
+              icon: iconsMap['clear-all']
             },
             {
               id: 'filter',

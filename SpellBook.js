@@ -1,9 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, SectionList, TouchableNativeFeedback, ScrollView, Button } from 'react-native'
+import {Alert, StyleSheet, Text, TextInput, View, SectionList, TouchableNativeFeedback, ScrollView, Button} from 'react-native'
 import spells from './dnd-spells/spells.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
+
+const numSlotLevels = 9
 
 const spellMap = {}
 spells.forEach(spell => {
@@ -399,6 +401,8 @@ export class KnownSpellsScreen extends React.Component {
           title: 'Slots'
         })
       } else if (event.id === 'filter') {
+      } else if (event.id === 'resetSlots') {
+        this._resetSlots()
       } else if (event.id === 'add') {
         this.props.navigator.push({
           screen: 'dnd.AddSpellScreen',
@@ -406,6 +410,36 @@ export class KnownSpellsScreen extends React.Component {
         })
       }
     }
+  }
+
+  _resetSlots () {
+    Alert.alert(
+      'Reset Spell Slots?',
+      'This sets all spell slot counters to zero.',
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {
+          text: 'Reset',
+          onPress: () => {
+            getCharacter().then(character => {
+              const slots = character.collection('slots')
+              const promises = []
+              for (let i = 1; i < numSlotLevels; i++) {
+                promises.push(slots.doc('' + i).collection('spells').get().then(spells => {
+                  const promises = []
+                  spells.forEach(spell => {
+                    return spell.ref.delete()
+                  })
+                  return Promise.all(promises)
+                }))
+              }
+              return Promise.all(promises)
+            })
+          },
+          style: 'destructive'
+        }
+      ]
+    )
   }
 
   componentDidMount () {
@@ -425,8 +459,7 @@ export class KnownSpellsScreen extends React.Component {
         this.setState(state => {
           return {spells, spellData}
         })
-      })
-    })
+      }) })
   }
 
   componentWillUnmount () {
@@ -523,7 +556,7 @@ export class SlotsScreen extends React.Component {
 
   render () {
     const slots = []
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= numSlotLevels; i++) {
       slots.push(<View key={i}>
         <BaseText>Level {i}</BaseText>
         <TextInput

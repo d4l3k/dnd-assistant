@@ -363,6 +363,24 @@ export class CharacterScreen extends React.Component {
               />
             </View>
 
+            <View style={styles.row}>
+              <BaseText>Failures</BaseText>
+
+              <CheckBox
+                onClick={() => this.set({deathSuccess1: !this.state.character.deathFail1})}
+                isChecked={!!this.state.character.deathFail1}
+              />
+
+              <CheckBox
+                onClick={() => this.set({deathFail2: !this.state.character.deathFail2})}
+                isChecked={!!this.state.character.deathFail2}
+              />
+
+              <CheckBox
+                onClick={() => this.set({deathFail3: !this.state.character.deathFail3})}
+                isChecked={!!this.state.character.deathFail3}
+              />
+            </View>
           </Field>
         </View>
 
@@ -453,7 +471,7 @@ export class CharacterScreen extends React.Component {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 10
+    margin: 5
   },
   column: {
     flex: 2,

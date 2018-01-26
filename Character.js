@@ -1,18 +1,28 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native'
 import {googleLogin, getCharacter} from './auth'
 import firebase from 'react-native-firebase'
-import {BaseText, Field, Center} from './styles.js'
+import {BaseText, Field, Center, colors} from './styles.js'
 import CheckBox from 'react-native-check-box'
 
 export class SkillInput extends React.Component {
   render () {
-    return <View style={styles.row}>
+    return <View style={styles.skillinput}>
       <CheckBox
         onClick={this.props.onClick}
         isChecked={this.props.isChecked}
       />
-      <BaseText>{this.value()} {this.props.name}</BaseText>
+      <View style={{width: 20, alignItems: 'flex-end', margin: 5}}>
+        <BaseText>{this.value()}</BaseText>
+      </View>
+      <BaseText>
+        {this.props.name}
+        {
+          this.props.secondary
+            ? <Text style={{color: colors.secondaryText}}> ({this.props.secondary})</Text>
+            : null
+        }
+      </BaseText>
     </View>
   }
 
@@ -105,6 +115,15 @@ export class MultiLineInput extends React.Component {
   }
 }
 
+const skillToShort = {
+  strength: 'Str',
+  dexterity: 'Dex',
+  constitution: 'Con',
+  intelligence: 'Int',
+  wisdom: 'Wis',
+  charisma: 'Cha'
+}
+
 export class CharacterScreen extends React.Component {
   constructor (props) {
     super(props)
@@ -189,7 +208,7 @@ export class CharacterScreen extends React.Component {
 
 
         <View style={styles.row}>
-          <View style={styles.column}>
+          <View style={styles.columnNarrow}>
             <StatInput
               name={'Strength'}
               value={this.state.character.strength}
@@ -220,6 +239,12 @@ export class CharacterScreen extends React.Component {
               value={this.state.character.charisma}
               onChangeText={charisma => this.set({charisma})}
             />
+
+            <BoxInput
+              name={'Passive Wisdom (Perception)'}
+              value={this.state.character.passiveWisdom}
+              onChangeText={passiveWisdom => this.set({passiveWisdom})}
+            />
           </View>
           <View style={styles.column}>
             <View style={styles.row}>
@@ -233,23 +258,44 @@ export class CharacterScreen extends React.Component {
                 value={this.state.character.proficiency}
                 onChangeText={proficiency => this.set({proficiency})}
               />
-              <BoxInput
-                name={'Passive Wisdom (Perception)'}
-                value={this.state.character.passiveWisdom}
-                onChangeText={passiveWisdom => this.set({passiveWisdom})}
-              />
             </View>
 
             <Field name='Saving Throws'>
-              <SkillInput
-                name='Strength'
-                onClick={() => this.set({strengthProficient: !this.state.character.strengthProficient})}
-                isChecked={this.state.character.strengthProficient}
-                value={this.state.character.strength}
-                proficiency={this.state.character.proficiency}
-              />
+              {
+                this.renderSkills([
+                  ['Strength'],
+                  ['Dexterity'],
+                  ['Constitution'],
+                  ['Intelligence'],
+                  ['Wisdom'],
+                  ['Charisma']
+                ])
+              }
             </Field>
+
             <Field name='Skills'>
+              {
+                this.renderSkills([
+                  ['Acrobatics', 'dexterity'],
+                  ['Animal Handling', 'wisdom'],
+                  ['Arcana', 'intelligence'],
+                  ['Athletics', 'strength'],
+                  ['Deception', 'charisma'],
+                  ['History', 'intelligence'],
+                  ['Insight', 'wisdom'],
+                  ['Intimidation', 'charisma'],
+                  ['Investigation', 'intelligence'],
+                  ['Medicine', 'wisdom'],
+                  ['Nature', 'intelligence'],
+                  ['Perception', 'wisdom'],
+                  ['Performance', 'charisma'],
+                  ['Persuasion', 'charisma'],
+                  ['Religion', 'intelligence'],
+                  ['Slight Of Hand', 'dexterity'],
+                  ['Stealth', 'dexterity'],
+                  ['Survival', 'wisdom']
+                ])
+              }
             </Field>
           </View>
         </View>
@@ -288,6 +334,36 @@ export class CharacterScreen extends React.Component {
             value={this.state.character.tempHP}
             onChangeText={tempHP => this.set({tempHP})}
           />
+        </View>
+
+        <View style={styles.row}>
+          <Field name='Hit Dice'>
+            <TextInput
+              value={this.state.character.hitDice}
+              onChangeText={hitDice => this.set({hitDice})}
+            />
+          </Field>
+          <Field name='Death Saves'>
+            <View style={styles.row}>
+              <BaseText>Successes</BaseText>
+
+              <CheckBox
+                onClick={() => this.set({deathSuccess1: !this.state.character.deathSuccess1})}
+                isChecked={!!this.state.character.deathSuccess1}
+              />
+
+              <CheckBox
+                onClick={() => this.set({deathSuccess2: !this.state.character.deathSuccess2})}
+                isChecked={!!this.state.character.deathSuccess2}
+              />
+
+              <CheckBox
+                onClick={() => this.set({deathSuccess3: !this.state.character.deathSuccess3})}
+                isChecked={!!this.state.character.deathSuccess3}
+              />
+            </View>
+
+          </Field>
         </View>
 
         <MultiLineInput
@@ -341,6 +417,27 @@ export class CharacterScreen extends React.Component {
     )
   }
 
+  renderSkills (skills) {
+    return skills.map((a, i) => {
+      const name = a[0]
+      const skill = a[1] || a[0].toLowerCase()
+      const propName = a[0].replace(/ /g, '').toLowerCase() + 'Proficient'
+      return <SkillInput
+        key={i}
+        name={name}
+        secondary={a.length === 2 ? skillToShort[skill] : null}
+        onClick={() => {
+          const props = {}
+          props[propName] = !this.state.character[propName]
+          this.set(props)
+        }}
+        isChecked={!!this.state.character[propName]}
+        value={this.state.character[skill]}
+        proficiency={this.state.character.proficiency}
+      />
+    })
+  }
+
   set (obj) {
     this.character.set(obj, {merge: true})
     this.setState(prev => {
@@ -359,6 +456,11 @@ const styles = StyleSheet.create({
     padding: 10
   },
   column: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  columnNarrow: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start'
@@ -367,5 +469,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  skillinput: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   }
 })

@@ -6,7 +6,8 @@
     "babel-plugin-react-native-web": "^0.3.3",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest-expo": "23.0.0",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "scripts": {
     "start": "react-native start",
@@ -18,6 +19,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "firebase": "^4.9.0",
     "generator-rn-toolbox": "^3.2.1",
     "htmlparser2-without-node-native": "^3.9.2",
     "react": "^16.2.0",
@@ -36,6 +42,7 @@
     "react-native-web": "^0.3.2",
     "react-navigation": "^1.0.0-beta.27",
     "roll": "^1.2.0",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "webpack": "^3.10.0"
   }
 }

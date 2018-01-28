@@ -1,5 +1,6 @@
 import { GoogleSignin } from 'react-native-google-signin'
 import firebase from 'react-native-firebase'
+//import * as firebase from 'firebase'
 import storage from '../storage.js'
 import RNRestart from 'react-native-restart'
 

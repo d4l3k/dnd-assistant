@@ -1,5 +1,6 @@
 import React from 'react'
-import {Alert, StyleSheet, Text, View, ScrollView, Button} from 'react-native'
+import {StyleSheet, View, ScrollView, Button} from 'react-native'
+import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'

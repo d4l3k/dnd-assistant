@@ -1,5 +1,6 @@
 import React from 'react'
-import {Alert, Text, StyleSheet, View, ScrollView, Button} from 'react-native'
+import {Text, StyleSheet, View, ScrollView, Button} from 'react-native'
+import {Alert} from './Alert'
 import {getCharacter} from './auth'
 import {colors, BaseText, B, LightBox, H1, Error, showLightBox, Touchable, TextInput} from './styles.js'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'

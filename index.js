@@ -1,4 +1,4 @@
-import {Navigation} from 'react-native-navigation'
+import {Navigation} from './navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {CharacterScreen} from './Character.js'
@@ -7,6 +7,7 @@ import {CharacterMenu} from './CharacterMenu.js'
 import {DiceScreen, AddDieScreen} from './DiceScreen.js'
 import {KnownSpellsScreen, AddSpellScreen, SlotsScreen, CastSpellScreen} from './SpellBook.js'
 import {colors} from './styles.js'
+import {Platform} from 'react-native'
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
@@ -29,11 +30,12 @@ let iconsLoaded = new Promise((resolve, reject) => {
     Object.keys(icons).map(iconName => {
       const Provider = icons[iconName][2] || defaultIconProvider
       const name = iconName.replace(replaceSuffixPattern, '')
-      return Provider.getImageSource(
-        name,
-        icons[iconName][0],
-        icons[iconName][1]
-      )
+      const size = icons[iconName][0]
+      const color = icons[iconName][1]
+      return Platform.select({
+        web: () => name,
+        default: () => Provider.getImageSource(name, size, color)
+      })()
     })
   ).then(sources => {
     Object.keys(icons)

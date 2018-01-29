@@ -1,6 +1,6 @@
 import React from 'react'
 import {Alert, StyleSheet, Text, TextInput, View, SectionList, TouchableNativeFeedback, ScrollView, Button} from 'react-native'
-import spells from './dnd-spells/spells.json'
+import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'

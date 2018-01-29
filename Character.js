@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native'
 import {googleLogin, getCharacter} from './auth'
-import firebase from 'react-native-firebase'
+import firebase from './firebase'
 import {BaseText, Field, Center, colors} from './styles.js'
 import CheckBox from 'react-native-check-box'
 
@@ -137,7 +137,7 @@ export class CharacterScreen extends React.Component {
   }
 
   componentDidMount () {
-    firebase.auth().onUserChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         googleLogin()
         return

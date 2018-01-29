@@ -1,36 +1,44 @@
-import { GoogleSignin } from 'react-native-google-signin'
-import firebase from 'react-native-firebase'
-//import * as firebase from 'firebase'
+import {Platform} from 'react-native'
 import storage from '../storage.js'
 import RNRestart from 'react-native-restart'
+import firebase from '../firebase'
+const {GoogleSignin} = require('./googlesignin')
 
 // Calling this function will open Google for login.
 export const googleLogin = () => {
   // Add configuration settings here:
-  return GoogleSignin.configure()
-  .then(() => {
-    GoogleSignin.signIn()
-    .then((data) => {
+  let user
+  if (GoogleSignin) {
+    user = GoogleSignin.configure().then(() => {
+      return GoogleSignin.signIn()
+    }).then((data) => {
       // create a new firebase credential with the token
       const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
 
       // login with credential
       return firebase.auth().signInWithCredential(credential)
     })
-    .then((currentUser) => {
-      console.info(JSON.stringify(currentUser.toJSON()))
+  } else {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    user = firebase.auth().signInWithPopup(provider).then(result => {
+      return result.user
     })
-    .catch((error) => {
-      console.error(`Login fail with error: ${error}`)
-    })
+  }
+
+  return user.then((currentUser) => {
+    console.info(JSON.stringify(currentUser.toJSON()))
+  })
+  .catch((error) => {
+    console.error(`Login fail with error: ${error}`)
   })
 }
 
 export const characterID = storage.load({
   key: 'characterID'
 }).catch(() => {
+  let characters
   return onLogin().then(() => {
-    const characters = getUser().collection('characters')
+    characters = getUser().collection('characters')
     return characters.limit(1).get()
   }).then(results => {
     let id = null

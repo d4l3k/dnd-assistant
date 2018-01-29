@@ -1,22 +1,47 @@
 const webpack = require('webpack')
 
+const dev = true
+
 module.exports = {
   entry: {
     main: './index.js'
   },
+  devtool: dev ? 'eval-cheap-module-source-map' : 'source-map',
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader',
+        enforce: 'pre'
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192
+        }
+      },
+      {
         test: /\.js?$/,
-        exclude: /node_modules/,
         loader: 'babel-loader',
+        exclude: /node_modules\/art/,
         query: {
-          presets: ['es2015', 'react']
+          presets: [
+            ['env', {
+              loose: true
+            }],
+            'react'
+          ],
+          plugins: [
+            'transform-object-rest-spread',
+            'transform-class-properties'
+          ]
         }
       }
     ]
   },
   resolve: {
+    extensions: [ '.web.js', '.default.js', '.js', '.json' ],
     alias: {
       'react-native': 'react-native-web'
     }

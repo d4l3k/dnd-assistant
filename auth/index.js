@@ -8,6 +8,8 @@ const {GoogleSignin} = require('./googlesignin')
 export const googleLogin = () => {
   // Add configuration settings here:
   let user
+
+  console.log('GoogleSignin auth', GoogleSignin)
   if (GoogleSignin) {
     user = GoogleSignin.configure().then(() => {
       return GoogleSignin.signIn()

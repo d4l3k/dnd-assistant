@@ -1,1 +1,2 @@
-export default require('react-native-navigation')
+import RNN from 'react-native-navigation'
+export const Navigation = RNN.Navigation

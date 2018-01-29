@@ -1,6 +1,3 @@
-import {Platform} from 'react-native'
+import GS from 'react-native-google-signin'
 
-export default Platform.select({
-  web: () => { return {} },
-  default: () => require('react-native-firebase')
-})()
+export const GoogleSignin = GS.GoogleSignin

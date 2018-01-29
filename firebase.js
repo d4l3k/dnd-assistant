@@ -19,5 +19,5 @@ export default Platform.select({
 
     return firebase
   },
-  default: () => require('react-native-firebase')
+  default: () => require('react-native-firebase').default
 })()

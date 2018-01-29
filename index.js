@@ -39,7 +39,9 @@ let iconsLoaded = new Promise((resolve, reject) => {
       const color = icons[iconName][1]
       return Platform.select({
         web: () => <Provider name={name} size={size} color={color} />,
-        default: () => Provider.getImageSource(name, size, color)
+        default: () => {
+          return Provider.getImageSource(name, size, color)
+        }
       })()
     })
   ).then(sources => {
@@ -52,21 +54,36 @@ let iconsLoaded = new Promise((resolve, reject) => {
 })
 
 iconsLoaded.then(() => {
+  console.log('iconsLoaded')
   startApp()
 })
 
 function startApp () {
+  console.log('startApp')
+
   Navigation.registerComponent('dnd.CharacterScreen', () => CharacterScreen)
+  console.log('register1')
   Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
+  console.log('register2')
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
+  console.log('register3')
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
+  console.log('register4')
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
+  console.log('register5')
   Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
+  console.log('register6')
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
+  console.log('register7')
   Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
+  console.log('register8')
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
+  console.log('register9')
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
+  console.log('register10')
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
+
+  console.log('registered')
 
   const leftButtons = [
     {
@@ -82,6 +99,8 @@ function startApp () {
     }],
     default: []
   })
+
+  console.log('starting app')
 
   Navigation.startTabBasedApp({
     appStyle: {

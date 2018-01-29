@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const path = require('path')
 
 const dev = true
 
@@ -15,7 +16,7 @@ module.exports = {
         enforce: 'pre'
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|ttf)$/,
         loader: 'url-loader',
         options: {
           limit: 8192
@@ -34,7 +35,8 @@ module.exports = {
           ],
           plugins: [
             'transform-object-rest-spread',
-            'transform-class-properties'
+            'transform-class-properties',
+            'transform-decorators-legacy'
           ]
         }
       }

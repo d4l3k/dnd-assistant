@@ -1,7 +1,7 @@
 import React from 'react'
-import {Linking, StyleSheet, Text, View, TouchableNativeFeedback, ScrollView, Button} from 'react-native'
+import {Linking, StyleSheet, Text, View, ScrollView, Button} from 'react-native'
 import {getUser, onLogin, setCharacter, characterID} from './auth'
-import {colors, BaseText, B} from './styles.js'
+import {colors, BaseText, B, Touchable} from './styles.js'
 
 const feedbackURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfBjIkfj6EpZnRgg5IXn9ajUA4ErPUg9vZlVacVxwbrijDjTg/viewform?usp=sf_link'
 
@@ -54,17 +54,16 @@ export class CharacterMenu extends React.Component {
           <View>
             {
               this.state.characters.map(c => (
-                <TouchableNativeFeedback
+                <Touchable
                   key={c.id}
-                  onPress={() => this._pressed(c)}
-                  background={TouchableNativeFeedback.SelectableBackground()}>
+                  onPress={() => this._pressed(c)}>
 
                   <View style={styles.characterItem}>
                     {
                       c.active ? <B>{c.name}</B> : <BaseText>{c.name}</BaseText>
                     }
                   </View>
-                </TouchableNativeFeedback>
+                </Touchable>
               ))
             }
           </View>

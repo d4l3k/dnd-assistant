@@ -1,3 +1,4 @@
+import React from 'react'
 import {Navigation} from './navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -18,7 +19,7 @@ const icons = {
   'md-basket': [30, 'black'],
   'md-settings': [30, 'black'],
   'md-funnel': [30, 'black'],
-  'md-add': [30, 'black'],
+  'md-add': [30, 'white'],
   'clear-all': [30, 'black', MaterialIcons],
 }
 
@@ -33,7 +34,7 @@ let iconsLoaded = new Promise((resolve, reject) => {
       const size = icons[iconName][0]
       const color = icons[iconName][1]
       return Platform.select({
-        web: () => name,
+        web: () => <Provider name={name} size={size} color={color} />,
         default: () => Provider.getImageSource(name, size, color)
       })()
     })

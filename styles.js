@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Dimensions, Text} from 'react-native'
+import {View, TouchableNativeFeedback, Dimensions, Text} from 'react-native'
 
 export const colors = {
   darkPrimary: '#0288D1',
@@ -9,7 +9,8 @@ export const colors = {
   accent: '#FF4081',
   primaryText: '#212121',
   secondaryText: '#757575',
-  border: '#dadada'
+  border: '#dadada',
+  error: '#FF0000'
 }
 
 export class BaseText extends React.Component {
@@ -130,4 +131,31 @@ export const showLightBox = (navigator, screen, props) => {
       tapBackgroundToDismiss: true
     }
   })
+}
+
+class TouchableNative extends React.Component {
+  render () {
+    return <TouchableNativeFeedback
+      onPress={() => this.props.onPress}
+      background={TouchableNativeFeedback.SelectableBackground()}>
+      {this.props.children}
+    </TouchableNativeFeedback>
+  }
+}
+
+export let Touchable
+
+if (TouchableNativeFeedback.SelectableBackground) {
+  Touchable = TouchableNative
+} else {
+  const ButtonBase = require('material-ui/ButtonBase').default
+  class TouchableWeb extends React.Component {
+    render () {
+      return <ButtonBase
+        onClick={() => this.props.onPress}>
+        {this.props.children}
+      </ButtonBase>
+    }
+  }
+  Touchable = TouchableWeb
 }

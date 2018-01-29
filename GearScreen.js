@@ -1,8 +1,9 @@
 import React from 'react'
-import {Alert, Button, StyleSheet, View, FlatList, TextInput} from 'react-native'
+import {Alert, Button, StyleSheet, View, TextInput} from 'react-native'
 import {colors, BaseText, B, H1, LightBox, showLightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import {FlatList} from './sectionlist'
 
 export class AddGearScreen extends React.Component {
   constructor (props) {
@@ -14,7 +15,7 @@ export class AddGearScreen extends React.Component {
   }
 
   render () {
-    return <LightBox title="Add Gear">
+    return <LightBox title="Add Gear" navigator={this.props.navigator}>
       <BaseText>Name</BaseText>
       <TextInput
         value={this.state.text}
@@ -92,12 +93,13 @@ export class GearScreen extends React.Component {
     return (
       <View style={styles.screen}>
         {
-          this.state.gear.length === 0 ?
-          <View style={styles.centerp}>
-            <BaseText>
-              You don't have any gear. Maybe you should add some.
-            </BaseText>
-          </View> : null
+          this.state.gear.length === 0
+            ? <View style={styles.centerp}>
+              <BaseText>
+                You don't have any gear. Maybe you should add some.
+              </BaseText>
+            </View>
+            : null
         }
 
         <FlatList

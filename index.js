@@ -59,6 +59,7 @@ function startApp () {
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
   Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
+  Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)

@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, TouchableNativeFeedback, Dimensions, Text} from 'react-native'
+import {View, ScrollView, TouchableNativeFeedback, Dimensions, Text} from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export const colors = {
   darkPrimary: '#0288D1',
@@ -89,15 +90,28 @@ export class LightBox extends React.Component {
     return <View style={{
         justifyContent: 'space-between',
         backgroundColor: 'white',
+        margin: 16,
         padding: 16,
-        width: Dimensions.get('window').width - 20,
+        width: Dimensions.get('window').width - 32,
         minHeight: 250,
         borderRadius: 4
       }}>
 
-      <H1>{this.props.title}</H1>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <H1>{this.props.title}</H1>
 
-      {this.props.children}
+        <Ionicons.Button
+          name="md-close"
+          color={colors.secondaryText}
+          iconStyle={{marginRight: 0}}
+          backgroundColor="transparent"
+          onPress={() => this.props.navigator.dismissLightBox()}
+        />
+      </View>
+
+      <ScrollView>
+        {this.props.children}
+      </ScrollView>
     </View>
   }
 }
@@ -149,10 +163,20 @@ if (TouchableNativeFeedback.SelectableBackground) {
   Touchable = TouchableNative
 } else {
   const ButtonBase = require('material-ui/ButtonBase').default
+  const withStyles = require('material-ui/styles').withStyles
+
+  const materialStyles = theme => ({
+    touchable: {
+      textAlign: 'left'
+    }
+  })
+
+  @withStyles(materialStyles)
   class TouchableWeb extends React.Component {
     render () {
       return <ButtonBase
-        onClick={() => this.props.onPress}>
+      className={this.props.classes.touchable}
+        onClick={this.props.onPress}>
         {this.props.children}
       </ButtonBase>
     }

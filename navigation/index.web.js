@@ -10,9 +10,10 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Drawer from 'material-ui/Drawer'
 import Button from 'material-ui/Button'
+import Modal from 'material-ui/Modal'
 import {withStyles, createMuiTheme, MuiThemeProvider} from 'material-ui/styles'
 
-import {BaseText, colors} from '../styles'
+import {BaseText, LightBox, colors} from '../styles'
 
 
 import Iconicons from 'react-native-vector-icons/Fonts/Ionicons.ttf'
@@ -99,6 +100,12 @@ export const Navigation = new Navigator()
 
 @withStyles(materialStyles)
 class Tab extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
   render (tab) {
     const Screen = Navigation.getComponent(this.props.tab.screen)
 
@@ -114,6 +121,9 @@ class Tab extends React.Component {
       <Screen navigator={this} />
 
       {this.renderFab()}
+
+      {this.renderModal()}
+      {this.renderScreen()}
     </View>
   }
 
@@ -131,6 +141,44 @@ class Tab extends React.Component {
     </Button>
   }
 
+  renderModal () {
+    if (!this.state.modal) {
+      return
+    }
+
+    return <Modal open={true} onClose={() => this.setState(() => {
+      return {modal: null}
+    })}>
+      {
+        React.createElement(
+          Navigation.getComponent(this.state.modal.screen),
+          {navigator: this, ...this.state.modal.passProps}
+        )
+      }
+    </Modal>
+  }
+
+
+  renderScreen () {
+    if (!this.state.screen) {
+      return
+    }
+
+    return <Modal open={true} onClose={() => this.setState(() => {
+      return {screen: null}
+    })}>
+      <LightBox title={this.state.screen.title} navigator={this}>
+        {
+
+          React.createElement(
+            Navigation.getComponent(this.state.screen.screen),
+            {navigator: this, ...this.state.screen.passProps}
+          )
+        }
+      </LightBox>
+    </Modal>
+  }
+
   setOnNavigatorEvent (f) {
     this.navigatorEvent = f
   }
@@ -141,6 +189,24 @@ class Tab extends React.Component {
     }
 
     this.navigatorEvent({type: 'NavBarButtonPress', id: id})
+  }
+
+  showLightBox (modal) {
+    this.setState(() => {
+      return {modal}
+    })
+  }
+
+  dismissLightBox () {
+    this.setState(() => {
+      return {modal: null}
+    })
+  }
+
+  push (screen) {
+    this.setState(() => {
+      return {screen}
+    })
   }
 }
 

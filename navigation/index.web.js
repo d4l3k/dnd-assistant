@@ -70,7 +70,7 @@ const materialStyles = theme => ({
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 10,
+    marginRight: 20,
   },
   drawerHeader: {
     display: 'flex',
@@ -142,12 +142,6 @@ export const Navigation = new Navigator()
 
 @withStyles(materialStyles)
 class Tab extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {}
-  }
-
   render (tab) {
     const Screen = Navigation.getComponent(this.props.tab.screen)
     const {classes} = this.props
@@ -172,9 +166,6 @@ class Tab extends React.Component {
       </ScrollView>
 
       {this.renderFab()}
-
-      {this.renderModal()}
-      {this.renderScreen()}
     </View>
   }
 
@@ -226,44 +217,6 @@ class Tab extends React.Component {
     </Button>
   }
 
-  renderModal () {
-    if (!this.state.modal) {
-      return
-    }
-
-    return <Modal open={true} onClose={() => this.setState(() => {
-      return {modal: null}
-    })}>
-      {
-        React.createElement(
-          Navigation.getComponent(this.state.modal.screen),
-          {navigator: this, ...this.state.modal.passProps}
-        )
-      }
-    </Modal>
-  }
-
-
-  renderScreen () {
-    if (!this.state.screen) {
-      return
-    }
-
-    return <Modal open={true} onClose={() => this.setState(() => {
-      return {screen: null}
-    })}>
-      <LightBox title={this.state.screen.title} navigator={this}>
-        {
-
-          React.createElement(
-            Navigation.getComponent(this.state.screen.screen),
-            {navigator: this, ...this.state.screen.passProps}
-          )
-        }
-      </LightBox>
-    </Modal>
-  }
-
   setOnNavigatorEvent (f) {
     this.navigatorEvent = f
   }
@@ -285,21 +238,15 @@ class Tab extends React.Component {
   }
 
   showLightBox (modal) {
-    this.setState(() => {
-      return {modal}
-    })
+    this.props.app.showLightBox(modal)
   }
 
   dismissLightBox () {
-    this.setState(() => {
-      return {modal: null}
-    })
+    this.props.app.dismissLightBox()
   }
 
   push (screen) {
-    this.setState(() => {
-      return {screen}
-    })
+    this.props.app.push(screen)
   }
 }
 
@@ -365,9 +312,70 @@ class ReactNativeWeb extends React.Component {
             <RightDrawer navigator={this}/>
           </div>
         </Drawer>
+
+
+        {this.renderModal()}
+        {this.renderScreen()}
       </View>
     </MuiThemeProvider>
   }
+
+  showLightBox (modal) {
+    this.setState(() => {
+      return {modal}
+    })
+  }
+
+  dismissLightBox () {
+    this.setState(() => {
+      return {modal: null}
+    })
+  }
+
+  push (screen) {
+    this.setState(() => {
+      return {screen}
+    })
+  }
+
+  renderModal () {
+    if (!this.state.modal) {
+      return
+    }
+
+    return <Modal open={true} onClose={() => this.setState(() => {
+      return {modal: null}
+    })}>
+      {
+        React.createElement(
+          Navigation.getComponent(this.state.modal.screen),
+          {navigator: this, ...this.state.modal.passProps}
+        )
+      }
+    </Modal>
+  }
+
+
+  renderScreen () {
+    if (!this.state.screen) {
+      return
+    }
+
+    return <Modal open={true} onClose={() => this.setState(() => {
+      return {screen: null}
+    })}>
+      <LightBox title={this.state.screen.title} navigator={this}>
+        {
+
+          React.createElement(
+            Navigation.getComponent(this.state.screen.screen),
+            {navigator: this, ...this.state.screen.passProps}
+          )
+        }
+      </LightBox>
+    </Modal>
+  }
+
 
   toggle (side) {
     this.setState(prev => {

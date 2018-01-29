@@ -1,6 +1,6 @@
 import React from 'react'
-import {Alert, Button, StyleSheet, View, TextInput} from 'react-native'
-import {colors, BaseText, B, H1, LightBox, showLightBox} from './styles.js'
+import {Alert, Button, StyleSheet, View} from 'react-native'
+import {colors, BaseText, B, H1, LightBox, showLightBox, TextInput} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {FlatList} from './sectionlist'

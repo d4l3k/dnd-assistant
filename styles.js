@@ -1,6 +1,23 @@
 import React from 'react'
-import {View, ScrollView, TouchableNativeFeedback, Dimensions, Text} from 'react-native'
+import ReactNative, {View, ScrollView, TouchableNativeFeedback, Dimensions, Text, Platform} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+
+export const TextInput = Platform.select({
+  default: () => ReactNative.TextInput,
+  web: () => {
+    const TextField = require('material-ui/TextField').default
+
+    return class InputWeb extends React.Component {
+      render () {
+        return <TextField
+          value={this.props.value}
+          onChange={(e) => this.props.onChangeText(e.target.value)}
+          margin="normal"
+        />
+      }
+    }
+  }
+})()
 
 export const colors = {
   darkPrimary: '#0288D1',

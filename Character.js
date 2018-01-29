@@ -1,9 +1,11 @@
 import React from 'react'
-import { StyleSheet, View, Text, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import {googleLogin, getCharacter} from './auth'
 import firebase from './firebase'
-import {BaseText, Field, Center, colors} from './styles.js'
+import {BaseText, Field, Center, TextInput, colors} from './styles.js'
 import CheckBox from 'react-native-check-box'
+
+const debounceTime = 300
 
 export class SkillInput extends React.Component {
   render () {
@@ -106,7 +108,7 @@ export class MultiLineInput extends React.Component {
     return (
       <Field name={this.props.name}>
         <TextInput
-          value={this.props.value}
+          value={this.props.value || ''}
           multiline={true}
           onChangeText={this.props.onChangeText}
         />
@@ -134,6 +136,8 @@ export class CharacterScreen extends React.Component {
         name: 'Loading...'
       }
     }
+
+    this.debounce = {}
   }
 
   componentDidMount () {
@@ -339,7 +343,7 @@ export class CharacterScreen extends React.Component {
         <View style={styles.row}>
           <Field name='Hit Dice'>
             <TextInput
-              value={this.state.character.hitDice}
+              value={this.state.character.hitDice || ''}
               onChangeText={hitDice => this.set({hitDice})}
             />
           </Field>
@@ -457,7 +461,6 @@ export class CharacterScreen extends React.Component {
   }
 
   set (obj) {
-    this.character.set(obj, {merge: true})
     this.setState(prev => {
       Object.keys(obj).forEach(key => {
         prev.character[key] = obj[key]
@@ -465,6 +468,15 @@ export class CharacterScreen extends React.Component {
       return {
         character: prev.character
       }
+    })
+
+    Object.keys(obj).forEach(key => {
+      if (this.debounce[key]) {
+        clearTimeout(this.debounce[key])
+      }
+      this.debounce[key] = setTimeout(() => {
+        this.character.set({[key]: obj[key]}, {merge: true})
+      }, debounceTime)
     })
   }
 }

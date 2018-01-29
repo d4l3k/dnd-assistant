@@ -1,9 +1,9 @@
 import React from 'react'
-import {Alert, StyleSheet, Text, TextInput, View, ScrollView, Button} from 'react-native'
+import {Alert, StyleSheet, Text, View, ScrollView, Button} from 'react-native'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, LightBox, showLightBox, Touchable} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox, Touchable, TextInput} from './styles.js'
 import {SectionList} from './sectionlist'
 
 const numSlotLevels = 9

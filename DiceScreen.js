@@ -1,7 +1,7 @@
 import React from 'react'
-import {Alert, Text, StyleSheet, View, ScrollView, Button, TextInput} from 'react-native'
+import {Alert, Text, StyleSheet, View, ScrollView, Button} from 'react-native'
 import {getCharacter} from './auth'
-import {colors, BaseText, B, LightBox, H1, Error, showLightBox, Touchable} from './styles.js'
+import {colors, BaseText, B, LightBox, H1, Error, showLightBox, Touchable, TextInput} from './styles.js'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Roll from 'roll'
@@ -138,7 +138,7 @@ export class AddDieScreen extends React.Component {
   }
 
   render () {
-    return <LightBox title='Add Die'>
+    return <LightBox title='Add Die' navigator={this.props.navigator}>
       <BaseText>Name</BaseText>
       <TextInput
         value={this.state.text}

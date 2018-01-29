@@ -167,7 +167,7 @@ export const showLightBox = (navigator, screen, props) => {
 class TouchableNative extends React.Component {
   render () {
     return <TouchableNativeFeedback
-      onPress={() => this.props.onPress}
+      onPress={this.props.onPress}
       background={TouchableNativeFeedback.SelectableBackground()}>
       {this.props.children}
     </TouchableNativeFeedback>

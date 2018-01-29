@@ -44,7 +44,7 @@ export class AddGearScreen extends React.Component {
         count: '1'
       })
     }).then(() => {
-      this.props.navigator.dismissLightBox();
+      this.props.navigator.dismissLightBox()
     })
   }
 }

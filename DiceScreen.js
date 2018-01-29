@@ -1,7 +1,7 @@
 import React from 'react'
-import {Alert, Text, StyleSheet, View, ScrollView, Button, TouchableNativeFeedback, TextInput} from 'react-native'
+import {Alert, Text, StyleSheet, View, ScrollView, Button, TextInput} from 'react-native'
 import {getCharacter} from './auth'
-import {colors, BaseText, B, LightBox, H1, Error, showLightBox} from './styles.js'
+import {colors, BaseText, B, LightBox, H1, Error, showLightBox, Touchable} from './styles.js'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Roll from 'roll'
@@ -83,15 +83,12 @@ export class DiceScreen extends React.Component {
             </View>
 
 
-            <TouchableNativeFeedback
-              onPress={() => this._roll(die, i)}
-              background={TouchableNativeFeedback.SelectableBackground()}>
-
+            <Touchable onPress={() => this._roll(die, i)}>
               <View style={styles.result}>
                 <Icon name='dice-multiple' color={colors.textPrimary} size={32} />
                 { die.result ? <Text style={styles.resultText}>{die.result}</Text> : null }
               </View>
-            </TouchableNativeFeedback>
+            </Touchable>
           </View>
         )
       }

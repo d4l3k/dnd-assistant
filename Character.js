@@ -40,7 +40,7 @@ export class StatInput extends React.Component {
     return (
       <Field name={this.props.name}>
         <TextInput
-          value={this.props.value}
+          value={this.props.value || ''}
           onChangeText={this.props.onChangeText}
           keyboardType={'numeric'}
         />
@@ -78,7 +78,7 @@ export class BoxInput extends React.Component {
     return (
       <Field name={this.props.name}>
         <TextInput
-          value={this.props.value}
+          value={this.props.value || ''}
           onChangeText={this.props.onChangeText}
           keyboardType={'numeric'}
         />
@@ -93,7 +93,7 @@ export class LineInput extends React.Component {
     return (
       <Field name={this.props.name}>
         <TextInput
-          value={this.props.value}
+          value={this.props.value || ''}
           onChangeText={this.props.onChangeText}
         />
       </Field>

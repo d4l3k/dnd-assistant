@@ -104,7 +104,11 @@ export const setCharacter = (id, noRestart) => {
     data: id
   }).then(() => {
     if (!noRestart) {
-      RNRestart.Restart()
+      if (RNRestart) {
+        RNRestart.Restart()
+      } else {
+        window.location.reload()
+      }
     }
   })
 }

@@ -1,7 +1,10 @@
 import React from 'react'
 import {Navigation} from './navigation'
+
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import {CharacterScreen} from './Character.js'
 import {AddGearScreen, GearScreen} from './GearScreen.js'
 import {CharacterMenu} from './CharacterMenu.js'
@@ -14,13 +17,14 @@ import {Platform} from 'react-native'
 // here we use active, big, small, very-big..
 const replaceSuffixPattern = /--(active|big|small|very-big)/g
 const icons = {
-  'md-person': [30, 'black'],
-  'md-book': [30, 'black'],
-  'md-basket': [30, 'black'],
-  'md-settings': [30, 'black'],
-  'md-funnel': [30, 'black'],
+  'md-person': [30, 'white'],
+  'md-book': [30, 'white'],
+  'md-basket': [30, 'white'],
+  'md-settings': [30, 'white'],
+  'md-funnel': [30, 'white'],
   'md-add': [30, 'white'],
-  'clear-all': [30, 'black', MaterialIcons],
+  'clear-all': [30, 'white', MaterialIcons],
+  'dice-multiple': [30, 'white', MaterialCommunityIcons],
 }
 
 const defaultIconProvider = Ionicons
@@ -70,6 +74,14 @@ function startApp () {
     }
   ]
 
+  const rightButtons = Platform.select({
+    web: [{
+      id: 'rightMenu',
+      title: 'Dice',
+      icon: iconsMap['dice-multiple']
+    }],
+    default: []
+  })
 
   Navigation.startTabBasedApp({
     appStyle: {
@@ -88,6 +100,7 @@ function startApp () {
         icon: iconsMap['md-person'],
         title: 'Character',
         navigatorButtons: {
+          rightButtons: rightButtons,
           leftButtons: leftButtons
         }
       },
@@ -104,6 +117,7 @@ function startApp () {
             backgroundColor: colors.accent,
             animated: true
           },
+          rightButtons: rightButtons,
           leftButtons: leftButtons
         }
       },
@@ -121,6 +135,7 @@ function startApp () {
             animated: true
           },
           rightButtons: [
+            ...rightButtons,
             {
               id: 'slots',
               title: 'Slots',

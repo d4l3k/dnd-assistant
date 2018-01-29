@@ -2,7 +2,8 @@ import React from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  View
+  View,
+  ScrollView
 } from 'react-native'
 
 import AppBar from 'material-ui/AppBar'
@@ -11,15 +12,27 @@ import Typography from 'material-ui/Typography'
 import Drawer from 'material-ui/Drawer'
 import Button from 'material-ui/Button'
 import Modal from 'material-ui/Modal'
+import Paper from 'material-ui/Paper';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+import Divider from 'material-ui/Divider';
+import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
+import ChevronRightIcon from 'material-ui-icons/ChevronRight';
+
 import {withStyles, createMuiTheme, MuiThemeProvider} from 'material-ui/styles'
 
-import {BaseText, LightBox, colors} from '../styles'
+import {BaseText, LightBox, colors, Touchable} from '../styles'
 
 
 import Iconicons from 'react-native-vector-icons/Fonts/Ionicons.ttf'
 import MaterialIcons from 'react-native-vector-icons/Fonts/MaterialIcons.ttf'
+import MaterialCommunityIcons from 'react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf'
 
-const fonts = [['Ionicons', Iconicons], ['MaterialIcons', MaterialIcons]]
+const fonts = [
+  ['Ionicons', Iconicons],
+  ['Material Icons', MaterialIcons],
+  ['Material Design Icons', MaterialCommunityIcons]
+]
 
 let css = ''
 
@@ -48,6 +61,33 @@ const materialStyles = theme => ({
     position: 'absolute',
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2
+  },
+  paper: {
+    margin: theme.spacing.unit * 1
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 10,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  drawerHeaderRight: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  drawer: {
+    width: '320px'
   }
 })
 
@@ -56,10 +96,12 @@ const theme = createMuiTheme({
     primary: {
       dark: colors.darkPrimary,
       light: colors.lightPrimary,
-      main: colors.primary
+      main: colors.primary,
+      contrastText: colors.textPrimary
     },
     secondary: {
       main: colors.accent,
+      contrastText: colors.textPrimary
     },
     error: {
       main: colors.error
@@ -108,23 +150,66 @@ class Tab extends React.Component {
 
   render (tab) {
     const Screen = Navigation.getComponent(this.props.tab.screen)
+    const {classes} = this.props
 
     return <View style={styles.column}>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <Typography type="title" color="inherit">
+          {this.renderButtons('leftButtons')}
+
+          <Typography type="title" color="inherit" className={classes.flex}>
             {this.props.tab.label}
           </Typography>
+
+          {this.renderButtons('rightButtons')}
         </Toolbar>
       </AppBar>
 
-      <Screen navigator={this} />
+      <ScrollView>
+        <Paper className={classes.paper} elevation={1}>
+          <Screen navigator={this} />
+        </Paper>
+      </ScrollView>
 
       {this.renderFab()}
 
       {this.renderModal()}
       {this.renderScreen()}
     </View>
+  }
+
+  renderButtons (side) {
+    const buttons = this.props.tab.navigatorButtons && this.props.tab.navigatorButtons[side]
+    if (!buttons) {
+      return
+    }
+
+    return buttons.map((button) => this.renderButton(button)).reverse()
+  }
+
+  renderButton (button) {
+    const {classes, first, last} = this.props
+
+    if (button.id === 'sideMenu') {
+      if (!first) {
+        return
+      }
+
+      button.label = 'Menu'
+      button.icon = <MenuIcon />
+    } else if (button.id === 'rightMenu') {
+      if (!last) {
+        return
+      }
+    }
+
+    return <IconButton
+        color="inherit"
+        aria-label={button.label}
+        key={button.id}
+        onClick={() => this.press(button.id)}>
+      {button.icon}
+    </IconButton>
   }
 
   renderFab () {
@@ -184,6 +269,14 @@ class Tab extends React.Component {
   }
 
   press (id) {
+    if (id === 'sideMenu') {
+      this.props.app.toggle('left')
+      return
+    } else if (id === 'rightMenu') {
+      this.props.app.toggle('right')
+      return
+    }
+
     if (!this.navigatorEvent) {
       return
     }
@@ -216,35 +309,72 @@ class ReactNativeWeb extends React.Component {
     super(props)
 
     this.state = {
-      leftOpen: false,
-      rightOpen: false
+      left: false,
+      right: false
     }
   }
 
   render () {
     const LeftDrawer = Navigation.getComponent(this.props.drawer.left.screen)
     const RightDrawer = Navigation.getComponent(this.props.drawer.right.screen)
+    const {classes} = this.props
+
     return <MuiThemeProvider theme={theme}>
       <View style={styles.row}>
         <Drawer
-          type="persistent"
           anchor='left'
-          open={this.state.leftOpen}
+          open={this.state.left}
+          onClose={() => this.toggle('left')}
         >
-          <LeftDrawer />
+
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={() => this.toggle('left')}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+
+          <div className={classes.drawer}>
+            <LeftDrawer navigator={this} />
+          </div>
         </Drawer>
         {
-          this.props.tabs.map(tab => <Tab key={tab.label} tab={tab} />)
+          this.props.tabs.map((tab, i) =>
+            <Tab
+              key={tab.label}
+              tab={tab}
+              app={this}
+              first={i === 0}
+              last={i === (this.props.tabs.length - 1)}
+            />
+          )
         }
         <Drawer
-          type="persistent"
           anchor='right'
-          open={this.state.rightOpen}
+          open={this.state.right}
+          onClose={() => this.toggle('right')}
         >
-          <RightDrawer />
+          <div className={classes.drawerHeaderRight}>
+            <IconButton onClick={() => this.toggle('right')}>
+              <ChevronRightIcon />
+            </IconButton>
+          </div>
+          <Divider />
+
+          <div className={classes.drawer}>
+            <RightDrawer navigator={this}/>
+          </div>
         </Drawer>
       </View>
     </MuiThemeProvider>
+  }
+
+  toggle (side) {
+    this.setState(prev => {
+      const state = {}
+      state[side] = !prev[side]
+      return state
+    })
   }
 }
 AppRegistry.registerComponent('ReactNativeWeb', () => ReactNativeWeb)

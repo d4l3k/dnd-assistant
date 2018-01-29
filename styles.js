@@ -167,7 +167,8 @@ if (TouchableNativeFeedback.SelectableBackground) {
 
   const materialStyles = theme => ({
     touchable: {
-      textAlign: 'left'
+      textAlign: 'left',
+      justifyContent: 'stretch'
     }
   })
 

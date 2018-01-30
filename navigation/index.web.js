@@ -126,8 +126,10 @@ class Navigator {
   }
 
   startTabBasedApp (props) {
+    const container = document.createElement('div')
+    document.body.appendChild(container)
     AppRegistry.runApplication('ReactNativeWeb', {
-      rootTag: document.getElementById('react-app'),
+      rootTag: container,
       initialProps: props
     })
   }

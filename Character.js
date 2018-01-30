@@ -375,7 +375,7 @@ export class CharacterScreen extends React.PureComponent {
               <BaseText>Failures</BaseText>
 
               <CheckBox
-                onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathFail1}))}
+                onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
                 isChecked={!!this.state.character_deathFail1}
               />
 

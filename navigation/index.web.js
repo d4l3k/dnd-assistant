@@ -343,15 +343,12 @@ class ReactNativeWeb extends React.Component {
       return
     }
 
+    const Screen = Navigation.getComponent(this.state.modal.screen)
+
     return <Modal open={true} onClose={() => this.setState(() => {
       return {modal: null}
     })}>
-      {
-        React.createElement(
-          Navigation.getComponent(this.state.modal.screen),
-          {navigator: this, ...this.state.modal.passProps}
-        )
-      }
+      <Screen navigator={this} {...this.state.modal.passProps} />
     </Modal>
   }
 

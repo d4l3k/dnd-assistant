@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, View, ScrollView, Button} from 'react-native'
+import {StyleSheet, View, ScrollView} from 'react-native'
 import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
@@ -8,6 +8,7 @@ import {colors, BaseText, B, LightBox, showLightBox, Touchable} from './styles.j
 import {SectionList} from './sectionlist'
 import {TextInput} from './TextInput'
 import Cache from './Cache'
+import {Button} from './Button'
 
 const numSlotLevels = 9
 
@@ -18,7 +19,7 @@ spells.forEach(spell => {
 
 export class CastSpellScreen extends React.PureComponent {
   render () {
-    return <LightBox title='Cast Spell'>
+    return <LightBox title='Cast Spell' navigator={this.props.navigator}>
       {
         Object.values(this.props.slots).map((slot, i) => <View
           key={i}
@@ -100,9 +101,9 @@ class SpellItem extends React.PureComponent {
 
   render () {
     return (
-      <View>
+      <View style={styles.item}>
         <Touchable onPress={this._onPress}>
-          <View style={styles.item}>
+          <View style={styles.iteminner}>
             <View style={styles.row}>
               <View>
                 <B>{this.props.spell.name}</B>
@@ -119,12 +120,14 @@ class SpellItem extends React.PureComponent {
             {this.detail()}
           </View>
         </Touchable>
+
+        {this.buttons()}
       </View>
     )
   }
 
   detail () {
-    if (!this.state.showDetail) {
+    if (!this.state.showDetail || this.props.noDetail) {
       return
     }
 
@@ -166,37 +169,43 @@ class SpellItem extends React.PureComponent {
       </Quote>
 
       {this.higherLevel()}
+    </View>
+  }
 
-      <View style={styles.row}>
-        <Button
-          title='Cast'
-          onPress={this._castSpell}
-        />
+  buttons () {
+    if (!this.state.showDetail) {
+      return
+    }
 
-        {
-          this.state.spellData.prepared
-            ? <Button
-              title='Unprepare'
-              onPress={this.cache(() => this.prepareSpell(false))}
-            />
-            : <Button
-              title='Prepare'
-              onPress={this.cache(() => this.prepareSpell(true))}
-            />
-        }
+    return <View style={styles.itembuttons}>
+      <Button
+        title='Cast'
+        onPress={this._castSpell}
+      />
 
-        {
-          this.state.spellData.active
-            ? <Button
-              title='Remove'
-              onPress={this.cache(() => this.addSpell(false))}
-            />
-            : <Button
-              title='Add'
-              onPress={this.cache(() => this.addSpell(true))}
-            />
-        }
-      </View>
+      {
+        this.state.spellData.prepared
+          ? <Button
+            title='Unprepare'
+            onPress={this.cache(() => this.prepareSpell(false))}
+          />
+          : <Button
+            title='Prepare'
+            onPress={this.cache(() => this.prepareSpell(true))}
+          />
+      }
+
+      {
+        this.state.spellData.active
+          ? <Button
+            title='Remove'
+            onPress={this.cache(() => this.addSpell(false))}
+          />
+          : <Button
+            title='Add'
+            onPress={this.cache(() => this.addSpell(true))}
+          />
+      }
     </View>
   }
 
@@ -275,6 +284,8 @@ class SpellList extends React.PureComponent {
     this.state = {
       slots: {}
     }
+
+    this._renderItem = this.renderItem.bind(this)
   }
 
   componentDidMount () {
@@ -337,19 +348,25 @@ class SpellList extends React.PureComponent {
       <SectionList
         sections={this.groupSpells(this.props.spells)}
         keyExtractor={this.spellExtractor}
-        renderSectionHeader={({section}) => (
-          <SpellHeader
-            title={section.title}
-            slot={section.slot}
-          />
-        )}
-        renderItem={({item}) => <SpellItem
-          navigator={this.props.navigator}
-          slots={this.state.slots}
-          spell={item}
-        />}
+        renderSectionHeader={this.renderSectionHeader}
+        renderItem={this._renderItem}
       />
     )
+  }
+
+  renderSectionHeader ({section}) {
+    return <SpellHeader
+      title={section.title}
+      slot={section.slot}
+    />
+  }
+
+  renderItem ({item}) {
+    return <SpellItem
+      navigator={this.props.navigator}
+      slots={this.state.slots}
+      spell={item}
+    />
   }
 
   groupSpells (spells) {
@@ -588,9 +605,18 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1,
-    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.border
+  },
+  iteminner: {
+    flex: 1,
+    padding: 10
+  },
+  itembuttons: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10
   },
   row: {
     flex: 1,

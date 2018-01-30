@@ -1,11 +1,12 @@
 import React from 'react'
-import {Button, StyleSheet, View} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import {Alert} from './Alert'
 import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {FlatList} from './sectionlist'
 import {TextInput} from './TextInput'
+import {Button} from './Button'
 
 export class AddGearScreen extends React.Component {
   constructor (props) {

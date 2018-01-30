@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, StyleSheet, View, ScrollView, Button} from 'react-native'
+import {Text, StyleSheet, View, ScrollView} from 'react-native'
 import {Alert} from './Alert'
 import {getCharacter} from './auth'
 import {colors, BaseText, B, LightBox, H1, Error, showLightBox, Touchable} from './styles.js'
@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Roll from 'roll'
 import {TextInput} from './TextInput'
+import {Button} from './Button'
 
 export class DiceScreen extends React.Component {
   constructor (props) {

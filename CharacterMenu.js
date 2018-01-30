@@ -1,7 +1,8 @@
 import React from 'react'
-import {Linking, StyleSheet, Text, View, ScrollView, Button} from 'react-native'
+import {Linking, StyleSheet, Text, View, ScrollView} from 'react-native'
 import {getUser, onLogin, setCharacter, characterID} from './auth'
 import {colors, BaseText, B, Touchable} from './styles.js'
+import {Button} from './Button'
 
 const feedbackURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfBjIkfj6EpZnRgg5IXn9ajUA4ErPUg9vZlVacVxwbrijDjTg/viewform?usp=sf_link'
 

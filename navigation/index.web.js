@@ -328,7 +328,7 @@ class ReactNativeWeb extends React.Component {
 
   dismissLightBox () {
     this.setState(() => {
-      return {modal: null}
+      return {modal: null, screen: null}
     })
   }
 
@@ -339,37 +339,40 @@ class ReactNativeWeb extends React.Component {
   }
 
   renderModal () {
-    if (!this.state.modal) {
-      return
-    }
+    const Screen = this.state.modal && Navigation.getComponent(this.state.modal.screen)
 
-    const Screen = Navigation.getComponent(this.state.modal.screen)
-
-    return <Modal open={true} onClose={() => this.setState(() => {
+    return <Modal open={!!this.state.modal} onClose={() => this.setState(() => {
       return {modal: null}
-    })}>
-      <Screen navigator={this} {...this.state.modal.passProps} />
+    })}
+     style={centerStyle}>
+      <div style={innerStyle}>
+      {
+        this.state.modal
+          ? <Screen navigator={this} {...this.state.modal.passProps} />
+          : null
+      }
+      </div>
     </Modal>
   }
 
 
   renderScreen () {
-    if (!this.state.screen) {
-      return
-    }
+    const screen = this.state.screen || {}
+    const Screen = this.state.screen && Navigation.getComponent(screen.screen)
 
-    return <Modal open={true} onClose={() => this.setState(() => {
+    return <Modal open={!!this.state.screen} onClose={() => this.setState(() => {
       return {screen: null}
-    })}>
-      <LightBox title={this.state.screen.title} navigator={this}>
-        {
-
-          React.createElement(
-            Navigation.getComponent(this.state.screen.screen),
-            {navigator: this, ...this.state.screen.passProps}
-          )
-        }
-      </LightBox>
+    })}
+       style={centerStyle}>
+      <div style={innerStyle}>
+        <LightBox title={screen.title} navigator={this}>
+          {
+            this.state.screen
+              ? <Screen navigator={this} {...this.state.screen.passProps} />
+              : null
+          }
+        </LightBox>
+      </div>
     </Modal>
   }
 
@@ -384,6 +387,21 @@ class ReactNativeWeb extends React.Component {
 }
 AppRegistry.registerComponent('ReactNativeWeb', () => ReactNativeWeb)
 
+const centerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  overflow: 'hidden'
+}
+
+const innerStyle = {
+  display: 'flex',
+  margin: '16px',
+  maxHeight: 'calc(100vh - 32px)',
+  overflow: 'hidden'
+}
+
 const styles= StyleSheet.create({
   row: {
     flex: 1,
@@ -394,6 +412,7 @@ const styles= StyleSheet.create({
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start'
-  }
+  },
+
 })
 

@@ -88,28 +88,36 @@ export class Center extends React.PureComponent {
 export class LightBox extends React.PureComponent {
   render () {
     return <View style={{
+        flex: 1,
         justifyContent: 'space-between',
         backgroundColor: 'white',
-        margin: 16,
-        padding: 16,
-        width: Dimensions.get('window').width - 32,
+        alignItems: 'stretch',
+        marginHorizontal: 16,
         minHeight: 250,
         borderRadius: 4
       }}>
 
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 16
+      }}>
         <H1>{this.props.title}</H1>
 
         <Ionicons.Button
           name="md-close"
           color={colors.secondaryText}
-          iconStyle={{marginRight: 0}}
+          iconStyle={{marginRight: 0, marginTop: 10}}
           backgroundColor="transparent"
           onPress={() => this.props.navigator.dismissLightBox()}
         />
       </View>
 
-      <ScrollView>
+      <ScrollView style={{
+        flex: 1,
+        marginHorizontal: 16
+      }}>
         {this.props.children}
       </ScrollView>
     </View>

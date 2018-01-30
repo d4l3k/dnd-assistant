@@ -1,10 +1,11 @@
 import React from 'react'
 import {Button, StyleSheet, View} from 'react-native'
 import {Alert} from './Alert'
-import {colors, BaseText, B, LightBox, showLightBox, TextInput} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {FlatList} from './sectionlist'
+import {TextInput} from './TextInput'
 
 export class AddGearScreen extends React.Component {
   constructor (props) {
@@ -13,6 +14,9 @@ export class AddGearScreen extends React.Component {
     this.state = {
       text: ''
     }
+
+    this.setText = this._setText.bind(this)
+    this.add = this._add.bind(this)
   }
 
   render () {
@@ -20,11 +24,11 @@ export class AddGearScreen extends React.Component {
       <BaseText>Name</BaseText>
       <TextInput
         value={this.state.text}
-        onChangeText={text => this._setText(text)}
+        onChangeText={this.setText}
       />
       <Button
         title={'Add'}
-        onPress={() => this._add()}
+        onPress={this.add}
       />
     </LightBox>
   }
@@ -50,7 +54,40 @@ export class AddGearScreen extends React.Component {
   }
 }
 
-export class GearScreen extends React.Component {
+class GearItem extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this._remove = () => {
+      this.props.parent._remove(this.props.item)
+    }
+    this._setCount = (text) => {
+      this.props.parent._setCount(this.props.item, text)
+    }
+  }
+
+  render () {
+    return <View style={styles.row}>
+      <B>{this.props.item.name}</B>
+      <View style={styles.rowend}>
+        <TextInput
+          value={this.props.item.count}
+          onChangeText={this._setCount}
+          keyboardType={'numeric'}
+        />
+        <Ionicons.Button
+          name="md-trash"
+          color={colors.secondaryText}
+          iconStyle={{marginRight: 0}}
+          backgroundColor="transparent"
+          onPress={this._remove}
+        />
+      </View>
+    </View>
+  }
+}
+
+export class GearScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -60,6 +97,10 @@ export class GearScreen extends React.Component {
     }
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+
+    this._renderItem = ({item}) => {
+      return <GearItem item={item} parent={this} />
+    }
   }
 
   componentDidMount () {
@@ -105,27 +146,15 @@ export class GearScreen extends React.Component {
 
         <FlatList
           data={this.state.gear}
-          keyExtractor={(item) => item.id}
-          renderItem={({item}) => <View style={styles.row}>
-            <B>{item.name}</B>
-            <View style={styles.rowend}>
-              <TextInput
-                value={item.count}
-                onChangeText={text => this._setCount(item, text)}
-                keyboardType={'numeric'}
-              />
-              <Ionicons.Button
-                name="md-trash"
-                color={colors.secondaryText}
-                iconStyle={{marginRight: 0}}
-                backgroundColor="transparent"
-                onPress={() => this._remove(item)}
-              />
-            </View>
-          </View>}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
         />
       </View>
     )
+  }
+
+  _keyExtractor (item) {
+    return item.id
   }
 
   _remove (item) {

@@ -2,7 +2,7 @@ import React from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
 import {View} from 'react-native'
 
-export class FlatList extends React.Component {
+export class FlatList extends React.PureComponent {
   render () {
     return <View>
       {
@@ -23,12 +23,19 @@ export class FlatList extends React.Component {
   }
 }
 
-export class SectionList extends React.Component {
+export class SectionList extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this._keyExtractor = this.keyExtractor.bind(this)
+    this._renderItem = this.renderItem.bind(this)
+  }
+
   render () {
     return <FlatList
       data={this.convert(this.props.sections)}
-      keyExtractor={(a) => this.keyExtractor(a)}
-      renderItem={(a) => this.renderItem(a)}
+      keyExtractor={this._keyExtractor}
+      renderItem={this._renderItem}
     />
   }
 

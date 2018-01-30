@@ -2,12 +2,14 @@ import React from 'react'
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import {googleLogin, getCharacter} from './auth'
 import firebase from './firebase'
-import {BaseText, Field, Center, TextInput, colors} from './styles.js'
-import CheckBox from 'react-native-check-box'
+import {BaseText, Field, Center, colors} from './styles.js'
+import {TextInput} from './TextInput'
+import {CheckBox} from './CheckBox'
+import Cache from './Cache'
 
 const debounceTime = 300
 
-export class SkillInput extends React.Component {
+export class SkillInput extends React.PureComponent {
   render () {
     return <View style={styles.skillinput}>
       <CheckBox
@@ -37,7 +39,7 @@ export class SkillInput extends React.Component {
   }
 }
 
-export class StatInput extends React.Component {
+export class StatInput extends React.PureComponent {
   render () {
     return (
       <Field name={this.props.name}>
@@ -75,46 +77,34 @@ function modString (n) {
 }
 
 
-export class BoxInput extends React.Component {
-  render () {
-    return (
-      <Field name={this.props.name}>
-        <TextInput
-          value={this.props.value || ''}
-          onChangeText={this.props.onChangeText}
-          keyboardType={'numeric'}
-        />
-      </Field>
-    )
-  }
+export const BoxInput = (props) => {
+  return <Field name={props.name}>
+    <TextInput
+      value={props.value || ''}
+      onChangeText={props.onChangeText}
+      keyboardType={'numeric'}
+    />
+  </Field>
 }
 
 
-export class LineInput extends React.Component {
-  render () {
-    return (
-      <Field name={this.props.name}>
-        <TextInput
-          value={this.props.value || ''}
-          onChangeText={this.props.onChangeText}
-        />
-      </Field>
-    )
-  }
+export const LineInput = (props) => {
+  return <Field name={props.name}>
+    <TextInput
+      value={props.value || ''}
+      onChangeText={props.onChangeText}
+    />
+  </Field>
 }
 
-export class MultiLineInput extends React.Component {
-  render () {
-    return (
-      <Field name={this.props.name}>
-        <TextInput
-          value={this.props.value || ''}
-          multiline={true}
-          onChangeText={this.props.onChangeText}
-        />
-      </Field>
-    )
-  }
+export const MultiLineInput = (props) => {
+  return <Field name={props.name}>
+    <TextInput
+      value={props.value || ''}
+      multiline={true}
+      onChangeText={props.onChangeText}
+    />
+  </Field>
 }
 
 const skillToShort = {
@@ -126,7 +116,9 @@ const skillToShort = {
   charisma: 'Cha'
 }
 
-export class CharacterScreen extends React.Component {
+const characterPrefix = 'character_'
+
+export class CharacterScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -138,6 +130,8 @@ export class CharacterScreen extends React.Component {
     }
 
     this.debounce = {}
+
+    this.cache = Cache()
   }
 
   componentDidMount () {
@@ -161,8 +155,18 @@ export class CharacterScreen extends React.Component {
     getCharacter().then(character => {
       this.character = character
       this.character.onSnapshot(character => {
-        this.setState(state => {
-          return {character: character.data()}
+        console.log(character)
+        this.setState(prev => {
+          const state = {}
+          const data = character.data()
+          Object.keys(data).forEach(key => {
+            const k = characterPrefix + key
+            const datum = data[key]
+            if (prev[k] !== datum) {
+              state[k] = datum
+            }
+          })
+          return state
         })
       })
     })
@@ -174,39 +178,39 @@ export class CharacterScreen extends React.Component {
         <View style={styles.row}>
           <LineInput
             name={'Character Name'}
-            value={this.state.character.name}
-            onChangeText={name => this.set({name})}
+            value={this.state.character_name}
+            onChangeText={this.cache(name => this.set({name}))}
           />
           <LineInput
             name={'Class & Level'}
-            value={this.state.character.classLevel}
-            onChangeText={classLevel => this.set({classLevel})}
+            value={this.state.character_classLevel}
+            onChangeText={this.cache(classLevel => this.set({classLevel}))}
           />
         </View>
 
         <View style={styles.row}>
           <LineInput
             name={'Race'}
-            value={this.state.character.race}
-            onChangeText={race => this.set({race})}
+            value={this.state.character_race}
+            onChangeText={this.cache(race => this.set({race}))}
           />
 
           <BoxInput
             name={'Experience Points'}
-            value={this.state.character.exp}
-            onChangeText={exp => this.set({exp})}
+            value={this.state.character_exp}
+            onChangeText={this.cache(exp => this.set({exp}))}
           />
         </View>
         <View style={styles.row}>
           <LineInput
             name={'Alignment'}
-            value={this.state.character.alignment}
-            onChangeText={alignment => this.set({alignment})}
+            value={this.state.character_alignment}
+            onChangeText={this.cache(alignment => this.set({alignment}))}
           />
           <LineInput
             name={'Background'}
-            value={this.state.character.background}
-            onChangeText={background => this.set({background})}
+            value={this.state.character_background}
+            onChangeText={this.cache(background => this.set({background}))}
           />
         </View>
 
@@ -215,56 +219,56 @@ export class CharacterScreen extends React.Component {
           <View style={styles.columnNarrow}>
             <StatInput
               name={'Strength'}
-              value={this.state.character.strength}
-              onChangeText={strength => this.set({strength})}
+              value={this.state.character_strength}
+              onChangeText={this.cache(strength => this.set({strength}))}
             />
             <StatInput
               name={'Dexterity'}
-              value={this.state.character.dexterity}
-              onChangeText={dexterity => this.set({dexterity})}
+              value={this.state.character_dexterity}
+              onChangeText={this.cache(dexterity => this.set({dexterity}))}
             />
             <StatInput
               name={'Constitution'}
-              value={this.state.character.constitution}
-              onChangeText={constitution => this.set({constitution})}
+              value={this.state.character_constitution}
+              onChangeText={this.cache(constitution => this.set({constitution}))}
             />
             <StatInput
               name={'Intelligence'}
-              value={this.state.character.intelligence}
-              onChangeText={intelligence => this.set({intelligence})}
+              value={this.state.character_intelligence}
+              onChangeText={this.cache(intelligence => this.set({intelligence}))}
             />
             <StatInput
               name={'Wisdom'}
-              value={this.state.character.wisdom}
-              onChangeText={wisdom => this.set({wisdom})}
+              value={this.state.character_wisdom}
+              onChangeText={this.cache(wisdom => this.set({wisdom}))}
             />
             <StatInput
               name={'Charisma'}
-              value={this.state.character.charisma}
-              onChangeText={charisma => this.set({charisma})}
+              value={this.state.character_charisma}
+              onChangeText={this.cache(charisma => this.set({charisma}))}
             />
 
             <BoxInput
               name={'Passive Wisdom (Perception)'}
-              value={this.state.character.passiveWisdom}
-              onChangeText={passiveWisdom => this.set({passiveWisdom})}
+              value={this.state.character_passiveWisdom}
+              onChangeText={this.cache(passiveWisdom => this.set({passiveWisdom}))}
             />
           </View>
           <View style={styles.column}>
-            <View style={styles.row}>
+            <View style={styles.rownoflex}>
               <BoxInput
                 name={'Inspiration'}
-                value={this.state.character.inspiration}
-                onChangeText={inspiration => this.set({inspiration})}
+                value={this.state.character_inspiration}
+                onChangeText={this.cache(inspiration => this.set({inspiration}))}
               />
               <BoxInput
                 name={'Proficiency Bonus'}
-                value={this.state.character.proficiency}
-                onChangeText={proficiency => this.set({proficiency})}
+                value={this.state.character_proficiency}
+                onChangeText={this.cache(proficiency => this.set({proficiency}))}
               />
             </View>
 
-            <Field name='Saving Throws'>
+            <Field name='Saving Throws' flex={0}>
               {
                 this.renderSkills([
                   ['Strength'],
@@ -307,44 +311,44 @@ export class CharacterScreen extends React.Component {
         <View style={styles.row}>
           <BoxInput
             name={'Armor Class'}
-            value={this.state.character.armorClass}
-            onChangeText={armorClass => this.set({armorClass})}
+            value={this.state.character_armorClass}
+            onChangeText={this.cache(armorClass => this.set({armorClass}))}
           />
           <BoxInput
             name={'Initiative'}
-            value={this.state.character.initiative}
-            onChangeText={initiative => this.set({initiative})}
+            value={this.state.character_initiative}
+            onChangeText={this.cache(initiative => this.set({initiative}))}
           />
           <BoxInput
             name={'Speed'}
-            value={this.state.character.speed}
-            onChangeText={speed => this.set({speed})}
+            value={this.state.character_speed}
+            onChangeText={this.cache(speed => this.set({speed}))}
           />
         </View>
 
         <View style={styles.row}>
           <BoxInput
             name={'Hit Point Maximum'}
-            value={this.state.character.hpMax}
-            onChangeText={hpMax => this.set({hpMax})}
+            value={this.state.character_hpMax}
+            onChangeText={this.cache(hpMax => this.set({hpMax}))}
           />
           <BoxInput
             name={'Current Hit Points'}
-            value={this.state.character.hp}
-            onChangeText={hp => this.set({hp})}
+            value={this.state.character_hp}
+            onChangeText={this.cache(hp => this.set({hp}))}
           />
           <BoxInput
             name={'Temporary Hit Points'}
-            value={this.state.character.tempHP}
-            onChangeText={tempHP => this.set({tempHP})}
+            value={this.state.character_tempHP}
+            onChangeText={this.cache(tempHP => this.set({tempHP}))}
           />
         </View>
 
         <View style={styles.row}>
           <Field name='Hit Dice'>
             <TextInput
-              value={this.state.character.hitDice || ''}
-              onChangeText={hitDice => this.set({hitDice})}
+              value={this.state.character_hitDice || ''}
+              onChangeText={this.cache(hitDice => this.set({hitDice}))}
             />
           </Field>
           <Field name='Death Saves'>
@@ -352,18 +356,18 @@ export class CharacterScreen extends React.Component {
               <BaseText>Successes</BaseText>
 
               <CheckBox
-                onClick={() => this.set({deathSuccess1: !this.state.character.deathSuccess1})}
-                isChecked={!!this.state.character.deathSuccess1}
+                onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
+                isChecked={!!this.state.character_deathSuccess1}
               />
 
               <CheckBox
-                onClick={() => this.set({deathSuccess2: !this.state.character.deathSuccess2})}
-                isChecked={!!this.state.character.deathSuccess2}
+                onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
+                isChecked={!!this.state.character_deathSuccess2}
               />
 
               <CheckBox
-                onClick={() => this.set({deathSuccess3: !this.state.character.deathSuccess3})}
-                isChecked={!!this.state.character.deathSuccess3}
+                onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
+                isChecked={!!this.state.character_deathSuccess3}
               />
             </View>
 
@@ -371,18 +375,18 @@ export class CharacterScreen extends React.Component {
               <BaseText>Failures</BaseText>
 
               <CheckBox
-                onClick={() => this.set({deathSuccess1: !this.state.character.deathFail1})}
-                isChecked={!!this.state.character.deathFail1}
+                onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathFail1}))}
+                isChecked={!!this.state.character_deathFail1}
               />
 
               <CheckBox
-                onClick={() => this.set({deathFail2: !this.state.character.deathFail2})}
-                isChecked={!!this.state.character.deathFail2}
+                onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
+                isChecked={!!this.state.character_deathFail2}
               />
 
               <CheckBox
-                onClick={() => this.set({deathFail3: !this.state.character.deathFail3})}
-                isChecked={!!this.state.character.deathFail3}
+                onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
+                isChecked={!!this.state.character_deathFail3}
               />
             </View>
           </Field>
@@ -390,50 +394,50 @@ export class CharacterScreen extends React.Component {
 
         <MultiLineInput
           name={'Features & Traits'}
-          value={this.state.character.featuresTraits}
-          onChangeText={featuresTraits => this.set({featuresTraits})}
+          value={this.state.character_featuresTraits}
+          onChangeText={this.cache(featuresTraits => this.set({featuresTraits}))}
         />
 
         <MultiLineInput
           name={'Other Proficiencies & Languages'}
-          value={this.state.character.proficiencyLanguages}
-          onChangeText={proficiencyLanguages => this.set({proficiencyLanguages})}
+          value={this.state.character_proficiencyLanguages}
+          onChangeText={this.cache(proficiencyLanguages => this.set({proficiencyLanguages}))}
         />
 
         <MultiLineInput
           name={'Personality Traits'}
-          value={this.state.character.personalityTraits}
-          onChangeText={personalityTraits => this.set({personalityTraits})}
+          value={this.state.character_personalityTraits}
+          onChangeText={this.cache(personalityTraits => this.set({personalityTraits}))}
         />
 
         <MultiLineInput
           name={'Ideals'}
-          value={this.state.character.ideals}
-          onChangeText={ideals => this.set({ideals})}
+          value={this.state.character_ideals}
+          onChangeText={this.cache(ideals => this.set({ideals}))}
         />
 
         <MultiLineInput
           name={'Bonds'}
-          value={this.state.character.bonds}
-          onChangeText={bonds => this.set({bonds})}
+          value={this.state.character_bonds}
+          onChangeText={this.cache(bonds => this.set({bonds}))}
         />
 
         <MultiLineInput
           name={'Flaws'}
-          value={this.state.character.flaws}
-          onChangeText={flaws => this.set({flaws})}
+          value={this.state.character_flaws}
+          onChangeText={this.cache(flaws => this.set({flaws}))}
         />
 
         <MultiLineInput
           name={'Backstory'}
-          value={this.state.character.backstory}
-          onChangeText={backstory => this.set({backstory})}
+          value={this.state.character_backstory}
+          onChangeText={this.cache(backstory => this.set({backstory}))}
         />
 
         <MultiLineInput
           name={'Allies & Organizations'}
-          value={this.state.character.alliesOrganizations}
-          onChangeText={alliesOrganizations => this.set({alliesOrganizations})}
+          value={this.state.character_alliesOrganizations}
+          onChangeText={this.cache(alliesOrganizations => this.set({alliesOrganizations}))}
         />
       </ScrollView>
     )
@@ -448,26 +452,27 @@ export class CharacterScreen extends React.Component {
         key={i}
         name={name}
         secondary={a.length === 2 ? skillToShort[skill] : null}
-        onClick={() => {
+        onClick={this.cache(() => {
           const props = {}
-          props[propName] = !this.state.character[propName]
+          props[propName] = !this.state[characterPrefix + propName]
           this.set(props)
-        }}
-        isChecked={!!this.state.character[propName]}
-        value={this.state.character[skill]}
-        proficiency={this.state.character.proficiency}
+        }, propName)}
+        isChecked={!!this.state[characterPrefix + propName]}
+        value={this.state[characterPrefix + skill]}
+        proficiency={this.state.character_proficiency}
       />
     })
   }
 
   set (obj) {
+    const start = new Date()
     this.setState(prev => {
+      const state = {}
       Object.keys(obj).forEach(key => {
-        prev.character[key] = obj[key]
+        state[characterPrefix + key] = obj[key]
       })
-      return {
-        character: prev.character
-      }
+      console.log('setState', new Date() - start, state)
+      return state
     })
 
     Object.keys(obj).forEach(key => {
@@ -475,7 +480,9 @@ export class CharacterScreen extends React.Component {
         clearTimeout(this.debounce[key])
       }
       this.debounce[key] = setTimeout(() => {
-        this.character.set({[key]: obj[key]}, {merge: true})
+        this.character.set({[key]: obj[key]}, {merge: true}).then(a => {
+          console.log('firebase set', new Date() - start)
+        })
       }, debounceTime)
     })
   }
@@ -497,6 +504,11 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  rownoflex: {
+    flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },

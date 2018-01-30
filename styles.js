@@ -2,23 +2,6 @@ import React from 'react'
 import ReactNative, {View, ScrollView, TouchableNativeFeedback, Dimensions, Text, Platform} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-export const TextInput = Platform.select({
-  default: () => ReactNative.TextInput,
-  web: () => {
-    const TextField = require('material-ui/TextField').default
-
-    return class InputWeb extends React.Component {
-      render () {
-        return <TextField
-          value={this.props.value}
-          onChange={(e) => this.props.onChangeText(e.target.value)}
-          margin="normal"
-        />
-      }
-    }
-  }
-})()
-
 export const colors = {
   darkPrimary: '#0288D1',
   primary: '#03A9F4',
@@ -31,13 +14,13 @@ export const colors = {
   error: '#FF0000'
 }
 
-export class BaseText extends React.Component {
+export class BaseText extends React.PureComponent {
   render () {
     return <Text style={{color: colors.primaryText}}>{this.props.children}</Text>
   }
 }
 
-export class P extends React.Component {
+export class P extends React.PureComponent {
   render () {
     return (
       <View style={{marginTop: 10, marginBottom: 10}}>
@@ -49,7 +32,7 @@ export class P extends React.Component {
   }
 }
 
-export class H1 extends React.Component {
+export class H1 extends React.PureComponent {
   render () {
     return (
       <P>
@@ -61,7 +44,7 @@ export class H1 extends React.Component {
   }
 }
 
-export class Error extends React.Component {
+export class Error extends React.PureComponent {
   render () {
     return (
       <View>
@@ -78,7 +61,7 @@ export class Error extends React.Component {
   }
 }
 
-export class B extends React.Component {
+export class B extends React.PureComponent {
   render () {
     return (
       <BaseText>
@@ -90,7 +73,7 @@ export class B extends React.Component {
   }
 }
 
-export class Center extends React.Component {
+export class Center extends React.PureComponent {
   render () {
     return (
       <Text style={{textAlign: 'center'}}>
@@ -102,7 +85,7 @@ export class Center extends React.Component {
   }
 }
 
-export class LightBox extends React.Component {
+export class LightBox extends React.PureComponent {
   render () {
     return <View style={{
         justifyContent: 'space-between',
@@ -133,23 +116,24 @@ export class LightBox extends React.Component {
   }
 }
 
-export class Field extends React.Component {
-  render () {
-    return <View style={{
-      flex: 1,
-      borderWidth: 1,
-      borderColor: colors.border,
-      padding: 10,
-      alignItems: 'stretch',
-      margin: 5,
-      borderRadius: 4,
-      justifyContent: 'space-between'
-    }}>
-
-      <Center>{this.props.name}</Center>
-      {this.props.children}
-    </View>
+export const Field = (props) => {
+  const style = {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: 10,
+    alignItems: 'stretch',
+    margin: 5,
+    borderRadius: 4,
+    justifyContent: 'space-between'
   }
+  if (typeof props.flex === 'number') {
+    style.flex = props.flex
+  }
+  return <View style={style}>
+    <Center>{props.name}</Center>
+    {props.children}
+  </View>
 }
 
 export const showLightBox = (navigator, screen, props) => {
@@ -164,7 +148,7 @@ export const showLightBox = (navigator, screen, props) => {
   })
 }
 
-class TouchableNative extends React.Component {
+class TouchableNative extends React.PureComponent {
   render () {
     return <TouchableNativeFeedback
       onPress={this.props.onPress}
@@ -190,7 +174,7 @@ if (TouchableNativeFeedback.SelectableBackground) {
   })
 
   @withStyles(materialStyles)
-  class TouchableWeb extends React.Component {
+  class TouchableWeb extends React.PureComponent {
     render () {
       return <ButtonBase
       className={this.props.classes.touchable}

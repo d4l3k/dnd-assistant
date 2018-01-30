@@ -4,8 +4,10 @@ import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, LightBox, showLightBox, Touchable, TextInput} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox, Touchable} from './styles.js'
 import {SectionList} from './sectionlist'
+import {TextInput} from './TextInput'
+import Cache from './Cache'
 
 const numSlotLevels = 9
 
@@ -14,7 +16,7 @@ spells.forEach(spell => {
   spellMap[slugify(spell.name)] = spell
 })
 
-export class CastSpellScreen extends React.Component {
+export class CastSpellScreen extends React.PureComponent {
   render () {
     return <LightBox title='Cast Spell'>
       {
@@ -47,7 +49,7 @@ export class CastSpellScreen extends React.Component {
   }
 }
 
-class Quote extends React.Component {
+class Quote extends React.PureComponent {
   render () {
     return (
       <View style={{
@@ -63,7 +65,7 @@ class Quote extends React.Component {
   }
 }
 
-class SpellItem extends React.Component {
+class SpellItem extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -71,6 +73,11 @@ class SpellItem extends React.Component {
       showDetail: false,
       spellData: {}
     }
+
+    this.cache = Cache()
+
+    this._onPress = this.onPress.bind(this)
+    this._castSpell = this.castSpell.bind(this)
   }
 
   componentDidMount () {
@@ -94,7 +101,7 @@ class SpellItem extends React.Component {
   render () {
     return (
       <View>
-        <Touchable onPress={this._onPress.bind(this)}>
+        <Touchable onPress={this._onPress}>
           <View style={styles.item}>
             <View style={styles.row}>
               <View>
@@ -163,18 +170,18 @@ class SpellItem extends React.Component {
       <View style={styles.row}>
         <Button
           title='Cast'
-          onPress={() => this._castSpell()}
+          onPress={this._castSpell}
         />
 
         {
           this.state.spellData.prepared
             ? <Button
               title='Unprepare'
-              onPress={() => this._prepareSpell(false)}
+              onPress={this.cache(() => this.prepareSpell(false))}
             />
             : <Button
               title='Prepare'
-              onPress={() => this._prepareSpell(true)}
+              onPress={this.cache(() => this.prepareSpell(true))}
             />
         }
 
@@ -182,22 +189,22 @@ class SpellItem extends React.Component {
           this.state.spellData.active
             ? <Button
               title='Remove'
-              onPress={() => this._addSpell(false)}
+              onPress={this.cache(() => this.addSpell(false))}
             />
             : <Button
               title='Add'
-              onPress={() => this._addSpell(true)}
+              onPress={this.cache(() => this.addSpell(true))}
             />
         }
       </View>
     </View>
   }
 
-  _addSpell (active) {
+  addSpell (active) {
     this.spell.set({active}, {merge: true})
   }
 
-  _castSpell () {
+  castSpell () {
     showLightBox(this.props.navigator, 'dnd.CastSpellScreen', {
       slots: this.props.slots,
       spell: this.props.spell
@@ -210,7 +217,7 @@ class SpellItem extends React.Component {
     }, {merge: true})
   }
 
-  _prepareSpell (prepared) {
+  prepareSpell (prepared) {
     this.spell.set({prepared}, {merge: true})
   }
 
@@ -231,14 +238,14 @@ class SpellItem extends React.Component {
     )
   }
 
-  _onPress () {
+  onPress () {
     this.setState(prev => {
       return { showDetail: !prev.showDetail }
     })
   }
 }
 
-class SpellHeader extends React.Component {
+class SpellHeader extends React.PureComponent {
   render () {
     return (
       <View style={styles.header}>
@@ -261,7 +268,7 @@ class SpellHeader extends React.Component {
   }
 }
 
-class SpellList extends React.Component {
+class SpellList extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -381,7 +388,7 @@ class SpellList extends React.Component {
   }
 }
 
-export class KnownSpellsScreen extends React.Component {
+export class KnownSpellsScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -492,7 +499,7 @@ export class KnownSpellsScreen extends React.Component {
   }
 }
 
-export class AddSpellScreen extends React.Component {
+export class AddSpellScreen extends React.PureComponent {
   render () {
     return (
       <View style={styles.container}>
@@ -505,7 +512,7 @@ export class AddSpellScreen extends React.Component {
   }
 }
 
-export class SlotsScreen extends React.Component {
+export class SlotsScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 

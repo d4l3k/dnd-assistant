@@ -5,7 +5,8 @@ const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = merge(common, {
   devtool: 'source-map',
@@ -22,7 +23,8 @@ module.exports = merge(common, {
     }),
     new CopyWebpackPlugin([
       { from: 'static' }
-    ])
+    ]),
+    new FaviconsWebpackPlugin(path.resolve(__dirname, 'media/logo-icon.png'))
   ],
   output: {
     filename: '[name].bundle.js',

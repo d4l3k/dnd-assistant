@@ -55,6 +55,7 @@
     "react-dom": "^16.2.0",
     "react-native": "0.50.3",
     "react-native-action-button": "^2.8.3",
+    "react-native-animated-bar": "^0.2.0",
     "react-native-check-box": "^2.0.2",
     "react-native-firebase": "^3.2.2",
     "react-native-google-signin": "^0.12.0",

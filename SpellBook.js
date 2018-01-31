@@ -471,7 +471,7 @@ class SpellList extends React.PureComponent {
   }
 
   spellExtractor (spell) {
-    return spell.name
+    return spell.spell.name
   }
 }
 

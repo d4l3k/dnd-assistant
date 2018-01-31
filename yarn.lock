@@ -6877,6 +6877,10 @@ react-native-action-button@^2.8.3:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-animated-bar@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-animated-bar/-/react-native-animated-bar-0.2.0.tgz#98ffaaa58d5ac73d73a88b061141ef4f74a7dda1"
+
 react-native-check-box@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/react-native-check-box/-/react-native-check-box-2.0.2.tgz#70e34a930833fa3c44f283f52e96f2b00b12316d"

@@ -6,6 +6,7 @@ import {BaseText, Field, Center, colors} from './styles.js'
 import {TextInput} from './TextInput'
 import {CheckBox} from './CheckBox'
 import Cache from './Cache'
+import {HealthBar} from './HealthBar'
 
 const debounceTime = 300
 
@@ -342,6 +343,8 @@ export class CharacterScreen extends React.PureComponent {
             onChangeText={this.cache(tempHP => this.set({tempHP}))}
           />
         </View>
+
+        <HealthBar max={this.state.character_hpMax} current={this.state.character_hp} />
 
         <View style={styles.row}>
           <Field name='Hit Dice'>

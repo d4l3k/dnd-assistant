@@ -1,4 +1,5 @@
 import React from 'react'
+import autobind from 'autobind-decorator'
 import {StyleSheet, View, ScrollView} from 'react-native'
 import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
@@ -9,6 +10,8 @@ import {SectionList} from './sectionlist'
 import {TextInput} from './TextInput'
 import Cache from './Cache'
 import {Button} from './Button'
+import {iconsMap} from './icons'
+import lunr from 'lunr'
 
 const numSlotLevels = 9
 
@@ -111,9 +114,9 @@ class SpellItem extends React.PureComponent {
                 <BaseText>{this.props.spell.school}</BaseText>
               </View>
               <View style={styles.right}>
-                <BaseText>{this.props.spell.level}</BaseText>
                 <BaseText>{this.props.spell.page}</BaseText>
-                <BaseText>{this.props.spell.casting_time}, {this.props.spell.components}</BaseText>
+                <BaseText>{this.props.spell.casting_time}</BaseText>
+                <BaseText>{this.props.spell.components}</BaseText>
               </View>
             </View>
 
@@ -282,10 +285,9 @@ class SpellList extends React.PureComponent {
     super(props)
 
     this.state = {
-      slots: {}
+      slots: {},
+      search: ''
     }
-
-    this._renderItem = this.renderItem.bind(this)
   }
 
   componentDidMount () {
@@ -345,13 +347,38 @@ class SpellList extends React.PureComponent {
 
   render () {
     return (
-      <SectionList
-        sections={this.groupSpells(this.props.spells)}
-        keyExtractor={this.spellExtractor}
-        renderSectionHeader={this.renderSectionHeader}
-        renderItem={this._renderItem}
-      />
+      <View>
+        {this.renderFilter()}
+
+        <SectionList
+          sections={this.groupSpells(this.props.spells)}
+          keyExtractor={this.spellExtractor}
+          renderSectionHeader={this.renderSectionHeader}
+          renderItem={this.renderItem}
+        />
+      </View>
     )
+  }
+
+  renderFilter () {
+    if (!this.props.filter) {
+      return
+    }
+
+    return <View style={styles.filter}>
+      <TextInput
+        label='Search'
+        value={this.state.search}
+        onChangeText={this.setSearch}
+      />
+    </View>
+  }
+
+  @autobind
+  setSearch (search) {
+    this.setState(prev => {
+      return {search}
+    })
   }
 
   renderSectionHeader ({section}) {
@@ -361,6 +388,7 @@ class SpellList extends React.PureComponent {
     />
   }
 
+  @autobind
   renderItem ({item}) {
     return <SpellItem
       navigator={this.props.navigator}
@@ -370,6 +398,28 @@ class SpellList extends React.PureComponent {
   }
 
   groupSpells (spells) {
+    if (this.props.filter && this.state.search) {
+      if (!this.lunr || this.spellsLen !== spells.length) {
+        this.spellsLen = spells.length
+        this.lunr = lunr(function () {
+          this.ref('index')
+          this.field('name')
+          this.field('school')
+          this.field('level')
+          this.field('class')
+
+          spells.forEach((spell, i) => {
+            spell.index = i
+            this.add(spell)
+          })
+        })
+      }
+
+      spells = this.lunr.search(this.state.search).map(
+        result => spells[result.ref]
+      )
+    }
+
     const sections = {}
     spells.forEach(spell => {
       sections[spell.level] = (sections[spell.level] || []).concat(spell)
@@ -414,9 +464,10 @@ export class KnownSpellsScreen extends React.PureComponent {
       spellData: {}
     }
 
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent)
   }
 
+  @autobind
   onNavigatorEvent (event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'slots') {
@@ -425,6 +476,9 @@ export class KnownSpellsScreen extends React.PureComponent {
           title: 'Slots'
         })
       } else if (event.id === 'filter') {
+        this.setState(prev => {
+          return {filter: !prev.filter}
+        })
       } else if (event.id === 'wildMagic') {
         this.props.navigator.push({
           screen: 'dnd.WildMagicScreen',
@@ -435,7 +489,16 @@ export class KnownSpellsScreen extends React.PureComponent {
       } else if (event.id === 'add') {
         this.props.navigator.push({
           screen: 'dnd.AddSpellScreen',
-          title: 'Add Spell'
+          title: 'Add Spell',
+          navigatorButtons: {
+            rightButtons: [
+              {
+                id: 'filter',
+                title: 'Filter',
+                icon: iconsMap['md-search']
+              }
+            ]
+          }
         })
       }
     }
@@ -511,6 +574,7 @@ export class KnownSpellsScreen extends React.PureComponent {
         }
 
         <SpellList
+          filter={this.state.filter}
           navigator={this.props.navigator}
           spells={this.state.spells}
           spellData={this.state.spellData}
@@ -522,10 +586,29 @@ export class KnownSpellsScreen extends React.PureComponent {
 }
 
 export class AddSpellScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent)
+  }
+
+  @autobind
+  onNavigatorEvent (event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'filter') {
+        this.setState(prev => {
+          return {filter: !prev.filter}
+        })
+      }
+    }
+  }
+
   render () {
     return (
       <View style={styles.container}>
         <SpellList
+          filter={this.state.filter}
           navigator={this.props.navigator}
           spells={spells}
         />
@@ -628,11 +711,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
   narrowrow: {
     flex: 1,
     flexDirection: 'row',
@@ -668,5 +746,8 @@ const styles = StyleSheet.create({
   buttonMargin: {
     marginTop: 5,
     marginBottom: 5
+  },
+  filter: {
+    padding: 10
   }
 })

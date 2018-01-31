@@ -47,6 +47,7 @@
     "firebase": "^4.9.0",
     "generator-rn-toolbox": "^3.2.1",
     "htmlparser2-without-node-native": "^3.9.2",
+    "lunr": "^2.1.5",
     "material-ui": "^1.0.0-beta.30",
     "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.20.1",

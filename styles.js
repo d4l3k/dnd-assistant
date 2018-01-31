@@ -1,4 +1,5 @@
 import React from 'react'
+import autobind from 'autobind-decorator'
 import ReactNative, {View, ScrollView, TouchableNativeFeedback, Dimensions, Text, Platform} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -88,14 +89,14 @@ export class Center extends React.PureComponent {
 export class LightBox extends React.PureComponent {
   render () {
     return <View style={{
-        flex: 1,
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-        alignItems: 'stretch',
-        marginHorizontal: 16,
-        minHeight: 250,
-        borderRadius: 4
-      }}>
+      flex: 1,
+      justifyContent: 'space-between',
+      backgroundColor: 'white',
+      alignItems: 'stretch',
+      marginHorizontal: 16,
+      minHeight: 250,
+      borderRadius: 4
+    }}>
 
       <View style={{
         flex: 0,
@@ -105,13 +106,17 @@ export class LightBox extends React.PureComponent {
       }}>
         <H1>{this.props.title}</H1>
 
-        <Ionicons.Button
-          name="md-close"
-          color={colors.secondaryText}
-          iconStyle={{marginRight: 0, marginTop: 10}}
-          backgroundColor="transparent"
-          onPress={() => this.props.navigator.dismissLightBox()}
-        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          {this.props.renderButtons ? this.props.renderButtons() : null}
+
+          <Ionicons.Button
+            name='md-close'
+            color={colors.secondaryText}
+            iconStyle={{marginRight: 0, marginTop: 10}}
+            backgroundColor='transparent'
+            onPress={this.dismiss}
+          />
+        </View>
       </View>
 
       <ScrollView style={{
@@ -121,6 +126,11 @@ export class LightBox extends React.PureComponent {
         {this.props.children}
       </ScrollView>
     </View>
+  }
+
+  @autobind
+  dismiss () {
+    this.props.navigator.dismissLightBox()
   }
 }
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import autobind from 'autobind-decorator'
 import {
   AppRegistry,
   StyleSheet,
@@ -142,6 +143,40 @@ class Navigator {
 export const Navigation = new Navigator()
 
 
+function renderButtons (buttons, props, press) {
+  if (!buttons) {
+    return
+  }
+
+  return buttons.map((button) => renderButton(button, props, press)).reverse()
+}
+
+function renderButton (button, props, press) {
+  const {first, last} = props || {}
+
+  if (button.id === 'sideMenu') {
+    if (!first) {
+      return
+    }
+
+    button.label = 'Menu'
+    button.icon = <MenuIcon />
+  } else if (button.id === 'rightMenu') {
+    if (!last) {
+      return
+    }
+  }
+
+  return <IconButton
+    color='inherit'
+    aria-label={button.label}
+    key={button.id}
+    onClick={() => press(button.id)}>
+    {button.icon}
+  </IconButton>
+}
+
+
 @withStyles(materialStyles)
 class Tab extends React.Component {
   render (tab) {
@@ -173,36 +208,7 @@ class Tab extends React.Component {
 
   renderButtons (side) {
     const buttons = this.props.tab.navigatorButtons && this.props.tab.navigatorButtons[side]
-    if (!buttons) {
-      return
-    }
-
-    return buttons.map((button) => this.renderButton(button)).reverse()
-  }
-
-  renderButton (button) {
-    const {classes, first, last} = this.props
-
-    if (button.id === 'sideMenu') {
-      if (!first) {
-        return
-      }
-
-      button.label = 'Menu'
-      button.icon = <MenuIcon />
-    } else if (button.id === 'rightMenu') {
-      if (!last) {
-        return
-      }
-    }
-
-    return <IconButton
-        color="inherit"
-        aria-label={button.label}
-        key={button.id}
-        onClick={() => this.press(button.id)}>
-      {button.icon}
-    </IconButton>
+    return renderButtons(buttons, this.props, this.press)
   }
 
   renderFab () {
@@ -223,6 +229,7 @@ class Tab extends React.Component {
     this.navigatorEvent = f
   }
 
+  @autobind
   press (id) {
     if (id === 'sideMenu') {
       this.props.app.toggle('left')
@@ -357,7 +364,6 @@ class ReactNativeWeb extends React.Component {
     </Modal>
   }
 
-
   renderScreen () {
     const screen = this.state.screen || {}
     const Screen = this.state.screen && Navigation.getComponent(screen.screen)
@@ -367,7 +373,10 @@ class ReactNativeWeb extends React.Component {
     })}
        style={centerStyle}>
       <div style={innerStyle}>
-        <LightBox title={screen.title} navigator={this}>
+        <LightBox
+          title={screen.title}
+          renderButtons={this.renderButtons}
+          navigator={this}>
           {
             this.state.screen
               ? <Screen navigator={this} {...this.state.screen.passProps} />
@@ -378,6 +387,25 @@ class ReactNativeWeb extends React.Component {
     </Modal>
   }
 
+  @autobind
+  renderButtons () {
+    const screen = this.state.screen || {}
+    const buttons = screen.navigatorButtons && screen.navigatorButtons.rightButtons
+    return renderButtons(buttons, {}, this.press)
+  }
+
+  @autobind
+  press (id) {
+    if (!this.navigatorEvent) {
+      return
+    }
+
+    this.navigatorEvent({type: 'NavBarButtonPress', id: id})
+  }
+
+  setOnNavigatorEvent (f) {
+    this.navigatorEvent = f
+  }
 
   toggle (side) {
     this.setState(prev => {
@@ -414,7 +442,6 @@ const styles= StyleSheet.create({
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start'
-  },
-
+  }
 })
 

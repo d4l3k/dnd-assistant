@@ -425,6 +425,11 @@ export class KnownSpellsScreen extends React.PureComponent {
           title: 'Slots'
         })
       } else if (event.id === 'filter') {
+      } else if (event.id === 'wildMagic') {
+        this.props.navigator.push({
+          screen: 'dnd.WildMagicScreen',
+          title: 'Wild Magic'
+        })
       } else if (event.id === 'resetSlots') {
         this._resetSlots()
       } else if (event.id === 'add') {

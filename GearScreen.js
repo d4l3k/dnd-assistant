@@ -77,10 +77,10 @@ class GearItem extends React.PureComponent {
           keyboardType={'numeric'}
         />
         <Ionicons.Button
-          name="md-trash"
+          name='md-trash'
           color={colors.secondaryText}
-          iconStyle={{marginRight: 0}}
-          backgroundColor="transparent"
+          iconStyle={styles.button}
+          backgroundColor='transparent'
           onPress={this._remove}
         />
       </View>
@@ -225,5 +225,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
+  },
+  button: {
+    marginRight: 0
   }
 })

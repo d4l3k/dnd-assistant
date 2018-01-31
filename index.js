@@ -5,12 +5,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import {CharacterScreen} from './Character.js'
-import {AddGearScreen, GearScreen} from './GearScreen.js'
-import {CharacterMenu} from './CharacterMenu.js'
-import {DiceScreen, AddDieScreen} from './DiceScreen.js'
-import {KnownSpellsScreen, AddSpellScreen, SlotsScreen, CastSpellScreen} from './SpellBook.js'
-import {colors} from './styles.js'
+import {CharacterScreen} from './Character'
+import {AddGearScreen, GearScreen} from './GearScreen'
+import {CharacterMenu} from './CharacterMenu'
+import {WildMagicScreen} from './WildMagicScreen'
+import {DiceScreen, AddDieScreen} from './DiceScreen'
+import {KnownSpellsScreen, AddSpellScreen, SlotsScreen, CastSpellScreen} from './SpellBook'
+import {colors} from './styles'
 import {Platform} from 'react-native'
 
 // define your suffixes by yourself..
@@ -21,10 +22,11 @@ const icons = {
   'md-book': [30, 'white'],
   'md-basket': [30, 'white'],
   'md-settings': [30, 'white'],
-  'md-funnel': [30, 'white'],
+  'md-search': [30, 'white'],
   'md-add': [30, 'white'],
   'clear-all': [30, 'white', MaterialIcons],
   'dice-multiple': [30, 'white', MaterialCommunityIcons],
+  'fire': [30, 'white', MaterialCommunityIcons],
 }
 
 const defaultIconProvider = Ionicons
@@ -54,36 +56,22 @@ let iconsLoaded = new Promise((resolve, reject) => {
 })
 
 iconsLoaded.then(() => {
-  console.log('iconsLoaded')
   startApp()
 })
 
 function startApp () {
-  console.log('startApp')
-
   Navigation.registerComponent('dnd.CharacterScreen', () => CharacterScreen)
-  console.log('register1')
   Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
-  console.log('register2')
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
-  console.log('register3')
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
-  console.log('register4')
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
-  console.log('register5')
   Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
-  console.log('register6')
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
-  console.log('register7')
   Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
-  console.log('register8')
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)
-  console.log('register9')
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
-  console.log('register10')
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
-
-  console.log('registered')
+  Navigation.registerComponent('dnd.WildMagicScreen', () => WildMagicScreen)
 
   const leftButtons = [
     {
@@ -99,8 +87,6 @@ function startApp () {
     }],
     default: []
   })
-
-  console.log('starting app')
 
   Navigation.startTabBasedApp({
     appStyle: {
@@ -161,6 +147,11 @@ function startApp () {
               icon: iconsMap['md-settings']
             },
             {
+              id: 'wildMagic',
+              title: 'Wild Magic',
+              icon: iconsMap['fire']
+            },
+            {
               id: 'resetSlots',
               title: 'Reset Slots',
               icon: iconsMap['clear-all']
@@ -168,7 +159,7 @@ function startApp () {
             {
               id: 'filter',
               title: 'Filter',
-              icon: iconsMap['md-funnel']
+              icon: iconsMap['md-search']
             }
           ],
           leftButtons: leftButtons

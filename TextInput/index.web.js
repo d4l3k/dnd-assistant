@@ -16,6 +16,7 @@ export class TextInput extends React.Component {
 
   render () {
     return <TextField
+      label={this.props.label}
       value={this.props.value}
       onChange={this.onChangeText}
       margin="normal"

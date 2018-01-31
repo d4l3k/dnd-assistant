@@ -97,7 +97,11 @@ const materialStyles = theme => ({
     ...theme.mixins.toolbar,
   },
   drawer: {
-    width: '320px'
+    width: '320px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    flexGrow: 1
   }
 })
 

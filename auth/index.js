@@ -22,17 +22,25 @@ export const googleLogin = () => {
     })
   } else {
     const provider = new firebase.auth.GoogleAuthProvider()
-    user = firebase.auth().signInWithPopup(provider).then(result => {
-      return result.user
-    })
+    firebase.auth().signInWithRedirect(provider)
+
+    user = firebase.auth().getRedirectResult()
   }
 
   return user.then((currentUser) => {
+    if (!currentUser) {
+      throw 'not logged in!'
+    }
+
     console.info(JSON.stringify(currentUser.toJSON()))
   })
   .catch((error) => {
     console.error(`Login fail with error: ${error}`)
   })
+}
+
+export const signOut = () => {
+  firebase.auth().signOut().then(restart)
 }
 
 export const characterID = storage.load({
@@ -106,11 +114,15 @@ export const setCharacter = (id, noRestart) => {
     data: id
   }).then(() => {
     if (!noRestart) {
-      if (RNRestart) {
-        RNRestart.Restart()
-      } else {
-        window.location.reload()
-      }
+      restart()
     }
   })
+}
+
+export const restart = () => {
+  if (RNRestart) {
+    RNRestart.Restart()
+  } else {
+    window.location.reload()
+  }
 }

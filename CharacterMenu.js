@@ -1,6 +1,7 @@
 import React from 'react'
+import autobind from 'autobind-decorator'
 import {Linking, StyleSheet, Text, View, ScrollView} from 'react-native'
-import {getUser, onLogin, setCharacter, characterID} from './auth'
+import {getUser, onLogin, setCharacter, characterID, signOut} from './auth'
 import {colors, BaseText, B, Touchable} from './styles.js'
 import {Button} from './Button'
 
@@ -70,21 +71,33 @@ export class CharacterMenu extends React.Component {
           </View>
 
           <Button
-            title="New"
+            title='New'
             onPress={() => this.newCharacter()}
           />
         </ScrollView>
 
         <View style={styles.flexend}>
           <Button
-            title="Send Feedback"
+            title='Sign Out'
             color={colors.secondaryText}
 
-            onPress={() => Linking.openURL(feedbackURL)}
+            onPress={signOut}
+          />
+
+          <Button
+            title='Send Feedback'
+            color={colors.secondaryText}
+
+            onPress={this.sendFeedback}
           />
         </View>
       </View>
     )
+  }
+
+  @autobind
+  sendFeedback () {
+    Linking.openURL(feedbackURL)
   }
 
   newCharacter () {
@@ -104,6 +117,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   characterItem: {
+    flex: 1,
     padding: 10,
     borderBottomColor: colors.border,
     borderBottomWidth: 1

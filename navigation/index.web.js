@@ -67,7 +67,8 @@ const materialStyles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    flexBasis: '100%'
+    flexBasis: '100%',
+    position: 'relative'
   },
   paper: {
     margin: theme.spacing.unit * 1,

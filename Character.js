@@ -155,7 +155,6 @@ export class CharacterScreen extends React.PureComponent {
     getCharacter().then(character => {
       this.character = character
       this.character.onSnapshot(character => {
-        console.log(character)
         this.setState(prev => {
           const state = {}
           const data = character.data()
@@ -352,42 +351,46 @@ export class CharacterScreen extends React.PureComponent {
             />
           </Field>
           <Field name='Death Saves'>
-            <View style={styles.row}>
+            <View style={styles.rowcenter}>
               <BaseText>Successes</BaseText>
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
-                isChecked={!!this.state.character_deathSuccess1}
-              />
+              <View style={styles.rowend}>
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
+                  isChecked={!!this.state.character_deathSuccess1}
+                />
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
-                isChecked={!!this.state.character_deathSuccess2}
-              />
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
+                  isChecked={!!this.state.character_deathSuccess2}
+                />
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
-                isChecked={!!this.state.character_deathSuccess3}
-              />
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
+                  isChecked={!!this.state.character_deathSuccess3}
+                />
+              </View>
             </View>
 
-            <View style={styles.row}>
+            <View style={styles.rowcenter}>
               <BaseText>Failures</BaseText>
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
-                isChecked={!!this.state.character_deathFail1}
-              />
+              <View style={styles.rowend}>
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
+                  isChecked={!!this.state.character_deathFail1}
+                />
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
-                isChecked={!!this.state.character_deathFail2}
-              />
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
+                  isChecked={!!this.state.character_deathFail2}
+                />
 
-              <CheckBox
-                onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
-                isChecked={!!this.state.character_deathFail3}
-              />
+                <CheckBox
+                  onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
+                  isChecked={!!this.state.character_deathFail3}
+                />
+              </View>
             </View>
           </Field>
         </View>
@@ -465,13 +468,11 @@ export class CharacterScreen extends React.PureComponent {
   }
 
   set (obj) {
-    const start = new Date()
     this.setState(prev => {
       const state = {}
       Object.keys(obj).forEach(key => {
         state[characterPrefix + key] = obj[key]
       })
-      console.log('setState', new Date() - start, state)
       return state
     })
 
@@ -480,9 +481,7 @@ export class CharacterScreen extends React.PureComponent {
         clearTimeout(this.debounce[key])
       }
       this.debounce[key] = setTimeout(() => {
-        this.character.set({[key]: obj[key]}, {merge: true}).then(a => {
-          console.log('firebase set', new Date() - start)
-        })
+        this.character.set({[key]: obj[key]}, {merge: true})
       }, debounceTime)
     })
   }
@@ -506,6 +505,18 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  rowcenter: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  rowend: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   rownoflex: {
     flex: 0,

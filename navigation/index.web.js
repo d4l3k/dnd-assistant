@@ -63,8 +63,17 @@ const materialStyles = theme => ({
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2
   },
+  tab: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    flexBasis: '100%'
+  },
   paper: {
-    margin: theme.spacing.unit * 1
+    margin: theme.spacing.unit * 1,
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1
   },
   flex: {
     flex: 1,
@@ -183,7 +192,7 @@ class Tab extends React.Component {
     const Screen = Navigation.getComponent(this.props.tab.screen)
     const {classes} = this.props
 
-    return <View style={styles.column}>
+    return <div className={classes.tab}>
       <AppBar position="static" color="primary">
         <Toolbar>
           {this.renderButtons('leftButtons')}
@@ -196,14 +205,12 @@ class Tab extends React.Component {
         </Toolbar>
       </AppBar>
 
-      <ScrollView>
-        <Paper className={classes.paper} elevation={1}>
-          <Screen navigator={this} />
-        </Paper>
-      </ScrollView>
+      <Paper className={classes.paper} elevation={1}>
+        <Screen navigator={this} />
+      </Paper>
 
       {this.renderFab()}
-    </View>
+    </div>
   }
 
   renderButtons (side) {
@@ -429,7 +436,10 @@ const innerStyle = {
   display: 'flex',
   margin: '16px',
   maxHeight: 'calc(100vh - 32px)',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  maxWidth: 'calc(100vw - 32px)',
+  width: '640px',
+  height: '90vh'
 }
 
 const styles= StyleSheet.create({

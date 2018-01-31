@@ -1,12 +1,13 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {StyleSheet, View, ScrollView} from 'react-native'
+import {StyleSheet, View, ScrollView, Platform} from 'react-native'
 import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, LightBox, showLightBox, Touchable} from './styles.js'
 import {SectionList} from './sectionlist'
+import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
 import Cache from './Cache'
 import {Button} from './Button'
@@ -74,7 +75,6 @@ class SpellItem extends React.PureComponent {
     super(props)
 
     this.state = {
-      showDetail: false,
       spellData: {}
     }
 
@@ -104,7 +104,7 @@ class SpellItem extends React.PureComponent {
 
   render () {
     return (
-      <View style={styles.item}>
+      <ScrollView style={styles.item}>
         <Touchable onPress={this._onPress}>
           <View style={styles.iteminner}>
             <View style={styles.row}>
@@ -125,12 +125,12 @@ class SpellItem extends React.PureComponent {
         </Touchable>
 
         {this.buttons()}
-      </View>
+      </ScrollView>
     )
   }
 
   detail () {
-    if (!this.state.showDetail || this.props.noDetail) {
+    if (!this.props.expand || this.props.noDetail) {
       return
     }
 
@@ -176,7 +176,7 @@ class SpellItem extends React.PureComponent {
   }
 
   buttons () {
-    if (!this.state.showDetail) {
+    if (!this.props.expand) {
       return
     }
 
@@ -251,9 +251,7 @@ class SpellItem extends React.PureComponent {
   }
 
   onPress () {
-    this.setState(prev => {
-      return { showDetail: !prev.showDetail }
-    })
+    this.props.onExpand(this.props.spell)
   }
 }
 
@@ -286,6 +284,7 @@ class SpellList extends React.PureComponent {
 
     this.state = {
       slots: {},
+      expanded: {},
       search: ''
     }
   }
@@ -346,11 +345,16 @@ class SpellList extends React.PureComponent {
   }
 
   render () {
+    let list
+    if (this.props.spells.length > 100) {
+      list = Recycler
+    }
     return (
-      <View>
+      <View style={styles.spelllist}>
         {this.renderFilter()}
 
         <SectionList
+          list={list}
           sections={this.groupSpells(this.props.spells)}
           keyExtractor={this.spellExtractor}
           renderSectionHeader={this.renderSectionHeader}
@@ -393,8 +397,21 @@ class SpellList extends React.PureComponent {
     return <SpellItem
       navigator={this.props.navigator}
       slots={this.state.slots}
-      spell={item}
+      spell={item.spell}
+      expand={item.expand}
+      onExpand={this.onExpand}
     />
+  }
+
+  @autobind
+  onExpand (spell) {
+    this.setState(prev => {
+      const expanded = {
+        ...prev.expanded
+      }
+      expanded[spell.name] = !expanded[spell.name]
+      return {expanded}
+    })
   }
 
   groupSpells (spells) {
@@ -422,7 +439,10 @@ class SpellList extends React.PureComponent {
 
     const sections = {}
     spells.forEach(spell => {
-      sections[spell.level] = (sections[spell.level] || []).concat(spell)
+      sections[spell.level] = (sections[spell.level] || []).concat({
+        spell: spell,
+        expand: this.state.expanded[spell.name]
+      })
     })
 
     return Object.keys(sections).sort((a, b) => {
@@ -606,13 +626,11 @@ export class AddSpellScreen extends React.PureComponent {
 
   render () {
     return (
-      <View style={styles.container}>
-        <SpellList
-          filter={this.state.filter}
-          navigator={this.props.navigator}
-          spells={spells}
-        />
-      </View>
+      <SpellList
+        filter={this.state.filter}
+        navigator={this.props.navigator}
+        spells={spells}
+      />
     )
   }
 }
@@ -701,10 +719,10 @@ const styles = StyleSheet.create({
     padding: 10
   },
   itembuttons: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 10,
   },
   row: {
     flex: 1,
@@ -749,5 +767,8 @@ const styles = StyleSheet.create({
   },
   filter: {
     padding: 10
+  },
+  spelllist: {
+    flex: 1
   }
 })

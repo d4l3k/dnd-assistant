@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import ReactNative, {View, ScrollView, TouchableNativeFeedback, Dimensions, Text, Platform} from 'react-native'
+import {View, ScrollView, TouchableNativeFeedback, Text} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export const colors = {
@@ -119,12 +119,12 @@ export class LightBox extends React.PureComponent {
         </View>
       </View>
 
-      <ScrollView style={{
+      <View style={{
         flex: 1,
         marginHorizontal: 16
       }}>
         {this.props.children}
-      </ScrollView>
+      </View>
     </View>
   }
 
@@ -195,7 +195,7 @@ if (TouchableNativeFeedback.SelectableBackground) {
   class TouchableWeb extends React.PureComponent {
     render () {
       return <ButtonBase
-      className={this.props.classes.touchable}
+        className={this.props.classes.touchable}
         onClick={this.props.onPress}>
         {this.props.children}
       </ButtonBase>

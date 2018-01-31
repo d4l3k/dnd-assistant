@@ -4,7 +4,7 @@ import {Alert} from './Alert'
 import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import {FlatList} from './sectionlist'
+import {FlatList} from './FlatList'
 import {TextInput} from './TextInput'
 import {Button} from './Button'
 

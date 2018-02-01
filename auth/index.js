@@ -4,6 +4,23 @@ import RNRestart from 'react-native-restart'
 import firebase from '../firebase'
 const {GoogleSignin} = require('./googlesignin')
 
+export const viewedCharacter = () => {
+  return Platform.select({
+    default: () => null,
+    web: () => {
+      const hash = window.location.hash
+      if (!hash.startsWith('#!/view/')) {
+        return
+      }
+      const parts = hash.split('/')
+      if (parts.length < 4) {
+        return
+      }
+      return {uid: parts[2], cid: parts[3]}
+    }
+  })()
+}
+
 // Calling this function will open Google for login.
 export const googleLogin = () => {
   // Add configuration settings here:
@@ -43,6 +60,22 @@ export const signOut = () => {
   firebase.auth().signOut().then(restart)
 }
 
+export const onLogin = () => {
+  return new Promise((resolve, reject) => {
+    var unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        return
+      }
+      resolve(user)
+      if (unsubscribe) {
+        unsubscribe()
+      }
+    })
+  })
+}
+
+export const loggedIn = onLogin()
+
 export const characterID = storage.load({
   key: 'characterID'
 }).catch(() => {
@@ -79,6 +112,12 @@ export const getUser = () => {
 
 export const getCharacter = () => {
   return Promise.all([characterID, loggedIn]).then(promises => {
+    const vc = viewedCharacter()
+    if (vc) {
+      const {uid, cid} = vc
+      console.log('Viewing character!', vc)
+      return firebase.firestore().collection('users').doc(uid).collection('characters').doc(cid)
+    }
     const cid = promises[0]
     const user = getUser()
     if (!user) {
@@ -92,27 +131,19 @@ export const slugify = (str) => {
   return str.replace(/\W+/g, ' ').trim().replace(/ /g, '-')
 }
 
-export const onLogin = () => {
-  return new Promise((resolve, reject) => {
-    var unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        return
-      }
-      resolve(user)
-      if (unsubscribe) {
-        unsubscribe()
-      }
-    })
-  })
-}
 
-var loggedIn = onLogin()
 
 export const setCharacter = (id, noRestart) => {
   storage.save({
     key: 'characterID',
     data: id
   }).then(() => {
+    Platform.select({
+      default: () => null,
+      web: () => {
+        window.location.hash = ''
+      }
+    })()
     if (!noRestart) {
       restart()
     }

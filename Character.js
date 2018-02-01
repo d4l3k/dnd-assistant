@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
-import {googleLogin, getCharacter} from './auth'
+import {googleLogin, getCharacter, viewedCharacter} from './auth'
 import firebase from './firebase'
 import {BaseText, Field, Center, colors} from './styles.js'
 import {TextInput} from './TextInput'
@@ -148,11 +148,8 @@ export class CharacterScreen extends React.PureComponent {
       this.setState(state => {
         return {name: user.displayName}
       })
-      this.userLoggedIn(user)
     })
-  }
 
-  userLoggedIn (user) {
     getCharacter().then(character => {
       this.character = character
       this.character.onSnapshot(character => {
@@ -484,6 +481,7 @@ export class CharacterScreen extends React.PureComponent {
         clearTimeout(this.debounce[key])
       }
       this.debounce[key] = setTimeout(() => {
+        console.log('firebase set', obj)
         this.character.set({[key]: obj[key]}, {merge: true})
       }, debounceTime)
     })

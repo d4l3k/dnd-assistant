@@ -19,6 +19,7 @@ const icons = {
   'md-settings': [30, iconColor],
   'md-search': [30, iconColor],
   'md-add': [30, iconColor],
+  'md-share': [30, iconColor],
   'clear-all': [30, iconColor, MaterialIcons],
   'dice-multiple': [30, iconColor, MaterialCommunityIcons],
   'fire': [30, iconColor, MaterialCommunityIcons]

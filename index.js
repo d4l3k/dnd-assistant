@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navigation} from './navigation'
 
-import {CharacterScreen} from './Character'
+import {CharacterScreen, ShareSettingsScreen} from './Character'
 import {AddGearScreen, GearScreen} from './GearScreen'
 import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
@@ -17,6 +17,7 @@ iconsLoaded.then(() => {
 
 function startApp () {
   Navigation.registerComponent('dnd.CharacterScreen', () => CharacterScreen)
+  Navigation.registerComponent('dnd.ShareSettingsScreen', () => ShareSettingsScreen)
   Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
@@ -61,7 +62,14 @@ function startApp () {
         icon: iconsMap['md-person'],
         title: 'Character',
         navigatorButtons: {
-          rightButtons: rightButtons,
+          rightButtons: [
+            ...rightButtons,
+            {
+              id: 'share',
+              title: 'Sharing Settings',
+              icon: iconsMap['md-share']
+            }
+          ],
           leftButtons: leftButtons
         }
       },

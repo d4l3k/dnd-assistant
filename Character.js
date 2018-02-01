@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView } from 'react-native'
-import {googleLogin, getCharacter, viewedCharacter} from './auth'
+import autobind from 'autobind-decorator'
+import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native'
+import {googleLogin, getCharacter, viewedCharacter, getUser} from './auth'
 import firebase from './firebase'
 import {BaseText, Field, Center, colors} from './styles.js'
 import {TextInput} from './TextInput'
@@ -133,6 +134,8 @@ export class CharacterScreen extends React.PureComponent {
     this.debounce = {}
 
     this.cache = Cache()
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent)
   }
 
   componentDidMount () {
@@ -559,11 +562,105 @@ export class CharacterScreen extends React.PureComponent {
       }, debounceTime)
     })
   }
+
+  @autobind
+  onNavigatorEvent (event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'share') {
+        this.props.navigator.push({
+          screen: 'dnd.ShareSettingsScreen',
+          title: 'Share Settings'
+        })
+      }
+    }
+  }
+}
+
+export class ShareSettingsScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      character: {}
+    }
+  }
+
+  componentDidMount () {
+    getCharacter().then(character => {
+      this.character = character
+      console.log(character)
+      this.unsubscribe = this.character.onSnapshot(character => {
+        this.setState(prev => {
+          return {character: character.data()}
+        })
+      })
+    })
+  }
+
+  componentWillUnmount () {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+      this.unsubscribe = null
+    }
+  }
+
+  render () {
+    const isPublic = this.state.character.visibility == 'public'
+
+    return <View style={styles.settingsscreen}>
+      <View style={styles.rowstart}>
+        <CheckBox
+          onClick={this.toggleVisibility}
+          isChecked={isPublic}
+        />
+        <BaseText>Publicly Viewable</BaseText>
+      </View>
+
+      {
+        isPublic
+          ? <LineInput
+            name={'Viewing URL'}
+            value={this.viewingURL()}
+          />
+          : null
+      }
+    </View>
+  }
+
+  viewingURL () {
+    if (!this.character) {
+      return
+    }
+
+    const viewingPath = `/#!/view/${getUser().id}/${this.character.id}`
+    const origin = Platform.select({
+      default: () => 'https://dnd.fn.lc',
+      web: () => {
+        return window.location.origin
+      }
+    })()
+    return origin + viewingPath
+
+  }
+
+  @autobind
+  toggleVisibility () {
+    const visibility = this.state.character.visibility === 'public' ? 'private' : 'public'
+    this.setState(prev => {
+      const character = {...prev.character}
+      character.visibility = visibility
+      return {character}
+    })
+    this.character.set({visibility}, {merge: true})
+  }
 }
 
 const styles = StyleSheet.create({
   screen: {
     margin: 5
+  },
+  settingsscreen: {
+    padding: 10
   },
   column: {
     flex: 2,
@@ -573,6 +670,12 @@ const styles = StyleSheet.create({
   columnNarrow: {
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'flex-start'
+  },
+  rowstart: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'flex-start'
   },
   row: {

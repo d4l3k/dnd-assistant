@@ -395,6 +395,26 @@ export class CharacterScreen extends React.PureComponent {
           </Field>
         </View>
 
+        <View style={styles.row}>
+          <BoxInput
+            name={'Spellcasting Ability'}
+            value={this.state.character_spellcastingAbility}
+            onChangeText={this.cache(spellcastingAbility => this.set({spellcastingAbility}))}
+          />
+
+          <BoxInput
+            name={'Spell Save DC'}
+            value={this.state.character_spellSaveDC}
+            onChangeText={this.cache(spellSaveDC => this.set({spellSaveDC}))}
+          />
+
+          <BoxInput
+            name={'Spell Attack Bonus'}
+            value={this.state.character_spellAttackBonus}
+            onChangeText={this.cache(spellAttackBonus => this.set({spellAttackBonus}))}
+          />
+        </View>
+
         <MultiLineInput
           name={'Features & Traits'}
           value={this.state.character_featuresTraits}
@@ -430,6 +450,59 @@ export class CharacterScreen extends React.PureComponent {
           value={this.state.character_flaws}
           onChangeText={this.cache(flaws => this.set({flaws}))}
         />
+
+        <View style={styles.row}>
+          <LineInput
+            name={'Age'}
+            value={this.state.character_age}
+            onChangeText={this.cache(age => this.set({age}))}
+          />
+
+          <LineInput
+            name={'Height'}
+            value={this.state.character_height}
+            onChangeText={this.cache(height => this.set({height}))}
+          />
+
+          <LineInput
+            name={'Weight'}
+            value={this.state.character_weight}
+            onChangeText={this.cache(weight => this.set({weight}))}
+          />
+        </View>
+
+        <View style={styles.row}>
+          <LineInput
+            name={'Eyes'}
+            value={this.state.character_eyes}
+            onChangeText={this.cache(eyes => this.set({eyes}))}
+          />
+
+          <LineInput
+            name={'Skin'}
+            value={this.state.character_skin}
+            onChangeText={this.cache(skin => this.set({skin}))}
+          />
+
+          <LineInput
+            name={'Hair'}
+            value={this.state.character_hair}
+            onChangeText={this.cache(hair => this.set({hair}))}
+          />
+        </View>
+
+        <View style={styles.row}>
+          <LineInput
+            name={'Alignment'}
+            value={this.state.character_alignment}
+            onChangeText={this.cache(alignment => this.set({alignment}))}
+          />
+          <LineInput
+            name={'Background'}
+            value={this.state.character_background}
+            onChangeText={this.cache(background => this.set({background}))}
+          />
+        </View>
 
         <MultiLineInput
           name={'Backstory'}

@@ -494,19 +494,6 @@ export class CharacterScreen extends React.PureComponent {
           />
         </View>
 
-        <View style={styles.row}>
-          <LineInput
-            name={'Alignment'}
-            value={this.state.character_alignment}
-            onChangeText={this.cache(alignment => this.set({alignment}))}
-          />
-          <LineInput
-            name={'Background'}
-            value={this.state.character_background}
-            onChangeText={this.cache(background => this.set({background}))}
-          />
-        </View>
-
         <MultiLineInput
           name={'Backstory'}
           value={this.state.character_backstory}

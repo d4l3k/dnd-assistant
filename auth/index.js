@@ -97,7 +97,9 @@ export const characterID = storage.load({
     }
     return id
   }).then(id => {
-    setCharacter(id, true)
+    if (!viewedCharacter()) {
+      setCharacter(id, true)
+    }
     return id
   })
 })

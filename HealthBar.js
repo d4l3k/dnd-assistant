@@ -6,7 +6,7 @@ import {colors} from './styles.js'
 export class HealthBar extends React.PureComponent {
   render () {
     const current = parseFloat(this.props.current || 0)
-    const max = parseFloat(this.props.max)
+    const max = parseFloat(this.props.max || 0)
     let progress = max ? current / max : 0
     let color = colors.error
     if (progress < 0) {

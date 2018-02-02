@@ -124,6 +124,8 @@ class SpellItem extends React.PureComponent {
           </View>
         </Touchable>
 
+        {this.notes()}
+
         {this.buttons()}
       </ScrollView>
     )
@@ -172,6 +174,21 @@ class SpellItem extends React.PureComponent {
       </Quote>
 
       {this.higherLevel()}
+    </View>
+  }
+
+  notes () {
+    if (!this.props.expand) {
+      return
+    }
+
+    return <View style={styles.itemnotes}>
+      <TextInput
+        label='Notes'
+        multiline={true}
+        value={this.state.spellData.notes}
+        onChangeText={this.setNotes}
+      />
     </View>
   }
 
@@ -227,6 +244,11 @@ class SpellItem extends React.PureComponent {
     this.spell.set({
       cast: 0
     }, {merge: true})
+  }
+
+  @autobind
+  setNotes (notes) {
+    this.spell.set({notes}, {merge: true})
   }
 
   prepareSpell (prepared) {
@@ -723,6 +745,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
+  },
+  itemnotes: {
+    flex: 0,
+    paddingHorizontal: 10,
   },
   row: {
     flex: 1,

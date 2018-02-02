@@ -20,6 +20,7 @@ export class TextInput extends React.Component {
       value={this.props.value}
       multiline={this.props.multiline}
       onChange={this.onChangeText}
+      fullWidth={true}
       margin="normal"
     />
   }

@@ -29,6 +29,8 @@ import Iconicons from 'react-native-vector-icons/Fonts/Ionicons.ttf'
 import MaterialIcons from 'react-native-vector-icons/Fonts/MaterialIcons.ttf'
 import MaterialCommunityIcons from 'react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf'
 
+import ReactGA from 'react-ga'
+
 const fonts = [
   ['Ionicons', Iconicons],
   ['Material Icons', MaterialIcons],
@@ -460,3 +462,5 @@ const styles= StyleSheet.create({
   }
 })
 
+ReactGA.initialize('UA-52169625-5')
+ReactGA.pageview(window.location.pathname + window.location.search)

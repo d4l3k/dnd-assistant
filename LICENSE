@@ -1,7 +1,15 @@
-# DND Assistent License
+DND Assistant License (v1)
 
-Copyright (C) Tristan Rice 2018
+Copyright 2018 Tristan Rice
 
-The code is available for individual use.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use the code for non-commercial individual use. This means you are allowed to compile and run the Software for your own individual use and devices.
 
-Redistribution in binary form, and commercial use is strictly prohibited.
+Redistribution of compiled sources is strictly prohibited.
+
+Commercial use is strictly prohibited.
+
+Hosting a copy of the Software for others to use is strictly prohibited.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+

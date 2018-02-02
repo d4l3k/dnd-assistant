@@ -38,7 +38,7 @@ export class Recycler extends React.PureComponent {
             break
           case ViewTypes.ITEM:
             dim.width = width
-            dim.height = 75
+            dim.height = 85
             break
           case ViewTypes.EXPAND:
             dim.width = width

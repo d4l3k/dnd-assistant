@@ -74,6 +74,18 @@ export class B extends React.PureComponent {
   }
 }
 
+export class Secondary extends React.PureComponent {
+  render () {
+    return (
+      <BaseText>
+        <Text style={{color: colors.secondaryText}}>
+          {this.props.children}
+        </Text>
+      </BaseText>
+    )
+  }
+}
+
 export class Center extends React.PureComponent {
   render () {
     return (

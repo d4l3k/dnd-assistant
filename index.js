@@ -1,3 +1,5 @@
+//require('react-devtools-core').connectToDevTools({host: '192.168.0.15'})
+
 import React from 'react'
 import {Navigation} from './navigation'
 

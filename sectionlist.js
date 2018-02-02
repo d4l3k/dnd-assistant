@@ -5,17 +5,14 @@ import {FlatList} from './FlatList'
 export class SectionList extends React.PureComponent {
   constructor (props) {
     super(props)
-
-    this._keyExtractor = this.keyExtractor.bind(this)
-    this._renderItem = this.renderItem.bind(this)
   }
 
   render () {
     const FL = this.props.list || FlatList
     return <FL
       data={this.convert(this.props.sections)}
-      keyExtractor={this._keyExtractor}
-      renderItem={this._renderItem}
+      keyExtractor={this.keyExtractor}
+      renderItem={this.renderItem}
     />
   }
 
@@ -30,6 +27,7 @@ export class SectionList extends React.PureComponent {
     return items
   }
 
+  @autobind
   keyExtractor (item) {
     if (item.section) {
       return item.i
@@ -37,6 +35,7 @@ export class SectionList extends React.PureComponent {
     return this.props.keyExtractor(item.item)
   }
 
+  @autobind
   renderItem ({item}) {
     if (item.section) {
       return this.props.renderSectionHeader(item)

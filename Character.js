@@ -18,7 +18,7 @@ export class SkillInput extends React.PureComponent {
         onClick={this.props.onClick}
         isChecked={this.props.isChecked}
       />
-      <View style={{width: 20, alignItems: 'flex-end', margin: 5}}>
+      <View style={{width: 30, alignItems: 'flex-end', margin: 5}}>
         <BaseText>{this.value()}</BaseText>
       </View>
       <BaseText>
@@ -156,7 +156,7 @@ export class CharacterScreen extends React.PureComponent {
 
     getCharacter().then(character => {
       this.character = character
-      this.character.onSnapshot(character => {
+      this.unsubscribe = this.character.onSnapshot(character => {
         this.setState(prev => {
           const state = {}
           const data = character.data()
@@ -171,6 +171,13 @@ export class CharacterScreen extends React.PureComponent {
         })
       })
     })
+  }
+
+  componentWillUnmount () {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+      this.unsubscribe = null
+    }
   }
 
   render () {

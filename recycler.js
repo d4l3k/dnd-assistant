@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {Dimensions} from 'react-native'
+import {Dimensions, Platform} from 'react-native'
 import {RecyclerListView, DataProvider, LayoutProvider} from 'recyclerlistview'
 
 const ViewTypes = {
@@ -64,6 +64,8 @@ export class Recycler extends React.PureComponent {
       layoutProvider={this._layoutProvider}
       dataProvider={this.dataProvider}
       rowRenderer={this._rowRenderer}
+      canChangeSize={true}
+      forceNonDeterministicRendering={Platform.select({default: true, web: false})}
     />
   }
 }

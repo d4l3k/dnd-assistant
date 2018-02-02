@@ -80,8 +80,9 @@ class SpellItem extends React.PureComponent {
 
     this.cache = Cache()
 
-    this._onPress = this.onPress.bind(this)
-    this._castSpell = this.castSpell.bind(this)
+    this.castSpell = this.castSpell.bind(this)
+    this.setNotes = this.setNotes.bind(this)
+    this.onPress = this.onPress.bind(this)
   }
 
   componentDidMount () {
@@ -103,9 +104,10 @@ class SpellItem extends React.PureComponent {
   }
 
   render () {
+    const SpellView = Platform.select({default: View, web: ScrollView})
     return (
-      <ScrollView style={styles.item}>
-        <Touchable onPress={this._onPress}>
+      <SpellView style={styles.item}>
+        <Touchable onPress={this.onPress}>
           <View style={styles.iteminner}>
             <View style={styles.row}>
               <View>
@@ -127,7 +129,7 @@ class SpellItem extends React.PureComponent {
         {this.notes()}
 
         {this.buttons()}
-      </ScrollView>
+      </SpellView>
     )
   }
 
@@ -200,7 +202,7 @@ class SpellItem extends React.PureComponent {
     return <View style={styles.itembuttons}>
       <Button
         title='Cast'
-        onPress={this._castSpell}
+        onPress={this.castSpell}
       />
 
       {
@@ -240,13 +242,6 @@ class SpellItem extends React.PureComponent {
     })
   }
 
-  _clearCasts () {
-    this.spell.set({
-      cast: 0
-    }, {merge: true})
-  }
-
-  @autobind
   setNotes (notes) {
     this.spell.set({notes}, {merge: true})
   }
@@ -309,6 +304,9 @@ class SpellList extends React.PureComponent {
       expanded: {},
       search: ''
     }
+
+    this.onExpand = this.onExpand.bind(this)
+    this.renderItem = this.renderItem.bind(this)
   }
 
   componentDidMount () {
@@ -368,19 +366,23 @@ class SpellList extends React.PureComponent {
 
   render () {
     let list
-    if (this.props.spells.length > 100) {
+    if (this.props.spells.length > 50) {
       list = Recycler
     }
+
+    const sections = this.groupSpells(this.props.spells)
+
     return (
       <View style={styles.spelllist}>
         {this.renderFilter()}
 
         <SectionList
           list={list}
-          sections={this.groupSpells(this.props.spells)}
+          sections={sections}
           keyExtractor={this.spellExtractor}
           renderSectionHeader={this.renderSectionHeader}
           renderItem={this.renderItem}
+          stickySectionHeadersEnabled={true}
         />
       </View>
     )
@@ -414,7 +416,6 @@ class SpellList extends React.PureComponent {
     />
   }
 
-  @autobind
   renderItem ({item}) {
     return <SpellItem
       navigator={this.props.navigator}
@@ -425,13 +426,13 @@ class SpellList extends React.PureComponent {
     />
   }
 
-  @autobind
   onExpand (spell) {
     this.setState(prev => {
       const expanded = {
         ...prev.expanded
       }
       expanded[spell.name] = !expanded[spell.name]
+      console.log(expanded)
       return {expanded}
     })
   }
@@ -463,7 +464,7 @@ class SpellList extends React.PureComponent {
     spells.forEach(spell => {
       sections[spell.level] = (sections[spell.level] || []).concat({
         spell: spell,
-        expand: this.state.expanded[spell.name]
+        expand: !!(this.state.expanded[spell.name])
       })
     })
 

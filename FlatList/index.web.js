@@ -4,25 +4,13 @@ import List from 'react-virtualized/dist/es/List'
 import {CellMeasurer, CellMeasurerCache} from 'react-virtualized/dist/es/CellMeasurer'
 import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
 import {View, ScrollView, StyleSheet} from 'react-native'
+import {FlatListNaive} from './naive'
 
 const styles = StyleSheet.create({
   flex: {
     flex: 1
   }
 })
-
-export class FlatListNaive extends React.PureComponent {
-  render () {
-    return <ScrollView>
-      {
-        this.props.data.map((a, i) => <View
-          key={this.props.keyExtractor(a)}>
-          {this.props.renderItem({item: a})}
-        </View>)
-      }
-    </ScrollView>
-  }
-}
 
 export class FlatListVirtual extends React.PureComponent {
   constructor (props) {

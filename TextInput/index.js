@@ -8,6 +8,7 @@ export class TextInput extends React.PureComponent {
       {this.props.label ? <BaseText>{this.props.label}</BaseText> : null}
       <RN.TextInput
         value={this.props.value}
+        multiline={this.props.multiline}
         onChangeText={this.props.onChangeText}
       />
     </View>

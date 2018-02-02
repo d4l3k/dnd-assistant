@@ -16,7 +16,7 @@ export class SkillInput extends React.PureComponent {
     return <View style={styles.skillinput}>
       <CheckBox
         onClick={this.props.onClick}
-        isChecked={this.props.isChecked}
+        isChecked={!!this.props.isChecked}
       />
       <View style={{width: 30, alignItems: 'flex-end', margin: 5}}>
         <BaseText>{this.value()}</BaseText>
@@ -368,17 +368,17 @@ export class CharacterScreen extends React.PureComponent {
                 <View style={[styles.rowend, styles.wrap]}>
                   <CheckBox
                     onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
-                    isChecked={!!this.state.character_deathSuccess1}
+                    isChecked={this.state.character_deathSuccess1}
                   />
 
                   <CheckBox
                     onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
-                    isChecked={!!this.state.character_deathSuccess2}
+                    isChecked={this.state.character_deathSuccess2}
                   />
 
                   <CheckBox
                     onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
-                    isChecked={!!this.state.character_deathSuccess3}
+                    isChecked={this.state.character_deathSuccess3}
                   />
                 </View>
               </View>
@@ -389,17 +389,17 @@ export class CharacterScreen extends React.PureComponent {
                 <View style={[styles.rowend, styles.wrap]}>
                   <CheckBox
                     onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
-                    isChecked={!!this.state.character_deathFail1}
+                    isChecked={this.state.character_deathFail1}
                   />
 
                   <CheckBox
                     onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
-                    isChecked={!!this.state.character_deathFail2}
+                    isChecked={this.state.character_deathFail2}
                   />
 
                   <CheckBox
                     onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
-                    isChecked={!!this.state.character_deathFail3}
+                    isChecked={this.state.character_deathFail3}
                   />
                 </View>
               </View>
@@ -553,7 +553,6 @@ export class CharacterScreen extends React.PureComponent {
         clearTimeout(this.debounce[key])
       }
       this.debounce[key] = setTimeout(() => {
-        console.log('firebase set', obj)
         this.character.set({[key]: obj[key]}, {merge: true})
       }, debounceTime)
     })

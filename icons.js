@@ -37,7 +37,9 @@ export const iconsLoaded = Promise.all(
     return Platform.select({
       web: () => <Provider name={name} size={size} color={color} />,
       default: () => {
-        return Provider.getImageSource(name, size, color)
+        const imageSource = Provider.getImageSource(name, size, color)
+        console.log('imageSource', name, imageSource)
+        return imageSource
       }
     })()
   })

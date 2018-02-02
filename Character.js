@@ -214,6 +214,25 @@ export class CharacterScreen extends React.PureComponent {
           />
         </View>
 
+        <View style={styles.row}>
+          <BoxInput
+            name={'Hit Point Maximum'}
+            value={this.state.character_hpMax}
+            onChangeText={this.cache(hpMax => this.set({hpMax}))}
+          />
+          <BoxInput
+            name={'Current Hit Points'}
+            value={this.state.character_hp}
+            onChangeText={this.cache(hp => this.set({hp}))}
+          />
+          <BoxInput
+            name={'Temporary Hit Points'}
+            value={this.state.character_tempHP}
+            onChangeText={this.cache(tempHP => this.set({tempHP}))}
+          />
+        </View>
+
+        <HealthBar max={this.state.character_hpMax} current={this.state.character_hp} />
 
         <View style={styles.row}>
           <View style={styles.columnNarrow}>
@@ -327,75 +346,57 @@ export class CharacterScreen extends React.PureComponent {
         </View>
 
         <View style={styles.row}>
-          <BoxInput
-            name={'Hit Point Maximum'}
-            value={this.state.character_hpMax}
-            onChangeText={this.cache(hpMax => this.set({hpMax}))}
-          />
-          <BoxInput
-            name={'Current Hit Points'}
-            value={this.state.character_hp}
-            onChangeText={this.cache(hp => this.set({hp}))}
-          />
-          <BoxInput
-            name={'Temporary Hit Points'}
-            value={this.state.character_tempHP}
-            onChangeText={this.cache(tempHP => this.set({tempHP}))}
-          />
-        </View>
-
-        <HealthBar max={this.state.character_hpMax} current={this.state.character_hp} />
-
-        <View style={styles.row}>
           <Field name='Hit Dice'>
             <TextInput
               value={this.state.character_hitDice || ''}
               onChangeText={this.cache(hitDice => this.set({hitDice}))}
             />
           </Field>
-          <Field name='Death Saves'>
-            <View style={styles.rowcenter}>
-              <BaseText>Successes</BaseText>
+          <View style={styles.col4}>
+            <Field name='Death Saves'>
+              <View style={[styles.rowcenter, styles.wrap]}>
+                <BaseText>Successes</BaseText>
 
-              <View style={styles.rowend}>
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
-                  isChecked={!!this.state.character_deathSuccess1}
-                />
+                <View style={[styles.rowend, styles.wrap]}>
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
+                    isChecked={!!this.state.character_deathSuccess1}
+                  />
 
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
-                  isChecked={!!this.state.character_deathSuccess2}
-                />
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
+                    isChecked={!!this.state.character_deathSuccess2}
+                  />
 
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
-                  isChecked={!!this.state.character_deathSuccess3}
-                />
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
+                    isChecked={!!this.state.character_deathSuccess3}
+                  />
+                </View>
               </View>
-            </View>
 
-            <View style={styles.rowcenter}>
-              <BaseText>Failures</BaseText>
+              <View style={[styles.rowcenter, styles.wrap]}>
+                <BaseText>Failures</BaseText>
 
-              <View style={styles.rowend}>
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
-                  isChecked={!!this.state.character_deathFail1}
-                />
+                <View style={[styles.rowend, styles.wrap]}>
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
+                    isChecked={!!this.state.character_deathFail1}
+                  />
 
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
-                  isChecked={!!this.state.character_deathFail2}
-                />
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
+                    isChecked={!!this.state.character_deathFail2}
+                  />
 
-                <CheckBox
-                  onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
-                  isChecked={!!this.state.character_deathFail3}
-                />
+                  <CheckBox
+                    onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
+                    isChecked={!!this.state.character_deathFail3}
+                  />
+                </View>
               </View>
-            </View>
-          </Field>
+            </Field>
+          </View>
         </View>
 
         <View style={styles.row}>
@@ -660,7 +661,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   rowstart: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start'
@@ -692,5 +693,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
+  },
+  wrap: {
+    flexWrap: 'wrap'
+  },
+  col4: {
+    flex: 4
   }
 })

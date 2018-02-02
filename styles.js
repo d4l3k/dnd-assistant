@@ -148,7 +148,7 @@ export class LightBox extends React.PureComponent {
 
 export const Field = (props) => {
   const style = {
-    flex: 1,
+    flex: 2,
     borderWidth: 1,
     borderColor: colors.border,
     padding: 10,

@@ -12,7 +12,7 @@ export const colors = {
   primaryText: '#212121',
   secondaryText: '#757575',
   border: '#dadada',
-  error: '#FF0000'
+  error: '#f44336'
 }
 
 export class BaseText extends React.PureComponent {

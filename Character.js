@@ -61,7 +61,8 @@ export class StatInput extends React.PureComponent {
 }
 
 function statToMod (val) {
-  return Math.floor((parseMod(val || 10) - 10) / 2)
+  const num = (parseMod(val || 10) - 10) / 2
+  return num < 0 ? Math.ceil(num) : Math.floor(num)
 }
 
 function parseMod (n) {

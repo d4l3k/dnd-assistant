@@ -1,7 +1,7 @@
-<div style="text-align:center">
-  <img src ="media/logo.svg" />
-  <h1>Tristan's DND Assistant</h1>
-</div>
+<h1>
+  <img src ="media/logo-icon.png" width="100">
+  Tristan's DND Assistant
+</h1>
 
 DND Assistant is an attempt to make a better DND helper app. Contributions are
 welcome!

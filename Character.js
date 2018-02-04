@@ -57,7 +57,10 @@ export class StatInput extends React.PureComponent {
           onChangeText={this.props.onChangeText}
           keyboardType={'numeric'}
         />
-        <Center>{this.modifier(this.props.value)}</Center>
+        <View style={styles.rowcenteritems}>
+          <BaseText>{this.modifier(this.props.value)}</BaseText>
+          <DieRoll modifier={statToMod(this.props.value)} />
+        </View>
       </Field>
     )
   }
@@ -97,6 +100,19 @@ export const BoxInput = (props) => {
   </Field>
 }
 
+export const ModInput = (props) => {
+  return <Field name={props.name}>
+    <View style={styles.rowcenter}>
+      <TextInput
+        value={props.value || ''}
+        onChangeText={props.onChangeText}
+        keyboardType={'numeric'}
+      />
+
+      <DieRoll modifier={parseMod(props.value)} />
+    </View>
+  </Field>
+}
 
 export const LineInput = (props) => {
   return <Field name={props.name}>
@@ -348,7 +364,7 @@ export class CharacterScreen extends React.PureComponent {
             value={this.state.character_armorClass}
             onChangeText={this.cache(armorClass => this.set({armorClass}))}
           />
-          <BoxInput
+          <ModInput
             name={'Initiative'}
             value={this.state.character_initiative}
             onChangeText={this.cache(initiative => this.set({initiative}))}
@@ -427,7 +443,7 @@ export class CharacterScreen extends React.PureComponent {
             onChangeText={this.cache(spellSaveDC => this.set({spellSaveDC}))}
           />
 
-          <BoxInput
+          <ModInput
             name={'Spell Attack Bonus'}
             value={this.state.character_spellAttackBonus}
             onChangeText={this.cache(spellAttackBonus => this.set({spellAttackBonus}))}
@@ -689,6 +705,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  rowcenteritems: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   rowend: {

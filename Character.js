@@ -8,18 +8,21 @@ import {TextInput} from './TextInput'
 import {CheckBox} from './CheckBox'
 import Cache from './Cache'
 import {HealthBar} from './HealthBar'
+import {DieRoll} from './DieRoll'
 
 const debounceTime = 300
 
 export class SkillInput extends React.PureComponent {
   render () {
+    const value = this.value()
+
     return <View style={styles.skillinput}>
       <CheckBox
         onClick={this.props.onClick}
         isChecked={!!this.props.isChecked}
       />
       <View style={{width: 30, alignItems: 'flex-end', margin: 5}}>
-        <BaseText>{this.value()}</BaseText>
+        <BaseText>{value}</BaseText>
       </View>
       <BaseText>
         {this.props.name}
@@ -29,6 +32,10 @@ export class SkillInput extends React.PureComponent {
             : null
         }
       </BaseText>
+
+      <View style={styles.rowend}>
+        <DieRoll modifier={parseMod(value)} />
+      </View>
     </View>
   }
 

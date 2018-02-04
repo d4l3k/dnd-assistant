@@ -8,7 +8,7 @@ import {AddGearScreen, GearScreen} from './GearScreen'
 import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
 import {DiceScreen, AddDieScreen} from './DiceScreen'
-import {KnownSpellsScreen, AddSpellScreen, SlotsScreen, CastSpellScreen} from './SpellBook'
+import {KnownSpellsScreen, AddSpellScreen, SpellSettingsScreen, CastSpellScreen} from './SpellBook'
 import {colors} from './styles'
 import {Platform} from 'react-native'
 import {iconsLoaded, iconsMap} from './icons'
@@ -24,7 +24,7 @@ function startApp () {
   Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
   Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
-  Navigation.registerComponent('dnd.SlotsScreen', () => SlotsScreen)
+  Navigation.registerComponent('dnd.SpellSettingsScreen', () => SpellSettingsScreen)
   Navigation.registerComponent('dnd.AddGearScreen', () => AddGearScreen)
   Navigation.registerComponent('dnd.AddSpellScreen', () => AddSpellScreen)
   Navigation.registerComponent('dnd.DiceScreen', () => DiceScreen)

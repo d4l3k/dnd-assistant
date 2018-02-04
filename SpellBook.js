@@ -5,7 +5,7 @@ import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, LightBox, showLightBox, Touchable} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox, Touchable, H1} from './styles.js'
 import {SectionList} from './sectionlist'
 import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
@@ -257,7 +257,7 @@ class SpellItem extends React.PureComponent {
 
     return (
       <View>
-        <BaseText style={styles.bold}>Higher Level</BaseText>
+        <B>Higher Level</B>
         <Quote>
           <HTMLView
             value={this.props.spell.higher_level}
@@ -515,8 +515,8 @@ export class KnownSpellsScreen extends React.PureComponent {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'slots') {
         this.props.navigator.push({
-          screen: 'dnd.SlotsScreen',
-          title: 'Slots'
+          screen: 'dnd.SpellSettingsScreen',
+          title: 'Spell Settings'
         })
       } else if (event.id === 'filter') {
         this.setState(prev => {
@@ -658,6 +658,14 @@ export class AddSpellScreen extends React.PureComponent {
   }
 }
 
+export class SpellSettingsScreen extends React.PureComponent {
+  render () {
+    return <ScrollView style={styles.padding}>
+      <SlotsScreen />
+    </ScrollView>
+  }
+}
+
 export class SlotsScreen extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -720,9 +728,11 @@ export class SlotsScreen extends React.PureComponent {
       </View>)
     }
     return (
-      <ScrollView style={styles.padding}>
+      <View>
+        <H1>Slots</H1>
+
         {slots}
-      </ScrollView>
+      </View>
     )
   }
 }

@@ -16,7 +16,7 @@ export class CheckBox extends React.Component {
 
   render () {
     return <CB
-      checked={this.props.isChecked}
+      checked={this.props.isChecked || false}
       onChange={this.onClick}
     />
   }

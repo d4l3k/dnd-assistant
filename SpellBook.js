@@ -13,6 +13,7 @@ import Cache from './Cache'
 import {Button} from './Button'
 import {iconsMap} from './icons'
 import lunr from 'lunr'
+import {ExtractDieRolls} from './DieRoll'
 
 const numSlotLevels = 9
 
@@ -184,7 +185,7 @@ class SpellItem extends React.PureComponent {
       return
     }
 
-    return <View style={styles.itemnotes}>
+    return <View style={styles.padhorizontal}>
       <TextInput
         label='Notes'
         multiline={true}
@@ -199,35 +200,47 @@ class SpellItem extends React.PureComponent {
       return
     }
 
-    return <View style={styles.itembuttons}>
-      <Button
-        title='Cast'
-        onPress={this.castSpell}
-      />
+    const text = [
+      this.props.spell.desc,
+      this.props.spell.higher_level,
+      this.state.spellData.notes
+    ].join(' ')
 
-      {
-        this.state.spellData.prepared
-          ? <Button
-            title='Unprepare'
-            onPress={this.cache(() => this.prepareSpell(false))}
-          />
-          : <Button
-            title='Prepare'
-            onPress={this.cache(() => this.prepareSpell(true))}
-          />
-      }
+    return <View>
+      <View style={styles.padhorizontal}>
+        <ExtractDieRolls text={text} />
+      </View>
 
-      {
-        this.state.spellData.active
-          ? <Button
-            title='Remove'
-            onPress={this.cache(() => this.addSpell(false))}
-          />
-          : <Button
-            title='Add'
-            onPress={this.cache(() => this.addSpell(true))}
-          />
-      }
+      <View style={styles.itembuttons}>
+        <Button
+          title='Cast'
+          onPress={this.castSpell}
+        />
+
+        {
+          this.state.spellData.prepared
+            ? <Button
+              title='Unprepare'
+              onPress={this.cache(() => this.prepareSpell(false))}
+            />
+            : <Button
+              title='Prepare'
+              onPress={this.cache(() => this.prepareSpell(true))}
+            />
+        }
+
+        {
+          this.state.spellData.active
+            ? <Button
+              title='Remove'
+              onPress={this.cache(() => this.addSpell(false))}
+            />
+            : <Button
+              title='Add'
+              onPress={this.cache(() => this.addSpell(true))}
+            />
+        }
+      </View>
     </View>
   }
 
@@ -757,9 +770,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
   },
-  itemnotes: {
+  padhorizontal: {
     flex: 0,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   row: {
     flex: 1,

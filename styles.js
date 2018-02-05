@@ -115,7 +115,7 @@ export class LightBox extends React.PureComponent {
       backgroundColor: 'white',
       alignItems: 'stretch',
       marginHorizontal: 16,
-      minHeight: 250,
+      minHeight: 100,
       borderRadius: 4,
       ...Platform.select({
         web: {},

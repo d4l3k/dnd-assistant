@@ -35,15 +35,17 @@ export class AddHealthScreen extends React.PureComponent {
         autoFocus={true}
       />
 
-      <View style={styles.rowcenteritems}>
+      <View style={{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
         <CheckBox
           onClick={this.setFullDamage}
           isChecked={this.state.fullDamage}
         />
         <BaseText>Full</BaseText>
-      </View>
 
-      <View style={styles.rowcenteritems}>
         <CheckBox
           onClick={this.setHalfDamage}
           isChecked={!this.state.fullDamage}
@@ -51,7 +53,10 @@ export class AddHealthScreen extends React.PureComponent {
         <BaseText>Half</BaseText>
       </View>
 
-      <View style={styles.row}>
+      <View style={{
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+      }}>
         <Button
           title={'Add ' + total}
           onPress={this.add}
@@ -200,6 +205,7 @@ export class RelativeInput extends React.PureComponent {
           value={this.props.value || ''}
           onChangeText={this.props.onChangeText}
           keyboardType={'numeric'}
+          flex
         />
 
         <Ionicons.Button
@@ -231,6 +237,7 @@ export const ModInput = (props) => {
         value={props.value || ''}
         onChangeText={props.onChangeText}
         keyboardType={'numeric'}
+        flex
       />
 
       <DieRoll modifier={parseMod(props.value)} />

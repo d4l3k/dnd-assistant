@@ -4,7 +4,7 @@ import {BaseText} from '../styles'
 
 export class TextInput extends React.PureComponent {
   render () {
-    return <View style={styles.input}>
+    return <View style={[this.props.flex ? styles.input : undefined]}>
       {this.props.label ? <BaseText>{this.props.label}</BaseText> : null}
       <RN.TextInput
         value={this.props.value}

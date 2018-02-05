@@ -2,12 +2,14 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import {StyleSheet, View} from 'react-native'
 import {Alert} from './Alert'
-import {colors, BaseText, B, LightBox, showLightBox} from './styles.js'
+import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {FlatList} from './FlatList'
 import {TextInput} from './TextInput'
 import {Button} from './Button'
+import Cache from './Cache'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export class AddGearScreen extends React.Component {
   constructor (props) {
@@ -15,12 +17,15 @@ export class AddGearScreen extends React.Component {
 
     this.state = {
       name: '',
-      description: ''
+      description: '',
+      weight: ''
     }
 
     if (this.props.update) {
       this.state = this.props.update
     }
+
+    this.cache = Cache()
   }
 
   render () {
@@ -30,14 +35,19 @@ export class AddGearScreen extends React.Component {
 
       <TextInput
         label='Name'
-        value={this.state.name}
-        onChangeText={this.setName}
+        value={this.state.name || ''}
+        onChangeText={this.cache(name => this.set({name}))}
       />
       <TextInput
         label='Description'
-        value={this.state.description}
-        onChangeText={this.setDescription}
+        value={this.state.description || ''}
+        onChangeText={this.cache(description => this.set({description}))}
         multiline={true}
+      />
+      <TextInput
+        label='Weight'
+        value={this.state.weight || ''}
+        onChangeText={this.cache(weight => this.set({weight}))}
       />
       <Button
         title={this.props.update ? 'Update' : 'Add'}
@@ -47,16 +57,9 @@ export class AddGearScreen extends React.Component {
   }
 
   @autobind
-  setName (name) {
+  set (state) {
     this.setState(prev => {
-      return {name}
-    })
-  }
-
-  @autobind
-  setDescription (description) {
-    this.setState(prev => {
-      return {description}
+      return state
     })
   }
 
@@ -71,7 +74,8 @@ export class AddGearScreen extends React.Component {
 
       const item = {
         name: this.state.name,
-        description: this.state.description
+        description: this.state.description,
+        weight: this.state.weight
       }
       if (this.props.update) {
         return gear.doc(this.props.update.id).set(item, {merge: true})
@@ -100,12 +104,16 @@ class GearItem extends React.PureComponent {
   }
 
   render () {
-    return <View style={styles.row}>
+    return <View style={styles.item}>
       <View style={styles.column}>
         <B>{this.props.item.name}</B>
-        <BaseText>{this.props.item.description}</BaseText>
+        <View style={styles.row}>
+          <BaseText>{this.props.item.description}</BaseText>
+        </View>
       </View>
       <View style={styles.rowend}>
+        {this.renderWeight()}
+
         <View style={styles.input}>
           <TextInput
             value={this.props.item.count}
@@ -130,6 +138,26 @@ class GearItem extends React.PureComponent {
       </View>
     </View>
   }
+
+  renderWeight () {
+    const weight = gearWeight(this.props.item)
+    return renderWeight(weight)
+  }
+}
+
+function gearWeight (item) {
+  return parseFloat(item.weight || 0) * parseFloat(item.count || 0)
+}
+
+function renderWeight (weight) {
+  if (!weight) {
+    return
+  }
+
+  return <View style={styles.rowend}>
+    <MaterialCommunityIcons name='weight' size={18} color={colors.secondaryText} />
+    <Secondary>{weight}</Secondary>
+  </View>
 }
 
 export class GearScreen extends React.PureComponent {
@@ -177,6 +205,8 @@ export class GearScreen extends React.PureComponent {
   }
 
   render () {
+    const weight = this.state.gear.map(gearWeight).reduce((a, b) => a + b, 0)
+
     return (
       <View style={styles.screen}>
         {
@@ -188,6 +218,11 @@ export class GearScreen extends React.PureComponent {
             </View>
             : null
         }
+
+        <Header>
+          <BaseText>{this.state.gear.length} items</BaseText>
+          {renderWeight(weight)}
+        </Header>
 
         <FlatList
           data={this.state.gear}
@@ -257,13 +292,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around'
   },
-  row: {
+  item: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
+    alignItems: 'center'
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
     alignItems: 'center'
   },
   rowend: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {View, ScrollView, TouchableNativeFeedback, Text} from 'react-native'
+import {StyleSheet, View, TouchableNativeFeedback, Text} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export const colors = {
@@ -14,6 +14,8 @@ export const colors = {
   border: '#dadada',
   error: '#f44336'
 }
+
+export const fontSize = 18
 
 export class BaseText extends React.PureComponent {
   render () {
@@ -66,7 +68,7 @@ export class B extends React.PureComponent {
   render () {
     return (
       <BaseText>
-        <Text style={{fontWeight: 'bold', fontSize: 18}}>
+        <Text style={{fontWeight: 'bold', fontSize}}>
           {this.props.children}
         </Text>
       </BaseText>
@@ -83,6 +85,14 @@ export class Secondary extends React.PureComponent {
         </Text>
       </BaseText>
     )
+  }
+}
+
+export class Header extends React.PureComponent {
+  render () {
+    return <View style={styles.header}>
+      {this.props.children}
+    </View>
   }
 }
 
@@ -215,3 +225,14 @@ if (TouchableNativeFeedback.SelectableBackground) {
   }
   Touchable = TouchableWeb
 }
+
+const styles = StyleSheet.create({
+  header: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+    backgroundColor: '#eee',
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+})

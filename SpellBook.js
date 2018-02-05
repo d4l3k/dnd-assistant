@@ -5,7 +5,7 @@ import {Alert} from './Alert'
 import spells from './dnd-spells/spells8.json'
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, LightBox, showLightBox, Touchable, H1} from './styles.js'
+import {colors, BaseText, B, LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
 import {SectionList} from './sectionlist'
 import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
@@ -288,14 +288,14 @@ class SpellItem extends React.PureComponent {
 class SpellHeader extends React.PureComponent {
   render () {
     return (
-      <View style={styles.header}>
+      <Header>
         <BaseText style={styles.bold}>{this.props.title}</BaseText>
         {
           this.props.slot ?
           <BaseText>Slots Used {this.slotsUsed()} / {this.props.slot.count}</BaseText> :
           null
         }
-      </View>
+      </Header>
     )
   }
 
@@ -792,15 +792,6 @@ const styles = StyleSheet.create({
   },
   grow: {
     flexGrow: 10000
-  },
-  header: {
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
-    backgroundColor: '#eee',
-    padding: 10,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   },
   padding: {
     padding: 10

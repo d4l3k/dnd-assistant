@@ -764,8 +764,8 @@ export class ShareSettingsScreen extends React.PureComponent {
 
       {
         isPublic
-          ? <LineInput
-            name={'Viewing URL'}
+          ? <TextInput
+            label='Viewing URL'
             value={this.viewingURL()}
           />
           : null

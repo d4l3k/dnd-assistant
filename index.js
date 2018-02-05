@@ -13,6 +13,9 @@ import {colors} from './styles'
 import {Platform} from 'react-native'
 import {iconsLoaded, iconsMap} from './icons'
 
+import asyncToGenerator from 'async-to-generator'
+babelHelpers.asyncToGenerator = asyncToGenerator
+
 iconsLoaded.then(() => {
   startApp()
 })

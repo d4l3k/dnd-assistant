@@ -26,17 +26,36 @@ export class CastSpellScreen extends React.PureComponent {
   render () {
     return <LightBox title='Cast Spell' navigator={this.props.navigator}>
       {
-        Object.values(this.props.slots).map((slot, i) => <View
-          key={i}
-          style={styles.buttonMargin}>
-
-          <Button
-            title={this._title(slot)}
-            onPress={() => this._cast(slot)}
-          />
-        </View>)
+        this.renderButtons()
       }
     </LightBox>
+  }
+
+  renderButtons () {
+    const slots = Object.values(this.props.slots)
+
+    if (slots.length === 0) {
+      return <View style={styles.centerp}>
+        <BaseText>
+          You haven't configured any spell slots yet.
+        </BaseText>
+        <Button title='Configure Slots' onPress={this.openSpellSettings} />
+      </View>
+    }
+    return slots.map((slot, i) => <View
+      key={i}
+      style={styles.buttonMargin}>
+
+      <Button
+        title={this._title(slot)}
+        onPress={() => this._cast(slot)}
+      />
+    </View>)
+  }
+
+  @autobind
+  openSpellSettings () {
+    openSpellSettings(this.props.navigator)
   }
 
   _cast (slot) {
@@ -511,6 +530,13 @@ class SpellList extends React.PureComponent {
   }
 }
 
+function openSpellSettings(navigator) {
+  navigator.push({
+    screen: 'dnd.SpellSettingsScreen',
+    title: 'Spell Settings'
+  })
+}
+
 export class KnownSpellsScreen extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -527,10 +553,7 @@ export class KnownSpellsScreen extends React.PureComponent {
   onNavigatorEvent (event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'slots') {
-        this.props.navigator.push({
-          screen: 'dnd.SpellSettingsScreen',
-          title: 'Spell Settings'
-        })
+        openSpellSettings(this.props.navigator)
       } else if (event.id === 'filter') {
         this.setState(prev => {
           return {filter: !prev.filter}
@@ -618,24 +641,22 @@ export class KnownSpellsScreen extends React.PureComponent {
   }
 
   render () {
+    if (this.state.spells.length === 0) {
+      return <View style={styles.centerp}>
+        <BaseText>
+          You don't have any spells. Maybe you should add some.
+        </BaseText>
+      </View>
+    }
+
     return (
       <View style={styles.container}>
-        {
-          this.state.spells.length === 0 ?
-          <View style={styles.centerp}>
-            <BaseText>
-              You don't have any spells. Maybe you should add some.
-            </BaseText>
-          </View> : null
-        }
-
         <SpellList
           filter={this.state.filter}
           navigator={this.props.navigator}
           spells={this.state.spells}
           spellData={this.state.spellData}
         />
-
       </View>
     )
   }
@@ -734,7 +755,7 @@ export class SlotsScreen extends React.PureComponent {
       slots.push(<View key={i}>
         <BaseText>Level {i}</BaseText>
         <TextInput
-          value={'' + (this.state.slots[i] || {count: 0}).count}
+          value={((this.state.slots[i] || {count: 0}).count || '') + ''}
           onChangeText={text => this._setSlots(i, text)}
           keyboardType={'numeric'}
         />

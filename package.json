@@ -12,6 +12,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-allow-top-level-this": "^0.0.1",
+    "babel-preset-react-native": "^4.0.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.3.1",
@@ -38,6 +39,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "async-to-generator": "^1.1.0",
     "autobind-decorator": "^2.1.0",
     "babel": "^6.23.0",
     "babel-loader": "^7.1.2",
@@ -55,7 +57,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-ga": "^2.4.1",
-    "react-native": "0.50.3",
+    "react-native": "0.51.0",
     "react-native-action-button": "^2.8.3",
     "react-native-animated-bar": "^0.2.0",
     "react-native-check-box": "^2.0.2",

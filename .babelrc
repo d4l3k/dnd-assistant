@@ -1,20 +1,8 @@
 {
   "presets": [
-    ["env", {
-      "loose": true
-    }],
-    "react"
+    "react-native-stage-0"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties",
     "transform-decorators-legacy"
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        "transform-react-jsx-source"
-      ]
-    }
-  }
+  ]
 }

@@ -146,13 +146,12 @@ export class LightBox extends React.PureComponent {
         </View>
       </View>
 
-      <ScrollView style={{
-        flex: 1,
+      <View style={{
         marginHorizontal: 16,
         marginBottom: 16
       }}>
         {this.props.children}
-      </ScrollView>
+      </View>
     </View>
 
     return Platform.select({

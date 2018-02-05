@@ -10,6 +10,7 @@ export class TextInput extends React.PureComponent {
         value={this.props.value}
         multiline={this.props.multiline}
         onChangeText={this.props.onChangeText}
+        keyboardType={this.props.keyboardType}
       />
     </View>
   }

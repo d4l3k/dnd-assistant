@@ -205,20 +205,17 @@ export class GearScreen extends React.PureComponent {
   }
 
   render () {
+    if (this.state.gear.length === 0) {
+      return <View style={styles.centerp}>
+        <BaseText>
+          You don't have any gear. Maybe you should add some.
+        </BaseText>
+      </View>
+    }
     const weight = this.state.gear.map(gearWeight).reduce((a, b) => a + b, 0)
 
     return (
       <View style={styles.screen}>
-        {
-          this.state.gear.length === 0
-            ? <View style={styles.centerp}>
-              <BaseText>
-                You don't have any gear. Maybe you should add some.
-              </BaseText>
-            </View>
-            : null
-        }
-
         <Header>
           <BaseText>{this.state.gear.length} items</BaseText>
           {renderWeight(weight)}

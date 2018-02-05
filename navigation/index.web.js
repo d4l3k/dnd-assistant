@@ -200,11 +200,11 @@ class Tab extends React.Component {
     const {classes} = this.props
 
     return <div className={classes.tab}>
-      <AppBar position="static" color="primary">
+      <AppBar position='static' color='primary'>
         <Toolbar>
           {this.renderButtons('leftButtons')}
 
-          <Typography type="title" color="inherit" className={classes.flex}>
+          <Typography variant='title' color='inherit' className={classes.flex}>
             {this.props.tab.label}
           </Typography>
 
@@ -233,7 +233,7 @@ class Tab extends React.Component {
 
     const {classes} = this.props
 
-    return <Button fab color='secondary' className={classes.fab}
+    return <Button variant='fab' color='secondary' className={classes.fab}
       onClick={() => this.press(fab.collapsedId)}>
       {fab.collapsedIcon}
     </Button>

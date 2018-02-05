@@ -44,6 +44,7 @@ export const iconsLoaded = Promise.all(
     })()
   })
 ).then(sources => {
+  console.log('sources', sources)
   Object.keys(icons)
     .forEach((iconName, idx) => iconsMap[iconName] = sources[idx])
 })

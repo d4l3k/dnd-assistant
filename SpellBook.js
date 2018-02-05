@@ -288,7 +288,7 @@ class SpellItem extends React.PureComponent {
 class SpellHeader extends React.PureComponent {
   render () {
     return (
-      <Header>
+      <Header style={styles.flex}>
         <BaseText style={styles.bold}>{this.props.title}</BaseText>
         {
           this.props.slot ?
@@ -754,6 +754,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  flex: {
+    flex: 1
   },
   item: {
     flex: 1,

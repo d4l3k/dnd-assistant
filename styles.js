@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {StyleSheet, View, TouchableNativeFeedback, Text} from 'react-native'
+import {ScrollView, StyleSheet, View, TouchableNativeFeedback, Text, Platform, Dimensions} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export const colors = {
@@ -90,7 +90,7 @@ export class Secondary extends React.PureComponent {
 
 export class Header extends React.PureComponent {
   render () {
-    return <View style={styles.header}>
+    return <View style={[styles.header, this.props.style]}>
       {this.props.children}
     </View>
   }
@@ -110,14 +110,19 @@ export class Center extends React.PureComponent {
 
 export class LightBox extends React.PureComponent {
   render () {
-    return <View style={{
-      flex: 1,
-      justifyContent: 'space-between',
+    const box = <View style={{
+      justifyContent: 'flex-start',
       backgroundColor: 'white',
       alignItems: 'stretch',
       marginHorizontal: 16,
       minHeight: 250,
-      borderRadius: 4
+      borderRadius: 4,
+      ...Platform.select({
+        web: {},
+        default: {
+          width: Dimensions.get('window').width * 0.9
+        }
+      })
     }}>
 
       <View style={{
@@ -141,14 +146,23 @@ export class LightBox extends React.PureComponent {
         </View>
       </View>
 
-      <View style={{
+      <ScrollView style={{
         flex: 1,
         marginHorizontal: 16,
         marginBottom: 16
       }}>
         {this.props.children}
-      </View>
+      </ScrollView>
     </View>
+
+    return Platform.select({
+      web: () => box,
+      default: () => {
+        return <View style={styles.flexContainer}>
+          {box}
+        </View>
+      }
+    })()
   }
 
   @autobind
@@ -227,6 +241,8 @@ if (TouchableNativeFeedback.SelectableBackground) {
   Touchable = TouchableWeb
 }
 
+const {height, width} = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   header: {
     borderBottomWidth: 1,
@@ -235,5 +251,13 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  flexContainer: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height,
+    width
   }
 })

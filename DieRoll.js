@@ -1,7 +1,7 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import {StyleSheet, View} from 'react-native'
-import {BaseText, colors} from './styles.js'
+import {BaseText, Secondary, colors} from './styles.js'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Roll from 'roll'
 
@@ -63,11 +63,9 @@ export class ExtractDieRolls extends React.PureComponent {
 
   renderPattern (pattern, i) {
     return <View key={i} style={styles.row}>
-      <BaseText>{
-        (i > 0 ? ', ' : '') +
-        pattern
-      }</BaseText>
+      <BaseText>{i > 0 ? ', ' : ''}</BaseText>
       <DieRoll pattern={pattern} />
+      <Secondary> ({pattern})</Secondary>
     </View>
   }
 }

@@ -3,7 +3,7 @@
 import React from 'react'
 import {Navigation} from './navigation'
 
-import {CharacterScreen, ShareSettingsScreen} from './Character'
+import {CharacterScreen, ShareSettingsScreen, AddHealthScreen} from './Character'
 import {AddGearScreen, GearScreen} from './GearScreen'
 import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
@@ -31,6 +31,7 @@ function startApp () {
   Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
   Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
   Navigation.registerComponent('dnd.WildMagicScreen', () => WildMagicScreen)
+  Navigation.registerComponent('dnd.AddHealthScreen', () => AddHealthScreen)
 
   const leftButtons = [
     {

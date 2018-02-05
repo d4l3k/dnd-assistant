@@ -143,7 +143,8 @@ export class LightBox extends React.PureComponent {
 
       <View style={{
         flex: 1,
-        marginHorizontal: 16
+        marginHorizontal: 16,
+        marginBottom: 16
       }}>
         {this.props.children}
       </View>

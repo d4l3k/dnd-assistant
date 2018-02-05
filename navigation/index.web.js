@@ -445,8 +445,7 @@ const innerStyle = {
   maxHeight: 'calc(100vh - 32px)',
   overflow: 'hidden',
   maxWidth: 'calc(100vw - 32px)',
-  width: '640px',
-  height: '90vh'
+  width: '640px'
 }
 
 const styles= StyleSheet.create({

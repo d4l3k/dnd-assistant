@@ -1,16 +1,108 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native'
-import {googleLogin, getCharacter, viewedCharacter, getUser} from './auth'
+import {googleLogin, getCharacter, getUser} from './auth'
 import firebase from './firebase'
-import {BaseText, Field, Center, colors} from './styles.js'
+import {BaseText, Field, colors, showLightBox, LightBox} from './styles.js'
 import {TextInput} from './TextInput'
 import {CheckBox} from './CheckBox'
 import Cache from './Cache'
 import {HealthBar} from './HealthBar'
 import {DieRoll} from './DieRoll'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import {Button} from './Button'
 
 const debounceTime = 300
+
+export class AddHealthScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      fullDamage: true,
+      value: ''
+    }
+  }
+  render () {
+    const total = this.total()
+
+    return <LightBox title='Add Health' navigator={this.props.navigator}>
+      <TextInput
+        label='Amount'
+        value={this.props.value}
+        onChangeText={this.onChangeText}
+        keyboardType={'numeric'}
+        autoFocus={true}
+      />
+
+      <View style={styles.rowcenteritems}>
+        <CheckBox
+          onClick={this.setFullDamage}
+          isChecked={this.state.fullDamage}
+        />
+        <BaseText>Full</BaseText>
+      </View>
+
+      <View style={styles.rowcenteritems}>
+        <CheckBox
+          onClick={this.setHalfDamage}
+          isChecked={!this.state.fullDamage}
+        />
+        <BaseText>Half</BaseText>
+      </View>
+
+      <View style={styles.row}>
+        <Button
+          title={'Add ' + total}
+          onPress={this.add}
+        />
+        <Button
+          title={'Subtract ' + total}
+          onPress={this.subtract}
+        />
+      </View>
+    </LightBox>
+  }
+
+  @autobind
+  onChangeText (value) {
+    this.setState(prev => {
+      return {value}
+    })
+  }
+
+  total () {
+    const value = parseFloat(this.state.value || 0)
+    return this.state.fullDamage ? value : Math.floor(value / 2)
+  }
+
+  @autobind
+  setFullDamage () {
+    this.setState(prev => {
+      return {fullDamage: true}
+    })
+  }
+
+  @autobind
+  setHalfDamage () {
+    this.setState(prev => {
+      return {fullDamage: false}
+    })
+  }
+
+  @autobind
+  add () {
+    this.props.add(this.total())
+    this.props.navigator.dismissLightBox()
+  }
+
+  @autobind
+  subtract () {
+    this.props.add(-this.total())
+    this.props.navigator.dismissLightBox()
+  }
+}
+
 
 export class SkillInput extends React.PureComponent {
   render () {
@@ -98,6 +190,38 @@ export const BoxInput = (props) => {
       keyboardType={'numeric'}
     />
   </Field>
+}
+
+export class RelativeInput extends React.PureComponent {
+  render () {
+    return <Field name={this.props.name}>
+      <View style={styles.rowcenter}>
+        <TextInput
+          value={this.props.value || ''}
+          onChangeText={this.props.onChangeText}
+          keyboardType={'numeric'}
+        />
+
+        <Ionicons.Button
+          name='md-add'
+          color={colors.secondaryText}
+          iconStyle={styles.button}
+          backgroundColor='transparent'
+          onPress={this.add}
+        />
+      </View>
+    </Field>
+  }
+
+  @autobind
+  add () {
+    showLightBox(this.props.navigator, 'dnd.AddHealthScreen', {
+      add: (relative) => {
+        const value = parseFloat(this.props.value || 0) + relative
+        this.props.onChangeText(value + '')
+      }
+    })
+  }
 }
 
 export const ModInput = (props) => {
@@ -251,10 +375,11 @@ export class CharacterScreen extends React.PureComponent {
             value={this.state.character_hpMax}
             onChangeText={this.cache(hpMax => this.set({hpMax}))}
           />
-          <BoxInput
+          <RelativeInput
             name={'Current Hit Points'}
             value={this.state.character_hp}
             onChangeText={this.cache(hp => this.set({hp}))}
+            navigator={this.props.navigator}
           />
           <BoxInput
             name={'Temporary Hit Points'}
@@ -263,7 +388,10 @@ export class CharacterScreen extends React.PureComponent {
           />
         </View>
 
-        <HealthBar max={this.state.character_hpMax} current={this.state.character_hp} />
+        <HealthBar
+          max={this.state.character_hpMax}
+          current={parseFloat(this.state.character_hp || 0) + parseFloat(this.state.character_tempHP || 0)}
+        />
 
         <View style={styles.row}>
           <View style={styles.columnNarrow}>
@@ -732,6 +860,9 @@ const styles = StyleSheet.create({
   },
   wrap: {
     flexWrap: 'wrap'
+  },
+  button: {
+    marginRight: 0
   },
   col4: {
     flex: 4

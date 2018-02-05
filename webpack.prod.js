@@ -11,6 +11,9 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 module.exports = merge(common, {
   devtool: 'source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: 'false'
+    }),
     new UglifyJSPlugin({
       sourceMap: true
     }),

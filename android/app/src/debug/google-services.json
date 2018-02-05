@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "600049413560",
+    "firebase_url": "https://dnd-assistant-4bd14.firebaseio.com",
+    "project_id": "dnd-assistant-4bd14",
+    "storage_bucket": "dnd-assistant-4bd14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600049413560:android:46d1e0f00b86bb37",
+        "android_client_info": {
+          "package_name": "com.dndassistant.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600049413560-66k58rr5gcnvv2dolrjas7acu0pn0ego.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY2TEZ92mRlPKlCJ46549-TJdqxmNZl_w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

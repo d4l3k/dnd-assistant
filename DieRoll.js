@@ -40,7 +40,7 @@ export class DieRoll extends React.PureComponent {
       return
     }
 
-    const roll = Math.floor(Math.random() * 20 + 1) + this.props.modifier
+    const roll = Math.floor(Math.random() * 20 + 1) + parseFloat(this.props.modifier || 0)
     this.setState(prev => {
       return {roll}
     })

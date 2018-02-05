@@ -1,8 +1,8 @@
 import {Platform} from 'react-native'
 import storage from '../storage.js'
-import RNRestart from 'react-native-restart'
 import firebase from '../firebase'
 const {GoogleSignin} = require('./googlesignin')
+import {start} from '../App'
 
 export const viewedCharacter = () => {
   return Platform.select({
@@ -74,35 +74,35 @@ export const onLogin = () => {
   })
 }
 
-export const loggedIn = onLogin()
-
-export const characterID = storage.load({
-  key: 'characterID'
-}).catch(() => {
-  let characters
-  return onLogin().then(() => {
-    characters = getUser().collection('characters')
-    return characters.limit(1).get()
-  }).then(results => {
-    let id = null
-    results.forEach(result => {
-      id = result.id
-    })
-    if (!id) {
-      return characters.add({
-        name: 'New Character'
-      }).then(ref => {
-        return ref.id
+export const characterID = () => {
+  return storage.load({
+    key: 'characterID'
+  }).catch(() => {
+    let characters
+    return onLogin().then(() => {
+      characters = getUser().collection('characters')
+      return characters.limit(1).get()
+    }).then(results => {
+      let id = null
+      results.forEach(result => {
+        id = result.id
       })
-    }
-    return id
-  }).then(id => {
-    if (!viewedCharacter()) {
-      setCharacter(id, true)
-    }
-    return id
+      if (!id) {
+        return characters.add({
+          name: 'New Character'
+        }).then(ref => {
+          return ref.id
+        })
+      }
+      return id
+    }).then(id => {
+      if (!viewedCharacter()) {
+        setCharacter(id, true)
+      }
+      return id
+    })
   })
-})
+}
 
 export const getUser = () => {
   const user = firebase.auth().currentUser
@@ -113,7 +113,7 @@ export const getUser = () => {
 }
 
 export const getCharacter = () => {
-  return Promise.all([characterID, loggedIn]).then(promises => {
+  return Promise.all([characterID(), onLogin()]).then(promises => {
     const vc = viewedCharacter()
     if (vc) {
       const {uid, cid} = vc
@@ -153,9 +153,8 @@ export const setCharacter = (id, noRestart) => {
 }
 
 export const restart = () => {
-  if (RNRestart) {
-    RNRestart.Restart()
-  } else {
-    window.location.reload()
-  }
+  Platform.select({
+    default: () => start(),
+    web: () => window.location.reload()
+  })()
 }

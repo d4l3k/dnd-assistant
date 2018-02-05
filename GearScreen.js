@@ -107,9 +107,7 @@ class GearItem extends React.PureComponent {
     return <View style={styles.item}>
       <View style={styles.column}>
         <B>{this.props.item.name}</B>
-        <View style={styles.row}>
-          <BaseText>{this.props.item.description}</BaseText>
-        </View>
+        <BaseText>{this.props.item.description}</BaseText>
       </View>
       <View style={styles.rowend}>
         {this.renderWeight()}

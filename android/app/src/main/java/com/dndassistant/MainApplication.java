@@ -2,25 +2,20 @@ package com.dndassistant;
 
 import android.app.Application;
 
-import com.facebook.react.ReactApplication;
-import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
-import io.invertase.firebase.RNFirebasePackage;
+import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactnativenavigation.NavigationApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.reactnativenavigation.NavigationApplication;
-import com.oblador.vectoricons.VectorIconsPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
-import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
-import com.avishayil.rnrestart.ReactNativeRestartPackage;
 
 public class MainApplication extends NavigationApplication {
 	@Override
@@ -33,13 +28,12 @@ public class MainApplication extends NavigationApplication {
 		// Add additional packages you require here
 		// No need to add RnnPackage and MainReactPackage
 		return Arrays.<ReactPackage>asList(
-				 new VectorIconsPackage(),
-				 new RNFirebasePackage(),
-				 new RNFirebaseFirestorePackage(),
-				 new RNFirebaseAuthPackage(),
-				 new RNGoogleSigninPackage(),
-				 new ReactNativeRestartPackage()
-				);
+			new VectorIconsPackage(),
+			new RNFirebasePackage(),
+			new RNFirebaseFirestorePackage(),
+			new RNFirebaseAuthPackage(),
+			new RNGoogleSigninPackage()
+		);
 	}
 
 	@Override

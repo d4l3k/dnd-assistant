@@ -17,7 +17,7 @@ export class CharacterMenu extends React.Component {
   }
 
   componentDidMount () {
-    Promise.all([characterID, onLogin()]).then((promises) => {
+    Promise.all([characterID(), onLogin()]).then((promises) => {
       const characterID = promises[0]
       this.characters = getUser().collection('characters')
       this.unsubscribe = this.characters.onSnapshot(snapshot => {

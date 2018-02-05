@@ -28,8 +28,8 @@
   },
   "scripts": {
     "start": "react-native start",
-    "android": "react-native run-android",
-    "androidprod": "cd android && gradle assembleRelease",
+    "android": "react-native run-android --appIdSuffix debug",
+    "androidprod": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "web": "webpack-dev-server --inline --config webpack.dev.js",

@@ -36,6 +36,8 @@ export const googleLogin = () => {
 
       // login with credential
       return firebase.auth().signInWithCredential(credential)
+    }).catch((e) => {
+      console.log(e, JSON.stringify(e))
     })
   } else {
     const provider = new firebase.auth.GoogleAuthProvider()

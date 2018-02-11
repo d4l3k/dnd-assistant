@@ -51,7 +51,14 @@ export const start = () => {
           backgroundColor: colors.accent,
           animated: true
         },
-        rightButtons: rightButtons,
+        rightButtons: [
+          ...rightButtons,
+          {
+            id: 'share',
+            title: 'Sharing Settings',
+            icon: iconsMap['md-share']
+          }
+        ],
         leftButtons: leftButtons
       }
     },

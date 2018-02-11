@@ -3,7 +3,7 @@
 import {Navigation} from './navigation'
 
 import {CharacterScreen, ShareSettingsScreen, AddHealthScreen} from './Character'
-import {AddGearScreen, GearScreen} from './GearScreen'
+import {AddGearScreen, GearScreen, GearSettingsScreen} from './GearScreen'
 import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
 import {DiceScreen, AddDieScreen} from './DiceScreen'
@@ -25,6 +25,7 @@ Navigation.registerComponent('dnd.AddDieScreen', () => AddDieScreen)
 Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
 Navigation.registerComponent('dnd.WildMagicScreen', () => WildMagicScreen)
 Navigation.registerComponent('dnd.AddHealthScreen', () => AddHealthScreen)
+Navigation.registerComponent('dnd.GearSettingsScreen', () => GearSettingsScreen)
 
 iconsLoaded.then(() => {
   start()

@@ -5,13 +5,21 @@ import {Alert} from './Alert'
 import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import {FlatList} from './FlatList'
+import {SectionList} from './sectionlist'
 import {TextInput} from './TextInput'
 import {Button} from './Button'
 import Cache from './Cache'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export class AddGearScreen extends React.Component {
+export class GearSettingsScreen extends React.PureComponent {
+  render () {
+    return <View>
+      <BaseText>Gear Settings Screen</BaseText>
+    </View>
+  }
+}
+
+export class AddGearScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -203,29 +211,47 @@ export class GearScreen extends React.PureComponent {
   }
 
   render () {
-    if (this.state.gear.length === 0) {
+    const sections = this.getSections()
+
+    if (sections.length === 0 || (sections.length === 1 && sections[0].data.length === 0)) {
       return <View style={styles.centerp}>
         <BaseText>
           You don't have any gear. Maybe you should add some.
         </BaseText>
       </View>
     }
-    const weight = this.state.gear.map(gearWeight).reduce((a, b) => a + b, 0)
 
     return (
       <View style={styles.screen}>
-        <Header>
-          <BaseText>{this.state.gear.length} items</BaseText>
-          {renderWeight(weight)}
-        </Header>
-
-        <FlatList
-          data={this.state.gear}
+        <SectionList
+          sections={sections}
           keyExtractor={this._keyExtractor}
+          renderSectionHeader={this._renderSectionHeader}
           renderItem={this._renderItem}
+          stickySectionHeadersEnabled={true}
         />
       </View>
     )
+  }
+
+  getSections () {
+    const sections = [
+      {
+        name: 'Your Gear',
+        data: this.state.gear
+      }
+    ]
+    return sections
+  }
+
+  @autobind
+  _renderSectionHeader ({section}) {
+    const weight = section.data.map(gearWeight).reduce((a, b) => a + b, 0)
+
+    return <Header>
+      <BaseText>{section.name} - {section.data.length} items</BaseText>
+      {renderWeight(weight)}
+    </Header>
   }
 
   _keyExtractor (item) {
@@ -274,6 +300,11 @@ export class GearScreen extends React.PureComponent {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         showLightBox(this.props.navigator, 'dnd.AddGearScreen')
+      } else if (event.id === 'share') {
+        this.props.navigator.push({
+          screen: 'dnd.GearSettingsScreen',
+          title: 'Share Settings'
+        })
       }
     }
   }

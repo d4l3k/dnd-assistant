@@ -9,7 +9,12 @@
 
 #import <UIKit/UIKit.h>
 
+#define __IPHONE_OS_VERSION_MAX_ALLOWED __IPHONE_10_3
+
+
 #import "AppDelegate.h"
+
+
 
 int main(int argc, char * argv[]) {
   @autoreleasepool {

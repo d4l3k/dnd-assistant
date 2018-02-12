@@ -28,7 +28,9 @@ export const googleLogin = () => {
 
   console.log('GoogleSignin auth', GoogleSignin)
   if (GoogleSignin) {
-    user = GoogleSignin.configure().then(() => {
+    user = GoogleSignin.configure({
+      iosClientId: '600049413560-bklism3kdun7nnsuc3k1ok8qqreg6n7k.apps.googleusercontent.com'
+    }).then(() => {
       return GoogleSignin.signIn()
     }).then((data) => {
       // create a new firebase credential with the token

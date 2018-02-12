@@ -1,8 +1,9 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {StyleSheet, View} from 'react-native'
+import firebase from './firebase'
+import {StyleSheet, View, ScrollView} from 'react-native'
 import {Alert} from './Alert'
-import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header} from './styles.js'
+import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header, Error, H2} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {SectionList} from './sectionlist'
@@ -11,11 +12,148 @@ import {Button} from './Button'
 import Cache from './Cache'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export class GearSettingsScreen extends React.PureComponent {
+export class InventorySettingItem extends React.PureComponent {
   render () {
-    return <View>
-      <BaseText>Gear Settings Screen</BaseText>
+    return <View style={styles.item}>
+      <View style={styles.column}>
+        <TextInput
+          label='Name'
+          value={this.props.inventory.name}
+          onChangeText={this.setName}
+        />
+        <TextInput
+          label='Inventory ID'
+          value={this.props.inventory.id}
+        />
+      </View>
+
+      <View style={styles.rowend}>
+        <Ionicons.Button
+          name='md-close'
+          color={colors.secondaryText}
+          iconStyle={styles.button}
+          backgroundColor='transparent'
+          onPress={this.remove}
+        />
+      </View>
     </View>
+  }
+
+  @autobind
+  setName (name) {
+    this.props.inventory.ref.set({name}, {merge: true})
+  }
+
+  @autobind
+  remove () {
+    this.props.inventory.characterInvRef.delete()
+  }
+}
+
+export class GearSettingsScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      name: '',
+      inventories: {}
+    }
+
+    this.inventoriesKeys = {}
+
+    this.cache = Cache()
+    this.unsubscribe = []
+  }
+
+  componentDidMount () {
+    listenInventory(this, true)
+  }
+
+  componentWillUnmount () {
+    this.unsubscribe.forEach(a => a())
+    this.unsubscribe = []
+  }
+
+  render () {
+    return <ScrollView>
+      <H2>Shared Inventories</H2>
+      {this.inventoryMeta().map(
+        inventory => <InventorySettingItem key={inventory.id} inventory={inventory} />
+      )}
+
+      <H2>Create Shared Inventory</H2>
+      <TextInput
+        label='Name'
+        value={this.state.name || ''}
+        onChangeText={this.cache(name => this.set({name}))}
+      />
+      <Button
+        title='Create'
+        onPress={this.create}
+      />
+
+      <H2>Add Existing Shared Inventory</H2>
+      <TextInput
+        label='Inventory ID'
+        value={this.state.iid || ''}
+        onChangeText={this.cache(iid => this.set({iid}))}
+      />
+      <Error error={this.state.addError} />
+      <Button
+        title='Add'
+        onPress={this.add}
+      />
+    </ScrollView>
+  }
+
+  inventoryMeta () {
+    return Object.keys(this.state.inventories).sort().map(a => this.state.inventories[a])
+  }
+
+  @autobind
+  create () {
+    if (!this.state.name) {
+      return
+    }
+
+    firebase.firestore().collection('inventories').add({name: this.state.name}).then(ref => {
+      console.log('add succeeded')
+      return this.addInventory(ref.id)
+    }).then(() => {
+      this.set({name: ''})
+    })
+  }
+
+  addInventory (id) {
+    return this.props.character.collection('inventories').doc(id).set({id})
+  }
+
+  @autobind
+  add () {
+    if (!this.state.iid) {
+      return
+    }
+
+    const ref = firebase.firestore().collection('inventories').doc(this.state.iid)
+
+    ref.get().then(inv => {
+      if (!inv.exists) {
+        throw 'Invalid Inventory ID'
+      }
+
+      return this.addInventory(this.state.iid)
+    }).catch(e => {
+      this.setState(prev => {
+        return {addError: e}
+      })
+    })
+  }
+
+  @autobind
+  set (state) {
+    this.setState(prev => {
+      return state
+    })
   }
 }
 
@@ -77,9 +215,7 @@ export class AddGearScreen extends React.PureComponent {
       return
     }
 
-    getCharacter().then(character => {
-      const gear = character.collection('gear')
-
+    Promise.resolve(this.props.gear).then(gear => {
       const item = {
         name: this.state.name,
         description: this.state.description,
@@ -166,13 +302,121 @@ function renderWeight (weight) {
   </View>
 }
 
+function listenInventory (self, noGear) {
+  getCharacter().then(character => {
+    self.character = character
+    self.gear = character.collection('gear')
+    self.unsubscribe.push(self.gear.onSnapshot(results => {
+      const gear = []
+      results.forEach(result => {
+        const data = result.data()
+        data.id = result.id
+        gear.push(data)
+      })
+      gear.sort((a, b) => {
+        return a.name < b.name ? -1 : 1
+      })
+
+      self.setState(state => {
+        return {gear}
+      })
+    }))
+
+    self.inventories = character.collection('inventories')
+    self.unsubscribe.push(self.inventories.onSnapshot(results => {
+      const exist = {}
+      results.forEach(result => {
+        exist[result.id] = true
+      })
+
+      Object.keys(self.inventoriesKeys).forEach(id => {
+        if (exist[id]) {
+          return
+        }
+
+        self.inventoriesKeys[id].forEach(unsubscribe => unsubscribe())
+        delete self.inventoriesKeys[id]
+
+        self.setState(prev => {
+          const inventories = {
+            ...prev.inventories
+          }
+          delete inventories[id]
+          const inventoryGear = {
+            ...prev.inventoryGear
+          }
+          delete inventoryGear[id]
+
+          return {inventories, inventoryGear}
+        })
+      })
+
+      results.forEach(result => {
+        const id = result.id
+        if (self.inventoriesKeys[id]) {
+          return
+        }
+
+        const unsubscribe = []
+
+        const invRef = firebase.firestore().collection('inventories').doc(id)
+        unsubscribe.push(invRef.onSnapshot(inventory => {
+          self.setState(prev => {
+            const inventories = {
+              ...prev.inventories
+            }
+
+            inventories[id] = {
+              ...inventory.data(),
+              id: inventory.id,
+              ref: invRef,
+              characterInvRef: self.inventories.doc(id)
+            }
+
+            return {inventories}
+          })
+        }))
+
+        if (!noGear) {
+          const gearRef = invRef.collection('gear')
+          unsubscribe.push(gearRef.onSnapshot(results => {
+            const gear = []
+            results.forEach(result => {
+              const data = result.data()
+              data.id = result.id
+              data.gear = gearRef
+              gear.push(data)
+            })
+            gear.sort((a, b) => {
+              return a.name < b.name ? -1 : 1
+            })
+
+            self.setState(state => {
+              const inventoryGear = {
+                ...state.inventoryGear
+              }
+              inventoryGear[id] = gear
+              return {inventoryGear}
+            })
+          }))
+        }
+
+        self.unsubscribe = self.unsubscribe.concat(unsubscribe)
+        self.inventoriesKeys[id] = unsubscribe
+      })
+    }))
+  })
+}
+
 export class GearScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
     this.state = {
       gear: [],
-      modalVisible: false
+      modalVisible: false,
+      inventories: {},
+      inventoryGear: {}
     }
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
@@ -180,34 +424,19 @@ export class GearScreen extends React.PureComponent {
     this._renderItem = ({item}) => {
       return <GearItem item={item} parent={this} />
     }
+    this.unsubscribe = []
+    this.inventoriesKeys = {}
+
+    this.cache = Cache()
   }
 
   componentDidMount () {
-    getCharacter().then(character => {
-      this.gear = character.collection('gear')
-      this.unsubscribe = this.gear.onSnapshot(results => {
-        const gear = []
-        results.forEach(result => {
-          const data = result.data()
-          data.id = result.id
-          gear.push(data)
-        })
-        gear.sort((a, b) => {
-          return a.name < b.name ? -1 : 1
-        })
-
-        this.setState(state => {
-          return {gear}
-        })
-      })
-    })
+    listenInventory(this)
   }
 
   componentWillUnmount () {
-    if (this.unsubscribe) {
-      this.unsubscribe()
-      this.unsubscribe = null
-    }
+    this.unsubscribe.forEach(a => a())
+    this.unsubscribe = []
   }
 
   render () {
@@ -241,6 +470,13 @@ export class GearScreen extends React.PureComponent {
         data: this.state.gear
       }
     ]
+
+    for (const key of Object.keys(this.state.inventories).sort()) {
+      sections.push({
+        ...this.state.inventories[key],
+        data: this.state.inventoryGear[key] || []
+      })
+    }
     return sections
   }
 
@@ -248,10 +484,26 @@ export class GearScreen extends React.PureComponent {
   _renderSectionHeader ({section}) {
     const weight = section.data.map(gearWeight).reduce((a, b) => a + b, 0)
 
-    return <Header>
-      <BaseText>{section.name} - {section.data.length} items</BaseText>
+    return <Header right={
+      <Ionicons.Button
+        name='md-add'
+        color={colors.secondaryText}
+        iconStyle={styles.button}
+        backgroundColor='transparent'
+        onPress={this.cache(() => this.add(section), section.id)}
+      />
+    }>
+      <BaseText>{section.name}</BaseText>
       {renderWeight(weight)}
     </Header>
+  }
+
+  @autobind
+  add (section) {
+    let invRef = section.id
+      ? firebase.firestore().collection('inventories').doc(section.id).collection('gear')
+      : null
+    this.openAddGearScreen(null, invRef)
   }
 
   _keyExtractor (item) {
@@ -259,7 +511,7 @@ export class GearScreen extends React.PureComponent {
   }
 
   _edit (item) {
-    showLightBox(this.props.navigator, 'dnd.AddGearScreen', {update: item})
+    this.openAddGearScreen({update: item}, item.gear)
   }
 
   _remove (item) {
@@ -271,7 +523,7 @@ export class GearScreen extends React.PureComponent {
         {
           text: 'Remove',
           onPress: () => {
-            this.gear.doc(item.id).delete()
+            item.gear.doc(item.id).delete()
           },
           style: 'destructive'
         }
@@ -280,30 +532,29 @@ export class GearScreen extends React.PureComponent {
   }
 
   _setCount (item, text) {
-    this.setState(prev => {
-      const gear = []
-      prev.gear.forEach(a => {
-        if (a.id === item.id) {
-          a.count = text
-        }
-        gear.push(a)
-      })
-      return {gear}
-    })
-
-    this.gear.doc(item.id).set({
+    item.gear.doc(item.id).set({
       count: text
     }, {merge: true})
+  }
+
+  openAddGearScreen (props, ref) {
+    showLightBox(this.props.navigator, 'dnd.AddGearScreen', {
+      ...props,
+      gear: ref || this.gear
+    })
   }
 
   onNavigatorEvent (event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
-        showLightBox(this.props.navigator, 'dnd.AddGearScreen')
+        this.openAddGearScreen()
       } else if (event.id === 'share') {
         this.props.navigator.push({
           screen: 'dnd.GearSettingsScreen',
-          title: 'Share Settings'
+          title: 'Gear Settings',
+          passProps: {
+            character: this.character
+          }
         })
       }
     }
@@ -315,7 +566,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   column: {
-    flex: 1,
+    flex: 4,
     justifyContent: 'space-around'
   },
   item: {
@@ -347,6 +598,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginRight: 0
+  },
+  nopadding: {
+    margin: -8
   },
   input: {
     marginLeft: 10,

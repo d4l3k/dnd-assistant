@@ -47,6 +47,19 @@ export class H1 extends React.PureComponent {
   }
 }
 
+
+export class H2 extends React.PureComponent {
+  render () {
+    return (
+      <P>
+        <Text style={{fontSize, fontWeight: 'bold'}}>
+          {this.props.children}
+        </Text>
+      </P>
+    )
+  }
+}
+
 export class Error extends React.PureComponent {
   render () {
     return (
@@ -91,7 +104,10 @@ export class Secondary extends React.PureComponent {
 export class Header extends React.PureComponent {
   render () {
     return <View style={[styles.header, this.props.style]}>
-      {this.props.children}
+      <View style={styles.headerpadding}>
+        {this.props.children}
+      </View>
+      {this.props.right}
     </View>
   }
 }
@@ -247,6 +263,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
     backgroundColor: '#eee',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  headerpadding: {
+    flex: 1,
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between'

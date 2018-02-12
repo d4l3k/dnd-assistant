@@ -13,7 +13,7 @@ export class Button extends React.PureComponent {
   }
 
   render () {
-    return <Btn onClick={this._onPress} color="primary" raised={true}>
+    return <Btn onClick={this._onPress} color="primary" variant='raised'>
       {this.props.title}
     </Btn>
   }

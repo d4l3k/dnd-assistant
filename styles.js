@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {ScrollView, StyleSheet, View, TouchableNativeFeedback, Text, Platform, Dimensions} from 'react-native'
+import {ScrollView, StyleSheet, View, TouchableNativeFeedback, TouchableHighlight, Text, Platform, Dimensions} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export const colors = {
@@ -222,7 +222,7 @@ export const showLightBox = (navigator, screen, props) => {
   })
 }
 
-class TouchableNative extends React.PureComponent {
+class TouchableAndroid extends React.PureComponent {
   render () {
     return <TouchableNativeFeedback
       onPress={this.props.onPress}
@@ -232,33 +232,33 @@ class TouchableNative extends React.PureComponent {
   }
 }
 
-export let Touchable
+export const Touchable = Platform.select({
+  android: () => TouchableAndroid,
+  ios: () => TouchableHighlight,
+  web: () => {
+    const ButtonBase = require('material-ui/ButtonBase').default
+    const withStyles = require('material-ui/styles').withStyles
 
-if (TouchableNativeFeedback.SelectableBackground) {
-  Touchable = TouchableNative
-} else {
-  const ButtonBase = require('material-ui/ButtonBase').default
-  const withStyles = require('material-ui/styles').withStyles
+    const materialStyles = theme => ({
+      touchable: {
+        textAlign: 'left',
+        justifyContent: 'stretch'
+      }
+    })
 
-  const materialStyles = theme => ({
-    touchable: {
-      textAlign: 'left',
-      justifyContent: 'stretch'
+    @withStyles(materialStyles)
+    class TouchableWeb extends React.PureComponent {
+      render () {
+        return <ButtonBase
+          className={this.props.classes.touchable}
+          onClick={this.props.onPress}>
+          {this.props.children}
+        </ButtonBase>
+      }
     }
-  })
-
-  @withStyles(materialStyles)
-  class TouchableWeb extends React.PureComponent {
-    render () {
-      return <ButtonBase
-        className={this.props.classes.touchable}
-        onClick={this.props.onPress}>
-        {this.props.children}
-      </ButtonBase>
-    }
+    return TouchableWeb
   }
-  Touchable = TouchableWeb
-}
+})()
 
 const {height, width} = Dimensions.get('window')
 

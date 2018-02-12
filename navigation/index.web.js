@@ -4,7 +4,8 @@ import {
   AppRegistry,
   StyleSheet,
   View,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from 'react-native'
 
 import AppBar from 'material-ui/AppBar'
@@ -390,6 +391,8 @@ class ReactNativeWeb extends React.Component {
         <LightBox
           title={screen.title}
           renderButtons={this.renderButtons}
+          width={640}
+          height={Dimensions.get('window').height * 0.9}
           navigator={this}>
           {
             this.state.screen
@@ -445,10 +448,12 @@ const innerStyle = {
   maxHeight: 'calc(100vh - 32px)',
   overflow: 'hidden',
   maxWidth: 'calc(100vw - 32px)',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: '640px'
 }
 
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
   row: {
     flex: 1,
     flexDirection: 'row',

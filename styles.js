@@ -134,7 +134,10 @@ export class LightBox extends React.PureComponent {
       minHeight: 100,
       borderRadius: 4,
       ...Platform.select({
-        web: {},
+        web: {
+          height: this.props.height,
+          width: this.props.width ? this.props.width - 32 : null
+        },
         default: {
           width: Dimensions.get('window').width * 0.9
         }
@@ -164,7 +167,8 @@ export class LightBox extends React.PureComponent {
 
       <View style={{
         marginHorizontal: 16,
-        marginBottom: 16
+        marginBottom: 16,
+        flex: 1
       }}>
         {this.props.children}
       </View>

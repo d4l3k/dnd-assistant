@@ -75,7 +75,7 @@ export class GearSettingsScreen extends React.PureComponent {
   }
 
   render () {
-    return <ScrollView>
+    return <ScrollView style={[styles.screen, styles.padding]}>
       <H2>Shared Inventories</H2>
       {this.inventoryMeta().map(
         inventory => <InventorySettingItem key={inventory.id} inventory={inventory} />
@@ -564,6 +564,9 @@ export class GearScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   screen: {
     flex: 1
+  },
+  padding: {
+    padding: 10
   },
   column: {
     flex: 4,

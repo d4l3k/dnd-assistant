@@ -1,5 +1,6 @@
 import React from 'react'
-import {rollFate} from './DieRoll'
+import {DieRoll, rollFate} from './DieRoll'
+import renderer from 'react-test-renderer'
 
 it('rolls fate correctly', () => {
   const rolls = {}
@@ -26,3 +27,8 @@ it('rolls fate correctly with modifier', () => {
   }
   expect(Object.keys(rolls).length).toBe(9)
 })
+
+it('renders without crashing', () => {
+  const rendered = renderer.create(<DieRoll />).toJSON()
+  expect(rendered).toBeTruthy()
+});

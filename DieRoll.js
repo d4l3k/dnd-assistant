@@ -41,7 +41,7 @@ export class DieRoll extends React.PureComponent {
       return roll.roll(this.props.pattern.trim()).result
     }
 
-    return  Math.floor(Math.random() * parseFloat(this.props.d || 20) + 1) + parseFloat(this.props.modifier || 0)
+    return Math.floor(Math.random() * parseFloat(this.props.d || 20) + 1) + parseFloat(this.props.modifier || 0)
   }
 
   @autobind

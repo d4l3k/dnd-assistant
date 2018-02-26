@@ -79,6 +79,7 @@
     "webpack": "^3.10.0"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "globals": [ "window", "expect" ]
   }
 }

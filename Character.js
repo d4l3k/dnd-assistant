@@ -3,14 +3,14 @@ import autobind from 'autobind-decorator'
 import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native'
 import {googleLogin, getCharacter, getUser} from './auth'
 import firebase from './firebase'
-import {BaseText, Field, colors, showLightBox, LightBox} from './styles.js'
+import {BaseText, Field, colors, LightBox} from './styles.js'
 import {TextInput} from './TextInput'
 import {CheckBox} from './CheckBox'
 import Cache from './Cache'
-import {HealthBar} from './HealthBar'
-import {DieRoll} from './DieRoll'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Button} from './Button'
+import {Picker, PickerItem} from './Picker'
+import * as rules from './rules'
+import {SkillInput} from './characterInputs'
 
 const debounceTime = 300
 
@@ -109,161 +109,6 @@ export class AddHealthScreen extends React.PureComponent {
 }
 
 
-export class SkillInput extends React.PureComponent {
-  render () {
-    const value = this.value()
-
-    return <View style={styles.skillinput}>
-      <CheckBox
-        onClick={this.props.onClick}
-        isChecked={!!this.props.isChecked}
-      />
-      <View style={{width: 30, alignItems: 'flex-end', margin: 5}}>
-        <BaseText>{value}</BaseText>
-      </View>
-      <BaseText>
-        {this.props.name}
-        {
-          this.props.secondary
-            ? <Text style={{color: colors.secondaryText}}> ({this.props.secondary})</Text>
-            : null
-        }
-      </BaseText>
-
-      <View style={styles.rowend}>
-        <DieRoll modifier={parseMod(value)} />
-      </View>
-    </View>
-  }
-
-  value () {
-    let num = statToMod(this.props.value)
-    if (this.props.isChecked) {
-      num += parseMod(this.props.proficiency)
-    }
-    return modString(num)
-  }
-}
-
-export class StatInput extends React.PureComponent {
-  render () {
-    return (
-      <Field name={this.props.name}>
-        <TextInput
-          value={this.props.value || ''}
-          onChangeText={this.props.onChangeText}
-          keyboardType={'numeric'}
-        />
-        <View style={styles.rowcenteritems}>
-          <BaseText>{this.modifier(this.props.value)}</BaseText>
-          <DieRoll modifier={statToMod(this.props.value)} />
-        </View>
-      </Field>
-    )
-  }
-
-  modifier (val) {
-    return modString(statToMod(val))
-  }
-}
-
-function statToMod (val) {
-  const num = (parseMod(val || 10) - 10) / 2
-  return Math.floor(num)
-}
-
-function parseMod (n) {
-  if (typeof n === 'string') {
-    n = n.replace(/\+/g, '')
-  }
-  return parseInt(n)
-}
-
-function modString (n) {
-  if (n > 0) {
-    return '+' + n
-  }
-  return n
-}
-
-
-export const BoxInput = (props) => {
-  return <Field name={props.name}>
-    <TextInput
-      value={props.value || ''}
-      onChangeText={props.onChangeText}
-      keyboardType={'numeric'}
-    />
-  </Field>
-}
-
-export class RelativeInput extends React.PureComponent {
-  render () {
-    return <Field name={this.props.name}>
-      <View style={styles.rowcenter}>
-        <TextInput
-          value={this.props.value || ''}
-          onChangeText={this.props.onChangeText}
-          keyboardType={'numeric'}
-          flex
-        />
-
-        <Ionicons.Button
-          name='md-add'
-          color={colors.secondaryText}
-          iconStyle={styles.button}
-          backgroundColor='transparent'
-          onPress={this.add}
-        />
-      </View>
-    </Field>
-  }
-
-  @autobind
-  add () {
-    showLightBox(this.props.navigator, 'dnd.AddHealthScreen', {
-      add: (relative) => {
-        const value = parseFloat(this.props.value || 0) + relative
-        this.props.onChangeText(value + '')
-      }
-    })
-  }
-}
-
-export const ModInput = (props) => {
-  return <Field name={props.name}>
-    <View style={styles.rowcenter}>
-      <TextInput
-        value={props.value || ''}
-        onChangeText={props.onChangeText}
-        keyboardType={'numeric'}
-        flex
-      />
-
-      <DieRoll modifier={parseMod(props.value)} />
-    </View>
-  </Field>
-}
-
-export const LineInput = (props) => {
-  return <Field name={props.name}>
-    <TextInput
-      value={props.value || ''}
-      onChangeText={props.onChangeText}
-    />
-  </Field>
-}
-
-export const MultiLineInput = (props) => {
-  return <Field name={props.name}>
-    <TextInput
-      value={props.value || ''}
-      multiline={true}
-      onChangeText={props.onChangeText}
-    />
-  </Field>
-}
-
 const skillToShort = {
   strength: 'Str',
   dexterity: 'Dex',
@@ -335,343 +180,10 @@ export class CharacterScreen extends React.PureComponent {
   }
 
   render () {
+    const characterSheet = rules[this.state.character_rules] || rules.dnd5e
     return (
       <ScrollView style={styles.screen}>
-        <View style={styles.row}>
-          <LineInput
-            name={'Character Name'}
-            value={this.state.character_name}
-            onChangeText={this.cache(name => this.set({name}))}
-          />
-          <LineInput
-            name={'Class & Level'}
-            value={this.state.character_classLevel}
-            onChangeText={this.cache(classLevel => this.set({classLevel}))}
-          />
-        </View>
-
-        <View style={styles.row}>
-          <LineInput
-            name={'Race'}
-            value={this.state.character_race}
-            onChangeText={this.cache(race => this.set({race}))}
-          />
-
-          <BoxInput
-            name={'Experience Points'}
-            value={this.state.character_exp}
-            onChangeText={this.cache(exp => this.set({exp}))}
-          />
-        </View>
-        <View style={styles.row}>
-          <LineInput
-            name={'Alignment'}
-            value={this.state.character_alignment}
-            onChangeText={this.cache(alignment => this.set({alignment}))}
-          />
-          <LineInput
-            name={'Background'}
-            value={this.state.character_background}
-            onChangeText={this.cache(background => this.set({background}))}
-          />
-        </View>
-
-        <View style={styles.row}>
-          <BoxInput
-            name={'Hit Point Maximum'}
-            value={this.state.character_hpMax}
-            onChangeText={this.cache(hpMax => this.set({hpMax}))}
-          />
-          <RelativeInput
-            name={'Current Hit Points'}
-            value={this.state.character_hp}
-            onChangeText={this.cache(hp => this.set({hp}))}
-            navigator={this.props.navigator}
-          />
-          <BoxInput
-            name={'Temporary Hit Points'}
-            value={this.state.character_tempHP}
-            onChangeText={this.cache(tempHP => this.set({tempHP}))}
-          />
-        </View>
-
-        <HealthBar
-          max={this.state.character_hpMax}
-          current={parseFloat(this.state.character_hp || 0) + parseFloat(this.state.character_tempHP || 0)}
-        />
-
-        <View style={styles.row}>
-          <View style={styles.columnNarrow}>
-            <StatInput
-              name={'Strength'}
-              value={this.state.character_strength}
-              onChangeText={this.cache(strength => this.set({strength}))}
-            />
-            <StatInput
-              name={'Dexterity'}
-              value={this.state.character_dexterity}
-              onChangeText={this.cache(dexterity => this.set({dexterity}))}
-            />
-            <StatInput
-              name={'Constitution'}
-              value={this.state.character_constitution}
-              onChangeText={this.cache(constitution => this.set({constitution}))}
-            />
-            <StatInput
-              name={'Intelligence'}
-              value={this.state.character_intelligence}
-              onChangeText={this.cache(intelligence => this.set({intelligence}))}
-            />
-            <StatInput
-              name={'Wisdom'}
-              value={this.state.character_wisdom}
-              onChangeText={this.cache(wisdom => this.set({wisdom}))}
-            />
-            <StatInput
-              name={'Charisma'}
-              value={this.state.character_charisma}
-              onChangeText={this.cache(charisma => this.set({charisma}))}
-            />
-
-            <BoxInput
-              name={'Passive Wisdom (Perception)'}
-              value={this.state.character_passiveWisdom}
-              onChangeText={this.cache(passiveWisdom => this.set({passiveWisdom}))}
-            />
-          </View>
-          <View style={styles.column}>
-            <View style={styles.rownoflex}>
-              <BoxInput
-                name={'Inspiration'}
-                value={this.state.character_inspiration}
-                onChangeText={this.cache(inspiration => this.set({inspiration}))}
-              />
-              <BoxInput
-                name={'Proficiency Bonus'}
-                value={this.state.character_proficiency}
-                onChangeText={this.cache(proficiency => this.set({proficiency}))}
-              />
-            </View>
-
-            <Field name='Saving Throws' flex={0}>
-              {
-                this.renderSkills([
-                  ['Strength'],
-                  ['Dexterity'],
-                  ['Constitution'],
-                  ['Intelligence'],
-                  ['Wisdom'],
-                  ['Charisma']
-                ])
-              }
-            </Field>
-
-            <Field name='Skills'>
-              {
-                this.renderSkills([
-                  ['Acrobatics', 'dexterity'],
-                  ['Animal Handling', 'wisdom'],
-                  ['Arcana', 'intelligence'],
-                  ['Athletics', 'strength'],
-                  ['Deception', 'charisma'],
-                  ['History', 'intelligence'],
-                  ['Insight', 'wisdom'],
-                  ['Intimidation', 'charisma'],
-                  ['Investigation', 'intelligence'],
-                  ['Medicine', 'wisdom'],
-                  ['Nature', 'intelligence'],
-                  ['Perception', 'wisdom'],
-                  ['Performance', 'charisma'],
-                  ['Persuasion', 'charisma'],
-                  ['Religion', 'intelligence'],
-                  ['Slight Of Hand', 'dexterity'],
-                  ['Stealth', 'dexterity'],
-                  ['Survival', 'wisdom']
-                ])
-              }
-            </Field>
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          <BoxInput
-            name={'Armor Class'}
-            value={this.state.character_armorClass}
-            onChangeText={this.cache(armorClass => this.set({armorClass}))}
-          />
-          <ModInput
-            name={'Initiative'}
-            value={this.state.character_initiative}
-            onChangeText={this.cache(initiative => this.set({initiative}))}
-          />
-          <BoxInput
-            name={'Speed'}
-            value={this.state.character_speed}
-            onChangeText={this.cache(speed => this.set({speed}))}
-          />
-        </View>
-
-        <View style={styles.row}>
-          <Field name='Hit Dice'>
-            <TextInput
-              value={this.state.character_hitDice || ''}
-              onChangeText={this.cache(hitDice => this.set({hitDice}))}
-            />
-          </Field>
-          <View style={styles.col4}>
-            <Field name='Death Saves'>
-              <View style={[styles.rowcenter, styles.wrap]}>
-                <BaseText>Successes</BaseText>
-
-                <View style={[styles.rowend, styles.wrap]}>
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathSuccess1: !this.state.character_deathSuccess1}))}
-                    isChecked={this.state.character_deathSuccess1}
-                  />
-
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathSuccess2: !this.state.character_deathSuccess2}))}
-                    isChecked={this.state.character_deathSuccess2}
-                  />
-
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathSuccess3: !this.state.character_deathSuccess3}))}
-                    isChecked={this.state.character_deathSuccess3}
-                  />
-                </View>
-              </View>
-
-              <View style={[styles.rowcenter, styles.wrap]}>
-                <BaseText>Failures</BaseText>
-
-                <View style={[styles.rowend, styles.wrap]}>
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathFail1: !this.state.character_deathFail1}))}
-                    isChecked={this.state.character_deathFail1}
-                  />
-
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathFail2: !this.state.character_deathFail2}))}
-                    isChecked={this.state.character_deathFail2}
-                  />
-
-                  <CheckBox
-                    onClick={this.cache(() => this.set({deathFail3: !this.state.character_deathFail3}))}
-                    isChecked={this.state.character_deathFail3}
-                  />
-                </View>
-              </View>
-            </Field>
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          <BoxInput
-            name={'Spellcasting Ability'}
-            value={this.state.character_spellcastingAbility}
-            onChangeText={this.cache(spellcastingAbility => this.set({spellcastingAbility}))}
-          />
-
-          <BoxInput
-            name={'Spell Save DC'}
-            value={this.state.character_spellSaveDC}
-            onChangeText={this.cache(spellSaveDC => this.set({spellSaveDC}))}
-          />
-
-          <ModInput
-            name={'Spell Attack Bonus'}
-            value={this.state.character_spellAttackBonus}
-            onChangeText={this.cache(spellAttackBonus => this.set({spellAttackBonus}))}
-          />
-        </View>
-
-        <MultiLineInput
-          name={'Features & Traits'}
-          value={this.state.character_featuresTraits}
-          onChangeText={this.cache(featuresTraits => this.set({featuresTraits}))}
-        />
-
-        <MultiLineInput
-          name={'Other Proficiencies & Languages'}
-          value={this.state.character_proficiencyLanguages}
-          onChangeText={this.cache(proficiencyLanguages => this.set({proficiencyLanguages}))}
-        />
-
-        <MultiLineInput
-          name={'Personality Traits'}
-          value={this.state.character_personalityTraits}
-          onChangeText={this.cache(personalityTraits => this.set({personalityTraits}))}
-        />
-
-        <MultiLineInput
-          name={'Ideals'}
-          value={this.state.character_ideals}
-          onChangeText={this.cache(ideals => this.set({ideals}))}
-        />
-
-        <MultiLineInput
-          name={'Bonds'}
-          value={this.state.character_bonds}
-          onChangeText={this.cache(bonds => this.set({bonds}))}
-        />
-
-        <MultiLineInput
-          name={'Flaws'}
-          value={this.state.character_flaws}
-          onChangeText={this.cache(flaws => this.set({flaws}))}
-        />
-
-        <View style={styles.row}>
-          <LineInput
-            name={'Age'}
-            value={this.state.character_age}
-            onChangeText={this.cache(age => this.set({age}))}
-          />
-
-          <LineInput
-            name={'Height'}
-            value={this.state.character_height}
-            onChangeText={this.cache(height => this.set({height}))}
-          />
-
-          <LineInput
-            name={'Weight'}
-            value={this.state.character_weight}
-            onChangeText={this.cache(weight => this.set({weight}))}
-          />
-        </View>
-
-        <View style={styles.row}>
-          <LineInput
-            name={'Eyes'}
-            value={this.state.character_eyes}
-            onChangeText={this.cache(eyes => this.set({eyes}))}
-          />
-
-          <LineInput
-            name={'Skin'}
-            value={this.state.character_skin}
-            onChangeText={this.cache(skin => this.set({skin}))}
-          />
-
-          <LineInput
-            name={'Hair'}
-            value={this.state.character_hair}
-            onChangeText={this.cache(hair => this.set({hair}))}
-          />
-        </View>
-
-        <MultiLineInput
-          name={'Backstory'}
-          value={this.state.character_backstory}
-          onChangeText={this.cache(backstory => this.set({backstory}))}
-        />
-
-        <MultiLineInput
-          name={'Allies & Organizations'}
-          value={this.state.character_alliesOrganizations}
-          onChangeText={this.cache(alliesOrganizations => this.set({alliesOrganizations}))}
-        />
+        {characterSheet.call(this)}
       </ScrollView>
     )
   }
@@ -724,8 +236,59 @@ export class CharacterScreen extends React.PureComponent {
           screen: 'dnd.ShareSettingsScreen',
           title: 'Share Settings'
         })
+      } else if (event.id === 'settings') {
+        this.props.navigator.push({
+          screen: 'dnd.CharacterSettingsScreen',
+          title: 'Settings'
+        })
       }
     }
+  }
+}
+
+export class CharacterSettingsScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      character: {}
+    }
+  }
+
+  componentDidMount () {
+    getCharacter().then(character => {
+      this.character = character
+      console.log(character)
+      this.unsubscribe = this.character.onSnapshot(character => {
+        this.setState(prev => {
+          return {character: character.data()}
+        })
+      })
+    })
+  }
+
+  componentWillUnmount () {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+      this.unsubscribe = null
+    }
+  }
+
+  render () {
+    return <View style={styles.settingsscreen}>
+      <Picker
+        label='Rule Set'
+        selectedValue={this.state.character.rules || ''}
+        onValueChange={this.setRules}>
+        <PickerItem value='' label='D&D 5th Edition' />
+        <PickerItem value='fateAccelerated' label='Fate Accelerated' />
+      </Picker>
+    </View>
+  }
+
+  @autobind
+  setRules (rules) {
+    this.character.set({rules}, {merge: true})
   }
 }
 

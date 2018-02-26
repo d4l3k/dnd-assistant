@@ -30,6 +30,11 @@ export const start = () => {
         rightButtons: [
           ...rightButtons,
           {
+            id: 'settings',
+            title: 'Settings',
+            icon: iconsMap['md-settings']
+          },
+          {
             id: 'share',
             title: 'Sharing Settings',
             icon: iconsMap['md-share']

@@ -2,7 +2,7 @@
 
 import {Navigation} from './navigation'
 
-import {CharacterScreen, ShareSettingsScreen, AddHealthScreen} from './Character'
+import {CharacterScreen, ShareSettingsScreen, AddHealthScreen, CharacterSettingsScreen} from './Character'
 import {AddGearScreen, GearScreen, GearSettingsScreen} from './GearScreen'
 import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
@@ -13,6 +13,7 @@ import {start} from './App'
 
 Navigation.registerComponent('dnd.CharacterScreen', () => CharacterScreen)
 Navigation.registerComponent('dnd.ShareSettingsScreen', () => ShareSettingsScreen)
+Navigation.registerComponent('dnd.CharacterSettingsScreen', () => CharacterSettingsScreen)
 Navigation.registerComponent('dnd.GearScreen', () => GearScreen)
 Navigation.registerComponent('dnd.CharacterMenu', () => CharacterMenu)
 Navigation.registerComponent('dnd.KnownSpellsScreen', () => KnownSpellsScreen)

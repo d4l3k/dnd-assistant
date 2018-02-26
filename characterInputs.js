@@ -3,7 +3,7 @@ import autobind from 'autobind-decorator'
 import {View, StyleSheet, Text} from 'react-native'
 import {TextInput} from './TextInput'
 import {BaseText, Field, colors, showLightBox, LightBox} from './styles.js'
-import {DieRoll} from './DieRoll'
+import {DieRoll, rollFate} from './DieRoll'
 import {CheckBox} from './CheckBox'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -69,11 +69,14 @@ export class ApproachInput extends React.PureComponent {
   render () {
     return (
       <Field name={this.props.name}>
-        <TextInput
-          value={this.props.value || ''}
-          onChangeText={this.props.onChangeText}
-          keyboardType={'numeric'}
-        />
+        <View style={styles.row}>
+          <TextInput
+            value={this.props.value || ''}
+            onChangeText={this.props.onChangeText}
+            keyboardType={'numeric'}
+          />
+          <DieRoll modifier={this.props.value} roll={rollFate} mod />
+        </View>
       </Field>
     )
   }

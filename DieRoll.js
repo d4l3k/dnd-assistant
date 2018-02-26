@@ -15,6 +15,10 @@ export class DieRoll extends React.PureComponent {
   }
 
   render () {
+    let displayRoll = this.state.roll
+    if (this.props.mod && displayRoll > 0) {
+      displayRoll = '+' + displayRoll
+    }
     return <View style={styles.row}>
       <MaterialCommunityIcons.Button
         name='dice-multiple'
@@ -24,27 +28,37 @@ export class DieRoll extends React.PureComponent {
         onPress={this.roll}
       />
 
-      <BaseText>{this.state.roll}</BaseText>
+      <BaseText>{displayRoll}</BaseText>
     </View>
+  }
+
+  computeRoll () {
+    if (this.props.roll) {
+      return this.props.roll(this.props)
+    }
+    if (this.props.pattern) {
+      const roll = new Roll()
+      return roll.roll(this.props.pattern.trim()).result
+    }
+
+    return  Math.floor(Math.random() * parseFloat(this.props.d || 20) + 1) + parseFloat(this.props.modifier || 0)
   }
 
   @autobind
   roll () {
-    if (this.props.pattern) {
-      const roll = new Roll()
-      this.setState(prev => {
-        return {
-          roll: roll.roll(this.props.pattern.trim()).result
-        }
-      })
-      return
-    }
-
-    const roll = Math.floor(Math.random() * parseFloat(this.props.d || 20) + 1) + parseFloat(this.props.modifier || 0)
+    const roll = this.computeRoll()
     this.setState(prev => {
       return {roll}
     })
   }
+}
+
+export const rollFate = ({modifier}) => {
+  let roll = 0
+  for (let i = 0; i < 3; i++) {
+    roll += Math.floor(Math.random()*3-1)
+  }
+  return roll + parseFloat(modifier || 0)
 }
 
 export class ExtractDieRolls extends React.PureComponent {

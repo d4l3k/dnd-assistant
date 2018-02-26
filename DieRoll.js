@@ -55,7 +55,7 @@ export class DieRoll extends React.PureComponent {
 
 export const rollFate = ({modifier}) => {
   let roll = 0
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     roll += Math.floor(Math.random()*3-1)
   }
   return roll + parseFloat(modifier || 0)

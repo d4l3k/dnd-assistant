@@ -31,4 +31,4 @@ it('rolls fate correctly with modifier', () => {
 it('renders without crashing', () => {
   const rendered = renderer.create(<DieRoll />).toJSON()
   expect(rendered).toBeTruthy()
-});
+})

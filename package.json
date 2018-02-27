@@ -80,6 +80,6 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": [ "window", "expect" ]
+    "globals": [ "window", "expect", "it" ]
   }
 }

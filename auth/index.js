@@ -78,33 +78,44 @@ export const onLogin = () => {
   })
 }
 
+let pickCharacterPromise
+const pickCharacter = () => {
+  if (pickCharacterPromise) {
+    return pickCharacterPromise
+  }
+
+  let characters
+  pickCharacterPromise = onLogin().then(() => {
+    characters = getUser().collection('characters')
+    return characters.limit(1).get()
+  }).then(results => {
+    let id = null
+    results.forEach(result => {
+      id = result.id
+    })
+    if (!id) {
+      return characters.add({
+        name: 'New Character'
+      }).then(ref => {
+        return ref.id
+      })
+    }
+    return id
+  }).then(id => {
+    if (!viewedCharacter()) {
+      setCharacter(id, true)
+    }
+    return id
+  })
+
+  return pickCharacterPromise
+}
+
 export const characterID = () => {
   return storage.load({
     key: 'characterID'
   }).catch(() => {
-    let characters
-    return onLogin().then(() => {
-      characters = getUser().collection('characters')
-      return characters.limit(1).get()
-    }).then(results => {
-      let id = null
-      results.forEach(result => {
-        id = result.id
-      })
-      if (!id) {
-        return characters.add({
-          name: 'New Character'
-        }).then(ref => {
-          return ref.id
-        })
-      }
-      return id
-    }).then(id => {
-      if (!viewedCharacter()) {
-        setCharacter(id, true)
-      }
-      return id
-    })
+    return pickCharacter()
   })
 }
 

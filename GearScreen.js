@@ -311,6 +311,7 @@ function listenInventory (self, noGear) {
       results.forEach(result => {
         const data = result.data()
         data.id = result.id
+        data.gear = self.gear
         gear.push(data)
       })
       gear.sort((a, b) => {

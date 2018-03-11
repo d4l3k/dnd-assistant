@@ -67,7 +67,8 @@ export class WildMagicScreen extends React.PureComponent {
       this.character = character
       this.unsubscribe = character.onSnapshot(snapshot => {
         this.setState(state => {
-          return {wildMagicProb: snapshot.data().wildMagicProb}
+          const {wildMagicProb, wildMagicRolls} = snapshot.data()
+          return {wildMagicProb, wildMagicRolls}
         })
       })
       this.effects = character.collection('wildMagic')

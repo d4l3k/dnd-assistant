@@ -127,6 +127,13 @@ export class WildMagicScreen extends React.PureComponent {
           keyboardType='numeric'
           onChangeText={this.setWildMagic}
         />
+
+        <TextInput
+          label='Number Rolls'
+          value={this.state.wildMagicRolls || '1'}
+          keyboardType='numeric'
+          onChangeText={this.setWildMagicRolls}
+        />
       </View>
     </ScrollView>
   }
@@ -165,15 +172,18 @@ export class WildMagicScreen extends React.PureComponent {
     }
 
     if (roll < parseFloat(this.state.wildMagicProb)) {
-      const wildMagic = this.wildMagic()
-      const effectI = Math.floor(Math.random() * wildMagic.effects.length)
-      const durationI = Math.floor(Math.random() * wildMagic.durations.length)
-      state.effect = {
-        effect: wildMagic.effects[effectI],
-        duration: wildMagic.durations[durationI],
-        time: moment().toISOString()
+      const numRolls = parseInt(this.state.wildMagicRolls || 1)
+      for (let i = 0; i < numRolls; i++) {
+        const wildMagic = this.wildMagic()
+        const effectI = Math.floor(Math.random() * wildMagic.effects.length)
+        const durationI = Math.floor(Math.random() * wildMagic.durations.length)
+        state.effect = {
+          effect: wildMagic.effects[effectI],
+          duration: wildMagic.durations[durationI],
+          time: moment().toISOString()
+        }
+        this.effects.add(state.effect)
       }
-      this.effects.add(state.effect)
     }
 
     this.setState(prev => state)
@@ -185,6 +195,14 @@ export class WildMagicScreen extends React.PureComponent {
       return {wildMagicProb}
     })
     this.character.set({wildMagicProb}, {merge: true})
+  }
+
+  @autobind
+  setWildMagicRolls (wildMagicRolls) {
+    this.setState(state => {
+      return {wildMagicRolls}
+    })
+    this.character.set({wildMagicRolls}, {merge: true})
   }
 }
 

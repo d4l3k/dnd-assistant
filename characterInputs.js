@@ -13,9 +13,10 @@ export class SkillInput extends React.PureComponent {
 
     return <View style={styles.skillinput}>
       <CheckBox
-        onClick={this.props.onClick}
-        isChecked={!!this.props.isChecked}
+        onClick={this.onClick}
+        isChecked={this.isChecked()}
       />
+      { this.props.isChecked === 2 ? <BaseText>*</BaseText> : null }
       <View style={{width: 30, alignItems: 'flex-end', margin: 5}}>
         <BaseText>{value}</BaseText>
       </View>
@@ -34,10 +35,23 @@ export class SkillInput extends React.PureComponent {
     </View>
   }
 
+  isChecked () {
+    return (this.props.isChecked || 0) >= 1
+  }
+
+  @autobind
+  onClick () {
+    let val = (this.props.isChecked || 0) + 1
+    if (val > 2) {
+      val = 0
+    }
+    this.props.onClick(val)
+  }
+
   value () {
     let num = statToMod(this.props.value)
     if (this.props.isChecked) {
-      num += parseMod(this.props.proficiency)
+      num += parseMod(this.props.proficiency) * (this.props.isChecked || 0)
     }
     return modString(num)
   }

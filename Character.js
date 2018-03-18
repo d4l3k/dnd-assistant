@@ -197,12 +197,12 @@ export class CharacterScreen extends React.PureComponent {
         key={i}
         name={name}
         secondary={a.length === 2 ? skillToShort[skill] : null}
-        onClick={this.cache(() => {
+        onClick={this.cache((val) => {
           const props = {}
-          props[propName] = !this.state[characterPrefix + propName]
+          props[propName] = val
           this.set(props)
         }, propName)}
-        isChecked={!!this.state[characterPrefix + propName]}
+        isChecked={this.state[characterPrefix + propName]}
         value={this.state[characterPrefix + skill]}
         proficiency={this.state.character_proficiency}
       />

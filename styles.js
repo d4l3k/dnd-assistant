@@ -140,6 +140,10 @@ export class LightBox extends React.PureComponent {
         },
         default: {
           width: Dimensions.get('window').width * 0.9
+        },
+        android: {
+          width: Dimensions.get('window').width * 0.9,
+          minHeight: 500
         }
       })
     }}>

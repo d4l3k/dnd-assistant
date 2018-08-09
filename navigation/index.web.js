@@ -1,5 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
+import ReactDOM from 'react-dom'
 import {
   AppRegistry,
   StyleSheet,
@@ -77,7 +78,8 @@ const materialStyles = theme => ({
     margin: theme.spacing.unit * 1,
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1
+    flexGrow: 1,
+    overflowY: 'auto'
   },
   flex: {
     flex: 1,
@@ -145,11 +147,19 @@ class Navigator {
 
   startTabBasedApp (props) {
     const container = document.createElement('div')
+    container.style.display = 'flex'
+    container.style.height = '100vh'
     document.body.appendChild(container)
+    /*
     AppRegistry.runApplication('ReactNativeWeb', {
       rootTag: container,
       initialProps: props
     })
+    */
+    ReactDOM.render(
+      React.createElement(ReactNativeWeb, props),
+      container,
+    );
   }
 
   getComponent (name, props) {

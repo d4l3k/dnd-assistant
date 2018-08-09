@@ -2,7 +2,10 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import {StyleSheet, View, ScrollView, Platform} from 'react-native'
 import {Alert} from './Alert'
-import spells from './data/spellData.json'
+
+import dataSpells from './data/spellData.json'
+import dataDisciplines from './data/disciplines.json'
+
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
@@ -16,6 +19,8 @@ import lunr from 'lunr'
 import {ExtractDieRolls} from './DieRoll'
 
 const numSlotLevels = 9
+
+const spells = dataSpells.concat(dataDisciplines)
 
 const spellMap = {}
 spells.forEach(spell => {
@@ -90,6 +95,74 @@ class Quote extends React.PureComponent {
   }
 }
 
+class AbilityItem extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.cache = Cache()
+    this.state = {
+      expand: false
+    }
+  }
+
+  @autobind
+  onPress () {
+    this.setState(state => {
+      return {
+        expand: !state.expand
+      }
+    })
+  }
+
+  render () {
+    return (
+      <View style={styles.item}>
+        <Touchable onPress={this.onPress}>
+          <View style={styles.iteminner}>
+            {this.header()}
+            {this.detail()}
+          </View>
+        </Touchable>
+
+        {this.buttons()}
+      </View>
+    )
+  }
+
+  header () {
+    return <View style={styles.row}>
+      <B>{this.props.ability.name}</B>
+      <BaseText>{this.props.ability.cost}</BaseText>
+    </View>
+  }
+
+  detail () {
+    if (!this.state.expand) {
+      return
+    }
+
+    return <Quote>
+      <BaseText>{this.props.ability.desc}</BaseText>
+    </Quote>
+  }
+
+  buttons () {
+    if (!this.state.expand) {
+      return
+    }
+
+    return <View style={styles.iteminner}>
+      <ExtractDieRolls text={this.props.ability.desc} />
+      <View style={styles.row}>
+        <Button
+          title={'Cast '+this.props.ability.cost}
+          onPress={this.castSpell}
+        />
+      </View>
+    </View>
+  }
+}
+
 class SpellItem extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -98,17 +171,25 @@ class SpellItem extends React.PureComponent {
       spellData: {}
     }
 
-    this.cache = Cache()
+    this._cache = Cache()
 
     this.castSpell = this.castSpell.bind(this)
     this.setNotes = this.setNotes.bind(this)
     this.onPress = this.onPress.bind(this)
   }
 
+  cache (fn) {
+    return this._cache(fn, this.props.spell.name)
+  }
+
+  spell () {
+    return this.character.collection('spells').doc(slugify(this.props.spell.name))
+  }
+
   componentDidMount () {
     getCharacter().then(character => {
-      this.spell = character.collection('spells').doc(slugify(this.props.spell.name))
-      this.unsubscribe = this.spell.onSnapshot(spell => {
+      this.character = character
+      this.unsubscribe = this.spell().onSnapshot(spell => {
         this.setState(state => {
           return {spellData: spell.data() || {}}
         })
@@ -146,6 +227,8 @@ class SpellItem extends React.PureComponent {
           </View>
         </Touchable>
 
+        {this.abilities()}
+
         {this.notes()}
 
         {this.buttons()}
@@ -160,15 +243,15 @@ class SpellItem extends React.PureComponent {
 
     return <View style={styles.detail}>
       <View style={styles.row}>
-        <View style={styles.grow}>
+        {this.props.spell.duration ? <View style={styles.grow}>
           <B>Duration</B>
           <BaseText>{this.props.spell.duration}</BaseText>
-        </View>
+        </View>: <View />}
 
-        <View style={styles.grow}>
+        {this.props.spell.range ? <View style={styles.grow}>
           <B>Range</B>
           <BaseText>{this.props.spell.range}</BaseText>
-        </View>
+        </View> : <View />}
 
         {this.props.spell.material ? <View style={styles.grow}>
           <B>Material</B>
@@ -177,15 +260,15 @@ class SpellItem extends React.PureComponent {
       </View>
 
       <View style={styles.row}>
-        <View style={styles.grow}>
+        {this.props.spell.concentration ? <View style={styles.grow}>
           <B>Concentration</B>
           <BaseText>{this.props.spell.concentration}</BaseText>
-        </View>
+        </View> : <View />}
 
-        <View style={styles.grow}>
+        {this.props.spell.concentration ? <View style={styles.grow}>
           <B>Ritual</B>
           <BaseText>{this.props.spell.ritual}</BaseText>
-        </View>
+        </View> : <View />}
       </View>
 
       <B>Description</B>
@@ -197,6 +280,16 @@ class SpellItem extends React.PureComponent {
 
       {this.higherLevel()}
     </View>
+  }
+
+  abilities () {
+    if (!this.props.expand || this.props.noDetail) {
+      return
+    }
+
+    return this.props.spell.abilities.map((a, i) => {
+      return <AbilityItem ability={a} key={i} />
+    })
   }
 
   notes () {
@@ -231,10 +324,11 @@ class SpellItem extends React.PureComponent {
       </View>
 
       <View style={styles.itembuttons}>
-        <Button
-          title='Cast'
-          onPress={this.castSpell}
-        />
+        {!this.props.spell.notcastable ?
+          <Button
+            title='Cast'
+            onPress={this.castSpell}
+          /> : null}
 
         {
           this.state.spellData.prepared
@@ -264,7 +358,7 @@ class SpellItem extends React.PureComponent {
   }
 
   addSpell (active) {
-    this.spell.set({active}, {merge: true})
+    this.spell().set({active}, {merge: true})
   }
 
   castSpell () {
@@ -275,11 +369,11 @@ class SpellItem extends React.PureComponent {
   }
 
   setNotes (notes) {
-    this.spell.set({notes}, {merge: true})
+    this.spell().set({notes}, {merge: true})
   }
 
   prepareSpell (prepared) {
-    this.spell.set({prepared}, {merge: true})
+    this.spell().set({prepared}, {merge: true})
   }
 
   higherLevel () {
@@ -780,7 +874,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   item: {
-    flex: 1,
     borderBottomWidth: 1,
     borderBottomColor: colors.border
   },
@@ -835,5 +928,8 @@ const styles = StyleSheet.create({
   },
   spelllist: {
     flex: 1
+  },
+  shrink: {
+    flexShrink: 10000,
   }
 })

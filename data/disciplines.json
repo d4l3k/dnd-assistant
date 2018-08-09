@@ -1,0 +1,1627 @@
+[
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you or a creature you touch ignores the effects of extreme heat or cold (but not cold or fire damage) for the next hour.",
+        "duration": "Instantaneous",
+        "name": "Environmental Adaptation"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "When you take acid,cold, fire, lightning, or thunder damage, you can use your reaction to gain resistance to damage of that type\u2014including the triggering damage\u2014 until the end of your next turn.",
+        "duration": "Instantaneous",
+        "name": "Adaptive Shield"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you can touch one creature and give it resistance to acid, cold, fire, lightning, or thunder damage (your choice), which lasts until your concentration ends.",
+        "duration": "1 hr",
+        "name": "Energy Adaptation"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you can touch one creature and give it immunity to acid, cold, fire, lightning, or thunder damage (your choice), which lasts until your concentration ends.",
+        "duration": "1 hr",
+        "name": "Energy Immunity"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline,you don't need to eat, breathe, or sleep.",
+    "level": "Psionic Disciplines",
+    "name": "Adaptive Body",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you analyze the aura of one creature you see. You learn its current hit point total and all its immunities, resistances, and vulnerabilities.",
+        "duration": "Instantaneous",
+        "name": "Assess Foe"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you learn a one-word summary of the emotional state of up to six creatures you can see, such as happy, confused, afraid, or violent.",
+        "duration": "Instantaneous",
+        "name": "Read Moods"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you study one creature\u2019s aura. Until your concentration ends, while you can see the target, you learn if it\u2019s under the effect of any magical or psionic effects, its current hit point total, and its basic emotional state. While this effect lasts, you have advantage on Wisdom (Insight) and Charisma checks you make against it.",
+        "duration": "1 hr",
+        "name": "View Aura"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you gain the ability to see auras even of invisible or hidden creatures. Until your concentration ends, you can see all creatures, including hidden and invisible ones, regardless of lighting conditions.",
+        "duration": "1 min",
+        "name": "Perceive the Unseen"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Wisdom(Insight) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Aura Sight",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "You manifest long claws for an instant and make a melee weapon attack against one creature within 5 feet of you. On a hit, this attack deals 1d10 slashing damage per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Bestial Claws"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "You gain gills; you can breathe air and water",
+        "duration": "Instantaneous",
+        "name": "Amphibious"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "You grow tiny hooked claws that give you gain a climbing speed equal to your walking speed.",
+        "duration": "Instantaneous",
+        "name": "Climbing"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "Wings sprout from your back. You gain a flying speed equal to your walking speed.",
+        "duration": "Instantaneous",
+        "name": "Flight"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "Your eyes and ears become more sensitive. You gain advantage on Wisdom (Perception) checks.",
+        "duration": "Instantaneous",
+        "name": "Keen Senses"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "You gain a keen sense of smell and an instinct to detect prey. You can see invisible creatures and objects within 10 feet of you, even if you are blinded.",
+        "duration": "Instantaneous",
+        "name": "Perfect Senses"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "You gain fins and webbing between your fingers and toes; you gain a swimming speed equal to your walking speed.",
+        "duration": "Instantaneous",
+        "name": "Swimming"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "Your skin becomes as tough as leather; you gain a +2 bonus to AC.",
+        "duration": "Instantaneous",
+        "name": "Tough Hide"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Wisdom(Animal Handling) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Bestial Form",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, you gain a bonus to your next damage roll against a target you hit with a melee attack during the current turn. The bonus equals +1d6 per psi point spent, and the bonus damage is the same type as the attack. If the attack has more than one damage type, you choose which one to use for the bonus damage.",
+        "duration": "Instantaneous",
+        "name": "Brute Strike"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "When you hit a target with a melee attack, you can activate this ability as a reaction. The target must succeed on a Strength saving throw or be knocked 10 feet away from you per psi point spent. The target moves in a straight line. If it hits an object, this movement immediately ends and the target takes 1d6 bludgeoning damage per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Knock Back"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As part of your movement, you jump in any direction up to 20 feet per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Mighty Leap"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain a +5 bonus to Strength checks until the end of your next turn.",
+        "duration": "Instantaneous",
+        "name": "Feat of Strength"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Strength (Athletics) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Brute Force",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, you increase your walking speed by 10 feet per psi point spent until the end of the current turn. If you have a climbing or swimming speed, this increase applies to that speed as well.",
+        "duration": "Instantaneous",
+        "name": "Rapid Step"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you take the Dodge action.",
+        "duration": "Instantaneous",
+        "name": "Agile Defense"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you cause yourself to be invisible during any of your movement during the current turn.",
+        "duration": "Instantaneous",
+        "name": "Blur of Motion"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain two benefits until the end of the current turn: you don\u2019t provoke opportunity attacks, and you have a climbing speed equal to your walking speed.",
+        "duration": "Instantaneous",
+        "name": "Surge of Speed"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you can Dash or make one weapon attack.",
+        "duration": "Instantaneous",
+        "name": "Surge of Action"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, your walking speed increases by 10 feet.",
+    "level": "Psionic Disciplines",
+    "name": "Celerity",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you deliver a touch of acid to one creature within your reach. The target must make a Dexterity saving throw, taking 1d10 acid damage per psi point spent on a failed save, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Corrosive Touch"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you create a poison spray that targets one creature you can see within 30 feet of you. The target must make a Constitution saving throw. On a failed save, it takes 1d6 poison damage per psi point spent and is poisoned until the end of your next turn. On a successful save, the target takes half as much damage and isn\u2019t poisoned.",
+        "duration": "Instantaneous",
+        "name": "Venom Strike"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a reaction when you take piercing or slashing damage, you cause acid to spray from your wound; each creature within 5 feet of you takes 2d6 acid damage.",
+        "duration": "Instantaneous",
+        "name": "Acid Spray"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "You exhale a wave of acid in a 60-foot line that is 5 feet wide. Each creature in the line must make a Constitution saving throw, taking 6d6 acid damage on a failed save, or half as much on a successful one. You can increase the damage by 1d6 per additional psi point spent on it.",
+        "duration": "Instantaneous",
+        "name": "Breath of the Black Dragon"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "You exhale a cloud of poison in a 90-foot cone. Each creature in the line must make a Constitution saving throw, taking 10d6 poison damage on a failed save, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Breath of the Green Dragon"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have resistance to acid and poison damage.",
+    "level": "Psionic Disciplines",
+    "name": "Corrosive Metabolism",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, one creature you can see within 60 feet of you must make a Charisma saving throw. On a failed save, it takes 1d8 psychic damage per psi point spent, and it can\u2019t take reactions until the start of its next turn. On a successful save, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Crowned in Sorrow"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "If you spend 1 minute conversing with a creature, you can attempt to seed it with overwhelming ennui. At the end of the minute, you can use an action to force the creature to make a Wisdom saving throw. The save automatically succeeds if the target is immune to being charmed. On a failed save, it sits and is incapacitated until your concentration ends. This effect immediately ends if the target or any ally it can see is attacked or takes damage. On a successful save, the creature is unaffected and has no inkling of your attempt to bend its will.",
+        "duration": "10 min",
+        "name": "Call to Inaction"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, you force one creature you can see within 60 feet of you to make a Charisma saving throw. On a failed save, it takes 3d6 psychic damage, and its speed is reduced to 0 until the end of its next turn. On a successful save, it takes half as much damage. You can increase the damage by 1d6 per additional psi point spent on it.",
+        "duration": "Instantaneous",
+        "name": "Visions of Despair"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you choose one creature you can see within 60 feet of you. It must succeed on a Charisma saving throw, or it is incapacitated and has a speed of 0 until your concentration ends. It can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "duration": "1 min",
+        "name": "Dolorous Mind"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Charisma (Intimidation) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Crown of Despair",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Charisma saving throw. On a failed save, it takes 1d6 psychic damage per psi point spent and can\u2019t move closer to you until the end of its next turn. On a successful save, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Eye of Horror"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you create an invisible, insubstantial wall of energy within 60 feet of you that is up to 30 feet long, 10 feet high, and 1 foot thick. The wall lasts until your concentration ends. Any creature attempting to move through it must make a Wisdom saving throw. On a failed save, a creature can\u2019t move through the wall until the start of its next turn. On a successful save, the creature can pass through it. A creature must make this save whenever it attempts to pass through the wall, whether willingly or unwillingly.",
+        "duration": "10 min",
+        "name": "Wall of Repulsion"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "You cause a creature to regard all other beings as horrid, alien entities. As an action, choose one creature you can see within 60 feet of you. The target must make a Wisdom saving throw. On a failed save, it takes 5d6 psychic damage, and until your concentration ends, it takes 1d6 psychic damage per creature within 5 feet of it at the end of each of its turns. On a successful save, the target takes only half the initial damage and suffers none of the other effects.",
+        "duration": "1 min",
+        "name": "Visions of Disgust"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, choose up to six creatures within 60 feet of you. Each target must make a Charisma saving throw. On a failed save, a target takes 8d6 psychic damage, and it is frightened until your concentration ends. On a successful save, a target takes half as much damage. While frightened by this effect, a target\u2019s speed is reduced to 0, and the target can use its action, and any bonus action it might have, only to make melee attacks. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "duration": "1 min",
+        "name": "World of Horror"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While you are focused on this discipline, the area in a 5-foot radius around you is difficult terrain for any enemy that isn\u2019t immune to being frightened.",
+    "level": "Psionic Disciplines",
+    "name": "Crown of Disgust",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must succeed on a Charisma saving throw or take 1d6 psychic damage per psi point spent on this ability and immediately use its reaction to move its speed in a straight line toward its nearest enemy. The save automatically succeeds if the target is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Primal Fury"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "If you spend 1 minute conversing with a creature, you can attempt to leave a simmering violence in its mind. At the end of the minute, you can use an action to force the creature to make a Wisdom saving throw to resist feeling violent urges against one creature you describe to it or name. The save automatically succeeds if the target is immune to being charmed. On a failed save, the target attacks the chosen creature if it sees that creature before your concentration ends, using weapons or spells against a creature it was already hostile toward or unarmed strikes against an ally or a creature it was neutral toward. Once the fight starts, it continues to attack for 5 rounds before this effect ends. This effect immediately ends if the target or any ally it can see is attacked or takes damage from any creature other than the one it has been incited against. On a successful save, the creature is unaffected and has no inkling of your attempt to bend its will.",
+        "duration": "10 min",
+        "name": "Fighting Words"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "You cause a creature's bloodlust to overcome its sense of preservation. As a bonus action, choose one creature you can see within 60 feet of you. The target must succeed on a Wisdom saving throw or, until the end of your next turn, it can\u2019t willingly move unless its movement brings it closer to its nearest enemy that it can see. The \u00a92017 Wizards of the Coast LLC 14 save automatically succeeds if the target is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Mindless Courage"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "You cause a creature's rage to grow so hot that it attacks without heeding its own safety. As a bonus action, choose one creature you can see within 60 feet of you. The target must succeed on a Wisdom saving throw or, until your concentration ends, any creature within 5 feet of it can use a reaction to make a melee attack against it whenever the target makes a melee attack. The save automatically succeeds if the target is immune to being charmed.",
+        "duration": "1 min",
+        "name": "Punishing Fury"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While you are focused on this discipline, any enemy within 5 feet of you that makes a melee attack roll against creatures other than you does so with disadvantage.",
+    "level": "Psionic Disciplines",
+    "name": "Crown of Rage",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you become Tiny until your concentration ends. While this size, you gain a +5 bonus to Dexterity (Stealth) checks and can move through gaps up to 6 inches across without squeezing",
+        "duration": "10 min",
+        "name": "Miniature Form"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you shift to an incredibly small size and then suddenly return to normal, sending an opponent flying backward. Choose one creature you can see within 5 feet of you. It must succeed on a Strength saving throw or be knocked prone.",
+        "duration": "Instantaneous",
+        "name": "Toppling Shift"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As a reaction when you are hit by an attack, you shift down to minute size to avoid the attack. The attack misses, and you move up to 5 feet without provoking opportunity attacks before returning to normal size.",
+        "duration": "Instantaneous",
+        "name": "Sudden Shift"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As a bonus action, you become smaller than Tiny until your concentration ends. While this size, you gain a +10 bonus to Dexterity (Stealth) checks and a +5 bonus to AC, you can move through gaps up to 1 inch across without squeezing, and you can\u2019t make weapon attacks.",
+        "duration": "10 min",
+        "name": "Microscopic Form"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Dexterity (Stealth) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Diminution",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain 10 temporary hit points. In addition, until your concentration ends, your melee weapon attacks deal an extra 1d4 bludgeoning damage on a hit, and your reach increases by 5 feet. If you\u2019re smaller than Large, you also become Large for the duration.",
+        "duration": "1 min",
+        "name": "Ogre Form"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As a bonus action, you gain 30 temporary hit points. In addition, until your concentration ends, your melee weapon attacks deal an extra 2d6 bludgeoning damage on a hit, and your reach increases by 10 feet. If you\u2019re smaller than Huge, you also become Huge for the duration.",
+        "duration": "1 min",
+        "name": "Giant Form"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, your reach increases by 5 feet.",
+    "level": "Psionic Disciplines",
+    "name": "Giant Growth",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a reaction, you can impose disadvantage on an attack roll against you if you can see the attacker. If the attack still hits you, the attacker takes 2d10 psychic damage.",
+        "duration": "Instantaneous",
+        "name": "Psychic Backlash"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a reaction when you make an Intelligence, a Wisdom, or a Charisma saving throw, you gain a +1 bonus to that saving throw for each psi point you spend on this ability. You can use this ability after rolling the die but before suffering the results.",
+        "duration": "Instantaneous",
+        "name": "Psychic Parry"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you create a field of protective psychic energy. Choose any number of creatures within 30 feet of you. Until your concentration ends, each target has resistance to psychic damage and advantage on Intelligence, Wisdom, and Charisma saving throws.",
+        "duration": "10 min",
+        "name": "Psychic Redoubt"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain resistance to psychic damage.",
+    "level": "Psionic Disciplines",
+    "name": "Intellect Fortress",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a reaction when you are hit by an attack, you gain a +1 bonus to AC for each psi point you spend on this ability. The bonus lasts until the end of your next turn. This bonus applies against the triggering attack.",
+        "duration": "Instantaneous",
+        "name": "Iron Hide"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain resistance to bludgeoning, piercing, and slashing damage until the end of your next turn.",
+        "duration": "Instantaneous",
+        "name": "Steel Hide"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you gain resistance to bludgeoning, piercing, or slashing damage (your choice), which lasts until your concentration ends",
+        "duration": "1 hr",
+        "name": "Iron Resistance"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain a +1 bonus to AC.",
+    "level": "Psionic Disciplines",
+    "name": "Iron Durability",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you exert an aura of sympathetic power. Roll 2d8 per psi point spent on this ability; the total is how many hit points worth of creatures this option can affect. Creatures within 30 feet of you are affected in ascending order of their hit point maximums, ignoring incapacitated creatures, creatures immune to being charmed, and creatures engaged in combat. Starting with the creature that has the lowest hit point maximum, each creature affected by this option is charmed by you for 10 minutes, regarding you as a friendly acquaintance. Subtract each creature\u2019s hit point maximum from the total before moving on to the next creature. A creature\u2019s hit point maximum must be equal to or less than the remaining total for that creature to be affected.",
+        "duration": "Instantaneous",
+        "name": "Charming Presence"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As an action, you exert an aura of power that grabs a creature's attention. Choose one creature you can see within 60 feet of you. It must make a Charisma saving throw. On a failed save, the creature is so thoroughly distracted by you that all other creatures are invisible to it until your concentration ends. This effect ends if the creature can no longer see or hear you or if it takes damage.",
+        "duration": "1 min",
+        "name": "Center of Attention"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you exert an aura that inspires awe in others. Choose up to 5 creatures you can see within 60 feet of you. Each target must succeed on an Intelligence saving throw or be charmed by you until your concentration ends. While charmed, the target obeys all your verbal commands to the best of its ability and without doing anything obviously self-destructive. The charmed target will attack only creatures that it has seen attack you since it was charmed or that it was already hostile toward. At the end of each of its turns, it can repeat the saving throw, ending the effect on itself on a success.",
+        "duration": "10 min",
+        "name": "Invoke Awe"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain a bonus to Charisma checks. The bonus equals half your Intelligence modifier (minimum of +1).",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Awe",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, choose up to five allies you can see within 60 feet of you. Each of those allies can use their reaction to move up to half their speed, following a path of your choice.",
+        "duration": "Instantaneous",
+        "name": "Coordinated Movement"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. Until the start of your next turn, your allies have advantage on attack rolls against that target.",
+        "duration": "1 rnd",
+        "name": "Commander\u2019s Sight"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, choose one ally you can see within 60 feet of you. That ally can use their reaction to immediately take the Attack action. You choose the targets",
+        "duration": "Instantaneous",
+        "name": "Command to Strike"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you exert an aura of trust and command that unites your allies into a cohesive unit. Until your concentration ends, any ally within 60 feet of you on their turn can, as a bonus action, take the Dash or Disengage action or roll a d4 and add the number rolled to each attack roll they make that turn.",
+        "duration": "1 min",
+        "name": "Strategic Mind"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "As an action, choose up to five allies you can see within 60 feet of you. Each of those allies can use their reaction to take the Attack action. You choose the targets of the attacks.",
+        "duration": "Instantaneous",
+        "name": "Overwhelming Attack"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, when you end your turn and didn\u2019t move during it, you can use your reaction to allow one ally you can see within 30 feet of you to move up to half their speed, following a path of your choice. To move in this way, the ally mustn\u2019t be incapacitated.",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Command",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, choose up to six creatures you can see within 60 feet of you. If any of those creatures is frightened, that condition ends on that creature",
+        "duration": "Instantaneous",
+        "name": "Incite Courage"
+      },
+      {
+        "concentration": "yes",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, you project psionic energy until your concentration ends. The energy fortifies you and your allies when your enemies are felled; whenever an enemy you can see is reduced to 0 hit points, you and each of your allies within 30 feet of you gain temporary hit points equal to double the psi points spent to activate this effect.",
+        "duration": "10 min",
+        "name": "Aura of Victory"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you and up to five creatures you can see within 60 feet of you each gain one extra action to use on your individual turns. The action goes away if not used before the end of your next turn. the action can be used only to make one weapon attack or to take the Dash or Disengage action.",
+        "duration": "1 rnd",
+        "name": "Pillar of Confidence"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you and allies within 10 feet of you who can see you have advantage on saving throws against being frightened.",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Courage",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must succeed on a Wisdom saving throw or become frightened of you until your concentration ends. Whenever the frightened target ends its turn in a location where it can\u2019t see you, it can repeat the saving throw, ending the effect on itself on a success.",
+        "duration": "1 min",
+        "name": "Incite Fear"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you cloak yourself in unsettling psychic energy. Until your concentration ends, any enemy within 60 feet of you that can see you must spend 1 extra foot of movement for every foot it moves toward you. A creature ignores this effect if immune to being frightened.",
+        "duration": "1 hr",
+        "name": "Unsettling Aura"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, choose up to eight creatures you can see within 90 feet of you that can see you. At the start of each of a target\u2019s turns before your concentration ends, the target must make a Wisdom saving throw. On a failed save, the target is frightened until the start of its next turn, and you roll a die. If you roll an odd number, the frightened target moves half its speed in a random direction and takes no action on that turn, other than to scream in terror. If you roll an even number, the frightened target makes one melee attack against a random target within its reach. If there is no such target, it moves half its speed in a random direction and takes no action on that turn. This effect ends on a target if it succeeds on three saving throws against it.",
+        "duration": "1 min",
+        "name": "Incite Panic"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Charisma (Intimidation) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Fear",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, choose up to three allies you can see within 60 feet of you (you can choose yourself in place of one of the allies). Until your concentration ends, each target can roll a d4 when rolling damage for a melee weapon attack and add the number rolled to the damage roll.",
+        "duration": "1 min",
+        "name": "Incite Fury"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, choose up to three creatures you can see within 60 feet of you. Each target can immediately use its reaction to move up to its speed in a straight line toward its nearest enemy.",
+        "duration": "Instantaneous",
+        "name": "Mindless Charge"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you unleash an aura of rage. Until your concentration ends, you and any creature within 60 feet of you has advantage on melee attack rolls.",
+        "duration": "1 min",
+        "name": "Aura of Bloodletting"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you flood rage into one creature you can see within 60 feet of you. The target must succeed on a Charisma saving throw, or it can use its actions only to make melee attacks until your concentration ends. It can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "duration": "1 min",
+        "name": "Overwhelming Fury"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline in combat, you and any ally who starts their turn within 10 feet of you gains a 5-foot increase to their walking speed during that turn.",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Fury",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, choose up to three creatures you can see within 60 feet of you. Each target gains 3 temporary hit points per psi point spent on this effect.",
+        "duration": "Instantaneous",
+        "name": "Soothing Presence"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, choose up to three allies you can see (you can choose yourself in place of one of the allies). Until your concentration ends, each target can roll a d4 when making a saving throw and add the number rolled to the total.",
+        "duration": "1 min",
+        "name": "Comforting Aura"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you radiate a distracting mirth until your concentration ends. Each creature within 60 feet of you that can see you suffers disadvantage on any checks using the Perception and Investigation skills.",
+        "duration": "1 min",
+        "name": "Aura of Jubilation"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you and up to five allies you can see within 60 feet of you can immediately make saving throws against every effect they\u2019re suffering that allows a save at the start or end of their turns.",
+        "duration": "Instantaneous",
+        "name": "Beacon of Recovery"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Charisma (Persuasion) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Mantle of Joy",
+    "notcastable": true,
+    "school": "Avatar"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As part of your move on your turn, you can fly up to 20 feet for each psi point spent. If you end this flight in the air, you fall unless something else holds you aloft.",
+        "duration": "Instantaneous",
+        "name": "Wind Step"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you create a line of focused air that is 30 feet long and 5 feet wide. Each creature in that area must make a Strength saving throw, taking 1d8 bludgeoning damage per psi point spent and being knocked prone on a failed save, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Wind Stream"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you seize control of the air around you to create a protective veil. Until your concentration ends, attack rolls against you have disadvantage, and when a creature you can see misses you with a melee attack, you can use your reaction to force the creature to repeat the attack roll against itself.",
+        "duration": "10 min",
+        "name": "Cloak of Air"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you gain a flying speed of 60 feet, which lasts until your concentration ends",
+        "duration": "10 min",
+        "name": "Wind Form"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, your body becomes like a misty cloud until your concentration ends. In this form, you gain resistance to bludgeoning, piercing, and slashing damage, and you can\u2019t take actions other than the Dash action. You can pass through openings that are no more than 1 inch wide without squeezing.",
+        "duration": "1 min",
+        "name": "Misty Form"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you cause an air elemental to appear in an unoccupied space you can see within 120 feet of you. The elemental lasts until your concentration ends, and it obeys your verbal commands. In combat, roll for its initiative, and choose its behavior during its turns. When this effect ends, the elemental disappears. See the Monster Manual for its stat block.",
+        "duration": "1 hr",
+        "name": "Animate Air"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you take no falling damage, and you ignore difficult terrain when walking.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Air",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature or object you can see within 120 feet of you. The target must make a Constitution save. On a failed save, the target takes 1d10 fire damage per psi point spent, and it catches on fire, taking 1d6 fire damage at the end of each of its turns until your concentration ends or until it or a creature adjacent to it extinguishes the flames with an action. On a successful save, the target takes half as much damage and doesn\u2019t catch on fire.",
+        "duration": "1 min",
+        "name": "Combustion"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you create fire in a 20-foot-by-20-foot cube within 5 feet of you. The fire lasts until your concentration ends. Any creature in that area when you use this ability and any creature that ends its turn there takes 5 fire damage",
+        "duration": "1 min",
+        "name": "Rolling Flame"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you create a fiery explosion at a point you can see within 120 feet of you. Each creature in a 20-foot-radius sphere centered on that point must make a Constitution saving throw, taking 7d6 fire damage and being knocked prone on a failed save, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Detonation"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you become wreathed in flames until your concentration ends. Any creature that end its turn within 5 feet of you takes 3d6 fire damage.",
+        "duration": "1 min",
+        "name": "Fire Form"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you cause a fire elemental to appear in an unoccupied space you can see within 120 feet of you. The elemental lasts until your concentration ends, and it obeys your verbal commands. In combat, roll for its initiative, and choose its behavior during its turns. When this effect ends, the elemental disappears. See the Monster Manual for its stat block.",
+        "duration": "1 hr",
+        "name": "Animate Fire"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain resistance to fire damage, and you gain a +2 bonus to rolls for fire damage.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Fire",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Strength saving throw. On a failed save, it takes 1d8 force damage per psi point spent and is pushed up to 5 feet per point spent in a straight line away from you. On a successful save, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Push"
+      },
+      {
+        "concentration": "no",
+        "cost": "2\u20137 psi",
+        "desc": "Choose one object you can see within 60 feet of you that isn\u2019t being worn or carried by another creature and that isn\u2019t secured in place. It can\u2019t be larger than 20 feet on a side, and its maximum weight depends on the psi points spent on this ability, as shown below. As an action, you move the object up to 60 feet, and you must keep the object within sight during this movement. If the object ends this movement in the air, it falls. If the object would fall on a creature, the creature must succeed on a DC 10 Dexterity saving throw or take damage as listed on the table in the pdf.",
+        "duration": "Instantaneous",
+        "name": "Move"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you sheathe yourself in an intangible field of magical force. For 8 hours, your base AC is 14 + your Dexterity modifier, and you gain resistance to force damage. This effect ends if you are wearing or don armor.",
+        "duration": "Instantaneous",
+        "name": "Inertial Armor"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you create a transparent wall of telekinetic energy, at least one portion of which must be within 60 feet of you. The wall is 40 feet long, 10 feet high, and 1 inch thick. The wall lasts until your concentration ends. Each 10-foot section of the wall has an AC of 10 and 10 hit points.",
+        "duration": "10 min",
+        "name": "Telekinetic Barrier"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "You attempt to grasp a creature in telekinetic energy and hold it captive. As an action, choose one creature you can see within 60 feet of you. The target must succeed on a Strength saving throw or be grappled by you until your concentration ends or until the target leaves your reach, which is 60 feet for this grapple. The grappled target can escape by succeeding on a Strength (Athletics) or Dexterity (Acrobatics) check contested by your psionic ability plus your proficiency bonus. When a target attempts to escape in this way, you can spend psi points to boost your check, abiding by your psi limit. You gain a +1 bonus per psi point spent. While a target is grappled in this manner, you create one of the following effects as an action:",
+        "duration": "1 min",
+        "name": "Grasp"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "The target takes 1d6 bludgeoning damage per psi point spent",
+        "duration": "Instantaneous",
+        "name": "Crush"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "You move the target up to 5 feet per psi point spent. You can move it in the air and hold it there. It falls if the grapple ends.",
+        "duration": "Instantaneous",
+        "name": "Move"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Strength checks.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Force",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you hurl a mote of ice at one creature you can see within 120 feet of you. The target must make a Dexterity saving throw. On a failed save, the target takes 1d8 cold damage per psi point spent and has its speed halved until the start of your next turn. On a successful save, the target takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Ice Spike"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, choose a point on the ground you can see within 60 feet of you. The ground in a 20-foot radius centered on that point becomes covered in ice for 10 minutes. It is difficult terrain, and any creature that moves more than 10 feet on it must succeed on a Dexterity saving throw or fall prone. If the surface is sloped, a creature that falls prone in the area immediately slides to the bottom of the slope.",
+        "duration": "Instantaneous",
+        "name": "Ice Sheet"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you sheathe yourself with icy resilience. You gain 20 temporary hit points.",
+        "duration": "Instantaneous",
+        "name": "Frozen Sanctuary"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, choose a point you can see within 120 feet of you. The air in a 20-foot-radius sphere centered on that point becomes deathly cold and saturated with moisture. Each creature in that area must make a Constitution saving throw. On a failed save, a target takes 6d6 cold damage, and its speed is reduced to 0 until your concentration ends. On a successful save, a target takes half as much damage. As an action, a target that has its speed reduced can end the effect early if it succeeds on a Strength (Athletics) check with a DC equal to this effect\u2019s save DC. You can increase this effect\u2019s damage by 1d6 per each additional psi point spent on it.",
+        "duration": "1 min",
+        "name": "Frozen Rain"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you create a wall of ice, at least one portion of which must be within 60 feet of you. The wall is 60 feet long, 15 feet high, and 1 foot thick. The wall lasts until your concentration ends. Each 10-foot section of the wall has AC 12 and 30 hit points. A creature that damages the wall with a melee attack takes cold damage equal to the damage the creature dealt to the wall.",
+        "duration": "10 min",
+        "name": "Ice Barrier"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "Psychic Focus. While focused on this discipline, you have resistance to cold damage",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Ice",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you create an area of magical darkness, which foils darkvision. Choose a spot you can see within 60 feet of you. Magical darkness radiates from that point in a sphere with a 10-foot radius per psi point spent on this ability. The light produced by spells of 2nd level or less is suppressed in this area.",
+        "duration": "Instantaneous",
+        "name": "Darkness"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As an action, an object you touch radiates light in a 20-foot radius and dim light for an additional 20 feet. The light lasts until your concentration ends. Alternatively, a creature you touch radiates light in the same manner if it fails a Dexterity saving throw. While lit in this manner, it can\u2019t hide, and attack rolls against it gain advantage.",
+        "duration": "1 min",
+        "name": "Light"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you cause two shadows to appear in unoccupied spaces you can see within 60 feet of you. The shadows last until your concentration ends, and they obey your verbal commands. In combat, roll for their initiative, and choose their behavior during their turns. When this effect ends, the shadows disappear. See the Monster Manual for their stat block.",
+        "duration": "1 min",
+        "name": "Shadow Beasts"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you project a beam of light at one creature you can see within 60 feet of you. The target must make a Dexterity saving throw. On a failed save, it takes 6d6 radiant damage and is blinded until your concentration ends. On a successful save, it takes half as much damage. A blinded target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. You can increase this effect\u2019s damage by 1d6 per each additional psi point spent on it.",
+        "duration": "1 min",
+        "name": "Radiant Beam"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "Psychic Focus. While focused on this discipline, natural and magical darkness within 30 feet of you has no effect on your vision.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Light and Darkness",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Constitution saving throw, taking 1d10 necrotic damage per psi point spent on this ability, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Desiccate"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you unleash a wave that surges forth and then retreats to you like the rising tide. You create a wave in a 20-foot-by-20-foot square. At least some portion of the square\u2019s border must be within 5 feet of you. Any creature in that square must make a Strength saving throw. On a failed save, a target takes 2d6 bludgeoning damage, is knocked prone, and is pulled up to 10 feet closer to you. On a successful save, a target takes half as much damage. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
+        "duration": "Instantaneous",
+        "name": "Watery Grasp"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, you unleash a jet of water in a line that is 60 feet long and 5 feet wide. Each creature in the line must make a Strength saving throw, taking 3d6 bludgeoning damage on a failed save, or half as much damage on a successful one. In addition, you can move each target that fails its saving throw to any unoccupied space touching the line. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
+        "duration": "Instantaneous",
+        "name": "Water Whip"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you grant yourself and up to ten willing creatures you can see within 60 feet of you the ability to breathe underwater for the next 24 hours.",
+        "duration": "Instantaneous",
+        "name": "Water Breathing"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you cause a sphere of water to form around a creature. Choose one creature you can see within 60 feet of you. The target must make a Dexterity saving throw. On a failed save, it becomes trapped in the sphere of water until your concentration ends. While the target is trapped, its speed is halved, it suffers disadvantage on attack rolls, and it can\u2019t see anything more than 10 feet away from it. However, attack rolls against it also suffer disadvantage. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful one.",
+        "duration": "1 min",
+        "name": "Water Sphere"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you cause a water elemental to appear in an unoccupied space you can see within 120 feet of you. The elemental lasts until your concentration ends, and it obeys your verbal commands. In combat, roll for its initiative, and choose its behavior during its turns. When this effect ends, the elemental disappears. See the Monster Manual for its stat block.",
+        "duration": "1 hr",
+        "name": "Animate Water"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have a swimming speed equal to your walking speed, and you can breathe underwater",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Water",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you conjure forth clouds to create a solid, translucent staircase that lasts until your concentration ends. The stairs form a spiral that fills a 10-foot-by-10-foot area and reaches upward 20 feet per psi point spent.",
+        "duration": "10 min",
+        "name": "Cloud Steps"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you lash out at one creature you can see within 60 feet of you with tendrils of lightning. The target must make a Dexterity saving throw, with disadvantage if it\u2019s wearing heavy armor. The target takes 1d8 lightning damage per psi point spent on a failed save, or half as much damage on a successful one.",
+        "duration": "Instantaneous",
+        "name": "Hungry Lightning"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As an action, you create a wall of clouds, at least one portion of which must be within 60 feet of you. The wall is 60 feet long, 15 feet high, and 1 foot thick. The wall lasts until your concentration ends. Creatures can pass through it without hindrance, but the wall blocks vision.",
+        "duration": "10 min",
+        "name": "Wall of Clouds"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, choose a point you can see within 60 feet of you. Winds howl in a 20-foot-radius sphere centered on that point. Each creature in the sphere must succeed on a Strength saving throw or take 1d6 bludgeoning damage and be moved to an unoccupied space of your choice in the sphere. Any loose object in the sphere is moved to an unoccupied space of your choice within it if the object weighs no more than 100 pounds.",
+        "duration": "Instantaneous",
+        "name": "Whirlwind"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you let loose a line of lightning that is 60 feet long and 5 feet wide. Each creature in the line must make a Dexterity saving throw, taking 6d6 lightning damage on a failed save, or half as much damage on a successful one. You can then teleport to an unoccupied space touched by the line. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
+        "duration": "Instantaneous",
+        "name": "Lightning Leap"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you create a wall of thunder, at least one portion of which must be within 60 feet of you. The wall is 60 feet long, 15 feet high, and 1 foot thick. The wall lasts until your concentration ends. Every foot moved through the wall costs 1 extra foot of movement. When a creature moves into the wall\u2019s space for the first time on a turn or starts its turn there, that creature must succeed on a Strength saving throw, or it takes 6d6 thunder damage, is pushed in a straight line up to 30 feet away from the wall, and is knocked prone.",
+        "duration": "10 min",
+        "name": "Wall of Thunder"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "As an action, choose a point you can see within 60 feet of you. Thunder energy erupts in a 20-foot-radius sphere centered on that point. Each creature in that area must make Constitution saving throw. On a failed save, a target takes 8d6 thunder damage, and it is stunned until the end of your next turn. On a successful save, a target takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Thunder Clap"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have resistance to lightning and thunder damage.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Weather",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, your mind seizes control of a one-handed melee weapon you\u2019re holding. The weapon flies toward one creature you can see within 30 feet of you and makes a one-handed melee weapon attack against it, using your discipline attack modifier for the attack and damage rolls. On a hit, the weapon deals its normal damage, plus an extra 1d10 force damage per psi point spent on this ability. The weapon returns to your grasp after it attacks.",
+        "duration": "Instantaneous",
+        "name": "Animate Weapon"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, choose one nonmagical weapon held by one creature you can see within 60 feet of you. That creature must succeed on a Strength saving throw, or the chosen weapon can\u2019t be used to attack until the end of your next turn.",
+        "duration": "Instantaneous",
+        "name": "Warp Weapon"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, choose a nonmagical suit of armor worn by one creature you can see within 60 feet of you. That creature must succeed on a Constitution saving throw, or the creature\u2019s AC becomes 10 + its Dexterity modifier until the end of your next turn.",
+        "duration": "Instantaneous",
+        "name": "Warp Armor"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, you create a wall of wood at least one portion of which must be within 60 feet of you. The wall is 60 feet long, 15 feet high, and 1 foot thick. The wall lasts until your concentration ends. Each 5-foot wide section of the wall has AC 12 and 100 hit points. Breaking one section creates a 5-foot by 5-foot hole in it, but the wall otherwise remains intact.",
+        "duration": "1 hr",
+        "name": "Wall of Wood"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As a bonus action, you gain resistance to bludgeoning, piercing, and slashing damage, which lasts until your concentration ends.",
+        "duration": "1 min",
+        "name": "Armored Form"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you cause an earth elemental to appear in an unoccupied space you can see within 120 feet of you. The elemental lasts until your concentration ends, and it obeys your verbal commands. In combat, roll for its initiative, and choose its behavior during its turns. When this effect ends, the elemental disappears. See the Monster Manual for its stat block.",
+        "duration": "1 hr",
+        "name": "Animate Earth"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have a +1 bonus to AC.",
+    "level": "Psionic Disciplines",
+    "name": "Mastery of Wood and Earth",
+    "notcastable": true,
+    "school": "Wu Jen"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, you imbue one ranged weapon you hold with psionic power. The next attack you make with it that hits before the end of the current turn deals an extra 1d10 psychic damage per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Speed Dart"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a reaction when you miss with a ranged weapon attack, you can repeat the attack roll against the same target.",
+        "duration": "Instantaneous",
+        "name": "Seeking Missile"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As a bonus action, you imbue a ranged weapon with a limited sentience. Until your concentration ends, you can make an extra attack with the weapon at the start of each of your turns (no action required). If it is a thrown weapon, it returns to your grasp each time you make any attack with it.",
+        "duration": "1 min",
+        "name": "Faithful Archer"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While you are focused on this discipline, any attack roll you make for a ranged weapon attack ignores disadvantage. If disadvantage would normally apply to the roll, that roll also can\u2019t benefit from advantage.",
+    "level": "Psionic Disciplines",
+    "name": "Nomadic Arrow",
+    "notcastable": true,
+    "school": "Nomad"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you can attempt to hide even if you fail to meet the requirements needed to do so. At the end of the current turn, you remain hidden only if you then meet the normal requirements for hiding.",
+        "duration": "Instantaneous",
+        "name": "Chameleon"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, cloak yourself from sight. You can target one additional creature for every additional psi point you spend on this ability. The added targets must be visible to you and within 60 feet of you.\nEach target turns invisible and remains so until your concentration ends or until immediately after it targets, damages, or otherwise affects any creature with an attack, a spell, or another ability.",
+        "duration": "1 min",
+        "name": "Step from Sight"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As a bonus action, you turn invisible and remain so until your concentration ends.",
+        "duration": "1 min",
+        "name": "Enduring Invisibility"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Dexterity (Stealth) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Nomadic Chameleon",
+    "notcastable": true,
+    "school": "Nomad"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2\u20136 psi",
+        "desc": "You enter a deep contemplation. If you concentrate for this option\u2019s full duration, you then gain proficiency with up to three of the following skills (one skill for every 2 psi points spent): Animal Handling, Arcana, History, Medicine, Nature, Performance, Religion, and Survival. The benefit lasts for 1 hour, no concentration required",
+        "duration": "10 min",
+        "name": "Wandering Mind"
+      },
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "You cast your mind about for information about a specific creature. If you concentrate for this option\u2019s full duration, you then gain a general understanding of the creature\u2019s current location. You learn the region, city, town, village, or district where it is, pinpointing an area between 1 and 3 miles on a side (DM\u2019s choice). If the creature is on another plane of existence, you instead learn which plane.",
+        "duration": "1 hr",
+        "name": "Find Creature"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "You carefully study an item. If you concentrate for this option\u2019s full duration while remaining within 5 feet of the item, you then gain the benefits of an identify spell cast on that item.",
+        "duration": "1 hr",
+        "name": "Item Lore"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you attune your mind to the psychic imprint of all language. For 1 hour, you gain the ability to understand any language you hear or attempt to read. In addition, when you speak, all creatures that can understand a language understand what you say, regardless of what language you use.",
+        "duration": "Instantaneous",
+        "name": "Psychic Speech"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you create a psychic sensor within 60 feet of you. The sensor lasts until your concentration ends. The sensor is invisible and hovers in the air. You mentally receive visual information from it, which has normal vision and darkvision with a range of 60 feet. The sensor can look in all directions. As an action, you can move the sensor up to 30 feet in any direction. There is no limit to how far away from you the eye can move, but it can\u2019t enter another plane of existence. A solid barrier blocks the eye\u2019s movement, but the eye can pass through an opening as small as 1 inch in diameter.",
+        "duration": "1 hr",
+        "name": "Wandering Eye"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As Wandering Eye above, except the eye can move through solid objects but can\u2019t end its movement in one. If it does so, the effect immediately ends",
+        "duration": "1 hr",
+        "name": "Phasing Eye"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "Whenever you focus on this discipline, you choose one skill or tool and have proficiency with it until your focus ends. Alternatively, you gain the ability to read and write one language of your choice until your focus ends",
+    "level": "Psionic Disciplines",
+    "name": "Nomadic Mind",
+    "notcastable": true,
+    "school": "Nomad"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "When you are hit by an attack, you can use your reaction to gain a +4 bonus to AC against that attack, possibly turning it into a miss. You then teleport up to 10 feet to an unoccupied space you can see.",
+        "duration": "Instantaneous",
+        "name": "Defensive Step"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you teleport up to 20 feet to an unoccupied space you can see and then move up to half your speed. At the end of your turn, you can teleport back to the spot you occupied before teleporting, unless it is now occupied or on a different plane of existence.",
+        "duration": "Instantaneous",
+        "name": "There and Back Again"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "If you haven\u2019t moved yet on your turn, choose an ally you can see within 60 feet of you. As a bonus action, you and that creature teleport, swapping places, and your speed is reduced to 0 until the end of the turn. This ability fails and is wasted if either of you can\u2019t fit in the destination space.",
+        "duration": "Instantaneous",
+        "name": "Transposition"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, choose one creature you can see within 120 feet of you. That creature must make a Wisdom saving throw. On a failed save, you and that creature teleport, swapping places. This ability fails and is wasted if either of you can\u2019t fit in the destination space.",
+        "duration": "Instantaneous",
+        "name": "Baleful Transposition"
+      },
+      {
+        "concentration": "no",
+        "cost": "6 psi",
+        "desc": "As an action, you and up to six willing creatures of your choice that you can see within 60 feet of you teleport up to 1 mile to a spot you can see. If there isn\u2019t an open space for all the targets to occupy at the arrival point, this ability fails and is wasted.",
+        "duration": "Instantaneous",
+        "name": "Phantom Caravan"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you create a 5-foot cube of dim, gray light within 5 feet of you. You create an identical cube at any point of your choice within 1 mile that you have viewed within the past 24 hours. Until your concentration ends, anyone entering one of the cubes immediately teleports to the other one, appearing in an unoccupied space next to it. The teleportation fails if there is no space for the creature to appear in.",
+        "duration": "1 hr",
+        "name": "Nomad\u2019s Gate"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "After you teleport on your turn while focused on this discipline, your walking speed increases by 10 feet until the end of the turn, as you are propelled by the magic of your teleportation. You can receive this increase only once per turn.",
+    "level": "Psionic Disciplines",
+    "name": "Nomadic Step",
+    "notcastable": true,
+    "school": "Nomad"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you open yourself to receive momentary insights that improve your odds of success; until your concentration ends, whenever you make an attack roll, a saving throw, or an ability check, you roll a d4 and add it to the total.",
+        "duration": "1 min",
+        "name": "Precognitive Hunch"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "In response to an attack hitting you, you use your reaction to impose disadvantage on that attack roll, possibly causing it to miss.",
+        "duration": "Instantaneous",
+        "name": "All-Around Sight"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you create a psychic model of reality in your mind and set it to show you a few seconds into the future. Until your concentration ends, you can\u2019t be surprised, attack rolls against you can\u2019t gain advantage, and you gain a +10 bonus to initiative.",
+        "duration": "8 hr",
+        "name": "Danger Sense"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "When you roll initiative, you can use this ability to grant yourself and up to five creatures of your choice within 60 feet of you a +10 bonus to initiative",
+        "duration": "Instantaneous",
+        "name": "Victory Before Battle"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on initiative rolls.",
+    "level": "Psionic Disciplines",
+    "name": "Precognition",
+    "notcastable": true,
+    "school": "Awakended"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, you can spend psi points to restore hit points to one creature you touch. The creature regains 1d8 hit points per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Mend Wounds"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, you touch one creature and remove one of the following conditions from it: blinded, deafened, paralyzed, or poisoned. Alternatively, you remove one disease from the creature.",
+        "duration": "Instantaneous",
+        "name": "Restore Health"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you touch one creature that has died within the last minute. The creature returns to life with 1 hit point. This ability can\u2019t return to life a creature that has died of old age, nor can it restore a creature missing any vital body parts.",
+        "duration": "Instantaneous",
+        "name": "Restore Life"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "As an action, you can touch one creature and choose one of the following: remove any reductions to one of its ability scores, remove one effect that reduces its hit point maximum, or reduce its exhaustion level by one.",
+        "duration": "Instantaneous",
+        "name": "Restore Vigor"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you can use a bonus action to touch a creature that has 0 hit points and stabilize it.",
+    "level": "Psionic Disciplines",
+    "name": "Psionic Restoration",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1 psi",
+        "desc": "As a bonus action, you temporarily transform one weapon you\u2019re holding or your unarmed strike into pure psionic energy. The next attack you make with it before the end of your turn ignores the target\u2019s armor, requiring no attack roll. Instead, the target makes a Dexterity saving throw against this discipline. On a failed save, the target takes the attack\u2019s normal damage and suffers its additional effects. On a successful save, the target takes half damage from the attack but suffers no additional effects that would normally be imposed on a hit.",
+        "duration": "Instantaneous",
+        "name": "Ethereal Weapon"
+      },
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As a bonus action, you imbue a weapon you\u2019re holding or your unarmed strike with psychic energy. The next time you hit with it before the end of your turn, it deals an extra 1d10 psychic damage per psi point spent.",
+        "duration": "Instantaneous",
+        "name": "Lethal Strike"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As a bonus action, touch one simple or martial weapon. Until your concentration ends, that weapon becomes a magic weapon with a +3 bonus to its attack and damage rolls.",
+        "duration": "10 min",
+        "name": "Augmented Weapon"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "Whenever you focus on this discipline, choose one weapon you\u2019re holding or your unarmed strike. When you attack with it while focused on this discipline, its damage is psychic and magical, rather than its normal damage type. Until you reach 6th level as a mystic, you don\u2019t add your Strength or Dexterity modifier to the psychic attack\u2019s damage rolls.",
+    "level": "Psionic Disciplines",
+    "name": "Psionic Weapon",
+    "notcastable": true,
+    "school": "Immortal"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target takes 1d8 psychic damage per psi point spent on this ability.",
+        "duration": "Instantaneous",
+        "name": "Psionic Blast"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, the creature takes 3d8 psychic damage, and it is filled with self-doubt, leaving it able to use its action on its next turn only to take the Dodge, Disengage, or Hide action. On a successful saving throw, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Ego Whip"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, the creature takes 5d8 psychic damage, and it goes into a fury, as its id runs rampant. On its next turn, it can use its action only to take the Dodge or Attack action. On a successful save, it takes half as much damage",
+        "duration": "Instantaneous",
+        "name": "Id Insinuation"
+      },
+      {
+        "concentration": "no",
+        "cost": "6 psi",
+        "desc": "As an action, you unleash devastating psychic energy in a 60-foot cone. Each creature in that area must make an Intelligence saving throw, taking 8d8 psychic damage on a failed save, or half as much damage on a successful one. You can increase the damage by 2d8 if you spend 1 more psi point on this ability.",
+        "duration": "Instantaneous",
+        "name": "Psychic Blast"
+      },
+      {
+        "concentration": "no",
+        "cost": "7 psi",
+        "desc": "As an action, you create a 20-foot cube of psychic energy within 120 feet of you. Each creature in that area must make an Intelligence saving throw. On a failed save, a target takes 8d8 psychic damage and is stunned until the end of your next turn. On a successful save, a target takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Psychic Crush"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain a +2 bonus to damage rolls with psionic talents that deal psychic damage.",
+    "level": "Psionic Disciplines",
+    "name": "Psychic Assault",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. That creature must make an Intelligence saving throw. On a failed save, it takes 1d10 psychic damage per psi point spent and can\u2019t see anything more than 10 feet from it until your concentration ends. On a successful save, it takes half as much damage.",
+        "duration": "1 min",
+        "name": "Distracting Haze"
+      },
+      {
+        "concentration": "no",
+        "cost": "3 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. That creature must make an Intelligence saving throw. On a failed save, the target is incapacitated until the end of your next turn or until it takes any damage.",
+        "duration": "Instantaneous",
+        "name": "Daze"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, choose a point you can see within 60 feet of you. Each creature in a 20-foot-radius sphere centered on that point must make a Wisdom saving throw. On a failed save, a target takes 6d8 psychic damage and suffers disadvantage on all saving throws until the end of your next turn. On a successful save, a creature takes half as much damage. You can increase the damage by 1d6 per additional psi point spent on this ability.",
+        "duration": "Instantaneous",
+        "name": "Mind Storm"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Charisma (Deception) checks",
+    "level": "Psionic Disciplines",
+    "name": "Psychic Disruption",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, it takes 1d10 psychic damage per psi point spent and suffers disadvantage on its next Wisdom saving throw before the end of your next turn. On a successful save, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Hammer of Inquisition"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you ask a question of one creature that can see and hear you within 30 feet of you. The question must be phrased so that it can be answered with a yes or no, otherwise this ability fails. The target must succeed on a Wisdom saving throw, or it replies with a truthful answer. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Forceful Query"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "While you concentrate on this ability, you probe one creature\u2019s mind. The creature must remain within 30 feet of you, and you must be able to see it. If you reach the ability\u2019s full duration, the target must make three Intelligence saving throws, and you learn information from it based on the number of saving throws it fails. With one failed saving throw, you learn its key memories from the past 12 hours. With two failed saving throws, you learn its key memories from the past 24 hours.  With three failed saving throws, you learn its key memories from the past 48 hours.",
+        "duration": "1 hr",
+        "name": "Ransack Mind"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "While you concentrate on this ability, you probe one creature\u2019s mind. The creature must remain within 30 feet of you, and you must be able to see it. If you reach the ability\u2019s full duration, the target must make three Intelligence saving throws, and you plant a memory or an idea in it, which lasts for a number of hours based on the number of saving throws it fails. You choose whether the idea or memory is trivial (such as \u201cI had porridge for breakfast\u201d or \u201cAle is the worst\u201d) or personality-defining (\u201cI failed to save my village from orc marauders and am therefore a coward\u201d or \u201cMagic is a scourge, so I renounce it\u201d). With one failed saving throw, the idea or memory lasts for the next 4 hours. With two failed saving throws, it lasts for 24 hours. With three failed saving throws, it lasts for 48 hours.",
+        "duration": "1 hr",
+        "name": "Phantom Idea"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you know when a creature communicating with you via telepathy is lying.",
+    "level": "Psionic Disciplines",
+    "name": "Psychic Inquisition",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "1\u20137 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, it takes 1d10 psychic damage per psi point spent and thinks it perceives a threatening creature just out of its sight; until the end of your next turn, it can\u2019t use reactions, and melee attack rolls against it have advantage. On a successful save, it takes half as much damage.",
+        "duration": "Instantaneous",
+        "name": "Distracting Figment"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, it perceives a horrid creature adjacent to it until your concentration ends. During this time, the target can\u2019t take reactions, and it takes 1d8 psychic damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. You can increase the damage by 1d8 for each additional psi point spent on the ability.",
+        "duration": "1 min",
+        "name": "Phantom Foe"
+      },
+      {
+        "concentration": "yes",
+        "cost": "5 psi",
+        "desc": "As an action, you plant delusional paranoia in a creature\u2019s mind. Choose one creature you can see within 60 feet of you. The target must succeed on an Intelligence saving throw, or until your concentration ends, it must target its allies with attacks and other damaging effects. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "1 min",
+        "name": "Phantom Betrayal"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you plant the phantom of a greatly desired object in a creature\u2019s mind. Choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, you gain partial control over the target\u2019s behavior until your concentration ends; the target moves as you wish on each of its turns, as it thinks it pursues the phantom object it desires. If it hasn\u2019t taken damage since its last turn, it can use its action only to admire the object you created in its perception. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success",
+        "duration": "1 min",
+        "name": "Phantom Riches"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have advantage on Charisma (Deception) checks.",
+    "level": "Psionic Disciplines",
+    "name": "Psychic Phantoms",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target truthfully answers one question you ask it via telepathy. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Exacting Query"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target believes one statement of your choice for the next 5 minutes that you communicate to it via telepathy. The statement can be up to ten words long, and it must describe you or a creature or an object the target can see. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Occluded Mind"
+      },
+      {
+        "concentration": "no",
+        "cost": "5 psi",
+        "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, you choose the target\u2019s movement and action on its next turn. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "Instantaneous",
+        "name": "Broken Will"
+      },
+      {
+        "concentration": "yes",
+        "cost": "6 psi",
+        "desc": "As an action, you target one creature you can see within 60 feet of you. The target must succeed on an Intelligence saving throw, or it is paralyzed until your concentration ends. At the end of each of its turns, it can repeat the saving throw. On a success, this effect ends. On a failure, you can use your reaction to force the target to move up to half its speed, even though it\u2019s paralyzed.",
+        "duration": "1 min",
+        "name": "Psychic Grip"
+      },
+      {
+        "concentration": "yes",
+        "cost": "7 psi",
+        "desc": "As an action, you target one creature you can see within 60 feet of you. The target must succeed on an Intelligence saving throw, or you choose the creature\u2019s actions and movement on its turns until your concentration ends. At the end of each of its turns, it can repeat the saving throw, ending the effect on itself on a success. A creature is immune to this ability if it is immune to being charmed.",
+        "duration": "1 min",
+        "name": "Psychic Domination"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you gain the ability to use your Telepathy class feature with up to six creatures at once. If you don\u2019t have that feature from the mystic class, you instead gain it while focused on this discipline",
+    "level": "Psionic Disciplines",
+    "name": "Telepathic Contact",
+    "notcastable": true,
+    "school": "Awakened"
+  },
+  {
+    "abilities": [
+      {
+        "concentration": "yes",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain tremorsense with a radius of 30 feet, which lasts until your concentration ends.",
+        "duration": "1 min",
+        "name": "Tremorsense"
+      },
+      {
+        "concentration": "no",
+        "cost": "2 psi",
+        "desc": "As a bonus action, you gain advantage on Wisdom checks for 1 minute.",
+        "duration": "Instantaneous",
+        "name": "Unwavering Eye"
+      },
+      {
+        "concentration": "yes",
+        "cost": "3 psi",
+        "desc": "As a bonus action, you gain the ability to see through objects that are up to 1 foot thick within 30 feet of you. This sight lasts until your concentration ends",
+        "duration": "1 min",
+        "name": "Piercing Sight"
+      }
+    ],
+    "class": "Mystic",
+    "desc": "While focused on this discipline, you have darkvision with a range of 60 feet. If you already have darkvision with that range or greater, increase its range by 10 feet",
+    "level": "Psionic Disciplines",
+    "name": "Third Eye",
+    "notcastable": true,
+    "school": "Nomad"
+  }
+]

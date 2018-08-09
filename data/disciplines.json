@@ -5,14 +5,12 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you or a creature you touch ignores the effects of extreme heat or cold (but not cold or fire damage) for the next hour.",
-        "duration": "Instantaneous",
         "name": "Environmental Adaptation"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "When you take acid,cold, fire, lightning, or thunder damage, you can use your reaction to gain resistance to damage of that type\u2014including the triggering damage\u2014 until the end of your next turn.",
-        "duration": "Instantaneous",
         "name": "Adaptive Shield"
       },
       {
@@ -43,14 +41,12 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you analyze the aura of one creature you see. You learn its current hit point total and all its immunities, resistances, and vulnerabilities.",
-        "duration": "Instantaneous",
         "name": "Assess Foe"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you learn a one-word summary of the emotional state of up to six creatures you can see, such as happy, confused, afraid, or violent.",
-        "duration": "Instantaneous",
         "name": "Read Moods"
       },
       {
@@ -81,56 +77,48 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "You manifest long claws for an instant and make a melee weapon attack against one creature within 5 feet of you. On a hit, this attack deals 1d10 slashing damage per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Bestial Claws"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "You gain gills; you can breathe air and water",
-        "duration": "Instantaneous",
         "name": "Amphibious"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "You grow tiny hooked claws that give you gain a climbing speed equal to your walking speed.",
-        "duration": "Instantaneous",
         "name": "Climbing"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "Wings sprout from your back. You gain a flying speed equal to your walking speed.",
-        "duration": "Instantaneous",
         "name": "Flight"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "Your eyes and ears become more sensitive. You gain advantage on Wisdom (Perception) checks.",
-        "duration": "Instantaneous",
         "name": "Keen Senses"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "You gain a keen sense of smell and an instinct to detect prey. You can see invisible creatures and objects within 10 feet of you, even if you are blinded.",
-        "duration": "Instantaneous",
         "name": "Perfect Senses"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "You gain fins and webbing between your fingers and toes; you gain a swimming speed equal to your walking speed.",
-        "duration": "Instantaneous",
         "name": "Swimming"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "Your skin becomes as tough as leather; you gain a +2 bonus to AC.",
-        "duration": "Instantaneous",
         "name": "Tough Hide"
       }
     ],
@@ -147,28 +135,24 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a bonus action, you gain a bonus to your next damage roll against a target you hit with a melee attack during the current turn. The bonus equals +1d6 per psi point spent, and the bonus damage is the same type as the attack. If the attack has more than one damage type, you choose which one to use for the bonus damage.",
-        "duration": "Instantaneous",
         "name": "Brute Strike"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "When you hit a target with a melee attack, you can activate this ability as a reaction. The target must succeed on a Strength saving throw or be knocked 10 feet away from you per psi point spent. The target moves in a straight line. If it hits an object, this movement immediately ends and the target takes 1d6 bludgeoning damage per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Knock Back"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As part of your movement, you jump in any direction up to 20 feet per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Mighty Leap"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you gain a +5 bonus to Strength checks until the end of your next turn.",
-        "duration": "Instantaneous",
         "name": "Feat of Strength"
       }
     ],
@@ -185,35 +169,30 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a bonus action, you increase your walking speed by 10 feet per psi point spent until the end of the current turn. If you have a climbing or swimming speed, this increase applies to that speed as well.",
-        "duration": "Instantaneous",
         "name": "Rapid Step"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you take the Dodge action.",
-        "duration": "Instantaneous",
         "name": "Agile Defense"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you cause yourself to be invisible during any of your movement during the current turn.",
-        "duration": "Instantaneous",
         "name": "Blur of Motion"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you gain two benefits until the end of the current turn: you don\u2019t provoke opportunity attacks, and you have a climbing speed equal to your walking speed.",
-        "duration": "Instantaneous",
         "name": "Surge of Speed"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As a bonus action, you can Dash or make one weapon attack.",
-        "duration": "Instantaneous",
         "name": "Surge of Action"
       }
     ],
@@ -230,35 +209,30 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you deliver a touch of acid to one creature within your reach. The target must make a Dexterity saving throw, taking 1d10 acid damage per psi point spent on a failed save, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Corrosive Touch"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you create a poison spray that targets one creature you can see within 30 feet of you. The target must make a Constitution saving throw. On a failed save, it takes 1d6 poison damage per psi point spent and is poisoned until the end of your next turn. On a successful save, the target takes half as much damage and isn\u2019t poisoned.",
-        "duration": "Instantaneous",
         "name": "Venom Strike"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a reaction when you take piercing or slashing damage, you cause acid to spray from your wound; each creature within 5 feet of you takes 2d6 acid damage.",
-        "duration": "Instantaneous",
         "name": "Acid Spray"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "You exhale a wave of acid in a 60-foot line that is 5 feet wide. Each creature in the line must make a Constitution saving throw, taking 6d6 acid damage on a failed save, or half as much on a successful one. You can increase the damage by 1d6 per additional psi point spent on it.",
-        "duration": "Instantaneous",
         "name": "Breath of the Black Dragon"
       },
       {
         "concentration": "no",
         "cost": "7 psi",
         "desc": "You exhale a cloud of poison in a 90-foot cone. Each creature in the line must make a Constitution saving throw, taking 10d6 poison damage on a failed save, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Breath of the Green Dragon"
       }
     ],
@@ -275,7 +249,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, one creature you can see within 60 feet of you must make a Charisma saving throw. On a failed save, it takes 1d8 psychic damage per psi point spent, and it can\u2019t take reactions until the start of its next turn. On a successful save, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Crowned in Sorrow"
       },
       {
@@ -289,7 +262,6 @@
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, you force one creature you can see within 60 feet of you to make a Charisma saving throw. On a failed save, it takes 3d6 psychic damage, and its speed is reduced to 0 until the end of its next turn. On a successful save, it takes half as much damage. You can increase the damage by 1d6 per additional psi point spent on it.",
-        "duration": "Instantaneous",
         "name": "Visions of Despair"
       },
       {
@@ -313,7 +285,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Charisma saving throw. On a failed save, it takes 1d6 psychic damage per psi point spent and can\u2019t move closer to you until the end of its next turn. On a successful save, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Eye of Horror"
       },
       {
@@ -351,7 +322,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must succeed on a Charisma saving throw or take 1d6 psychic damage per psi point spent on this ability and immediately use its reaction to move its speed in a straight line toward its nearest enemy. The save automatically succeeds if the target is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Primal Fury"
       },
       {
@@ -365,7 +335,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "You cause a creature's bloodlust to overcome its sense of preservation. As a bonus action, choose one creature you can see within 60 feet of you. The target must succeed on a Wisdom saving throw or, until the end of your next turn, it can\u2019t willingly move unless its movement brings it closer to its nearest enemy that it can see. The \u00a92017 Wizards of the Coast LLC 14 save automatically succeeds if the target is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Mindless Courage"
       },
       {
@@ -396,14 +365,12 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you shift to an incredibly small size and then suddenly return to normal, sending an opponent flying backward. Choose one creature you can see within 5 feet of you. It must succeed on a Strength saving throw or be knocked prone.",
-        "duration": "Instantaneous",
         "name": "Toppling Shift"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As a reaction when you are hit by an attack, you shift down to minute size to avoid the attack. The attack misses, and you move up to 5 feet without provoking opportunity attacks before returning to normal size.",
-        "duration": "Instantaneous",
         "name": "Sudden Shift"
       },
       {
@@ -451,14 +418,12 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a reaction, you can impose disadvantage on an attack roll against you if you can see the attacker. If the attack still hits you, the attacker takes 2d10 psychic damage.",
-        "duration": "Instantaneous",
         "name": "Psychic Backlash"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a reaction when you make an Intelligence, a Wisdom, or a Charisma saving throw, you gain a +1 bonus to that saving throw for each psi point you spend on this ability. You can use this ability after rolling the die but before suffering the results.",
-        "duration": "Instantaneous",
         "name": "Psychic Parry"
       },
       {
@@ -482,14 +447,12 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a reaction when you are hit by an attack, you gain a +1 bonus to AC for each psi point you spend on this ability. The bonus lasts until the end of your next turn. This bonus applies against the triggering attack.",
-        "duration": "Instantaneous",
         "name": "Iron Hide"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you gain resistance to bludgeoning, piercing, and slashing damage until the end of your next turn.",
-        "duration": "Instantaneous",
         "name": "Steel Hide"
       },
       {
@@ -513,7 +476,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you exert an aura of sympathetic power. Roll 2d8 per psi point spent on this ability; the total is how many hit points worth of creatures this option can affect. Creatures within 30 feet of you are affected in ascending order of their hit point maximums, ignoring incapacitated creatures, creatures immune to being charmed, and creatures engaged in combat. Starting with the creature that has the lowest hit point maximum, each creature affected by this option is charmed by you for 10 minutes, regarding you as a friendly acquaintance. Subtract each creature\u2019s hit point maximum from the total before moving on to the next creature. A creature\u2019s hit point maximum must be equal to or less than the remaining total for that creature to be affected.",
-        "duration": "Instantaneous",
         "name": "Charming Presence"
       },
       {
@@ -544,7 +506,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, choose up to five allies you can see within 60 feet of you. Each of those allies can use their reaction to move up to half their speed, following a path of your choice.",
-        "duration": "Instantaneous",
         "name": "Coordinated Movement"
       },
       {
@@ -558,7 +519,6 @@
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, choose one ally you can see within 60 feet of you. That ally can use their reaction to immediately take the Attack action. You choose the targets",
-        "duration": "Instantaneous",
         "name": "Command to Strike"
       },
       {
@@ -572,7 +532,6 @@
         "concentration": "no",
         "cost": "7 psi",
         "desc": "As an action, choose up to five allies you can see within 60 feet of you. Each of those allies can use their reaction to take the Attack action. You choose the targets of the attacks.",
-        "duration": "Instantaneous",
         "name": "Overwhelming Attack"
       }
     ],
@@ -589,7 +548,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, choose up to six creatures you can see within 60 feet of you. If any of those creatures is frightened, that condition ends on that creature",
-        "duration": "Instantaneous",
         "name": "Incite Courage"
       },
       {
@@ -658,7 +616,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, choose up to three creatures you can see within 60 feet of you. Each target can immediately use its reaction to move up to its speed in a straight line toward its nearest enemy.",
-        "duration": "Instantaneous",
         "name": "Mindless Charge"
       },
       {
@@ -689,7 +646,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a bonus action, choose up to three creatures you can see within 60 feet of you. Each target gains 3 temporary hit points per psi point spent on this effect.",
-        "duration": "Instantaneous",
         "name": "Soothing Presence"
       },
       {
@@ -710,7 +666,6 @@
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As a bonus action, you and up to five allies you can see within 60 feet of you can immediately make saving throws against every effect they\u2019re suffering that allows a save at the start or end of their turns.",
-        "duration": "Instantaneous",
         "name": "Beacon of Recovery"
       }
     ],
@@ -727,14 +682,12 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As part of your move on your turn, you can fly up to 20 feet for each psi point spent. If you end this flight in the air, you fall unless something else holds you aloft.",
-        "duration": "Instantaneous",
         "name": "Wind Step"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you create a line of focused air that is 30 feet long and 5 feet wide. Each creature in that area must make a Strength saving throw, taking 1d8 bludgeoning damage per psi point spent and being knocked prone on a failed save, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Wind Stream"
       },
       {
@@ -793,7 +746,6 @@
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you create a fiery explosion at a point you can see within 120 feet of you. Each creature in a 20-foot-radius sphere centered on that point must make a Constitution saving throw, taking 7d6 fire damage and being knocked prone on a failed save, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Detonation"
       },
       {
@@ -824,21 +776,18 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Strength saving throw. On a failed save, it takes 1d8 force damage per psi point spent and is pushed up to 5 feet per point spent in a straight line away from you. On a successful save, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Push"
       },
       {
         "concentration": "no",
         "cost": "2\u20137 psi",
         "desc": "Choose one object you can see within 60 feet of you that isn\u2019t being worn or carried by another creature and that isn\u2019t secured in place. It can\u2019t be larger than 20 feet on a side, and its maximum weight depends on the psi points spent on this ability, as shown below. As an action, you move the object up to 60 feet, and you must keep the object within sight during this movement. If the object ends this movement in the air, it falls. If the object would fall on a creature, the creature must succeed on a DC 10 Dexterity saving throw or take damage as listed on the table in the pdf.",
-        "duration": "Instantaneous",
         "name": "Move"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you sheathe yourself in an intangible field of magical force. For 8 hours, your base AC is 14 + your Dexterity modifier, and you gain resistance to force damage. This effect ends if you are wearing or don armor.",
-        "duration": "Instantaneous",
         "name": "Inertial Armor"
       },
       {
@@ -859,14 +808,12 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "The target takes 1d6 bludgeoning damage per psi point spent",
-        "duration": "Instantaneous",
         "name": "Crush"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "You move the target up to 5 feet per psi point spent. You can move it in the air and hold it there. It falls if the grapple ends.",
-        "duration": "Instantaneous",
         "name": "Move"
       }
     ],
@@ -883,21 +830,18 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you hurl a mote of ice at one creature you can see within 120 feet of you. The target must make a Dexterity saving throw. On a failed save, the target takes 1d8 cold damage per psi point spent and has its speed halved until the start of your next turn. On a successful save, the target takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Ice Spike"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, choose a point on the ground you can see within 60 feet of you. The ground in a 20-foot radius centered on that point becomes covered in ice for 10 minutes. It is difficult terrain, and any creature that moves more than 10 feet on it must succeed on a Dexterity saving throw or fall prone. If the surface is sloped, a creature that falls prone in the area immediately slides to the bottom of the slope.",
-        "duration": "Instantaneous",
         "name": "Ice Sheet"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As a bonus action, you sheathe yourself with icy resilience. You gain 20 temporary hit points.",
-        "duration": "Instantaneous",
         "name": "Frozen Sanctuary"
       },
       {
@@ -928,7 +872,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you create an area of magical darkness, which foils darkvision. Choose a spot you can see within 60 feet of you. Magical darkness radiates from that point in a sphere with a 10-foot radius per psi point spent on this ability. The light produced by spells of 2nd level or less is suppressed in this area.",
-        "duration": "Instantaneous",
         "name": "Darkness"
       },
       {
@@ -966,28 +909,24 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make a Constitution saving throw, taking 1d10 necrotic damage per psi point spent on this ability, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Desiccate"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you unleash a wave that surges forth and then retreats to you like the rising tide. You create a wave in a 20-foot-by-20-foot square. At least some portion of the square\u2019s border must be within 5 feet of you. Any creature in that square must make a Strength saving throw. On a failed save, a target takes 2d6 bludgeoning damage, is knocked prone, and is pulled up to 10 feet closer to you. On a successful save, a target takes half as much damage. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
-        "duration": "Instantaneous",
         "name": "Watery Grasp"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, you unleash a jet of water in a line that is 60 feet long and 5 feet wide. Each creature in the line must make a Strength saving throw, taking 3d6 bludgeoning damage on a failed save, or half as much damage on a successful one. In addition, you can move each target that fails its saving throw to any unoccupied space touching the line. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
-        "duration": "Instantaneous",
         "name": "Water Whip"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you grant yourself and up to ten willing creatures you can see within 60 feet of you the ability to breathe underwater for the next 24 hours.",
-        "duration": "Instantaneous",
         "name": "Water Breathing"
       },
       {
@@ -1025,7 +964,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you lash out at one creature you can see within 60 feet of you with tendrils of lightning. The target must make a Dexterity saving throw, with disadvantage if it\u2019s wearing heavy armor. The target takes 1d8 lightning damage per psi point spent on a failed save, or half as much damage on a successful one.",
-        "duration": "Instantaneous",
         "name": "Hungry Lightning"
       },
       {
@@ -1039,14 +977,12 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, choose a point you can see within 60 feet of you. Winds howl in a 20-foot-radius sphere centered on that point. Each creature in the sphere must succeed on a Strength saving throw or take 1d6 bludgeoning damage and be moved to an unoccupied space of your choice in the sphere. Any loose object in the sphere is moved to an unoccupied space of your choice within it if the object weighs no more than 100 pounds.",
-        "duration": "Instantaneous",
         "name": "Whirlwind"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you let loose a line of lightning that is 60 feet long and 5 feet wide. Each creature in the line must make a Dexterity saving throw, taking 6d6 lightning damage on a failed save, or half as much damage on a successful one. You can then teleport to an unoccupied space touched by the line. You can increase this ability\u2019s damage by 1d6 per additional psi point spent on it.",
-        "duration": "Instantaneous",
         "name": "Lightning Leap"
       },
       {
@@ -1060,7 +996,6 @@
         "concentration": "no",
         "cost": "7 psi",
         "desc": "As an action, choose a point you can see within 60 feet of you. Thunder energy erupts in a 20-foot-radius sphere centered on that point. Each creature in that area must make Constitution saving throw. On a failed save, a target takes 8d6 thunder damage, and it is stunned until the end of your next turn. On a successful save, a target takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Thunder Clap"
       }
     ],
@@ -1077,21 +1012,18 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, your mind seizes control of a one-handed melee weapon you\u2019re holding. The weapon flies toward one creature you can see within 30 feet of you and makes a one-handed melee weapon attack against it, using your discipline attack modifier for the attack and damage rolls. On a hit, the weapon deals its normal damage, plus an extra 1d10 force damage per psi point spent on this ability. The weapon returns to your grasp after it attacks.",
-        "duration": "Instantaneous",
         "name": "Animate Weapon"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, choose one nonmagical weapon held by one creature you can see within 60 feet of you. That creature must succeed on a Strength saving throw, or the chosen weapon can\u2019t be used to attack until the end of your next turn.",
-        "duration": "Instantaneous",
         "name": "Warp Weapon"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, choose a nonmagical suit of armor worn by one creature you can see within 60 feet of you. That creature must succeed on a Constitution saving throw, or the creature\u2019s AC becomes 10 + its Dexterity modifier until the end of your next turn.",
-        "duration": "Instantaneous",
         "name": "Warp Armor"
       },
       {
@@ -1129,14 +1061,12 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a bonus action, you imbue one ranged weapon you hold with psionic power. The next attack you make with it that hits before the end of the current turn deals an extra 1d10 psychic damage per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Speed Dart"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a reaction when you miss with a ranged weapon attack, you can repeat the attack roll against the same target.",
-        "duration": "Instantaneous",
         "name": "Seeking Missile"
       },
       {
@@ -1160,7 +1090,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you can attempt to hide even if you fail to meet the requirements needed to do so. At the end of the current turn, you remain hidden only if you then meet the normal requirements for hiding.",
-        "duration": "Instantaneous",
         "name": "Chameleon"
       },
       {
@@ -1212,7 +1141,6 @@
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you attune your mind to the psychic imprint of all language. For 1 hour, you gain the ability to understand any language you hear or attempt to read. In addition, when you speak, all creatures that can understand a language understand what you say, regardless of what language you use.",
-        "duration": "Instantaneous",
         "name": "Psychic Speech"
       },
       {
@@ -1243,35 +1171,30 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "When you are hit by an attack, you can use your reaction to gain a +4 bonus to AC against that attack, possibly turning it into a miss. You then teleport up to 10 feet to an unoccupied space you can see.",
-        "duration": "Instantaneous",
         "name": "Defensive Step"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you teleport up to 20 feet to an unoccupied space you can see and then move up to half your speed. At the end of your turn, you can teleport back to the spot you occupied before teleporting, unless it is now occupied or on a different plane of existence.",
-        "duration": "Instantaneous",
         "name": "There and Back Again"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "If you haven\u2019t moved yet on your turn, choose an ally you can see within 60 feet of you. As a bonus action, you and that creature teleport, swapping places, and your speed is reduced to 0 until the end of the turn. This ability fails and is wasted if either of you can\u2019t fit in the destination space.",
-        "duration": "Instantaneous",
         "name": "Transposition"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, choose one creature you can see within 120 feet of you. That creature must make a Wisdom saving throw. On a failed save, you and that creature teleport, swapping places. This ability fails and is wasted if either of you can\u2019t fit in the destination space.",
-        "duration": "Instantaneous",
         "name": "Baleful Transposition"
       },
       {
         "concentration": "no",
         "cost": "6 psi",
         "desc": "As an action, you and up to six willing creatures of your choice that you can see within 60 feet of you teleport up to 1 mile to a spot you can see. If there isn\u2019t an open space for all the targets to occupy at the arrival point, this ability fails and is wasted.",
-        "duration": "Instantaneous",
         "name": "Phantom Caravan"
       },
       {
@@ -1302,7 +1225,6 @@
         "concentration": "no",
         "cost": "3 psi",
         "desc": "In response to an attack hitting you, you use your reaction to impose disadvantage on that attack roll, possibly causing it to miss.",
-        "duration": "Instantaneous",
         "name": "All-Around Sight"
       },
       {
@@ -1316,7 +1238,6 @@
         "concentration": "no",
         "cost": "7 psi",
         "desc": "When you roll initiative, you can use this ability to grant yourself and up to five creatures of your choice within 60 feet of you a +10 bonus to initiative",
-        "duration": "Instantaneous",
         "name": "Victory Before Battle"
       }
     ],
@@ -1333,28 +1254,24 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, you can spend psi points to restore hit points to one creature you touch. The creature regains 1d8 hit points per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Mend Wounds"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, you touch one creature and remove one of the following conditions from it: blinded, deafened, paralyzed, or poisoned. Alternatively, you remove one disease from the creature.",
-        "duration": "Instantaneous",
         "name": "Restore Health"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you touch one creature that has died within the last minute. The creature returns to life with 1 hit point. This ability can\u2019t return to life a creature that has died of old age, nor can it restore a creature missing any vital body parts.",
-        "duration": "Instantaneous",
         "name": "Restore Life"
       },
       {
         "concentration": "no",
         "cost": "7 psi",
         "desc": "As an action, you can touch one creature and choose one of the following: remove any reductions to one of its ability scores, remove one effect that reduces its hit point maximum, or reduce its exhaustion level by one.",
-        "duration": "Instantaneous",
         "name": "Restore Vigor"
       }
     ],
@@ -1371,14 +1288,12 @@
         "concentration": "no",
         "cost": "1 psi",
         "desc": "As a bonus action, you temporarily transform one weapon you\u2019re holding or your unarmed strike into pure psionic energy. The next attack you make with it before the end of your turn ignores the target\u2019s armor, requiring no attack roll. Instead, the target makes a Dexterity saving throw against this discipline. On a failed save, the target takes the attack\u2019s normal damage and suffers its additional effects. On a successful save, the target takes half damage from the attack but suffers no additional effects that would normally be imposed on a hit.",
-        "duration": "Instantaneous",
         "name": "Ethereal Weapon"
       },
       {
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As a bonus action, you imbue a weapon you\u2019re holding or your unarmed strike with psychic energy. The next time you hit with it before the end of your turn, it deals an extra 1d10 psychic damage per psi point spent.",
-        "duration": "Instantaneous",
         "name": "Lethal Strike"
       },
       {
@@ -1402,35 +1317,30 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target takes 1d8 psychic damage per psi point spent on this ability.",
-        "duration": "Instantaneous",
         "name": "Psionic Blast"
       },
       {
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, the creature takes 3d8 psychic damage, and it is filled with self-doubt, leaving it able to use its action on its next turn only to take the Dodge, Disengage, or Hide action. On a successful saving throw, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Ego Whip"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, the creature takes 5d8 psychic damage, and it goes into a fury, as its id runs rampant. On its next turn, it can use its action only to take the Dodge or Attack action. On a successful save, it takes half as much damage",
-        "duration": "Instantaneous",
         "name": "Id Insinuation"
       },
       {
         "concentration": "no",
         "cost": "6 psi",
         "desc": "As an action, you unleash devastating psychic energy in a 60-foot cone. Each creature in that area must make an Intelligence saving throw, taking 8d8 psychic damage on a failed save, or half as much damage on a successful one. You can increase the damage by 2d8 if you spend 1 more psi point on this ability.",
-        "duration": "Instantaneous",
         "name": "Psychic Blast"
       },
       {
         "concentration": "no",
         "cost": "7 psi",
         "desc": "As an action, you create a 20-foot cube of psychic energy within 120 feet of you. Each creature in that area must make an Intelligence saving throw. On a failed save, a target takes 8d8 psychic damage and is stunned until the end of your next turn. On a successful save, a target takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Psychic Crush"
       }
     ],
@@ -1454,14 +1364,12 @@
         "concentration": "no",
         "cost": "3 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. That creature must make an Intelligence saving throw. On a failed save, the target is incapacitated until the end of your next turn or until it takes any damage.",
-        "duration": "Instantaneous",
         "name": "Daze"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, choose a point you can see within 60 feet of you. Each creature in a 20-foot-radius sphere centered on that point must make a Wisdom saving throw. On a failed save, a target takes 6d8 psychic damage and suffers disadvantage on all saving throws until the end of your next turn. On a successful save, a creature takes half as much damage. You can increase the damage by 1d6 per additional psi point spent on this ability.",
-        "duration": "Instantaneous",
         "name": "Mind Storm"
       }
     ],
@@ -1478,14 +1386,12 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, it takes 1d10 psychic damage per psi point spent and suffers disadvantage on its next Wisdom saving throw before the end of your next turn. On a successful save, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Hammer of Inquisition"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you ask a question of one creature that can see and hear you within 30 feet of you. The question must be phrased so that it can be answered with a yes or no, otherwise this ability fails. The target must succeed on a Wisdom saving throw, or it replies with a truthful answer. A creature is immune to this ability if it is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Forceful Query"
       },
       {
@@ -1516,7 +1422,6 @@
         "concentration": "no",
         "cost": "1\u20137 psi",
         "desc": "As an action, choose one creature you can see within 60 feet of you. The target must make an Intelligence saving throw. On a failed save, it takes 1d10 psychic damage per psi point spent and thinks it perceives a threatening creature just out of its sight; until the end of your next turn, it can\u2019t use reactions, and melee attack rolls against it have advantage. On a successful save, it takes half as much damage.",
-        "duration": "Instantaneous",
         "name": "Distracting Figment"
       },
       {
@@ -1554,21 +1459,18 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target truthfully answers one question you ask it via telepathy. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Exacting Query"
       },
       {
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, the target believes one statement of your choice for the next 5 minutes that you communicate to it via telepathy. The statement can be up to ten words long, and it must describe you or a creature or an object the target can see. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Occluded Mind"
       },
       {
         "concentration": "no",
         "cost": "5 psi",
         "desc": "As an action, you target one creature you can communicate with via telepathy. The target must make an Intelligence saving throw. On a failed save, you choose the target\u2019s movement and action on its next turn. On a successful save, the target is unaffected, and you can\u2019t use this ability on it again until you finish a long rest. A creature is immune to this ability if it is immune to being charmed.",
-        "duration": "Instantaneous",
         "name": "Broken Will"
       },
       {
@@ -1606,7 +1508,6 @@
         "concentration": "no",
         "cost": "2 psi",
         "desc": "As a bonus action, you gain advantage on Wisdom checks for 1 minute.",
-        "duration": "Instantaneous",
         "name": "Unwavering Eye"
       },
       {

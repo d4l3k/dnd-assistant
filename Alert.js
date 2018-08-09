@@ -23,7 +23,7 @@ export const Alert = Platform.select({
           onPress = button.onPress
         })
 
-        if (confirm(title + ':\n' + desc)) {
+        if (confirm(title + ':\n\n' + desc)) {
           onPress()
         }
         last = new Date()

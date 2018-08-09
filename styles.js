@@ -60,6 +60,16 @@ export class H2 extends React.PureComponent {
   }
 }
 
+export class H3 extends React.PureComponent {
+  render () {
+    return (
+      <Text style={{fontWeight: 'bold'}}>
+        {this.props.children}
+      </Text>
+    )
+  }
+}
+
 export class Error extends React.PureComponent {
   render () {
     return (

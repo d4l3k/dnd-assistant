@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {StyleSheet, View, ScrollView, Platform} from 'react-native'
+import {StyleSheet, View, ScrollView, Platform, Text} from 'react-native'
 import {Alert} from './Alert'
 
 import dataSpells from './data/spellData.json'
@@ -8,7 +8,7 @@ import dataDisciplines from './data/disciplines.json'
 
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
+import {colors, BaseText, B, H2, H3, LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
 import {SectionList} from './sectionlist'
 import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
@@ -130,9 +130,16 @@ class AbilityItem extends React.PureComponent {
   }
 
   header () {
+    let desc = this.props.ability.cost
+    if (this.props.ability.concentration === 'yes') {
+      desc += '; concentration'
+    }
+    if (this.props.ability.duration) {
+      desc += '; ' + this.props.ability.duration
+    }
     return <View style={styles.row}>
-      <B>{this.props.ability.name}</B>
-      <BaseText>{this.props.ability.cost}</BaseText>
+      <H3>{this.props.ability.name}</H3>
+      <BaseText>{desc}</BaseText>
     </View>
   }
 
@@ -146,6 +153,53 @@ class AbilityItem extends React.PureComponent {
     </Quote>
   }
 
+  castSpell (cost) {
+    const parts = cost.split(' ')
+    if (parts.length !== 2) {
+      throw 'expected length 2'
+    }
+    const key = parts[1]
+    if (!key.length) {
+      throw 'expected nonempty key'
+    }
+    const val = parseInt(parts[0])
+
+    getCharacter().then(character => {
+      return character.get().then(snapshot => {
+        const data = snapshot.data()
+        const newData = {}
+        const cur = parseInt(data[key] || 0)
+        if (cur < val) {
+          Alert.alert(
+            'Not enough ' + key + '!',
+            'You need '+val+' but you only have '+cur+' remaining.',
+            [
+              {text: 'Ok', style: 'cancel'},
+            ]
+          )
+          return
+        }
+        newData[key] = cur - val
+        return character.set(newData, {merge: true})
+      })
+    })
+  }
+
+  costs () {
+    const parts = this.props.ability.cost.split(' ')
+    const unit = parts[1]
+
+    const costs = []
+    let bits = parts[0].split(/[-–]/g)
+    if (bits.length === 1) {
+      return [this.props.ability.cost]
+    }
+    for (let i = parseInt(bits[0]); i <= parseInt(bits[1]); i++) {
+      costs.push(i + ' ' + unit)
+    }
+    return costs
+  }
+
   buttons () {
     if (!this.state.expand) {
       return
@@ -153,11 +207,15 @@ class AbilityItem extends React.PureComponent {
 
     return <View style={styles.iteminner}>
       <ExtractDieRolls text={this.props.ability.desc} />
-      <View style={styles.row}>
-        <Button
-          title={'Cast '+this.props.ability.cost}
-          onPress={this.castSpell}
-        />
+      <View style={styles.wraprow}>
+        <H3>Cast </H3>
+        {this.costs().map((cost, i) => {
+          return <Button
+            key={i}
+            title={cost}
+            onPress={() => {this.castSpell(cost)}}
+          />
+        })}
       </View>
     </View>
   }
@@ -271,7 +329,6 @@ class SpellItem extends React.PureComponent {
         </View> : <View />}
       </View>
 
-      <B>Description</B>
       <Quote>
         <HTMLView
           value={this.props.spell.desc}
@@ -283,7 +340,7 @@ class SpellItem extends React.PureComponent {
   }
 
   abilities () {
-    if (!this.props.expand || this.props.noDetail) {
+    if (!this.props.expand || this.props.noDetail || !this.props.spell.abilities) {
       return
     }
 
@@ -324,22 +381,29 @@ class SpellItem extends React.PureComponent {
       </View>
 
       <View style={styles.itembuttons}>
-        {!this.props.spell.notcastable ?
+        {
+          !this.props.spell.notcastable ?
           <Button
             title='Cast'
             onPress={this.castSpell}
-          /> : null}
+          />
+          : null
+        }
 
         {
-          this.state.spellData.prepared
-            ? <Button
-              title='Unprepare'
-              onPress={this.cache(() => this.prepareSpell(false))}
-            />
-            : <Button
-              title='Prepare'
-              onPress={this.cache(() => this.prepareSpell(true))}
-            />
+          !this.props.spell.notcastable ?
+            (
+              this.state.spellData.prepared
+                ? <Button
+                  title='Unprepare'
+                  onPress={this.cache(() => this.prepareSpell(false))}
+                />
+                : <Button
+                  title='Prepare'
+                  onPress={this.cache(() => this.prepareSpell(true))}
+                />
+            )
+            : null
         }
 
         {
@@ -639,6 +703,7 @@ export class KnownSpellsScreen extends React.PureComponent {
       spells: [],
       spellData: {}
     }
+    this.unsubscribe = []
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent)
   }
@@ -709,8 +774,16 @@ export class KnownSpellsScreen extends React.PureComponent {
 
   componentDidMount () {
     getCharacter().then(character => {
+      this.character = character
+      this.unsubscribe.push(character.onSnapshot(snapshot => {
+        const {psi, maxPsi} = snapshot.data()
+        this.setState(state => {
+          return {psi, maxPsi}
+        })
+      }))
+
       this.spells = character.collection('spells')
-      this.unsubscribe = this.spells.onSnapshot(snapshot => {
+      this.unsubscribe.push(this.spells.onSnapshot(snapshot => {
         const spells = []
         const spellData = {}
         snapshot.forEach(spell => {
@@ -724,14 +797,15 @@ export class KnownSpellsScreen extends React.PureComponent {
         this.setState(state => {
           return {spells, spellData}
         })
-      }) })
+      }))
+    })
   }
 
   componentWillUnmount () {
-    if (this.unsubscribe) {
-      this.unsubscribe()
-      this.unsubscribe = null
-    }
+    this.unsubscribe.forEach(f => {
+      f()
+    })
+    this.unsubscribe = []
   }
 
   render () {
@@ -745,6 +819,7 @@ export class KnownSpellsScreen extends React.PureComponent {
 
     return (
       <View style={styles.container}>
+        {this.renderPsi()}
         <SpellList
           filter={this.state.filter}
           navigator={this.props.navigator}
@@ -753,6 +828,38 @@ export class KnownSpellsScreen extends React.PureComponent {
         />
       </View>
     )
+  }
+
+  _set (key, text) {
+    const val = parseInt(text)
+    const data = {}
+    data[key] = val
+    this.character.set(data, {merge: true})
+    this.setState(prev => {
+      return {
+        maxPsi: val,
+      }
+    })
+  }
+
+  renderPsi () {
+    if (!this.state.maxPsi) {
+      return
+    }
+
+    return <View style={styles.psi}>
+      <H2>PSI </H2>
+      <TextInput
+        value={this.state.psi}
+        onChangeText={text => this._set('psi', text)}
+        keyboardType={'numeric'}
+      />
+      <BaseText>
+        <Text style={{whiteSpace: 'nowrap'}}>
+          {' / ' + this.state.maxPsi}
+        </Text>
+      </BaseText>
+    </View>
   }
 }
 
@@ -789,12 +896,72 @@ export class AddSpellScreen extends React.PureComponent {
 export class SpellSettingsScreen extends React.PureComponent {
   render () {
     return <ScrollView style={styles.padding}>
-      <SlotsScreen />
+      <SlotsSettingsScreen />
+
+      <MysticSettingsScreen />
     </ScrollView>
   }
 }
 
-export class SlotsScreen extends React.PureComponent {
+export class MysticSettingsScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      maxPsi: 0
+    }
+  }
+
+  componentDidMount () {
+    getCharacter().then(character => {
+      this.character = character
+      this.unsubscribe = character.onSnapshot(snapshot => {
+        const {maxPsi} = snapshot.data()
+        this.setState(state => {
+          return {
+            maxPsi: maxPsi || 0
+          }
+        })
+      })
+    })
+  }
+
+  componentWillUnmount () {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+      this.unsubscribe = null
+    }
+  }
+
+  _set (key, text) {
+    const val = parseInt(text)
+    const data = {}
+    data[key] = val
+    this.character.set(data, {merge: true})
+    this.setState(prev => {
+      return {
+        maxPsi: val,
+      }
+    })
+  }
+
+  render () {
+    return (
+      <View>
+        <H2>Mystic</H2>
+
+        <BaseText>Max PSI</BaseText>
+        <TextInput
+          value={this.state.maxPsi}
+          onChangeText={text => this._set('maxPsi', text)}
+          keyboardType={'numeric'}
+        />
+      </View>
+    )
+  }
+}
+
+export class SlotsSettingsScreen extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -857,7 +1024,7 @@ export class SlotsScreen extends React.PureComponent {
     }
     return (
       <View>
-        <H1>Slots</H1>
+        <H2>Slots</H2>
 
         {slots}
       </View>
@@ -869,6 +1036,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  psi: {
+    flex: 1,
+    flexGrow: 0,
+    flexShrink: 0,
+    flexBasis: 'initial',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    alignItems: 'center',
   },
   flex: {
     flex: 1
@@ -894,7 +1071,15 @@ const styles = StyleSheet.create({
   row: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  wraprow: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap'
   },
   narrowrow: {
     flex: 1,

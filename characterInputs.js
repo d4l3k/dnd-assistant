@@ -147,8 +147,21 @@ export class RelativeInput extends React.PureComponent {
           backgroundColor='transparent'
           onPress={this.add}
         />
+
+        <Ionicons.Button
+          name='md-refresh'
+          color={colors.secondaryText}
+          iconStyle={styles.button}
+          backgroundColor='transparent'
+          onPress={this.reset}
+        />
       </View>
     </Field>
+  }
+
+  @autobind
+  reset () {
+    this.props.onChangeText(this.props.default + '')
   }
 
   @autobind

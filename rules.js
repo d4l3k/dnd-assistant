@@ -58,6 +58,7 @@ export function dnd5e () {
         name={'Current Hit Points'}
         value={this.state.character_hp}
         onChangeText={this.cache(hp => this.set({hp}))}
+        default={this.state.character_hpMax}
         navigator={this.props.navigator}
       />
       <BoxInput

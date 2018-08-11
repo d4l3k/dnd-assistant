@@ -9,7 +9,7 @@ import dataDisciplines from './data/disciplines.json'
 
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, H2, H3, LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
+import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
 import {SectionList} from './sectionlist'
 import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
@@ -117,7 +117,7 @@ class AbilityItem extends React.PureComponent {
 
   render () {
     return (
-      <View style={styles.item}>
+      <View style={styles.subitem}>
         <Touchable onPress={this.onPress}>
           <View style={styles.iteminner}>
             {this.header()}
@@ -206,10 +206,10 @@ class AbilityItem extends React.PureComponent {
       return
     }
 
-    return <View style={styles.iteminner}>
+    return <View style={styles.itembuttons}>
       <ExtractDieRolls text={this.props.ability.desc} />
       <View style={styles.wraprow}>
-        <H3>Cast </H3>
+        <BaseText>Cast </BaseText>
         {this.costs().map((cost, i) => {
           return <Button
             key={i}
@@ -271,14 +271,14 @@ class SpellItem extends React.PureComponent {
           <View style={styles.iteminner}>
             <View style={styles.row}>
               <View>
-                <B>{this.props.spell.name}</B>
-                <BaseText>{this.props.spell.class}</BaseText>
-                <BaseText>{this.props.spell.school}</BaseText>
+                <BaseText>{this.props.spell.name}</BaseText>
+                <Secondary>{this.props.spell.class}</Secondary>
+                <Secondary>{this.props.spell.school}</Secondary>
               </View>
               <View style={styles.right}>
-                <BaseText>{this.props.spell.page}</BaseText>
-                <BaseText>{this.props.spell.casting_time}</BaseText>
-                <BaseText>{this.props.spell.components}</BaseText>
+                <Secondary>{this.props.spell.page}</Secondary>
+                <Secondary>{this.props.spell.casting_time}</Secondary>
+                <Secondary>{this.props.spell.components}</Secondary>
               </View>
             </View>
 
@@ -467,7 +467,7 @@ class SpellHeader extends React.PureComponent {
   render () {
     return (
       <Header style={styles.flex}>
-        <BaseText style={styles.bold}>{this.props.title}</BaseText>
+        <B>{this.props.title}</B>
         {
           this.props.slot ?
           <BaseText>Slots Used {this.slotsUsed()} / {this.props.slot.count}</BaseText> :
@@ -880,8 +880,8 @@ class PSIInput extends React.PureComponent {
     }
 
     return <View style={styles.psi}>
-      <H2>PSI </H2>
       <TextInput
+        label={'PSI'}
         value={this.state.psi}
         onChangeText={this.setPsi}
         keyboardType={'numeric'}
@@ -989,9 +989,8 @@ export class MysticSettingsScreen extends React.PureComponent {
     return (
       <View>
         <H2>Mystic</H2>
-
-        <BaseText>Max PSI</BaseText>
         <TextInput
+          label={'Max PSI'}
           value={this.state.maxPsi}
           onChangeText={text => this._set('maxPsi', text)}
           keyboardType={'numeric'}
@@ -1053,14 +1052,13 @@ export class SlotsSettingsScreen extends React.PureComponent {
   render () {
     const slots = []
     for (let i = 1; i <= numSlotLevels; i++) {
-      slots.push(<View key={i}>
-        <BaseText>Level {i}</BaseText>
-        <TextInput
-          value={((this.state.slots[i] || {count: 0}).count || '') + ''}
-          onChangeText={text => this._setSlots(i, text)}
-          keyboardType={'numeric'}
-        />
-      </View>)
+      slots.push( <TextInput
+        key={i}
+        label={'Level ' + i}
+        value={((this.state.slots[i] || {count: 0}).count || '') + ''}
+        onChangeText={text => this._setSlots(i, text)}
+        keyboardType={'numeric'}
+      />)
     }
     return (
       <View>
@@ -1075,6 +1073,7 @@ export class SlotsSettingsScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
     backgroundColor: '#fff'
   },
   psi: {
@@ -1084,29 +1083,34 @@ const styles = StyleSheet.create({
     flexBasis: 'initial',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
     alignItems: 'center',
   },
   flex: {
     flex: 1
   },
   item: {
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border
+    //borderBottomWidth: 1,
+    //borderBottomColor: colors.border
+    paddingRight: 16
   },
   iteminner: {
     flex: 1,
-    padding: 10
+    paddingLeft: 16,
+    paddingVertical: 16,
+  },
+  subitem: {
+    paddingLeft: 16,
   },
   itembuttons: {
     flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    paddingLeft: 16,
+    paddingBottom: 16,
   },
   padhorizontal: {
     flex: 0,
-    paddingHorizontal: 10
+    paddingLeft: 16,
   },
   row: {
     flex: 1,

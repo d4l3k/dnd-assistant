@@ -378,16 +378,6 @@ const styles = StyleSheet.create({
   settingsscreen: {
     padding: 10
   },
-  column: {
-    flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
-  },
-  columnNarrow: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
-  },
   rowstart: {
     flex: 0,
     flexDirection: 'row',

@@ -11,7 +11,7 @@ export const colors = {
   accent: '#FF4081',
   primaryText: '#212121',
   secondaryText: '#757575',
-  border: '#dadada',
+  border: '#dadce0',
   error: '#f44336'
 }
 
@@ -111,15 +111,13 @@ export class Secondary extends React.PureComponent {
   }
 }
 
-export class Header extends React.PureComponent {
-  render () {
-    return <View style={[styles.header, this.props.style]}>
-      <View style={styles.headerpadding}>
-        {this.props.children}
-      </View>
-      {this.props.right}
+export const Header = (props) => {
+  return <View style={[styles.header,  props.style]}>
+    <View style={styles.headerpadding}>
+      {props.children}
     </View>
-  }
+    {props.right}
+  </View>
 }
 
 export class Center extends React.PureComponent {
@@ -205,16 +203,16 @@ export class LightBox extends React.PureComponent {
 }
 
 export const fieldStyles = {
-  //flex: 2,
-  flexShrink: 1,
-  flexGrow: 1,
+  flex: 2,
+  //flexShrink: 10000,
+  //width: 10000,
   borderWidth: 1,
   borderColor: colors.border,
   padding: 10,
   alignItems: 'stretch',
   margin: 5,
   borderRadius: 4,
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
 }
 
 
@@ -226,9 +224,11 @@ export const Field = (props) => {
       flex: props.flex,
     }
   }
-  return <View style={style}>
-    <Center>{props.name}</Center>
-    {props.children}
+  return <View style={styles.row}>
+    <View style={style}>
+      <Secondary>{props.name}</Secondary>
+      {props.children}
+    </View>
   </View>
 }
 
@@ -286,15 +286,19 @@ const {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   header: {
+    //backgroundColor: '#eee',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  border: {
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
-    backgroundColor: '#eee',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   },
   headerpadding: {
     flex: 1,
-    padding: 10,
+    paddingTop: 16,
+    paddingBottom: 16,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -305,5 +309,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height,
     width
+  },
+  row: {
+    flexShrink: 1,
+    flexDirection: 'row'
   }
 })

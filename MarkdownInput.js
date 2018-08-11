@@ -2,7 +2,7 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 
 import {View, StyleSheet, Text} from 'react-native'
-import {colors, fieldStyles, Center, BaseText} from './styles'
+import {colors, fieldStyles, Center, Secondary} from './styles'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {TextInput} from './TextInput'
 import Markdown from './markdown'
@@ -16,8 +16,8 @@ export class MarkdownInput extends React.PureComponent {
 
   render () {
     return <View style={fieldStyles}>
-      <View style={styles.center}>
-        <BaseText>{this.props.name}</BaseText>
+      <View style={styles.row}>
+        <Secondary>{this.props.name}</Secondary>
         {this.renderButton()}
       </View>
       {this.renderInner()}
@@ -58,10 +58,10 @@ export class MarkdownInput extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
-  center: {
+  row: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row'
   },
   button: {

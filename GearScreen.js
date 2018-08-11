@@ -75,7 +75,7 @@ export class GearSettingsScreen extends React.PureComponent {
   }
 
   render () {
-    return <ScrollView style={[styles.screen, styles.padding]}>
+    return <ScrollView style={[styles.screen]}>
       <H2>Shared Inventories</H2>
       {this.inventoryMeta().map(
         inventory => <InventorySettingItem key={inventory.id} inventory={inventory} />
@@ -250,8 +250,8 @@ class GearItem extends React.PureComponent {
   render () {
     return <View style={styles.item}>
       <View style={styles.column}>
-        <B>{this.props.item.name}</B>
-        <BaseText>{this.props.item.description}</BaseText>
+        <BaseText>{this.props.item.name}</BaseText>
+        <Secondary>{this.props.item.description}</Secondary>
       </View>
       <View style={styles.rowend}>
         {this.renderWeight()}
@@ -494,7 +494,7 @@ export class GearScreen extends React.PureComponent {
         onPress={this.cache(() => this.add(section), section.id)}
       />
     }>
-      <BaseText>{section.name}</BaseText>
+      <B>{section.name}</B>
       {renderWeight(weight)}
     </Header>
   }
@@ -564,10 +564,8 @@ export class GearScreen extends React.PureComponent {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
-  },
-  padding: {
-    padding: 10
+    flex: 1,
+    padding: 16
   },
   column: {
     flex: 4,
@@ -577,9 +575,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    paddingLeft: 16,
+    //borderBottomWidth: 1,
+    //borderBottomColor: colors.border,
     alignItems: 'center'
   },
   row: {

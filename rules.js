@@ -127,7 +127,7 @@ export function dnd5e () {
           />
         </View>
 
-        <Field name='Saving Throws' flex={0}>
+        <Field name='Saving Throws'>
           {
             this.renderSkills([
               ['Strength'],
@@ -186,12 +186,14 @@ export function dnd5e () {
     </View>
 
     <View style={styles.row}>
-      <Field name='Hit Dice' flex={2}>
-        <TextInput
-          value={this.state.character_hitDice || ''}
-          onChangeText={this.cache(hitDice => this.set({hitDice}))}
-        />
-      </Field>
+      <View style={styles.column}>
+        <Field name='Hit Dice' flex={2}>
+          <TextInput
+            value={this.state.character_hitDice || ''}
+            onChangeText={this.cache(hitDice => this.set({hitDice}))}
+          />
+        </Field>
+      </View>
       <View style={styles.col4}>
         <Field name='Death Saves'>
           <View style={[styles.rowcenter, styles.wrap]}>
@@ -495,8 +497,6 @@ const Section = (props) => {
 const styles = StyleSheet.create({
   column: {
     flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
   },
   section: {
     marginLeft: 5,
@@ -504,8 +504,6 @@ const styles = StyleSheet.create({
   },
   columnNarrow: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
   },
   rowstart: {
     flex: 0,

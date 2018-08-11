@@ -1,5 +1,6 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
+import autobind from 'autobind-decorator'
 
 export class TextInput extends React.Component {
   constructor (props) {
@@ -23,6 +24,7 @@ export class TextInput extends React.Component {
       fullWidth={true}
       margin="normal"
       autoFocus={this.props.autoFocus}
+      type={this.props.keyboardType === 'numeric' ? 'number' : 'text'}
     />
   }
 }

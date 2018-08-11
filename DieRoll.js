@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, View, Text} from 'react-native'
 import {BaseText, Secondary, colors} from './styles.js'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Roll from 'roll'
@@ -19,6 +19,14 @@ export class DieRoll extends React.PureComponent {
     if (this.props.mod && displayRoll > 0) {
       displayRoll = '+' + displayRoll
     }
+
+    let color = 'inherit'
+    if (this.state.base == 1) {
+      color = colors.error
+    } else if (this.state.base == this.maxBase()) {
+      color = colors.primary
+    }
+
     return <View style={styles.row}>
       <MaterialCommunityIcons.Button
         name='dice-multiple'
@@ -28,8 +36,16 @@ export class DieRoll extends React.PureComponent {
         onPress={this.roll}
       />
 
-      <BaseText>{displayRoll}</BaseText>
+      <BaseText>
+        <Text style={{color}}>
+        {displayRoll}
+        </Text>
+      </BaseText>
     </View>
+  }
+
+  maxBase () {
+    return parseFloat(this.props.d || 20)
   }
 
   computeRoll () {
@@ -41,15 +57,16 @@ export class DieRoll extends React.PureComponent {
       return roll.roll(this.props.pattern.trim()).result
     }
 
-    return Math.floor(Math.random() * parseFloat(this.props.d || 20) + 1) + parseFloat(this.props.modifier || 0)
+    const base = Math.floor(Math.random() * this.maxBase() + 1)
+    const roll = base + parseFloat(this.props.modifier || 0)
+
+    return {base, roll}
   }
 
   @autobind
   roll () {
     const roll = this.computeRoll()
-    this.setState(prev => {
-      return {roll}
-    })
+    this.setState(roll)
   }
 }
 

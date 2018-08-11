@@ -50,11 +50,16 @@ export class DieRoll extends React.PureComponent {
 
   computeRoll () {
     if (this.props.roll) {
-      return this.props.roll(this.props)
+      return {
+        roll: this.props.roll(this.props),
+      }
     }
     if (this.props.pattern) {
-      const roll = new Roll()
-      return roll.roll(this.props.pattern.trim()).result
+      const roll = new Roll().roll(this.props.pattern.trim())
+      return {
+        base: roll.rolled,
+        roll: roll.result,
+      }
     }
 
     const base = Math.floor(Math.random() * this.maxBase() + 1)

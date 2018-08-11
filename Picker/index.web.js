@@ -1,9 +1,10 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import { MenuItem } from 'material-ui/Menu'
-import { InputLabel } from 'material-ui/Input'
-import { FormControl, FormHelperText } from 'material-ui/Form'
-import Select from 'material-ui/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Select from '@material-ui/core/Select'
 
 let nextPickerID = 1
 

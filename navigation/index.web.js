@@ -9,20 +9,20 @@ import {
   Dimensions
 } from 'react-native'
 
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
-import Drawer from 'material-ui/Drawer'
-import Button from 'material-ui/Button'
-import Modal from 'material-ui/Modal'
-import Paper from 'material-ui/Paper';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import Divider from 'material-ui/Divider';
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
-import ChevronRightIcon from 'material-ui-icons/ChevronRight';
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-import {withStyles, createMuiTheme, MuiThemeProvider} from 'material-ui/styles'
+import {withStyles, createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles'
 
 import {BaseText, LightBox, colors, Touchable} from '../styles'
 
@@ -70,9 +70,8 @@ const materialStyles = theme => ({
   tab: {
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
-    flexBasis: '100%',
-    position: 'relative'
+    position: 'relative',
+    width: '33.3333vw'
   },
   paper: {
     margin: theme.spacing.unit * 1,
@@ -488,7 +487,7 @@ const innerStyle = {
 
 const styles = StyleSheet.create({
   row: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },

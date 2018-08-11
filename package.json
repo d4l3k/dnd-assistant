@@ -39,6 +39,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
+    "@material-ui/icons": "^2.0.1",
     "async-to-generator": "^1.1.0",
     "autobind-decorator": "^2.1.0",
     "babel": "^6.23.0",
@@ -51,11 +53,9 @@
     "generator-rn-toolbox": "^3.2.1",
     "htmlparser2-without-node-native": "^3.9.2",
     "lunr": "^2.1.5",
-    "material-ui": "^1.0.0-beta.30",
-    "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.20.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-ga": "^2.4.1",
     "react-markdown": "^3.4.1",
     "react-native": "0.51.0",

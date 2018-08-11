@@ -204,19 +204,27 @@ export class LightBox extends React.PureComponent {
   }
 }
 
+export const fieldStyles = {
+  //flex: 2,
+  flexShrink: 1,
+  flexGrow: 1,
+  borderWidth: 1,
+  borderColor: colors.border,
+  padding: 10,
+  alignItems: 'stretch',
+  margin: 5,
+  borderRadius: 4,
+  justifyContent: 'space-between'
+}
+
+
 export const Field = (props) => {
-  const style = {
-    flex: 2,
-    borderWidth: 1,
-    borderColor: colors.border,
-    padding: 10,
-    alignItems: 'stretch',
-    margin: 5,
-    borderRadius: 4,
-    justifyContent: 'space-between'
-  }
+  let style = fieldStyles
   if (typeof props.flex === 'number') {
-    style.flex = props.flex
+    style = {
+      ...style,
+      flex: props.flex,
+    }
   }
   return <View style={style}>
     <Center>{props.name}</Center>

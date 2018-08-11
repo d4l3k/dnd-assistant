@@ -5,6 +5,7 @@ import {TextInput} from './TextInput'
 import {BaseText, Field, H1, H2} from './styles.js'
 import {HealthBar} from './HealthBar'
 import {CheckBox} from './CheckBox'
+import {MarkdownInput} from './MarkdownInput'
 import {ApproachInput, LineInput, StatInput, BoxInput, RelativeInput, ModInput, MultiLineInput} from './characterInputs'
 
 export function dnd5e () {
@@ -185,7 +186,7 @@ export function dnd5e () {
     </View>
 
     <View style={styles.row}>
-      <Field name='Hit Dice'>
+      <Field name='Hit Dice' flex={2}>
         <TextInput
           value={this.state.character_hitDice || ''}
           onChangeText={this.cache(hitDice => this.set({hitDice}))}
@@ -258,13 +259,13 @@ export function dnd5e () {
       />
     </View>
 
-    <MultiLineInput
+    <MarkdownInput
       name={'Features & Traits'}
       value={this.state.character_featuresTraits}
       onChangeText={this.cache(featuresTraits => this.set({featuresTraits}))}
     />
 
-    <MultiLineInput
+    <MarkdownInput
       name={'Other Proficiencies & Languages'}
       value={this.state.character_proficiencyLanguages}
       onChangeText={this.cache(proficiencyLanguages => this.set({proficiencyLanguages}))}
@@ -334,13 +335,13 @@ export function dnd5e () {
       />
     </View>
 
-    <MultiLineInput
+    <MarkdownInput
       name={'Backstory'}
       value={this.state.character_backstory}
       onChangeText={this.cache(backstory => this.set({backstory}))}
     />
 
-    <MultiLineInput
+    <MarkdownInput
       name={'Allies & Organizations'}
       value={this.state.character_alliesOrganizations}
       onChangeText={this.cache(alliesOrganizations => this.set({alliesOrganizations}))}

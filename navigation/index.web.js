@@ -206,6 +206,12 @@ function renderButton (button, props, press) {
 
 @withStyles(materialStyles)
 class Tab extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
   render (tab) {
     const Screen = Navigation.getComponent(this.props.tab.screen)
     const {classes} = this.props
@@ -224,11 +230,28 @@ class Tab extends React.Component {
       </AppBar>
 
       <Paper className={classes.paper} elevation={1}>
-        <Screen navigator={this} />
+        {this.state.error ?
+          this.renderError()
+          : <Screen navigator={this} />}
       </Paper>
 
       {this.renderFab()}
     </div>
+  }
+
+  renderError() {
+    const msg = this.state.error.toString() + '\n' + this.state.error.stack
+    return <div>
+      <h2>Error</h2>
+      <pre>{msg}</pre>
+    </div>
+  }
+
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ error: error, errorInfo: info });
+    // You can also log the error to an error reporting service
+    console.log('Tab had error!', error, info);
   }
 
   renderButtons (side) {

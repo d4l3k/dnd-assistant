@@ -2,6 +2,7 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import {StyleSheet, View, ScrollView, Platform, Text} from 'react-native'
 import {Alert} from './Alert'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import dataSpells from './data/spellData.json'
 import dataDisciplines from './data/disciplines.json'
@@ -774,14 +775,6 @@ export class KnownSpellsScreen extends React.PureComponent {
 
   componentDidMount () {
     getCharacter().then(character => {
-      this.character = character
-      this.unsubscribe.push(character.onSnapshot(snapshot => {
-        const {psi, maxPsi} = snapshot.data()
-        this.setState(state => {
-          return {psi, maxPsi}
-        })
-      }))
-
       this.spells = character.collection('spells')
       this.unsubscribe.push(this.spells.onSnapshot(snapshot => {
         const spells = []
@@ -819,7 +812,8 @@ export class KnownSpellsScreen extends React.PureComponent {
 
     return (
       <View style={styles.container}>
-        {this.renderPsi()}
+        <PSIInput />
+
         <SpellList
           filter={this.state.filter}
           navigator={this.props.navigator}
@@ -828,6 +822,34 @@ export class KnownSpellsScreen extends React.PureComponent {
         />
       </View>
     )
+  }
+}
+
+class PSIInput extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+    this.unsubscribe = []
+  }
+
+  componentDidMount () {
+    getCharacter().then(character => {
+      this.character = character
+      this.unsubscribe.push(character.onSnapshot(snapshot => {
+        const {psi, maxPsi} = snapshot.data()
+        this.setState(state => {
+          return {psi, maxPsi}
+        })
+      }))
+    })
+  }
+
+  componentWillUnmount () {
+    this.unsubscribe.forEach(f => {
+      f()
+    })
+    this.unsubscribe = []
   }
 
   _set (key, text) {
@@ -842,16 +864,26 @@ export class KnownSpellsScreen extends React.PureComponent {
     })
   }
 
-  renderPsi () {
+  @autobind
+  setPsi (text) {
+    this._set('psi', text)
+  }
+
+  @autobind
+  resetPsi () {
+    this._set('psi', this.state.maxPsi)
+  }
+
+  render () {
     if (!this.state.maxPsi) {
-      return
+      return <View />
     }
 
     return <View style={styles.psi}>
       <H2>PSI </H2>
       <TextInput
         value={this.state.psi}
-        onChangeText={text => this._set('psi', text)}
+        onChangeText={this.setPsi}
         keyboardType={'numeric'}
       />
       <BaseText>
@@ -859,6 +891,14 @@ export class KnownSpellsScreen extends React.PureComponent {
           {' / ' + this.state.maxPsi}
         </Text>
       </BaseText>
+
+      <Ionicons.Button
+        name='md-refresh'
+        color={colors.secondaryText}
+        iconStyle={styles.button}
+        backgroundColor='transparent'
+        onPress={this.resetPsi}
+      />
     </View>
   }
 }

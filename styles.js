@@ -312,6 +312,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexShrink: 1,
+    flexGrow: 1,
     flexDirection: 'row'
   }
 })

@@ -11,6 +11,7 @@ import {TextInput} from './TextInput'
 import {Button} from './Button'
 import Cache from './Cache'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {Icon, Img} from './Image'
 
 export class InventorySettingItem extends React.PureComponent {
   render () {
@@ -249,6 +250,8 @@ class GearItem extends React.PureComponent {
 
   render () {
     return <View style={styles.item}>
+      <Icon text={this.props.item.name} />
+
       <View style={styles.column}>
         <BaseText>{this.props.item.name}</BaseText>
         <Secondary>{this.props.item.description}</Secondary>
@@ -565,7 +568,7 @@ export class GearScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 16
+    paddingHorizontal: 16
   },
   column: {
     flex: 4,
@@ -575,7 +578,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingLeft: 16,
     //borderBottomWidth: 1,
     //borderBottomColor: colors.border,
     alignItems: 'center'

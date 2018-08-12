@@ -54,6 +54,7 @@
     "htmlparser2-without-node-native": "^3.9.2",
     "lunr": "^2.1.5",
     "moment": "^2.20.1",
+    "raw-loader": "^0.5.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-ga": "^2.4.1",

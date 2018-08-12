@@ -4,3 +4,6 @@
 [submodule "DNDAssistant/dnd-spells"]
 	path = DNDAssistant/dnd-spells
 	url = https://github.com/JamieIrvine/dnd-spells.git
+[submodule "icons"]
+	path = icons
+	url = https://github.com/game-icons/icons.git

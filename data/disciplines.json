@@ -1,5 +1,77 @@
 [
   {
+    "class": "Mystic",
+    "desc": "As a bonus action, cause bright light to emit from your body in a 20 ft. radius, and dim light for another 20. This light can be any color and lasts for an hour or until you extinguish it as a bonus action. ",
+    "level": "Psionic Talents",
+    "name": "Beacon"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As a bonus action, a one-handed melee weapon you hold becomes one with your hand. For the next minute, you can\u2019t let go of the weapon nor can it be forced from your grasp.",
+    "level": "Psionic Talents",
+    "name": "Blade Meld"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you erase your image from the mind of one creature you can see within 120 feet of you; the target must succeed on a Wisdom saving throw, or you are invisible to it until the end of your next turn.",
+    "level": "Psionic Talents",
+    "name": "Blind Spot"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you plant a false belief in the mind of one creature that you can see within 60 feet of you. You can create a sound or an image. Only\nthe target of this talent perceives the sound or image you create.\nIf you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a creature's roar, a musical instrument, or any other sound you pick. It lasts for 1 minute.\nIf you create an object, it must fit within a 5-foot cube and can\u2019t move or be reflective. The image can't create any effect that influences a sense other than sight. The image lasts for 1 minute, and it disappears if the creature touches it.",
+    "level": "Psionic Talents",
+    "name": "Delusion"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you target one creature you can see within 90 feet of you. The target must succeed on a Dexterity saving throw or take 1d8 acid, cold, fire, lightning, or thunder damage (your choice).\nThe talent\u2019s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).",
+    "level": "Psionic Talents",
+    "name": "Energy Beam"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As a bonus action, you alter your density and weight to improve your mobility. For the rest of your turn, your walking speed increases by 10feet, and the first time you stand up this turn,you do so without expending any of your movement if your speed is greater than 0.",
+    "level": "Psionic Talents",
+    "name": "Light Step"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As a bonus action, you can communicate telepathically with one willing creature you can see within 120 feet of you. The target must have an Intelligence of at least 2, otherwise this talent fails and the action is wasted.\nThis communication can occur until the end of the current turn. You don\u2019t need to share a language with the target for it to understand your telepathic utterances, and it understands you even if it lacks a language. You also gain access to one memory of the target\u2019s choice, gaining perfect recall of one thing it saw or did.",
+    "level": "Psionic Talents",
+    "name": "Mind Meld"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you target one creature you can see within 60 feet of you. The target must succeed on a Constitution saving throw or take 1d6 force damage. If it takes any of this damage and is Large or smaller, it is knocked prone.\nThe talent\u2019s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+    "level": "Psionic Talents",
+    "name": "Mind Slam"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you target one creature you can see within 120 feet of you. The target must succeed on an Intelligence saving throw or take 1d10 psychic damage.\nThe talent\u2019s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).",
+    "level": "Psionic Talents",
+    "name": "Mind Thrust"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you beguile one humanoid you can see within 120 feet of you. The target must succeed on a Charisma saving throw or be charmed by you until the end of your next turn.",
+    "level": "Psionic Talents",
+    "name": "Mystic Charm"
+  },
+  {
+    "class": "Mystic",
+    "desc": "You can use your action to manipulate or move one object within 30 feet of you. The object can\u2019t weigh more than 10 pounds, and you can\u2019t affect an object being worn or carried by another creature. If the object is loose, you can move it up to 30 feet in any direction.\nThis talent allows you to open an unlocked door, pour out a beer stein, and so on.\nThe object falls to the ground at the end of your turn if you leave it suspended in midair.",
+    "level": "Psionic Talents",
+    "name": "Mystic Hand"
+  },
+  {
+    "class": "Mystic",
+    "desc": "As an action, you try to grasp one creature you can see within 120 feet of you, with a hand crafted from telekinetic energy. The target must succeed on a Strength saving throw or take 1d6 force damage. If it takes any of this damage and is Large or smaller, you can move it up to 10 feet in a straight line in a direction of your choice. You can\u2019t lift the target off the ground unless it is already airborne or underwater.\nThe talent\u2019s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+    "level": "Psionic Talents",
+    "name": "Psychic Hammer"
+  },
+  {
     "abilities": [
       {
         "concentration": "no",

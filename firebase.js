@@ -6,13 +6,15 @@ const config = {
   databaseURL: 'https://dnd-assistant-4bd14.firebaseio.com',
   projectId: 'dnd-assistant-4bd14',
   storageBucket: 'dnd-assistant-4bd14.appspot.com',
-  messagingSenderId: '600049413560'
+  messagingSenderId: '600049413560',
+  timestampsInSnapshots: true
 }
 
 export default Platform.select({
   web: () => {
-    const firebase = require('firebase')
+    const firebase = require('firebase/app')
     // Required for side-effects
+    require('firebase/auth')
     require('firebase/firestore')
 
     firebase.initializeApp(config)

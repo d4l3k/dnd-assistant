@@ -7,6 +7,7 @@ import {HealthBar} from './HealthBar'
 import {CheckBox} from './CheckBox'
 import {MarkdownInput} from './MarkdownInput'
 import {ApproachInput, LineInput, StatInput, BoxInput, RelativeInput, ModInput, MultiLineInput} from './characterInputs'
+import {CustomStats} from './CustomStats'
 
 export function dnd5e () {
   return <View>
@@ -260,6 +261,8 @@ export function dnd5e () {
         onChangeText={this.cache(spellAttackBonus => this.set({spellAttackBonus}))}
       />
     </View>
+
+    <CustomStats />
 
     <MarkdownInput
       name={'Features & Traits'}

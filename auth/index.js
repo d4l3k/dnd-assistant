@@ -119,12 +119,16 @@ export const characterID = () => {
   })
 }
 
+function firestore() {
+  return firebase.firestore()
+}
+
 export const getUser = () => {
   const user = firebase.auth().currentUser
   if (!user) {
     return
   }
-  return firebase.firestore().collection('users').doc(user.uid)
+  return firestore().collection('users').doc(user.uid)
 }
 
 export const getCharacter = () => {
@@ -133,7 +137,7 @@ export const getCharacter = () => {
     if (vc) {
       const {uid, cid} = vc
       console.log('Viewing character!', vc)
-      return firebase.firestore().collection('users').doc(uid).collection('characters').doc(cid)
+      return firestore().collection('users').doc(uid).collection('characters').doc(cid)
     }
     const cid = promises[0]
     const user = getUser()

@@ -454,17 +454,14 @@ export class GearScreen extends React.PureComponent {
       </View>
     }
 
-    return (
-      <View style={styles.screen}>
-        <SectionList
-          sections={sections}
-          keyExtractor={this._keyExtractor}
-          renderSectionHeader={this._renderSectionHeader}
-          renderItem={this._renderItem}
-          stickySectionHeadersEnabled={true}
-        />
-      </View>
-    )
+    return <SectionList
+      style={styles.screen}
+      sections={sections}
+      keyExtractor={this._keyExtractor}
+      renderSectionHeader={this._renderSectionHeader}
+      renderItem={this._renderItem}
+      stickySectionHeadersEnabled={true}
+    />
   }
 
   getSections () {

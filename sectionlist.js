@@ -10,6 +10,7 @@ export class SectionList extends React.PureComponent {
   render () {
     const FL = this.props.list || FlatList
     return <FL
+      style={this.props.style}
       data={this.convert(this.props.sections)}
       keyExtractor={this.keyExtractor}
       renderItem={this.renderItem}

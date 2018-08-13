@@ -74,11 +74,11 @@ const materialStyles = theme => ({
     width: '33.3333vw'
   },
   paper: {
-    margin: theme.spacing.unit * 1,
+    //padding: theme.spacing.unit * 1,
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    overflowY: 'auto'
+    overflow: 'hidden'
   },
   flex: {
     flex: 1,
@@ -228,11 +228,11 @@ class Tab extends React.Component {
         </Toolbar>
       </AppBar>
 
-      <Paper className={classes.paper} elevation={1}>
+      <div className={classes.paper}>
         {this.state.error ?
           this.renderError()
           : <Screen navigator={this} />}
-      </Paper>
+      </div>
 
       {this.renderFab()}
     </div>

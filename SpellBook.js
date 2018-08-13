@@ -563,20 +563,19 @@ class SpellList extends React.PureComponent {
 
     const sections = this.groupSpells(this.props.spells)
 
-    return (
-      <View style={styles.spelllist}>
-        {this.renderFilter()}
+    return (<View style={this.props.style}>
+      {this.renderFilter()}
 
-        <SectionList
-          list={list}
-          sections={sections}
-          keyExtractor={this.spellExtractor}
-          renderSectionHeader={this.renderSectionHeader}
-          renderItem={this.renderItem}
-          stickySectionHeadersEnabled={true}
-        />
-      </View>
-    )
+      <SectionList
+        style={styles.spelllist}
+        list={list}
+        sections={sections}
+        keyExtractor={this.spellExtractor}
+        renderSectionHeader={this.renderSectionHeader}
+        renderItem={this.renderItem}
+        stickySectionHeadersEnabled={true}
+      />
+    </View>)
   }
 
   renderFilter () {
@@ -815,6 +814,7 @@ export class KnownSpellsScreen extends React.PureComponent {
         <PSIInput />
 
         <SpellList
+          style={styles.flex}
           filter={this.state.filter}
           navigator={this.props.navigator}
           spells={this.state.spells}
@@ -1073,10 +1073,10 @@ export class SlotsSettingsScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
     backgroundColor: '#fff'
   },
   psi: {
+    paddingHorizontal: 16,
     flex: 1,
     flexGrow: 0,
     flexShrink: 0,
@@ -1153,10 +1153,11 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   filter: {
-    padding: 10
+    paddingHorizontal: 16,
   },
   spelllist: {
-    flex: 1
+    flex: 1,
+    paddingHorizontal: 16,
   },
   shrink: {
     flexShrink: 10000,

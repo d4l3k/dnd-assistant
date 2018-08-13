@@ -373,10 +373,10 @@ export class ShareSettingsScreen extends React.PureComponent {
 
 const styles = StyleSheet.create({
   screen: {
-    margin: 5
+    padding: 8
   },
   settingsscreen: {
-    padding: 10
+    padding: 16
   },
   rowstart: {
     flex: 0,

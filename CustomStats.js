@@ -6,7 +6,68 @@ import {View, StyleSheet} from 'react-native'
 import {getCharacter} from './auth'
 import {MarkdownInput} from './MarkdownInput'
 import {BoxInput, ModInput, StatInput, LineInput, MultiLineInput, RelativeInput} from './characterInputs'
-import {colors} from './styles.js'
+import {TextInput} from './TextInput'
+import {colors, LightBox, showLightBox} from './styles.js'
+import {Button} from './Button'
+import {Picker, PickerItem} from './Picker'
+
+const statTypes = {
+  stat: StatInput,
+  box: BoxInput,
+  mod: ModInput,
+  markdown: MarkdownInput,
+  relative: RelativeInput,
+  line: LineInput,
+  multiline: MultiLineInput,
+}
+
+export class AddCustomStatScreen extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      type: 'box'
+    }
+  }
+
+  @autobind
+  add () {
+    this.props.customStats.add({
+      name: this.state.name,
+      value: '',
+      type: this.state.type,
+    }).then(() => {
+      this.props.navigator.dismissLightBox()
+    })
+  }
+
+  render () {
+    return <LightBox
+      title={'Add Custom Stat'}
+      navigator={this.props.navigator}>
+
+      <TextInput
+        label='Name'
+        value={this.state.name || ''}
+        onChangeText={name => this.setState({name})}
+      />
+
+      <Picker
+        label='Type'
+        selectedValue={this.state.type}
+        onValueChange={type => this.setState({type})}>
+        {Object.keys(statTypes).map((type) => {
+          return <PickerItem value={type} label={type} key={type} />
+        })}
+      </Picker>
+
+      <Button
+        title={'Add'}
+        onPress={this.add}
+      />
+    </LightBox>
+  }
+}
 
 export class CustomStats extends React.PureComponent {
   constructor (props) {
@@ -21,6 +82,7 @@ export class CustomStats extends React.PureComponent {
   componentDidMount () {
     getCharacter().then(character => {
       const collection = character.collection('customStats')
+      this.customStats = collection
       this.unsubscribe.push(collection.onSnapshot(snapshot => {
         const stats = []
         snapshot.forEach((stat) => {
@@ -44,25 +106,13 @@ export class CustomStats extends React.PureComponent {
   }
 
   renderStat (stat) {
-    let Type = BoxInput
-    if (stat.type === 'stat') {
-      Type = StatInput
-    } else if (stat.type === 'mod') {
-      Type = ModInput
-    } else if (stat.type === 'markdown') {
-      Type = MarkdownInput
-    } else if (stat.type === 'relative') {
-      Type = RelativeInput
-    } else if (stat.type === 'line') {
-      Type = LineInput
-    } else if (stat.type === 'multiline') {
-      Type = MultiLineInput
-    }
+    let Type = statTypes[stat.type] || BoxInput
 
     return <Type
       name={stat.name}
       value={stat.value}
       onChangeText={value => this.set(stat, {value})}
+      navigator={this.props.navigator}
     />
   }
 
@@ -91,9 +141,24 @@ export class CustomStats extends React.PureComponent {
     })
   }
 
+  @autobind
+  add () {
+    showLightBox(this.props.navigator, 'dnd.AddCustomStatScreen', {
+      customStats: this.customStats,
+    })
+  }
+
   render () {
     return <View style={styles.container}>
       {this.renderStats()}
+
+      <Ionicons.Button
+        name='md-add'
+        color={colors.secondaryText}
+        iconStyle={styles.button}
+        backgroundColor='transparent'
+        onPress={this.add}
+      />
     </View>
   }
 }

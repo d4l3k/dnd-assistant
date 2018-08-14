@@ -8,6 +8,7 @@ import {CharacterMenu} from './CharacterMenu'
 import {WildMagicScreen} from './WildMagicScreen'
 import {DiceScreen, AddDieScreen} from './DiceScreen'
 import {KnownSpellsScreen, AddSpellScreen, SpellSettingsScreen, CastSpellScreen} from './SpellBook'
+import {AddCustomStatScreen} from './CustomStats'
 import {iconsLoaded} from './icons'
 import {start} from './App'
 
@@ -27,6 +28,7 @@ Navigation.registerComponent('dnd.CastSpellScreen', () => CastSpellScreen)
 Navigation.registerComponent('dnd.WildMagicScreen', () => WildMagicScreen)
 Navigation.registerComponent('dnd.AddHealthScreen', () => AddHealthScreen)
 Navigation.registerComponent('dnd.GearSettingsScreen', () => GearSettingsScreen)
+Navigation.registerComponent('dnd.AddCustomStatScreen', () => AddCustomStatScreen)
 
 iconsLoaded.then(() => {
   start()

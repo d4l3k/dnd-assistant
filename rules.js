@@ -262,7 +262,9 @@ export function dnd5e () {
       />
     </View>
 
-    <CustomStats />
+    <CustomStats
+      navigator={this.props.navigator}
+    />
 
     <MarkdownInput
       name={'Features & Traits'}

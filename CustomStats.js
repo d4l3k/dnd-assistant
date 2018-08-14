@@ -2,6 +2,7 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {View, StyleSheet} from 'react-native'
+import Cache from './Cache'
 
 import {getCharacter} from './auth'
 import {MarkdownInput} from './MarkdownInput'
@@ -10,15 +11,49 @@ import {TextInput} from './TextInput'
 import {colors, LightBox, showLightBox} from './styles.js'
 import {Button} from './Button'
 import {Picker, PickerItem} from './Picker'
+import debounce from 'debounce'
 
 const statTypes = {
-  stat: StatInput,
-  box: BoxInput,
-  mod: ModInput,
-  markdown: MarkdownInput,
-  relative: RelativeInput,
-  line: LineInput,
-  multiline: MultiLineInput,
+  stat: {
+    component: StatInput,
+    desc: 'Takes a value 1-20 and converts to the modifier to be added to a d20. Ex: Strength',
+    style: {
+      maxWidth: 150,
+    },
+  },
+  box: {
+    component: BoxInput,
+    desc: 'Simple box for a value. Ex: Hit Dice',
+    style: {
+      maxWidth: 150,
+    },
+  },
+  mod: {
+    component: ModInput,
+    desc: 'Takes a modifer and adds it to a d20. Ex: Initiative',
+    style: {
+      maxWidth: 150,
+    },
+  },
+  markdown: {
+    component: MarkdownInput,
+    desc: 'A markdown text box. Ex. Features'
+  },
+  relative: {
+    component: RelativeInput,
+    desc: 'A value that can be changed via relative values. Ex. HP',
+    style: {
+      maxWidth: 150,
+    },
+  },
+  line: {
+    component: LineInput,
+    desc: 'A single line text box.'
+  },
+  multiline: {
+    component: MultiLineInput,
+    desc: 'A multi line text box.'
+  },
 }
 
 export class AddCustomStatScreen extends React.PureComponent {
@@ -56,8 +91,13 @@ export class AddCustomStatScreen extends React.PureComponent {
         label='Type'
         selectedValue={this.state.type}
         onValueChange={type => this.setState({type})}>
-        {Object.keys(statTypes).map((type) => {
-          return <PickerItem value={type} label={type} key={type} />
+        {Object.keys(statTypes).map((name) => {
+          const type = statTypes[name]
+          let label = name
+          if (type.desc) {
+            label += ' - ' + type.desc
+          }
+          return <PickerItem value={name} label={label} key={name} />
         })}
       </Picker>
 
@@ -77,6 +117,10 @@ export class CustomStats extends React.PureComponent {
       stats: [],
     }
     this.unsubscribe = []
+    this.debounceSet = debounce((stat, value) => {
+      stat.collection.doc(stat.id).set(value, {merge: true})
+    })
+    this.cache = Cache()
   }
 
   componentDidMount () {
@@ -105,19 +149,58 @@ export class CustomStats extends React.PureComponent {
     this.unsubscribe = []
   }
 
-  renderStat (stat) {
-    let Type = statTypes[stat.type] || BoxInput
+  getComponentType (type) {
+    const stat = statTypes[type]
+    if (!stat) {
+      return {
+        component: BoxInput,
+      }
+    }
+    return stat
+  }
 
-    return <Type
-      name={stat.name}
-      value={stat.value}
-      onChangeText={value => this.set(stat, {value})}
-      navigator={this.props.navigator}
-    />
+  @autobind
+  renderStat (stat, key) {
+    const type = this.getComponentType(stat.type)
+    const Component = type.component
+
+    return <View key={key} style={[styles.stat, type.style]}>
+      <Component
+        name={stat.name}
+        value={stat.value}
+        onChangeText={this.cache(value => this.set(stat, {value}), stat.id)}
+        navigator={this.props.navigator}
+      />
+      <Ionicons.Button
+        name='md-trash'
+        color={colors.secondaryText}
+        iconStyle={styles.button}
+        backgroundColor='transparent'
+        onPress={this.cache(() => {
+          this.remove(stat)
+        }, stat.id)}
+      />
+    </View>
   }
 
   set (stat, value) {
-    stat.collection.doc(stat.id).set(value, {merge: true})
+    this.setState(state => {
+      const stats = [...state.stats]
+      stats.forEach((s, i) => {
+        if (s.id != stat.id) {
+          return
+        }
+
+        stats[i] = {
+          ...s,
+          ...value,
+        }
+      })
+
+      return {stats}
+    })
+
+    this.debounceSet(stat, value)
   }
 
   remove (stat) {
@@ -125,20 +208,7 @@ export class CustomStats extends React.PureComponent {
   }
 
   renderStats () {
-    return this.state.stats.map((stat, key) => {
-      return <View key={key} style={styles.stat}>
-        {this.renderStat(stat)}
-        <Ionicons.Button
-          name='md-trash'
-          color={colors.secondaryText}
-          iconStyle={styles.button}
-          backgroundColor='transparent'
-          onPress={() => {
-            this.remove(stat)
-          }}
-        />
-      </View>
-    })
+    return this.state.stats.map(this.renderStat)
   }
 
   @autobind
@@ -175,9 +245,9 @@ const styles = StyleSheet.create({
     marginRight: 0
   },
   stat: {
+    minWidth: 150,
     flex: 1,
     flexDirection: 'row',
-    maxWidth: 150,
     alignItems: 'flex-start'
   },
 })

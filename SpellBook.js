@@ -3,6 +3,7 @@ import autobind from 'autobind-decorator'
 import {StyleSheet, View, ScrollView, Platform, Text} from 'react-native'
 import {Alert} from './Alert'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import titleCase from 'title-case'
 
 import dataSpells from './data/spellData.json'
 import dataDisciplines from './data/disciplines.json'
@@ -652,7 +653,8 @@ class SpellList extends React.PureComponent {
 
     const sections = {}
     spells.forEach(spell => {
-      sections[spell.level] = (sections[spell.level] || []).concat({
+      const level = titleCase(spell.level)
+      sections[level] = (sections[level] || []).concat({
         spell: spell,
         expand: !!(this.state.expanded[spell.name])
       })

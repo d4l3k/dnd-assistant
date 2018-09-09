@@ -79,6 +79,7 @@
     "react-virtualized": "^9.18.0",
     "recyclerlistview": "^1.2.6",
     "roll": "^1.2.0",
+    "title-case": "^2.1.1",
     "util": "^0.10.3",
     "webpack": "^3.10.0"
   },

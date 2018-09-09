@@ -303,17 +303,17 @@ class SpellItem extends React.PureComponent {
 
     return <View style={styles.detail}>
       <View style={styles.row}>
-        {this.props.spell.duration ? <View style={styles.grow}>
+        {this.props.spell.duration ? <View style={styles.flex}>
           <B>Duration</B>
           <BaseText>{this.props.spell.duration}</BaseText>
         </View>: <View />}
 
-        {this.props.spell.range ? <View style={styles.grow}>
+        {this.props.spell.range ? <View style={styles.flex}>
           <B>Range</B>
           <BaseText>{this.props.spell.range}</BaseText>
         </View> : <View />}
 
-        {this.props.spell.material ? <View style={styles.grow}>
+        {this.props.spell.material ? <View style={styles.flex}>
           <B>Material</B>
           <BaseText>{this.props.spell.material}</BaseText>
           </View> : <View />}

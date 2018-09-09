@@ -265,7 +265,9 @@ class SpellItem extends React.PureComponent {
   }
 
   render () {
-    const SpellView = Platform.select({default: View, web: ScrollView})
+    const SpellView = this.props.expand
+      ? Platform.select({default: View, web: ScrollView})
+      : View
     return (
       <SpellView style={styles.item}>
         <Touchable onPress={this.onPress}>

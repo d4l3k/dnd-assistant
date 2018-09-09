@@ -928,6 +928,7 @@ export class AddSpellScreen extends React.PureComponent {
         filter={this.state.filter}
         navigator={this.props.navigator}
         spells={spells}
+        style={styles.flex}
       />
     )
   }

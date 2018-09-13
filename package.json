@@ -60,7 +60,7 @@
     "react-dom": "^16.4.2",
     "react-ga": "^2.4.1",
     "react-markdown": "^3.4.1",
-    "react-native": "0.57.0",
+    "react-native": "0.55.0",
     "react-native-action-button": "^2.8.3",
     "react-native-animated-bar": "^0.2.0",
     "react-native-check-box": "^2.0.2",

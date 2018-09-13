@@ -20,11 +20,11 @@ export class DieRoll extends React.PureComponent {
       displayRoll = '+' + displayRoll
     }
 
-    let color = 'inherit'
+    const style = {}
     if (this.state.base == 1) {
-      color = colors.error
+      style.color = colors.error
     } else if (this.state.base == this.maxBase()) {
-      color = colors.primary
+      style.color = colors.primary
     }
 
     return <View style={styles.row}>
@@ -37,7 +37,7 @@ export class DieRoll extends React.PureComponent {
       />
 
       <BaseText>
-        <Text style={{color}}>
+        <Text style={style}>
         {displayRoll}
         </Text>
       </BaseText>

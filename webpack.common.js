@@ -8,10 +8,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.txt$/,
-        use: 'raw-loader'
-      },
-      {
         test: /\.json$/,
         loader: 'json-loader',
         enforce: 'pre'

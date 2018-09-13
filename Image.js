@@ -2,11 +2,10 @@ import React from 'react'
 import {Platform, StyleSheet, Image, View} from 'react-native'
 
 import {colors} from './styles'
-import iconTxt from './icon-index.txt'
+import iconTxt from './icon-index.json'
 import lunr from 'lunr'
 
-const paths = iconTxt.trim().split('\n')
-
+const paths = iconTxt
 
 const iconIndex = lunr(function () {
   this.ref('index')

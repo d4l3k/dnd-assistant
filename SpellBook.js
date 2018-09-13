@@ -886,7 +886,7 @@ class PSIInput extends React.PureComponent {
     return <View style={styles.psi}>
       <TextInput
         label={'PSI'}
-        value={this.state.psi}
+        value={''+this.state.psi}
         onChangeText={this.setPsi}
         keyboardType={'numeric'}
       />

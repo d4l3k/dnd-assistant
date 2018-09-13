@@ -1,5 +1,6 @@
 import React from 'react'
 import {Platform, StyleSheet, Image, View} from 'react-native'
+import btoa from 'btoa'
 
 import {colors} from './styles'
 import iconTxt from './icon-index.json'

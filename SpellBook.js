@@ -1085,7 +1085,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 0,
     flexShrink: 0,
-    flexBasis: 'initial',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -54,6 +54,7 @@ export const googleLogin = () => {
     console.info(JSON.stringify(currentUser.toJSON()))
   })
   .catch((error) => {
+    console.log(error)
     console.error(`Login fail with error: ${error}`)
   })
 }

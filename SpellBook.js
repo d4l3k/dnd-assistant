@@ -996,7 +996,7 @@ export class MysticSettingsScreen extends React.PureComponent {
         <H2>Mystic</H2>
         <TextInput
           label={'Max PSI'}
-          value={this.state.maxPsi}
+          value={''+this.state.maxPsi}
           onChangeText={text => this._set('maxPsi', text)}
           keyboardType={'numeric'}
         />

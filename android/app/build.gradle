@@ -76,6 +76,10 @@ project.ext.react = [
     entryFile: "index.js"
 ]
 
+project.ext.react = [
+  cliPath: "node_modules/haul/bin/cli.js"
+]
+
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
@@ -102,8 +106,8 @@ android {
         applicationId "com.dndassistant"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 5
-        versionName "5"
+        versionCode 7
+        versionName "7"
         multiDexEnabled  true
         ndk {
             abiFilters "armeabi-v7a", "x86"

@@ -13,7 +13,7 @@ module.exports = {
         enforce: 'pre'
       },
       {
-        test: /\.(png|jpg|gif|ttf)$/,
+        test: /\.(png|jpg|gif|ttf|otf)$/,
         loader: 'url-loader',
         options: {
           limit: 8192

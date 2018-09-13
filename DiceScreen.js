@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Roll from 'roll'
 import {TextInput} from './TextInput'
 import {Button} from './Button'
+import {StarWarsDicePool} from './StarWarsDie'
 
 export class DiceScreen extends React.Component {
   constructor (props) {
@@ -95,6 +96,8 @@ export class DiceScreen extends React.Component {
           </View>
         )
       }
+
+      <StarWarsDicePool />
 
       <Button
         title='New'

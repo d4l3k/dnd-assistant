@@ -161,6 +161,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-restart')
+    compile project(':react-native-navigation')
+    compile project(':react-native-google-signin')
+    compile project(':react-native-firebase')
     implementation project(':react-native-restart')
     implementation project(':react-native-google-signin')
     implementation project(':react-native-firebase')

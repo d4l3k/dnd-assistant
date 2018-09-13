@@ -1,6 +1,7 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import ReactDOM from 'react-dom'
+import classNames from 'classnames'
 import {
   AppRegistry,
   StyleSheet,
@@ -71,7 +72,10 @@ const materialStyles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    width: '33.3333vw'
+    maxWidth: '33.3333vw',
+    flexBasis: '33.3333vw',
+    flexGrow: 1,
+    flexShrink: 1,
   },
   paper: {
     //padding: theme.spacing.unit * 1,
@@ -107,7 +111,16 @@ const materialStyles = theme => ({
     justifyContent: 'space-between',
     flexDirection: 'column',
     flexGrow: 1
-  }
+  },
+  drawerRight: {
+    paddingRight: '320px',
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
 })
 
 const theme = createMuiTheme({
@@ -323,7 +336,7 @@ class ReactNativeWeb extends React.Component {
     const {classes} = this.props
 
     return <MuiThemeProvider theme={theme}>
-      <View style={styles.row}>
+      <div className={classNames(classes.row, {[classes.drawerRight]: this.state.right})}>
         <Drawer
           anchor='left'
           open={this.state.left}
@@ -353,6 +366,7 @@ class ReactNativeWeb extends React.Component {
           )
         }
         <Drawer
+          variant='persistent'
           anchor='right'
           open={this.state.right}
           onClose={() => this.toggle('right')}
@@ -372,7 +386,7 @@ class ReactNativeWeb extends React.Component {
 
         {this.renderModal()}
         {this.renderScreen()}
-      </View>
+      </div>
     </MuiThemeProvider>
   }
 
@@ -495,7 +509,7 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start'
-  }
+  },
 })
 
 ReactGA.initialize('UA-52169625-5')

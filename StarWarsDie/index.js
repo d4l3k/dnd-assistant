@@ -53,8 +53,7 @@ export const IconButton = ({name, size, onPress}) => {
     name={name}
     size={size}
     color={color || colors.primaryText}
-    style={color === 'white' ? styles.outline : null}
-    iconStyle={styles.button}
+    iconStyle={[styles.button, color === 'white' ? styles.outline : null]}
     backgroundColor='transparent'
     onPress={onPress}
   />

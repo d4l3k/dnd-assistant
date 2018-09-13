@@ -43,7 +43,7 @@ export const Icon = ({name, size}) => {
     name={name}
     size={size}
     color={color || colors.primaryText}
-    style={color ? styles.outline : null}
+    style={color === 'white' ? styles.outline : null}
   />
 }
 
@@ -53,7 +53,7 @@ export const IconButton = ({name, size, onPress}) => {
     name={name}
     size={size}
     color={color || colors.primaryText}
-    style={color ? styles.outline : null}
+    style={color === 'white' ? styles.outline : null}
     iconStyle={styles.button}
     backgroundColor='transparent'
     onPress={onPress}
@@ -173,7 +173,7 @@ export class StarWarsDicePool extends React.PureComponent {
   renderDieButtons (dice, f) {
     return <View style={styles.row}>
       {dice.map((die, i) => <IconButton
-        key={die}
+        key={i}
         name={die}
         size={28}
         onPress={() => f(die, i)}
@@ -198,9 +198,7 @@ export class StarWarsDicePool extends React.PureComponent {
   }
 
   renderDice (dice) {
-    return <View style={styles.row}>
-      {dice.map((die, i) => <Icon key={i} name={die} size={24} />)}
-    </View>
+    return dice.map((die, i) => <Icon key={i} name={die} size={24} />)
   }
 
   @autobind
@@ -231,6 +229,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
+    flexWrap: 'wrap',
     backgroundColor: colors.accent,
     margin: -10,
     marginTop: 10,

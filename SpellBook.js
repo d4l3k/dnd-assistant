@@ -932,7 +932,7 @@ export class AddSpellScreen extends React.PureComponent {
         filter={this.state.filter}
         navigator={this.props.navigator}
         spells={spells}
-        style={styles.flex}
+        style={styles.addSpellScreen}
       />
     )
   }
@@ -1093,6 +1093,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   item: {
+    flex: 1,
     //borderBottomWidth: 1,
     //borderBottomColor: colors.border
     paddingRight: 16
@@ -1165,5 +1166,9 @@ const styles = StyleSheet.create({
   },
   shrink: {
     flexShrink: 10000,
+  },
+  addSpellScreen: {
+    flex: 1,
+    paddingHorizontal: 16,
   }
 })

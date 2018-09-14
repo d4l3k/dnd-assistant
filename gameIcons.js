@@ -9,17 +9,37 @@ import lunr from 'lunr'
 
 const paths = iconTxt
 
+const synonyms = {
+  'spear': 'javelin',
+  'wand': 'rod',
+  'flask': 'glue',
+  'match': 'tinder',
+  'shirt': 'clothes',
+  'booze': 'bottles of',
+  'coins': 'gold',
+  'cooking pot': 'mess kit',
+  'tacos': 'food',
+  'lockpicks': "thieve's tools"
+}
+
 const iconIndex = lunr(function () {
   this.ref('index')
   this.field('name')
+  this.field('synonyms')
 
   paths.forEach((path, index) => {
     if (!path) {
       return
     }
     const parts = path.split('/')
-    const name = parts[parts.length - 1].split('.')[0].replace(/[^a-zA-Z]+/g, ' ')
-    this.add({name, index})
+    const name = parts[parts.length - 1].split('.')[0].replace(/[^a-zA-Z]+/g, ' ').toLowerCase()
+    const syn = []
+    for (const s of Object.keys(synonyms)) {
+      if (name.indexOf(s) >= 0) {
+        syn.push(synonyms[s])
+      }
+    }
+    this.add({name, index, synonyms: syn.join(' ')})
   })
 })
 

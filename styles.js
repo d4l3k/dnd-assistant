@@ -232,10 +232,16 @@ export const Field = (props) => {
   </View>
 }
 
+let lastPassProps = {}
+
+export const getPassProps = () => {
+  return lastPassProps
+}
+
 export const showLightBox = (navigator, screen, props) => {
+  lastPassProps = props
   navigator.showLightBox({
     screen: screen,
-    passProps: props,
     style: {
       backgroundBlur: 'dark',
       backgroundColor: 'rgba(0, 0, 0, 0.7)',

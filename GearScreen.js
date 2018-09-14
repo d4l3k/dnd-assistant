@@ -3,7 +3,7 @@ import autobind from 'autobind-decorator'
 import firebase from './firebase'
 import {StyleSheet, View, ScrollView} from 'react-native'
 import {Alert} from './Alert'
-import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header, Error, H2} from './styles.js'
+import {colors, BaseText, B, LightBox, Secondary, showLightBox, Header, Error, H2, getPassProps} from './styles.js'
 import {getCharacter} from './auth'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {SectionList} from './sectionlist'
@@ -127,7 +127,7 @@ export class GearSettingsScreen extends React.PureComponent {
   }
 
   addInventory (id) {
-    return this.props.character.collection('inventories').doc(id).set({id})
+    return this.character.collection('inventories').doc(id).set({id})
   }
 
   @autobind
@@ -166,11 +166,15 @@ export class AddGearScreen extends React.PureComponent {
     this.state = {
       name: '',
       description: '',
-      weight: ''
+      weight: '',
+      ...getPassProps(),
     }
 
-    if (this.props.update) {
-      this.state = this.props.update
+    if (this.state.update) {
+      this.state = {
+        ...this.state,
+        ...this.state.update
+      }
     }
 
     this.cache = Cache()
@@ -178,7 +182,7 @@ export class AddGearScreen extends React.PureComponent {
 
   render () {
     return <LightBox
-      title={this.props.update ? 'Update Gear' : 'Add Gear'}
+      title={this.state.update ? 'Update Gear' : 'Add Gear'}
       navigator={this.props.navigator}>
 
       <TextInput
@@ -198,7 +202,7 @@ export class AddGearScreen extends React.PureComponent {
         onChangeText={this.cache(weight => this.set({weight}))}
       />
       <Button
-        title={this.props.update ? 'Update' : 'Add'}
+        title={this.state.update ? 'Update' : 'Add'}
         onPress={this.add}
       />
     </LightBox>
@@ -217,14 +221,14 @@ export class AddGearScreen extends React.PureComponent {
       return
     }
 
-    Promise.resolve(this.props.gear).then(gear => {
+    Promise.resolve(this.state.gear).then(gear => {
       const item = {
         name: this.state.name,
         description: this.state.description,
         weight: this.state.weight
       }
-      if (this.props.update) {
-        return gear.doc(this.props.update.id).set(item, {merge: true})
+      if (this.state.update) {
+        return gear.doc(this.state.update.id).set(item, {merge: true})
       }
       item.count = '1'
       return gear.add(item)
@@ -557,9 +561,6 @@ export class GearScreen extends React.PureComponent {
         this.props.navigator.push({
           screen: 'dnd.GearSettingsScreen',
           title: 'Gear Settings',
-          passProps: {
-            character: this.character
-          }
         })
       }
     }

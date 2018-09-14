@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import btoa from 'btoa'
+import {btoa} from './btoa'
 
 import {Image} from './Image'
 import {colors} from './styles'

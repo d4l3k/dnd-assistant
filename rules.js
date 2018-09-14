@@ -1,14 +1,15 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
 import {TextInput} from './TextInput'
-import {BaseText, Field, H1, H2} from './styles.js'
+import {colors, BaseText, Field, H1, H2} from './styles.js'
 import {HealthBar} from './HealthBar'
 import {CheckBox} from './CheckBox'
 import {MarkdownInput} from './MarkdownInput'
+import titleCase from 'title-case'
 import {ApproachInput, LineInput, StatInput, BoxInput, RelativeInput, ModInput, MultiLineInput} from './characterInputs'
 import {CustomStats} from './CustomStats'
-import {StarWarsDiceReference} from './StarWarsDie'
+import {Icon, StarWarsDiceReference} from './StarWarsDie'
 
 export function dnd5e () {
   return <View>
@@ -600,6 +601,61 @@ export function swrpg () {
 
     <Section>Skills</Section>
 
+    {[
+      ['Athletics', 'brawn'],
+      ['Brawl', 'brawn'],
+      ['Charm', 'presence'],
+      ['Coercion', 'willpower'],
+      ['Computers', 'intellect'],
+      ['Cool', 'presence'],
+      ['Coordination', 'agility'],
+      ['Deception', 'cunning'],
+      ['Discipline', 'willpower'],
+      ['Leadership', 'presence'],
+      ['Mechanics', 'intellect'],
+      ['Medicine', 'intellect'],
+      ['Melee', 'brawn'],
+      ['Negotiation', 'presence'],
+      ['Perception', 'cunning'],
+      ['Piloting (Planetary)', 'agility'],
+      ['Ranged (Heavy)', 'agility'],
+      ['Ranged (Light)', 'agility'],
+      ['Resilience', 'brawn'],
+      ['Skulduggery', 'cunning'],
+      ['Stealth', 'agility'],
+      ['Streetwise', 'cunning'],
+      ['Survival', 'cunning'],
+      ['Vigilance', 'willpower'],
+    ].map(([name, characteristic], i) => {
+      const val = this.state['character_'+name] || ''
+      let numDice = parseInt(this.state['character_'+characteristic] || 0)
+      const numProficiency = Math.min(parseInt(val || 0), numDice)
+      if (numProficiency === 0) {
+        numDice = 0
+      }
+      const numAbility = numDice - numProficiency
+      return <View key={i} style={[styles.rowcenter, styles.section]}>
+        <Text style={{whiteSpace: 'pre'}}>
+          <BaseText>{name}</BaseText>
+          <Text style={{color: colors.secondaryText}}> ({titleCase(characteristic)}) </Text>
+        </Text>
+
+        <TextInput
+          value={'' + val}
+          onChangeText={this.cache(v => this.set({[name]: v}), name)}
+          keyboardType={'numeric'}
+        />
+
+        {
+          repeat('proficiencyDie', numProficiency)
+            .concat(repeat('abilityDie', numAbility))
+            .map((die, i) => {
+              return <Icon key={i} name={die} size={24} />
+            })
+        }
+      </View>
+    })}
+
     <CustomStats
       navigator={this.props.navigator}
     />
@@ -612,6 +668,14 @@ export function swrpg () {
 
     <StarWarsDiceReference />
   </View>
+}
+
+function repeat(v, n) {
+  const a = []
+  for (let i = 0; i < n; i++) {
+    a.push(v)
+  }
+  return a
 }
 
 const Section = (props) => {

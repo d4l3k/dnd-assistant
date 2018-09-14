@@ -145,8 +145,8 @@ export const dieSets = {
 export const StarWarsDiceReference = (props) => {
   return <View style={styles.row}>
     {Object.keys(glyphMap).map((die, i) => {
-      return <View style={styles.reference}>
-        <Icon key={i} name={die} size={24} />
+      return <View style={styles.reference} key={i}>
+        <Icon name={die} size={24} />
         <BaseText>{titleCase(die)}</BaseText>
       </View>
     })}

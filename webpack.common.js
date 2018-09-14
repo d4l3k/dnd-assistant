@@ -5,13 +5,11 @@ module.exports = {
   entry: {
     main: './index.js'
   },
+  output: {
+    filename: '[name].[contenthash].js'
+  },
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-        enforce: 'pre'
-      },
+    rules: [
       {
         test: /\.(png|jpg|gif|ttf|otf)$/,
         loader: 'url-loader',
@@ -40,7 +38,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '.web.js', '.default.js', '.js', '.json' ],
+    extensions: [ '.web.js', '.default.js', '.js' ],
     alias: {
       'react-native': 'react-native-web'
     }

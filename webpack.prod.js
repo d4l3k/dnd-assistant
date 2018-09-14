@@ -30,7 +30,7 @@ module.exports = merge(common, {
     new FaviconsWebpackPlugin(path.resolve(__dirname, 'media/logo-icon.png'))
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'docs')
   }
 })

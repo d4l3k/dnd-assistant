@@ -12,6 +12,7 @@ import {Button} from './Button'
 import Cache from './Cache'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {Icon, Img} from './gameIcons'
+import {Loading} from './Loading'
 
 export class InventorySettingItem extends React.PureComponent {
   render () {
@@ -321,9 +322,7 @@ function listenInventory (self, noGear) {
         return a.name < b.name ? -1 : 1
       })
 
-      self.setState(state => {
-        return {gear}
-      })
+      self.setState({gear, loading: false})
     }))
 
     self.inventories = character.collection('inventories')
@@ -420,7 +419,8 @@ export class GearScreen extends React.PureComponent {
       gear: [],
       modalVisible: false,
       inventories: {},
-      inventoryGear: {}
+      inventoryGear: {},
+      loading: true
     }
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
@@ -444,6 +444,10 @@ export class GearScreen extends React.PureComponent {
   }
 
   render () {
+    if (this.state.loading) {
+      return <Loading />
+    }
+
     const sections = this.getSections()
 
     if (sections.length === 0 || (sections.length === 1 && sections[0].data.length === 0)) {

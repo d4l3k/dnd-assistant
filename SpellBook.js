@@ -19,6 +19,7 @@ import {Button} from './Button'
 import {iconsMap} from './icons'
 import lunr from 'lunr'
 import {ExtractDieRolls} from './DieRoll'
+import {Loading} from './Loading'
 
 const numSlotLevels = 9
 
@@ -705,7 +706,8 @@ export class KnownSpellsScreen extends React.PureComponent {
 
     this.state = {
       spells: [],
-      spellData: {}
+      spellData: {},
+      loading: true
     }
     this.unsubscribe = []
 
@@ -790,9 +792,7 @@ export class KnownSpellsScreen extends React.PureComponent {
           spellData[spell.id] = data
           spells.push(spellMap[spell.id])
         })
-        this.setState(state => {
-          return {spells, spellData}
-        })
+        this.setState({spells, spellData, loading: false})
       }))
     })
   }
@@ -805,6 +805,10 @@ export class KnownSpellsScreen extends React.PureComponent {
   }
 
   render () {
+    if (this.state.loading) {
+      return <Loading />
+    }
+
     if (this.state.spells.length === 0) {
       return <View style={styles.centerp}>
         <BaseText>

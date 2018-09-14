@@ -4,6 +4,7 @@ import {Linking, StyleSheet, Text, View, ScrollView} from 'react-native'
 import {getUser, onLogin, setCharacter, characterID, signOut} from './auth'
 import {colors, BaseText, B, Touchable} from './styles.js'
 import {Button} from './Button'
+import {Loading} from './Loading'
 
 const feedbackURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfBjIkfj6EpZnRgg5IXn9ajUA4ErPUg9vZlVacVxwbrijDjTg/viewform?usp=sf_link'
 
@@ -12,7 +13,8 @@ export class CharacterMenu extends React.Component {
     super(props)
 
     this.state = {
-      characters: []
+      characters: [],
+      loading: true
     }
   }
 
@@ -32,7 +34,7 @@ export class CharacterMenu extends React.Component {
           return a.name < b.name ? -1 : 1
         })
         this.setState(state => {
-          return {characters}
+          return {characters, loading: false}
         })
       })
     })
@@ -52,6 +54,8 @@ export class CharacterMenu extends React.Component {
           <Text style={styles.header}>
             Tristan's DND Assistant
           </Text>
+
+          {this.state.loading ? <Loading /> : null}
 
           <View>
             {

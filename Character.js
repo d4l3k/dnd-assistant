@@ -1,6 +1,7 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native'
+
 import {googleLogin, getCharacter, getUser} from './auth'
 import firebase from './firebase'
 import {BaseText, Field, colors, LightBox} from './styles.js'
@@ -11,6 +12,7 @@ import {Button} from './Button'
 import {Picker, PickerItem} from './Picker'
 import * as rules from './rules'
 import {SkillInput} from './characterInputs'
+import {Loading} from './Loading'
 
 const debounceTime = 300
 
@@ -126,9 +128,7 @@ export class CharacterScreen extends React.PureComponent {
 
     this.state = {
       name: '',
-      character: {
-        name: 'Loading...'
-      }
+      loading: true,
     }
 
     this.debounce = {}
@@ -157,7 +157,9 @@ export class CharacterScreen extends React.PureComponent {
       this.character = character
       this.unsubscribe = this.character.onSnapshot(character => {
         this.setState(prev => {
-          const state = {}
+          const state = {
+            loading: false
+          }
           const data = character.data()
           Object.keys(data).forEach(key => {
             const k = characterPrefix + key
@@ -180,6 +182,10 @@ export class CharacterScreen extends React.PureComponent {
   }
 
   render () {
+    if (this.state.loading) {
+      return <Loading />
+    }
+
     const characterSheet = rules[this.state.character_rules] || rules.dnd5e
     return (
       <ScrollView style={styles.screen}>

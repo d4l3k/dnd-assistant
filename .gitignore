@@ -25,3 +25,5 @@ local.properties
 # Haul
 #
 haul-debug.log
+
+play-api.json

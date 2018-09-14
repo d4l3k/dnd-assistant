@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.github.triplet.play'
 
 import com.android.build.OutputFile
 
@@ -106,8 +107,8 @@ android {
         applicationId "com.dndassistant"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 8
-        versionName "8"
+        versionCode 9
+        versionName "9"
         multiDexEnabled  true
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -158,6 +159,13 @@ android {
             }
         }
     }
+}
+
+play {
+    jsonFile = file('../../play-api.json')
+    track = 'beta'
+		userFraction = 1.0
+    untrackOld = true
 }
 
 dependencies {

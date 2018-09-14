@@ -6,7 +6,7 @@ module.exports = {
     main: './index.js'
   },
   output: {
-    filename: '[name].[contenthash].js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [

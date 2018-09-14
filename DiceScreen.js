@@ -97,12 +97,12 @@ export class DiceScreen extends React.Component {
         )
       }
 
-      <StarWarsDicePool />
-
       <Button
         title='New'
         onPress={() => this.newDie()}
       />
+
+      <StarWarsDicePool />
     </ScrollView>
   }
 

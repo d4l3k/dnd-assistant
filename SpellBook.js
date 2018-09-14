@@ -1082,9 +1082,6 @@ const styles = StyleSheet.create({
   },
   psi: {
     paddingHorizontal: 16,
-    flex: 1,
-    flexGrow: 0,
-    flexShrink: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

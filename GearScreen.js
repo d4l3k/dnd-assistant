@@ -586,7 +586,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   rowend: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center'

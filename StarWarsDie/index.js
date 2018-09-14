@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import {Text, StyleSheet, View, ScrollView} from 'react-native'
+import {Platform, Text, StyleSheet, View, ScrollView} from 'react-native'
 import { createIconSet } from 'react-native-vector-icons';
 import {colors, H2, Touchable, BaseText, B} from '../styles.js'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -222,7 +222,14 @@ const styles = StyleSheet.create({
   },
   outline: {
     textShadowColor: 'black',
-    textShadowRadius: 2,
+    textShadowRadius: Platform.select({
+      web: 2,
+      default: 4,
+    }),
+    textShadowOffset: Platform.select({
+      web: {height: 0, width: 0},
+      default: {height: 1, width: 0},
+    })
   },
   result: {
     flex: 1,

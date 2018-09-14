@@ -87,6 +87,9 @@ const materialStyles = theme => ({
   flex: {
     flex: 1,
   },
+  preWrap: {
+    whiteSpace: 'pre-wrap'
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -252,10 +255,11 @@ class Tab extends React.Component {
   }
 
   renderError() {
+    const {classes} = this.props
     const msg = this.state.error.toString() + '\n' + this.state.error.stack
     return <div>
       <h2>Error</h2>
-      <pre>{msg}</pre>
+      <pre className={classes.preWrap}>{msg}</pre>
     </div>
   }
 

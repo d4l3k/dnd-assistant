@@ -28,6 +28,8 @@ target 'DNDAssistant' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'DNDAssistantTests' do
     inherit! :search_paths
     # Pods for testing

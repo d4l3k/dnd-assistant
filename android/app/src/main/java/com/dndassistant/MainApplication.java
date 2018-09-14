@@ -4,9 +4,9 @@ import android.app.Application;
 
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
-import com.reactnativenavigation.NavigationReactPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.react.ReactNativeHost;
@@ -37,7 +37,8 @@ public class MainApplication extends NavigationApplication {
 			new RNFirebasePackage(),
 			new RNFirebaseFirestorePackage(),
 			new RNFirebaseAuthPackage(),
-			new RNGoogleSigninPackage()
+			new RNGoogleSigninPackage(),
+			new SvgPackage()
 		);
 	}
 

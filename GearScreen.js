@@ -11,7 +11,7 @@ import {TextInput} from './TextInput'
 import {Button} from './Button'
 import Cache from './Cache'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import {Icon, Img} from './Image'
+import {Icon, Img} from './gameIcons'
 
 export class InventorySettingItem extends React.PureComponent {
   render () {

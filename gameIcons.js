@@ -1,7 +1,8 @@
 import React from 'react'
-import {Platform, StyleSheet, Image, View} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import btoa from 'btoa'
 
+import {Image} from './Image'
 import {colors} from './styles'
 import iconTxt from './icon-index.json'
 import lunr from 'lunr'
@@ -67,6 +68,7 @@ export class Img extends React.PureComponent {
 
         this.setState({
           uri: 'data:image/svg+xml;base64,' + btoa(data),
+          xmlData: data,
         })
       })
     }
@@ -79,18 +81,15 @@ export class Img extends React.PureComponent {
       uri: this.state.uri,
     }
 
-    return Platform.select({
-      web: () => {
-        return <img src={source.uri} style={{
-          width: 32,
-          height: 32,
-          paddingRight: 16
-        }}/>
-      },
-      default: () => {
-        return <Image source={source} style={styles.icon}/>
-      }
-    })()
+    return <Image
+      style={{
+        width: 32,
+        height: 32,
+        marginRight: 16,
+      }}
+      svgXmlData={this.state.xmlData}
+      source={source}
+    />
   }
 }
 
@@ -99,5 +98,5 @@ const styles = StyleSheet.create({
     width: 48,
     height: 32,
     paddingRight: 16,
-  },
+  }
 })

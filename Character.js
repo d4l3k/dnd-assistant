@@ -25,6 +25,7 @@ export class AddHealthScreen extends React.PureComponent {
       value: ''
     }
   }
+
   render () {
     const total = this.total()
 
@@ -288,6 +289,7 @@ export class CharacterSettingsScreen extends React.PureComponent {
         onValueChange={this.setRules}>
         <PickerItem value='' label='D&D 5th Edition' />
         <PickerItem value='fateAccelerated' label='Fate Accelerated' />
+        <PickerItem value='swrpg' label='Star Wars RPG' />
       </Picker>
     </View>
   }

@@ -8,6 +8,7 @@ import {CheckBox} from './CheckBox'
 import {MarkdownInput} from './MarkdownInput'
 import {ApproachInput, LineInput, StatInput, BoxInput, RelativeInput, ModInput, MultiLineInput} from './characterInputs'
 import {CustomStats} from './CustomStats'
+import {StarWarsDiceReference} from './StarWarsDie'
 
 export function dnd5e () {
   return <View>
@@ -490,6 +491,126 @@ export function fateAccelerated () {
       onChangeText={this.cache(consequencesSevere => this.set({consequencesSevere}))}
     />
 
+  </View>
+}
+
+
+export function swrpg () {
+  return <View>
+    <View style={styles.row}>
+      <LineInput
+        name={'Character Name'}
+        value={this.state.character_name}
+        onChangeText={this.cache(name => this.set({name}))}
+      />
+      <LineInput
+        name={'Career'}
+        value={this.state.character_classLevel}
+        onChangeText={this.cache(classLevel => this.set({classLevel}))}
+      />
+    </View>
+
+    <View style={styles.row}>
+      <LineInput
+        name={'Species'}
+        value={this.state.character_race}
+        onChangeText={this.cache(race => this.set({race}))}
+      />
+
+      <LineInput
+        name={'Obligation'}
+        value={this.state.character_obligation}
+        onChangeText={this.cache(obligation => this.set({obligation}))}
+      />
+    </View>
+
+    <View style={styles.row}>
+      <BoxInput
+        name={'SDAK Value'}
+        value={this.state.character_sdak}
+        onChangeText={this.cache(sdak => this.set({sdak}))}
+      />
+      <BoxInput
+        name={'Wounds Threshold'}
+        value={this.state.character_woundsThreshold}
+        onChangeText={this.cache(woundsThreshold => this.set({woundsThreshold}))}
+      />
+      <BoxInput
+        name={'Wounds Current'}
+        value={this.state.character_woundsCurrent}
+        onChangeText={this.cache(woundsCurrent => this.set({woundsCurrent}))}
+      />
+    </View>
+
+    <View style={styles.row}>
+      <BoxInput
+        name={'Strain Threshold'}
+        value={this.state.character_strainThreshold}
+        onChangeText={this.cache(strainThreshold => this.set({strainThreshold}))}
+      />
+      <BoxInput
+        name={'Strain Current'}
+        value={this.state.character_strainCurrent}
+        onChangeText={this.cache(strainCurrent => this.set({strainCurrent}))}
+      />
+      <BoxInput
+        name={'Critical Injuries'}
+        value={this.state.character_criticalInjuries}
+        onChangeText={this.cache(criticalInjuries => this.set({criticalInjuries}))}
+      />
+    </View>
+
+    <Section>Characteristics</Section>
+
+    <View style={styles.row}>
+      <BoxInput
+        name={'Brawn'}
+        value={this.state.character_brawn}
+        onChangeText={this.cache(brawn => this.set({brawn}))}
+      />
+      <BoxInput
+        name={'Agility'}
+        value={this.state.character_agility}
+        onChangeText={this.cache(agility => this.set({agility}))}
+      />
+      <BoxInput
+        name={'Intellect'}
+        value={this.state.character_intellect}
+        onChangeText={this.cache(intellect => this.set({intellect}))}
+      />
+    </View>
+
+    <View style={styles.row}>
+      <BoxInput
+        name={'Cunning'}
+        value={this.state.character_cunning}
+        onChangeText={this.cache(cunning => this.set({cunning}))}
+      />
+      <BoxInput
+        name={'Willpower'}
+        value={this.state.character_willpower}
+        onChangeText={this.cache(willpower => this.set({willpower}))}
+      />
+      <BoxInput
+        name={'Presence'}
+        value={this.state.character_presence}
+        onChangeText={this.cache(presence => this.set({presence}))}
+      />
+    </View>
+
+    <Section>Skills</Section>
+
+    <CustomStats
+      navigator={this.props.navigator}
+    />
+
+    <MarkdownInput
+      name={'Talents'}
+      value={this.state.character_talents}
+      onChangeText={this.cache(talents => this.set({talents}))}
+    />
+
+    <StarWarsDiceReference />
   </View>
 }
 

@@ -1,13 +1,23 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
 import {Platform, Text, StyleSheet, View, ScrollView} from 'react-native'
-import { createIconSet } from 'react-native-vector-icons';
-import {colors, H2, Touchable, BaseText, B} from '../styles.js'
+import { createIconSet } from 'react-native-vector-icons'
+import titleCase from 'title-case'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+
+import {colors, H2, Touchable, BaseText, B} from '../styles.js'
 
 import './fonts'
 
 const glyphMap = {
+  success: 's',
+  triumph: 'x',
+  advantage: 'a',
+  failure: 'f',
+  despair: 'y',
+  threat: 't',
+  lightSide: 'z',
+  darkSide: 'z',
   boostDie: 'b',
   setbackDie: 'b',
   abilityDie: 'd',
@@ -15,14 +25,6 @@ const glyphMap = {
   proficiencyDie: 'c',
   challengeDie: 'c',
   forceDie: 'c',
-  success: 's',
-  failure: 'f',
-  advantage: 'a',
-  threat: 't',
-  triumph: 'x',
-  despair: 'y',
-  lightSide: 'z',
-  darkSide: 'z',
 };
 
 const colorMap = {
@@ -140,6 +142,17 @@ export const dieSets = {
   ]
 }
 
+export const StarWarsDiceReference = (props) => {
+  return <View style={styles.row}>
+    {Object.keys(glyphMap).map((die, i) => {
+      return <View style={styles.reference}>
+        <Icon key={i} name={die} size={24} />
+        <BaseText>{titleCase(die)}</BaseText>
+      </View>
+    })}
+  </View>
+}
+
 export class StarWarsDicePool extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -214,6 +227,10 @@ export class StarWarsDicePool extends React.PureComponent {
 
 const styles = StyleSheet.create({
   die: {
+  },
+  reference: {
+    alignItems: 'center',
+    margin: 10,
   },
   row: {
     flexDirection: 'row',

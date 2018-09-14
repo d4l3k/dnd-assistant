@@ -35,7 +35,7 @@ const colorMap = {
   lightSide: 'white',
 }
 
-const FontIcon = createIconSet(glyphMap, 'EotESymbol', 'assets/fonts/EotESymbol-Regular-PLUS.otf');
+const FontIcon = createIconSet(glyphMap, 'EotESymbol', 'EotESymbol-Regular-PLUS.otf');
 
 export const Icon = ({name, size}) => {
   const color = colorMap[name]

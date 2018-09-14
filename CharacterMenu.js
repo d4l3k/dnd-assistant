@@ -7,6 +7,7 @@ import {Button} from './Button'
 import {Loading} from './Loading'
 
 const feedbackURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfBjIkfj6EpZnRgg5IXn9ajUA4ErPUg9vZlVacVxwbrijDjTg/viewform?usp=sf_link'
+const sourceCodeURL = 'https://github.com/d4l3k/dnd-assistant'
 
 export class CharacterMenu extends React.Component {
   constructor (props) {
@@ -94,6 +95,13 @@ export class CharacterMenu extends React.Component {
 
             onPress={this.sendFeedback}
           />
+
+          <Button
+            title='Source Code'
+            color={colors.secondaryText}
+
+            onPress={this.openSourceCode}
+          />
         </View>
       </View>
     )
@@ -102,6 +110,11 @@ export class CharacterMenu extends React.Component {
   @autobind
   sendFeedback () {
     Linking.openURL(feedbackURL)
+  }
+
+  @autobind
+  openSourceCode () {
+    Linking.openURL(sourceCodeURL)
   }
 
   newCharacter () {

@@ -527,7 +527,7 @@ export function swrpg () {
 
     <View style={styles.row}>
       <BoxInput
-        name={'SDAK Value'}
+        name={'Soak Value'}
         value={this.state.character_sdak}
         onChangeText={this.cache(sdak => this.set({sdak}))}
       />

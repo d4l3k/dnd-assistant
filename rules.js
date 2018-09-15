@@ -630,9 +630,6 @@ export function swrpg () {
       const val = this.state['character_'+name] || ''
       let numDice = parseInt(this.state['character_'+characteristic] || 0)
       const numProficiency = Math.min(parseInt(val || 0), numDice)
-      if (numProficiency === 0) {
-        numDice = 0
-      }
       const numAbility = numDice - numProficiency
       return <View key={i} style={[styles.rowcenter, styles.section]}>
         <Text style={{whiteSpace: 'pre'}}>

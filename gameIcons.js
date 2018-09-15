@@ -19,7 +19,12 @@ const synonyms = {
   'coins': 'gold',
   'cooking pot': 'mess kit',
   'tacos': 'food',
-  'lockpicks': "thieve's tools"
+  'lockpicks': "thieve's tools",
+  'processor': 'datapad',
+  'syringe': 'stimpack',
+  'microphone': 'comlink',
+  'money': 'credits',
+  'suit': 'jumpsuit',
 }
 
 const iconIndex = lunr(function () {

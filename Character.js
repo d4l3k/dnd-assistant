@@ -4,7 +4,7 @@ import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native'
 
 import {googleLogin, getCharacter, getUser} from './auth'
 import firebase from './firebase'
-import {BaseText, Field, colors, LightBox} from './styles.js'
+import {BaseText, Field, colors, LightBox, getPassProps} from './styles.js'
 import {TextInput} from './TextInput'
 import {CheckBox} from './CheckBox'
 import Cache from './Cache'
@@ -22,7 +22,8 @@ export class AddHealthScreen extends React.PureComponent {
 
     this.state = {
       fullDamage: true,
-      value: ''
+      value: '',
+      ...getPassProps()
     }
   }
 
@@ -32,7 +33,7 @@ export class AddHealthScreen extends React.PureComponent {
     return <LightBox title='Add Health' navigator={this.props.navigator}>
       <TextInput
         label='Amount'
-        value={this.props.value}
+        value={this.state.value}
         onChangeText={this.onChangeText}
         keyboardType={'numeric'}
         autoFocus={true}
@@ -100,13 +101,13 @@ export class AddHealthScreen extends React.PureComponent {
 
   @autobind
   add () {
-    this.props.add(this.total())
+    this.state.add(this.total())
     this.props.navigator.dismissLightBox()
   }
 
   @autobind
   subtract () {
-    this.props.add(-this.total())
+    this.state.add(-this.total())
     this.props.navigator.dismissLightBox()
   }
 }

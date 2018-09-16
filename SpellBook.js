@@ -10,7 +10,7 @@ import dataDisciplines from './data/disciplines.json'
 
 import HTMLView from 'react-native-htmlview'
 import {getCharacter, slugify} from './auth'
-import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header} from './styles.js'
+import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header, getPassProps} from './styles.js'
 import {SectionList} from './sectionlist'
 import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
@@ -32,6 +32,7 @@ spells.forEach(spell => {
 
 export class CastSpellScreen extends React.PureComponent {
   render () {
+    this.state = getPassProps()
     return <LightBox title='Cast Spell' navigator={this.props.navigator}>
       {
         this.renderButtons()
@@ -40,7 +41,7 @@ export class CastSpellScreen extends React.PureComponent {
   }
 
   renderButtons () {
-    const slots = Object.values(this.props.slots)
+    const slots = Object.values(this.state.slots)
 
     if (slots.length === 0) {
       return <View style={styles.centerp}>
@@ -69,7 +70,7 @@ export class CastSpellScreen extends React.PureComponent {
   _cast (slot) {
     getCharacter().then(character => {
       character.collection('slots').doc(slot.id).collection('spells').add({
-        spell: this.props.spell.name
+        spell: this.state.spell.name
       }).then(() => {
         this.props.navigator.dismissLightBox()
       })

@@ -8,7 +8,7 @@ import {getCharacter} from './auth'
 import {MarkdownInput} from './MarkdownInput'
 import {BoxInput, ModInput, StatInput, LineInput, MultiLineInput, RelativeInput} from './characterInputs'
 import {TextInput} from './TextInput'
-import {colors, LightBox, showLightBox} from './styles.js'
+import {colors, LightBox, showLightBox, getPassProps} from './styles.js'
 import {Button} from './Button'
 import {Picker, PickerItem} from './Picker'
 import debounce from 'debounce'
@@ -61,13 +61,14 @@ export class AddCustomStatScreen extends React.PureComponent {
     super(props)
 
     this.state = {
-      type: 'box'
+      type: 'box',
+      ...getPassProps()
     }
   }
 
   @autobind
   add () {
-    this.props.customStats.add({
+    this.state.customStats.add({
       name: this.state.name,
       value: '',
       type: this.state.type,

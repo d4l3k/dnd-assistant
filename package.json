@@ -39,7 +39,8 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "web": "webpack-dev-server --inline --config webpack.dev.js",
     "webprod": "webpack --config webpack.prod.js",
-    "haul": "haul"
+    "haul": "haul",
+    "icons": "cd icons && find | rg svg | jq --raw-input . | jq --slurp . > ../icon-index.json"
   },
   "jest": {
     "preset": "jest-expo"

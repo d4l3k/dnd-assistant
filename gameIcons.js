@@ -25,6 +25,11 @@ const synonyms = {
   'microphone': 'comlink',
   'money': 'credits',
   'suit': 'jumpsuit',
+  'necklace': 'locket'
+}
+
+function cleanQuery (text) {
+  return text.replace(/[^a-zA-Z]+/g, ' ').toLowerCase()
 }
 
 const iconIndex = lunr(function () {
@@ -37,7 +42,7 @@ const iconIndex = lunr(function () {
       return
     }
     const parts = path.split('/')
-    const name = parts[parts.length - 1].split('.')[0].replace(/[^a-zA-Z]+/g, ' ').toLowerCase()
+    const name = cleanQuery(parts[parts.length - 1].split('.')[0])
     const syn = []
     for (const s of Object.keys(synonyms)) {
       if (name.indexOf(s) >= 0) {
@@ -48,11 +53,11 @@ const iconIndex = lunr(function () {
   })
 })
 
-function findIcon(text) {
+function findIcon (text) {
   if (!text) {
     return
   }
-  const results = iconIndex.search(text)
+  const results = iconIndex.search(cleanQuery(text))
   if (results.length > 0) {
     return paths[results[0].ref]
   }

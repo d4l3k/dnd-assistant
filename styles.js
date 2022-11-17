@@ -157,7 +157,6 @@ export class LightBox extends React.PureComponent {
     }}>
 
       <View style={{
-        flex: 0,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: 16

@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   skillinput: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'

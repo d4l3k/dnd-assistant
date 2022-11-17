@@ -8,7 +8,7 @@ import {titleCase} from 'title-case'
 import dataSpells from './data/spellData.json'
 import dataDisciplines from './data/disciplines.json'
 
-import RenderHtml from 'react-native-render-html';
+import HTML from './HTML'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header, getPassProps} from './styles.js'
 import {SectionList} from './sectionlist'
@@ -336,9 +336,7 @@ class SpellItem extends React.PureComponent {
       </View>
 
       <Quote>
-        <RenderHtml
-          source={this.props.spell.desc}
-        />
+        <HTML source={this.props.spell.desc} />
       </Quote>
 
       {this.higherLevel()}
@@ -455,8 +453,8 @@ class SpellItem extends React.PureComponent {
       <View>
         <B>Higher Level</B>
         <Quote>
-          <HTMLView
-            value={this.props.spell.higher_level}
+          <HTML
+            source={this.props.spell.higher_level}
           />
         </Quote>
       </View>

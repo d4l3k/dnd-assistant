@@ -37,8 +37,8 @@ import ReactGA from 'react-ga'
 
 const fonts = [
   ['Ionicons', Iconicons],
-  ['Material Icons', MaterialIcons],
-  ['Material Design Icons', MaterialCommunityIcons]
+  ['MaterialIcons', MaterialIcons],
+  ['MaterialCommunityIcons', MaterialCommunityIcons]
 ]
 
 let css = ''

@@ -13,7 +13,7 @@ import {Icon, StarWarsDiceReference} from './StarWarsDie'
 
 export function dnd5e () {
   return <View>
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <LineInput
         name={'Character Name'}
         value={this.state.character_name}
@@ -26,7 +26,7 @@ export function dnd5e () {
       />
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <LineInput
         name={'Race'}
         value={this.state.character_race}
@@ -39,7 +39,7 @@ export function dnd5e () {
         onChangeText={this.cache(exp => this.set({exp}))}
       />
     </View>
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <LineInput
         name={'Alignment'}
         value={this.state.character_alignment}
@@ -52,7 +52,7 @@ export function dnd5e () {
       />
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <BoxInput
         name={'Hit Point Maximum'}
         value={this.state.character_hpMax}
@@ -77,7 +77,7 @@ export function dnd5e () {
       current={parseFloat(this.state.character_hp || 0) + parseFloat(this.state.character_tempHP || 0)}
     />
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <View style={styles.columnNarrow}>
         <StatInput
           name={'Strength'}
@@ -170,7 +170,7 @@ export function dnd5e () {
       </View>
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <BoxInput
         name={'Armor Class'}
         value={this.state.character_armorClass}
@@ -188,7 +188,7 @@ export function dnd5e () {
       />
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <View style={styles.column}>
         <Field name='Hit Dice' flex={2}>
           <TextInput
@@ -244,7 +244,7 @@ export function dnd5e () {
       </View>
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <BoxInput
         name={'Spellcasting Ability'}
         value={this.state.character_spellcastingAbility}
@@ -304,7 +304,7 @@ export function dnd5e () {
       onChangeText={this.cache(flaws => this.set({flaws}))}
     />
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <LineInput
         name={'Age'}
         value={this.state.character_age}
@@ -324,7 +324,7 @@ export function dnd5e () {
       />
     </View>
 
-    <View style={styles.row}>
+    <View style={styles.rownoflex}>
       <LineInput
         name={'Eyes'}
         value={this.state.character_eyes}
@@ -344,17 +344,21 @@ export function dnd5e () {
       />
     </View>
 
-    <MarkdownInput
-      name={'Backstory'}
-      value={this.state.character_backstory}
-      onChangeText={this.cache(backstory => this.set({backstory}))}
-    />
+    <View style={styles.rownoflex}>
+      <MarkdownInput
+        name={'Backstory'}
+        value={this.state.character_backstory}
+        onChangeText={this.cache(backstory => this.set({backstory}))}
+      />
+    </View>
 
-    <MarkdownInput
-      name={'Allies & Organizations'}
-      value={this.state.character_alliesOrganizations}
-      onChangeText={this.cache(alliesOrganizations => this.set({alliesOrganizations}))}
-    />
+    <View style={styles.rownoflex}>
+      <MarkdownInput
+        name={'Allies & Organizations'}
+        value={this.state.character_alliesOrganizations}
+        onChangeText={this.cache(alliesOrganizations => this.set({alliesOrganizations}))}
+      />
+    </View>
   </View>
 }
 
@@ -690,7 +694,8 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   columnNarrow: {
-    flex: 1,
+    //flex: 1,
+    width: 150,
   },
   rowstart: {
     flex: 0,
@@ -700,6 +705,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
+    flexShrink: 0,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
@@ -722,7 +728,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   rownoflex: {
-    flex: 0,
+    //flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },

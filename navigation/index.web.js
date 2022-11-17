@@ -10,20 +10,20 @@ import {
   Dimensions
 } from 'react-native'
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal'
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Drawer from '@mui/material/Drawer'
+import Button from '@mui/material/Button'
+import Modal from '@mui/material/Modal'
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
+import MenuIcon from '@mui/icons-material//Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import {withStyles, createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles'
+import {withStyles, createMuiTheme, ThemeProvider} from '@mui/material/styles'
 
 import {BaseText, LightBox, colors, Touchable} from '../styles'
 

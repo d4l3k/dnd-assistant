@@ -3,16 +3,16 @@ import autobind from 'autobind-decorator'
 import {StyleSheet, View, ScrollView, Platform, Text} from 'react-native'
 import {Alert} from './Alert'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import titleCase from 'title-case'
+import {titleCase} from 'title-case'
 
 import dataSpells from './data/spellData.json'
 import dataDisciplines from './data/disciplines.json'
 
-import HTMLView from 'react-native-htmlview'
+import RenderHtml from 'react-native-render-html';
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header, getPassProps} from './styles.js'
 import {SectionList} from './sectionlist'
-import {Recycler} from './recycler'
+//import {Recycler} from './recycler'
 import {TextInput} from './TextInput'
 import Cache from './Cache'
 import {Button} from './Button'
@@ -336,8 +336,8 @@ class SpellItem extends React.PureComponent {
       </View>
 
       <Quote>
-        <HTMLView
-          value={this.props.spell.desc}
+        <RenderHtml
+          source={this.props.spell.desc}
         />
       </Quote>
 
@@ -563,7 +563,7 @@ class SpellList extends React.PureComponent {
   render () {
     let list
     if (this.props.spells.length > 50) {
-      list = Recycler
+      //list = Recycler
     }
 
     const sections = this.groupSpells(this.props.spells)

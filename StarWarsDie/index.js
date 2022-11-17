@@ -2,7 +2,7 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import {Platform, Text, StyleSheet, View, ScrollView} from 'react-native'
 import { createIconSet } from 'react-native-vector-icons'
-import titleCase from 'title-case'
+import {titleCase} from 'title-case'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import {colors, H2, Touchable, BaseText, B} from '../styles.js'

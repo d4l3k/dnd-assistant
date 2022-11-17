@@ -264,8 +264,8 @@ export const Touchable = Platform.select({
   android: () => TouchableAndroid,
   ios: () => TouchableHighlight,
   web: () => {
-    const ButtonBase = require('@material-ui/core/ButtonBase').default
-    const withStyles = require('@material-ui/core/styles').withStyles
+    const ButtonBase = require('@mui/material/ButtonBase').default
+    const withStyles = require('@mui/material/styles').withStyles
 
     const materialStyles = theme => ({
       touchable: {

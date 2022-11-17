@@ -1,5 +1,5 @@
 import React from 'react'
-import CB from '@material-ui/core/Checkbox'
+import CB from '@mui/material/Checkbox'
 
 export class CheckBox extends React.Component {
   constructor (props) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Btn from '@material-ui/core/Button'
+import Btn from '@mui/material/Button'
 
 export class Button extends React.PureComponent {
   constructor (props) {

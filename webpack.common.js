@@ -21,19 +21,6 @@ module.exports = {
         test: /\.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules\/art/,
-        query: {
-          presets: [
-            ['env', {
-              loose: true
-            }],
-            'react'
-          ],
-          plugins: [
-            'transform-object-rest-spread',
-            'transform-class-properties',
-            'transform-decorators-legacy'
-          ]
-        }
       }
     ]
   },
@@ -41,6 +28,19 @@ module.exports = {
     extensions: [ '.web.js', '.default.js', '.js' ],
     alias: {
       'react-native': 'react-native-web'
+    },
+    fallback: {
+      "os": false,
+      "path": false,
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
     }
   }
 }

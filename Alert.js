@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactNative, {Platform} from 'react-native'
+import {Alert as RNAlert, Platform} from 'react-native'
 
 export const Alert = Platform.select({
-  default: () => ReactNative.Alert,
+  default: () => RNAlert,
   web: () => {
     let last = new Date()
     return {

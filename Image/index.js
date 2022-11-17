@@ -1,6 +1,6 @@
 import React from 'react'
 import {View} from 'react-native'
-import SvgUri from 'react-native-svg-uri'
+import {SvgUri} from 'react-native-svg'
 
 export const Image = ({source, svgXmlData, style}) => {
   if (svgXmlData) {
@@ -8,7 +8,7 @@ export const Image = ({source, svgXmlData, style}) => {
   }
   return <View style={style}>
     <SvgUri
-      source={source}
+      uri={source}
       svgXmlData={svgXmlData}
       height={style.height}
       width={style.width}

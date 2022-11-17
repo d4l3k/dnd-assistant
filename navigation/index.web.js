@@ -1,6 +1,6 @@
 import React from 'react'
 import autobind from 'autobind-decorator'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import classNames from 'classnames'
 import {
   AppRegistry,
@@ -23,7 +23,8 @@ import MenuIcon from '@mui/icons-material//Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import {withStyles, createMuiTheme, ThemeProvider} from '@mui/material/styles'
+import {createTheme, ThemeProvider} from '@mui/material/styles'
+import {withStyles} from '@mui/styles'
 
 import {BaseText, LightBox, colors, Touchable} from '../styles'
 
@@ -126,7 +127,7 @@ const materialStyles = theme => ({
   },
 })
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       dark: colors.darkPrimary,
@@ -148,7 +149,7 @@ const theme = createMuiTheme({
     // two indexes within its tonal palette.
     // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset: 0.2
-  }
+  },
 })
 
 class Navigator {
@@ -171,9 +172,11 @@ class Navigator {
       initialProps: props
     })
     */
-    ReactDOM.render(
-      React.createElement(ReactNativeWeb, props),
-      container,
+    const root = ReactDOM.createRoot(container);
+    root.render(
+      <ThemeProvider theme={theme}>
+        <ReactNativeWeb {...props} />
+      </ThemeProvider>
     );
   }
 
@@ -236,7 +239,7 @@ class Tab extends React.Component {
         <Toolbar>
           {this.renderButtons('leftButtons')}
 
-          <Typography variant='title' color='inherit' className={classes.flex}>
+          <Typography variant='h6' color='inherit' className={classes.flex}>
             {this.props.tab.label}
           </Typography>
 
@@ -339,8 +342,7 @@ class ReactNativeWeb extends React.Component {
     const RightDrawer = Navigation.getComponent(this.props.drawer.right.screen)
     const {classes} = this.props
 
-    return <MuiThemeProvider theme={theme}>
-      <div className={classNames(classes.row, {[classes.drawerRight]: this.state.right})}>
+    return <div className={classNames(classes.row, {[classes.drawerRight]: this.state.right})}>
         <Drawer
           anchor='left'
           open={this.state.left}
@@ -391,7 +393,6 @@ class ReactNativeWeb extends React.Component {
         {this.renderModal()}
         {this.renderScreen()}
       </div>
-    </MuiThemeProvider>
   }
 
   showLightBox (modal) {

@@ -8,10 +8,9 @@ const config = {
   timestampsInSnapshots: true
 }
 
-const firebase = require('firebase/app')
-// Required for side-effects
-require('firebase/auth')
-require('firebase/firestore')
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 firebase.initializeApp(config)
 

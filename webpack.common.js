@@ -21,13 +21,24 @@ module.exports = {
         test: /\.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules\/art/,
+      },
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false
+        }
       }
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+       process: 'process/browser',
+    }),
+  ],
   resolve: {
     extensions: [ '.web.js', '.default.js', '.js' ],
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
     },
     fallback: {
       "os": false,

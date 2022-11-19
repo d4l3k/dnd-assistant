@@ -1,0 +1,2375 @@
+{
+  "Creatures.1k6g9pec": {
+    "Id": "1k6g9pec",
+    "Name": "Shadow Spirit: Despair",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium monstrosity, unaligned",
+    "HP": {
+      "Value": 35,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "necrotic"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "frightened"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Weight of Sorrow",
+        "Content": "Any creature, other than you, that starts its turn within 5 feet of the spirit has its speed reduced by 20 feet until the start of that creature's next turn.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Chilling Rend",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d12 + 3 + the spell's level cold damage.",
+        "Usage": ""
+      },
+      {
+        "Name": "Dreadful Scream (1/Day)",
+        "Content": "The spirit screams. Each creature within 30 feet of it must succeed on a Wisdom saving throw against your spell save DC or be frightened for 1 minute. The frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Shadowspawn spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605885277348
+  },
+  "Creatures.1rsj34gh": {
+    "Id": "1rsj34gh",
+    "Name": "Aberrant Spirit: Slaad",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium aberration, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 16,
+      "Dex": 10,
+      "Con": 15,
+      "Int": 16,
+      "Wis": 10,
+      "Cha": 6
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "psychic"
+    ],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Deep Speech",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Regeneration",
+        "Content": "The aberration regains 5 hit points at the start of its turn if it has at least 1 hit point.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Claws",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 3 + the spell's level slashing damage. If the target is a creature, it can't regain hit points until the start of the aberration's next turn.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Aberration spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605887487788
+  },
+  "Creatures.1suzrug7": {
+    "Id": "1suzrug7",
+    "Name": "Bestial Spirit: Land",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small beast, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+5 for each spell level above 2nd)"
+    },
+    "AC": {
+      "Value": 13,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "climb 30 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 11,
+      "Con": 16,
+      "Int": 4,
+      "Wis": 14,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 12"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Pack Tactics",
+        "Content": "The beast has advantage on an attack roll against a creature if at least one of the beast's allies is within 5 feet of the creature and the ally isn't incapacitated. ",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The beast makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Maul",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level piercing damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Beast spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605882307018
+  },
+  "Creatures.26vagf96": {
+    "Id": "26vagf96",
+    "Name": "Fey Spirit: Mirthful",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small fey, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 14,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Sylvan",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fey makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Shortsword",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d6 + 3 + the spell's level piercing damage + 1d6 force damage",
+        "Usage": ""
+      },
+      {
+        "Name": "Fey Step (Bonus Action)",
+        "Content": "The fey magically teleports up to 30 feet to an unoccupied space it can see. Then, the fey can force one creature it can see within 10 feet if it to make a Wisdom saving throw against your spell save DC. Unless the save succeeds, the target is charmed by you and the fey for 1 minute or until the target takes any damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fey spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605884864803
+  },
+  "Creatures.2y8fp4n4": {
+    "Id": "2y8fp4n4",
+    "Name": "Fiendish Spirit: Demon",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Large fiend, unaligned",
+    "HP": {
+      "Value": 50,
+      "Notes": " (+15 for each spell level above 6th)"
+    },
+    "AC": {
+      "Value": 18,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft.",
+      "climb 40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 10,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "fire"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Abyssal",
+      "Infernal",
+      "telepathy 60 ft."
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Death Throes",
+        "Content": "When the fiend drops to 0 hit points or the spell ends, the fiend explodes, and each creature within 10 feet of it must make a Dexterity saving throw against your spell save DC. A creature takes 2d10 + this spell's level fire damage on a failed save, or half as much damage on a successful one.",
+        "Usage": ""
+      },
+      {
+        "Name": "Magic Resistance",
+        "Content": "The fiend has advantage on saving throws against spells and other magical effects.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fiend makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Bite",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d12 + 3 + the spell's level necrotic damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fiend spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605896553914
+  },
+  "Creatures.3ize3dh3": {
+    "Id": "3ize3dh3",
+    "Name": "Construct Spirit: Metal",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium construct, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 17,
+      "Notes": " (13 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 10,
+      "Con": 18,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "poison"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed",
+      "exhaustion",
+      "frightened",
+      "incapacitated",
+      "paralyzed",
+      "petrified",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Heated Body",
+        "Content": "A creature that touches the construct or hits it with a melee attack while within 5 feet of it, takes 1d10 fire damage.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The construct makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level bludgeoning damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Construct spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605891636809
+  },
+  "Creatures.6md7t04b": {
+    "Id": "6md7t04b",
+    "Name": "Celestial Spirit: Defender",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Large celestial, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+10 for each spell level above 5th)"
+    },
+    "AC": {
+      "Value": 18,
+      "Notes": " (13 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "fly 40 ft."
+    ],
+    "Abilities": {
+      "Str": 16,
+      "Dex": 14,
+      "Con": 16,
+      "Int": 10,
+      "Wis": 14,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "radiant"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed",
+      "frightened"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 12"
+    ],
+    "Languages": [
+      "Celestial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The celestial makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Radiant Mace",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 3 + the spell's level radiant damage, and the celestial can choose itself or another creature it can see within 10 feet of the target. The chosen creature gains 1d10 temporary hit points.",
+        "Usage": ""
+      },
+      {
+        "Name": "Healing Touch (1/Day)",
+        "Content": "The celestial touches another creature. The target magically regains hit points equal to 2d8 + the spell's level.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Celestial spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605895831981
+  },
+  "Creatures.6szrxifu": {
+    "Id": "6szrxifu",
+    "Name": "Shadow Spirit: Fury",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium monstrosity, unaligned",
+    "HP": {
+      "Value": 35,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "necrotic"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "frightened"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Terror Frenzy",
+        "Content": "The spirit has advantage against frightened creatures.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Chilling Rend",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d12 + 3 + the spell's level cold damage.",
+        "Usage": ""
+      },
+      {
+        "Name": "Dreadful Scream (1/Day)",
+        "Content": "The spirit screams. Each creature within 30 feet of it must succeed on a Wisdom saving throw against your spell save DC or be frightened for 1 minute. The frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Shadowspawn spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605885300332
+  },
+  "Creatures.76gbedsd": {
+    "Id": "76gbedsd",
+    "Name": "Undead Spirit: Skeletal",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium undead, unaligned",
+    "HP": {
+      "Value": 20,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 12,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 9
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "necrotic",
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Grave Bolt",
+        "Content": "Ranged Spell Attack: you spell attack modifier to hit, range 150 ft., one target. Hit: 2d4 + 3 + the spell's level necrotic damage",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Undead spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605886628654
+  },
+  "Creatures.85js86fp": {
+    "Id": "85js86fp",
+    "Name": "Undead Spirit: Ghostly",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium undead, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "fly 40 ft. (Hover)"
+    ],
+    "Abilities": {
+      "Str": 12,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 9
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "necrotic",
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Incorporeal Passage",
+        "Content": "The spirit can move through other creatures and objects as if they were difficult terrain. If it ends its turn inside an object, it is shunted to the nearest unoccupied space and takes 1d10 force damage for every 5 feet traveled.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Deathly Touch",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one creature. Hit: 1d8 + 3 + the spell's level necrotic damage, and the creature must succeed on a Wisdom saving throw against your spell save DC or be frightened of the undead until the end of the target's next turn.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Undead spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605886275645
+  },
+  "Creatures.8da6tzci": {
+    "Id": "8da6tzci",
+    "Name": "Celestial Spirit: Avenger",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Large celestial, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+10 for each spell level above 5th)"
+    },
+    "AC": {
+      "Value": 16,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "fly 40 ft."
+    ],
+    "Abilities": {
+      "Str": 16,
+      "Dex": 14,
+      "Con": 16,
+      "Int": 10,
+      "Wis": 14,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "radiant"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed",
+      "frightened"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 12"
+    ],
+    "Languages": [
+      "Celestial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The celestial makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Radiant Bow",
+        "Content": "Ranged Weapon Attack: you spell attack modifier to hit, range 150/600 ft., one target. Hit: 2d6 + 2 + the spell's level radiant damage.",
+        "Usage": ""
+      },
+      {
+        "Name": "Healing Touch (1/Day)",
+        "Content": "The celestial touches another creature. The target magically regains hit points equal to 2d8 + the spell's level.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Celestial spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605895720934
+  },
+  "Creatures.g30tcahv": {
+    "Id": "g30tcahv",
+    "Name": "Fiendish Spirit: Yugoloth",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Large fiend, unaligned",
+    "HP": {
+      "Value": 60,
+      "Notes": " (+15 for each spell level above 6th)"
+    },
+    "AC": {
+      "Value": 18,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 10,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "fire"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Abyssal",
+      "Infernal",
+      "telepathy 60 ft."
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Magic Resistance",
+        "Content": "The fiend has advantage on saving throws against spells and other magical effects.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fiend makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Claws",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 3 + the spell's level slashing damage. Immediately after the attack hits or misses, the fiend can magically teleport up to 30 feet to an unoccupied space it can see.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fiend spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605896845116
+  },
+  "Creatures.g9tjftz1": {
+    "Id": "g9tjftz1",
+    "Name": "Undead Spirit: Putrid",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium undead, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 12,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 9
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "necrotic",
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Festering Aura",
+        "Content": "Any creature, other than you, that starts its turn within 5 feet of the spirit must succeed on a Constitution saving throw against your spell save DC or be poisoned until the start of its next turn.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Rotting Claw",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d6 + 3 + the spell's level slashing damage. If the target is poisoned, it must succeed on a Constitution saving throw against your spell save DC or be paralyzed until the end of its next turn.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Undead spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605886513769
+  },
+  "Creatures.hmaiavx6": {
+    "Id": "hmaiavx6",
+    "Name": "Fiendish Spirit: Devil",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Large fiend, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+15 for each spell level above 6th)"
+    },
+    "AC": {
+      "Value": 18,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft.",
+      "fly 60 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 10,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "fire"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Abyssal",
+      "Infernal",
+      "telepathy 60 ft."
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Devil's Sight",
+        "Content": "Magical darkness doesn't impede the fiend's darkvision.",
+        "Usage": ""
+      },
+      {
+        "Name": "Magic Resistance",
+        "Content": "The fiend has advantage on saving throws against spells and other magical effects.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fiend makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Hurl Flame",
+        "Content": "Ranged Spell Attack: you spell attack modifier to hit, range 150 ft., one target. Hit: 2d6 + 3 + the spell's level fire damage. If the target is a flammable object that isn't being worn or carried, it also catches fire.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fiend spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605896726561
+  },
+  "Creatures.k26cb7ze": {
+    "Id": "k26cb7ze",
+    "Name": "Bestial Spirit: Water",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small beast, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+5 for each spell level above 2nd)"
+    },
+    "AC": {
+      "Value": 13,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "swim 30 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 11,
+      "Con": 16,
+      "Int": 4,
+      "Wis": 14,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 12"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Pack Tactics",
+        "Content": "The beast has advantage on an attack roll against a creature if at least one of the beast's allies is within 5 feet of the creature and the ally isn't incapacitated. ",
+        "Usage": ""
+      },
+      {
+        "Name": "Water Bearthing",
+        "Content": "The beast can breathe only underwater.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The beast makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Maul",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level piercing damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Beast spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605882429405
+  },
+  "Creatures.kapvsrre": {
+    "Id": "kapvsrre",
+    "Name": "Fey Spirit: Tricksy",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small fey, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 14,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Sylvan",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fey makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Shortsword",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d6 + 3 + the spell's level piercing damage + 1d6 force damage",
+        "Usage": ""
+      },
+      {
+        "Name": "Fey Step (Bonus Action)",
+        "Content": "The fey magically teleports up to 30 feet to an unoccupied space it can see. Then, the fey can fill a 5-foot cube within 5 feet of it with magical darkness, which lasts until the end of its next turn.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fey spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605884870423
+  },
+  "Creatures.kraj8qp3": {
+    "Id": "kraj8qp3",
+    "Name": "Elemental Spirit: Air",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium elemental, unaligned",
+    "HP": {
+      "Value": 50,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft.",
+      "fly 40 ft. (Hover)"
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 15,
+      "Con": 17,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "lightning",
+      "thunder"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "paralyzed",
+      "petrified",
+      "poisoned",
+      "unconscious"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Primordial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Amorphous Form",
+        "Content": "The elemental can move through a space as narrow as 1 inch wide without squeezing.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The elemental makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 4 + the spell's level bludgeoning damage.\n",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Elemental spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605894875640
+  },
+  "Creatures.psrjqbc7": {
+    "Id": "psrjqbc7",
+    "Name": "Aberrant Spirit: Star Spawn",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium aberration, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 16,
+      "Dex": 10,
+      "Con": 15,
+      "Int": 16,
+      "Wis": 10,
+      "Cha": 6
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "psychic"
+    ],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Deep Speech",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Whispering Aura",
+        "Content": "At the start of each of aberration's turns, each creature within 5 feet of the aberration must succeed on a Wisdom saving throw against your spell save DC or take 2d6 psychic damage, provided that the aberration isn't incapacitated.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Psychic Slam",
+        "Content": "Melee Spell Attack: you spell attack modifier to hit, reach 5 ft., one creature. Hit: 1d8 + 3 + the spell's level psychic damage",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Aberration spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605887630635
+  },
+  "Creatures.qz5nhrd4": {
+    "Id": "qz5nhrd4",
+    "Name": "Elemental Spirit: Water",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium elemental, unaligned",
+    "HP": {
+      "Value": 50,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft.",
+      "swim 40 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 15,
+      "Con": 17,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "acid"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "paralyzed",
+      "petrified",
+      "poisoned",
+      "unconscious"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Primordial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Amorphous Form",
+        "Content": "The elemental can move through a space as narrow as 1 inch wide without squeezing.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The elemental makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 4 + the spell's level bludgeoning damage.\n",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Elemental spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605894933351
+  },
+  "Creatures.rmq6yncc": {
+    "Id": "rmq6yncc",
+    "Name": "Fey Spirit: Fuming",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small fey, unaligned",
+    "HP": {
+      "Value": 30,
+      "Notes": " (+10 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (12 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 14,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Sylvan",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The fey makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Shortsword",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d6 + 3 + the spell's level piercing damage + 1d6 force damage",
+        "Usage": ""
+      },
+      {
+        "Name": "Fey Step (Bonus Action)",
+        "Content": "The fey magically teleports up to 30 feet to an unoccupied space it can see. Then, the fey has advantage on the next attack roll it makes before the end of this turn.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Fey spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605884849581
+  },
+  "Creatures.s1z26yx5": {
+    "Id": "s1z26yx5",
+    "Name": "Elemental Spirit: Fire",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium elemental, unaligned",
+    "HP": {
+      "Value": 50,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 15,
+      "Con": 17,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "poison",
+      "fire"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "paralyzed",
+      "petrified",
+      "poisoned",
+      "unconscious"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Primordial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Amorphous Form",
+        "Content": "The elemental can move through a space as narrow as 1 inch wide without squeezing.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The elemental makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 4 + the spell's level fire damage.\n",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Elemental spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605895005758
+  },
+  "Creatures.s7yzfbub": {
+    "Id": "s7yzfbub",
+    "Name": "Construct Spirit: Stone",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium construct, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 17,
+      "Notes": " (13 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 10,
+      "Con": 18,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "poison"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed",
+      "exhaustion",
+      "frightened",
+      "incapacitated",
+      "paralyzed",
+      "petrified",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Stony Lethargy",
+        "Content": "When a creature the construct can see starts its turn within 10 feet of the construct, the construct can force it to make a Wisdom saving throw against your spell save DC. On a failed save, the target can't use reactions and its speed is halved until the start of its next turn.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The construct makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level bludgeoning damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Construct spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605891650397
+  },
+  "Creatures.six5zrzq": {
+    "Id": "six5zrzq",
+    "Name": "Aberrant Spirit: Beholderkin",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium aberration, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "fly 30 ft. (hover)"
+    ],
+    "Abilities": {
+      "Str": 16,
+      "Dex": 10,
+      "Con": 15,
+      "Int": 16,
+      "Wis": 10,
+      "Cha": 6
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [
+      "psychic"
+    ],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Deep Speech",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Eye Ray",
+        "Content": "Ranged Spell Attack: you spell attack modifier to hit, range 150 ft., one creature. Hit: 1d8 + 3 + the spell's level psychic damage",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Aberration spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605887349982
+  },
+  "Creatures.uivzkf5q": {
+    "Id": "uivzkf5q",
+    "Name": "Shadow Spirit: Fear",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium monstrosity, unaligned",
+    "HP": {
+      "Value": 35,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 14,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft."
+    ],
+    "Abilities": {
+      "Str": 13,
+      "Dex": 16,
+      "Con": 15,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "necrotic"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "frightened"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The spirit makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Chilling Rend",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d12 + 3 + the spell's level cold damage.",
+        "Usage": ""
+      },
+      {
+        "Name": "Dreadful Scream (1/Day)",
+        "Content": "The spirit screams. Each creature within 30 feet of it must succeed on a Wisdom saving throw against your spell save DC or be frightened for 1 minute. The frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+        "Usage": ""
+      },
+      {
+        "Name": "Shadow Stealth (Bonus Action)",
+        "Content": "While in dim light or darkness, the spirit takes the Hide action.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Shadowspawn spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605885288452
+  },
+  "Creatures.xqggf8rz": {
+    "Id": "xqggf8rz",
+    "Name": "Elemental Spirit: Earth",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium elemental, unaligned",
+    "HP": {
+      "Value": 50,
+      "Notes": " (+10 for each spell level above 4th)"
+    },
+    "AC": {
+      "Value": 15,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "40 ft.",
+      "burrow 40 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 15,
+      "Con": 17,
+      "Int": 4,
+      "Wis": 10,
+      "Cha": 16
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "piercing",
+      "slashing"
+    ],
+    "DamageImmunities": [
+      "poison"
+    ],
+    "ConditionImmunities": [
+      "exhaustion",
+      "paralyzed",
+      "petrified",
+      "poisoned",
+      "unconscious"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "Primordial",
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The elemental makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 4 + the spell's level bludgeoning damage.\n",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Elemental spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605894941314
+  },
+  "Creatures.z0g03rcp": {
+    "Id": "z0g03rcp",
+    "Name": "Bestial Spirit: Air",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Small beast, unaligned",
+    "HP": {
+      "Value": 20,
+      "Notes": " (+5 for each spell level above 2nd)"
+    },
+    "AC": {
+      "Value": 13,
+      "Notes": " (11 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft.",
+      "fly 60 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 11,
+      "Con": 16,
+      "Int": 4,
+      "Wis": 14,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [],
+    "DamageImmunities": [],
+    "ConditionImmunities": [],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 12"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [
+      {
+        "Name": "Flyby",
+        "Content": "The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach.",
+        "Usage": ""
+      }
+    ],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The beast makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Maul",
+        "Content": "Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level piercing damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Beast spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605884063742
+  },
+  "Creatures.zks1hdy7": {
+    "Id": "zks1hdy7",
+    "Name": "Construct Spirit: Clay",
+    "Path": "Tasha's Cauldron of Everything",
+    "Source": "Tasha's Cauldron of Everything",
+    "Type": "Medium construct, unaligned",
+    "HP": {
+      "Value": 40,
+      "Notes": " (+15 for each spell level above 3rd)"
+    },
+    "AC": {
+      "Value": 17,
+      "Notes": " (13 + the level of the spell, natural armor)"
+    },
+    "InitiativeModifier": 0,
+    "InitiativeAdvantage": false,
+    "Speed": [
+      "30 ft."
+    ],
+    "Abilities": {
+      "Str": 18,
+      "Dex": 10,
+      "Con": 18,
+      "Int": 14,
+      "Wis": 11,
+      "Cha": 5
+    },
+    "DamageVulnerabilities": [],
+    "DamageResistances": [
+      "poison"
+    ],
+    "DamageImmunities": [],
+    "ConditionImmunities": [
+      "charmed",
+      "exhaustion",
+      "frightened",
+      "incapacitated",
+      "paralyzed",
+      "petrified",
+      "poisoned"
+    ],
+    "Saves": [],
+    "Skills": [],
+    "Senses": [
+      "darkvision 60 ft.",
+      "passive Perception 10"
+    ],
+    "Languages": [
+      "understands the languages you speak"
+    ],
+    "Challenge": "",
+    "Traits": [],
+    "Actions": [
+      {
+        "Name": "Multiattack",
+        "Content": "The construct makes a number of attacks equal to half this spell's level (rounded down).",
+        "Usage": ""
+      },
+      {
+        "Name": "Slam",
+        "Content": "Melee Weapon Attack: you spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell's level bludgeoning damage.",
+        "Usage": ""
+      }
+    ],
+    "Reactions": [
+      {
+        "Name": "Berserk Lashing",
+        "Content": "When the construct takes damage, it makes a slam attack against a random creature within 5 feet of it. If no creature is within reach, the construct moves up to half its speed toward an enemy it can see, without provoking opportunity attacks.",
+        "Usage": ""
+      }
+    ],
+    "LegendaryActions": [],
+    "Description": "Part of the Summon Construct spell",
+    "Player": "",
+    "Version": "2.16.0",
+    "ImageURL": "",
+    "LastUpdateMs": 1605893035647
+  },
+  "Spells.08m1tru4": {
+    "Id": "08m1tru4",
+    "Version": "2.16.0",
+    "Name": "Mind Sliver",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V",
+    "Description": "You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.\n\n-\n\nThis spell's damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), 17th level (4d6).\n",
+    "Duration": "1 round",
+    "Level": 0,
+    "Range": "60 feet",
+    "Ritual": false,
+    "School": "Enchantment",
+    "LastUpdateMs": 1605879762998
+  },
+  "Spells.0kv69rsi": {
+    "Id": "0kv69rsi",
+    "Version": "2.16.0",
+    "Name": "Summon Elemental",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Wizard"
+    ],
+    "Components": "V, S, M (air, a pebble, ash, and water inside a crystal vial worth at least 400 gp)",
+    "Description": "You call forth an elemental spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Elemental Spirit** stat block. When you cast the spell, choose an element: **Air**, **Earth**, **Fire**, or **Water**. The creature resembles a bipedal form wreathed in the chosen element, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 5th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "4",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605889096275
+  },
+  "Spells.13qdts6n": {
+    "Id": "13qdts6n",
+    "Version": "2.16.0",
+    "Name": "Summon Celestial",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "Components": "V, S, M (a golden reliquary worth at least 500 gp)",
+    "Description": "You call forth a celestial spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Celestial Spirit** stat block. When you cast the spell, choose **Avenger** or **Defender**. Your choice determines the creature's attack in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 6th level or higher, use the higher level whenever the spell's level appears in the stat block.",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "5",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605895369849
+  },
+  "Spells.3djgp2pr": {
+    "Id": "3djgp2pr",
+    "Version": "2.16.0",
+    "Name": "Summon Fey",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Druid",
+      "Ranger",
+      "Wizard",
+      "Warlock"
+    ],
+    "Components": "V, S, M (a gilded flower worth at least 300 gp)",
+    "Description": "You call forth a fey spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Fey Spirit** stat block. When you cast the spell, choose a mood: **Fuming**, **Mirthful**, or **Tricksy**. The creature resembles a fey creature of your choice marked by the chosen mood, which determines one of the traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "3",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605882794890
+  },
+  "Spells.3kdez26e": {
+    "Id": "3kdez26e",
+    "Version": "2.16.0",
+    "Name": "Spirit Shroud",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 bonus action",
+    "Classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V, S",
+    "Description": "You call forth spirits of the dead, which flit around you for the spell's duration. The spirits are intangible and invulnerable.\nUntil the spell ends, any attack you make deals 1d8 extra damage when you hit a creature within 10 feet of you. This damage is radiant, necrotic, or cold (your choice when you cast the spell). Any creature that takes this damage can't regain hit points until the start of your next turn.\nIn addition, any creature of your choice that you can see that starts its turn within 10 feet of you has its speed reduced by 10 feet until the start of your next turn.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for every two slot levels above 3rd. \n",
+    "Duration": "Concentration, up to 1 minute",
+    "Level": "3",
+    "Range": "Self",
+    "Ritual": false,
+    "School": "Necromancy",
+    "LastUpdateMs": 1605880110233
+  },
+  "Spells.5m7hk4dv": {
+    "Id": "5m7hk4dv",
+    "Version": "2.16.0",
+    "Name": "Summon Fiend",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Wizard",
+      "Warlock"
+    ],
+    "Components": "V, S, M (humanoid blood inside a ruby vial worth at least 600 gp)",
+    "Description": "You call forth a fiendish spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Fiendish Spirit** stat block. When you cast the spell, choose **Demon**, **Devil**, or **Yugoloth**. The creature resembles a fiend of the chosen type, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 7th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "6",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605896107124
+  },
+  "Spells.8h0u51e5": {
+    "Id": "8h0u51e5",
+    "Version": "2.16.0",
+    "Name": "Intellect Fortress",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Artificer",
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V",
+    "Description": "For the duration, you or one willing creature you can see within range has resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws.\n\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, you can target on additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "3",
+    "Range": "30 feet",
+    "Ritual": false,
+    "School": "Abjuration",
+    "LastUpdateMs": 1605879722753
+  },
+  "Spells.90f6b0ie": {
+    "Id": "90f6b0ie",
+    "Version": "2.16.0",
+    "Name": "Blade of Disaster",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 bonus action",
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V, S",
+    "Description": "You create a blade-shaped planar rift about 3 feet long in an unoccupied space you can see within range. The blade lasts for the duration. When you cast this spell, you can make up to two melee spell attacks with the blade, each one against a creature , loose object, or structure within 5 feet of the blade. On a hit, the target takes 4d12 force damage. This attack scores a critical hit if the number on the d20 is 18 or higher. On a critical hit, the blade deals an extra 8d12 force damage (for a total of 12d12 force damage).\n\nAs a bonus action on your turn, you can move the blade up to 30 feet to an unoccupied space you can see and then make up to two melee spell attacks with it again.\nThe blade  can harmlessly pass through any barrier, including a wall of force.",
+    "Duration": "Concentration,  up to 1 minute",
+    "Level": "9",
+    "Range": "60 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605874192654
+  },
+  "Spells.9td02j63": {
+    "Id": "9td02j63",
+    "Version": "2.16.0",
+    "Name": "Dream of the Blue Veil",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "10 minutes",
+    "Classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V, S, M (a magic item or a willing creature from the destination world)",
+    "Description": "You and up to eight willing creatures within range fall unconscious for the spell's duration and experience visions of another world on the Material Plane, such as Oerth, Toril, Krynn, or Eberron. If the spell reaches its full duration, the visions conclude with each of you encountering and pulling back a mysterious blue curtain. The spell then ends with you mentally and physically transported to the world that was in the visions.\n\nTo cast this spell, you must have a magic item that originated on the world you wish to reach, and you must be aware of the world's existence, even if you don't know the world's name. Your destination in the world is a safe location within 1 mile of where the magic item was created. Alternatively, you can cast the spell if one of the affected creatures was born on the other world, which causes your destination to be a safe location within 1 mile of where that creature was born.\n\nThe spell ends early for a creature if that creature takes any damage, and the creature isn't transported. If you take any damage, the spell ends for you and all the other creatures, with none of you being transported.",
+    "Duration": "6 hours",
+    "Level": "7",
+    "Range": "20 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605875484781
+  },
+  "Spells.a06mdq03": {
+    "Id": "a06mdq03",
+    "Version": "2.16.0",
+    "Name": "Tasha's Otherworldly Guise",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 bonus action",
+    "Classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V, S, M (an object engraved with a symbol of the Outer Planes, worth at least 500 gp)",
+    "Description": "Uttering an incantation, you draw on the magic of the Lower Planes or Upper Planes (your choice) to transform yourself. You gain the following benefits un the the spell ends:\n• You are immune to fire and poison damage (Lower Planes) or radiant and necrotic damage (Upper Planes).\n• You are immune to the poisoned condition (Lower Planes) or the charmed condition (Upper Planes).\n• Spectral wings appear on your back, giving you a flying speed of 40 feet.\n• You have a +2 bonus to AC.\n• All your weapon attacks are magical, and when you make a weapon attack, you can use your spellcasting ability modifier, instead of Strength or Dexterity, for the attack and damage rolls.\n• You can attack twice, instead of once, when you take the Attack action on your turn. You ignore this benefit if you already have a feature, like Extra Attack, that lets you attack more than once when you take the attack action on your turn.",
+    "Duration": "Concentration, up to 1 minute",
+    "Level": "6",
+    "Range": "Self",
+    "Ritual": false,
+    "School": "Transmutation",
+    "LastUpdateMs": 1605899726931
+  },
+  "Spells.fsv67dhq": {
+    "Id": "fsv67dhq",
+    "Version": "2.16.0",
+    "Name": "Summon Aberration",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "Components": "V, S, M (a pickled tentacle and an eyeball in a platinum inlaid vial worth at least 400 gp)",
+    "Description": "You call forth an aberrant spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Aberrant Spirit** stat block. When you cast the spell, choose **Beholderkin**, **Slaad**, or **Star Spawn**. The creature resembles an aberration of that kind, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 5th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "4",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjurat'on",
+    "LastUpdateMs": 1605887043766
+  },
+  "Spells.i267z341": {
+    "Id": "i267z341",
+    "Version": "2.16.0",
+    "Name": "Tasha's Caustic Brew",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "Components": "V, S, M (a bit of rotten food)",
+    "Description": "A stream of acid emanates from you in a line 30 feet long and 5 feet wide in a direction you choose. Each creature in the line must succeed on a Dexterity saving throw or be covered in acid for the spell's duration or until a creature uses its action to scrape or wash the acid off itself or another creature. A creature covered in the acid takes 2d4 acid damage at start of each of its turns.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 2d4 for each slot level above 1st.",
+    "Duration": "Concentration, up to 1 minute",
+    "Level": "1",
+    "Range": "Self (30-foot line)",
+    "Ritual": false,
+    "School": "Evocation",
+    "LastUpdateMs": 1605897300965
+  },
+  "Spells.imup582k": {
+    "Id": "imup582k",
+    "Version": "2.16.0",
+    "Name": "Summon Beast",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "Components": "V, S, M (a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp)",
+    "Description": "You call forth a bestial spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Bestial Spirit** stat block. When you cast the spell, choose an environment: **Air**, **Land**, or **Water**. The creature resembles an animal of your choice that is native to the chosen environment, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 3rd level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "2",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605881872593
+  },
+  "Spells.iszy2yiv": {
+    "Id": "iszy2yiv",
+    "Version": "2.16.0",
+    "Name": "Tasha's Mind Whip",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "Components": "V",
+    "Description": "You psychically lash out at one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes 3d6 psychic damage, and it can't take a reaction until the end of its next turn. Moreover, on its next turn, it must choose whether it gets a move, an action, or a bonus action; it gets only one of the three. On a successful save, the target takes half as much damage and suffers none of the spell's other effects.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The creatures must be within 30 feet of each other when you target them.",
+    "Duration": "1 round",
+    "Level": "2",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Enchantment",
+    "LastUpdateMs": 1605897593138
+  },
+  "Spells.r8s57ci8": {
+    "Id": "r8s57ci8",
+    "Version": "2.16.0",
+    "Name": "Summon Undead",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Wizard",
+      "Warlock"
+    ],
+    "Components": "V, S, M (a gilded skull worth at least 300 gp)",
+    "Description": "You call forth an undead spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Undead Spirit** stat block. When you cast the spell, choose the creature's form: **Ghostly**, **Putrid**, or **Skeletal**. The spirit resembles an undead with the chosen form, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "3",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Necromancy",
+    "LastUpdateMs": 1605885637983
+  },
+  "Spells.u1a7x3hu": {
+    "Id": "u1a7x3hu",
+    "Version": "2.16.0",
+    "Name": "Summon Construct",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Artificer",
+      "Wizard"
+    ],
+    "Components": "V, S, M (an ornate stone and metal lockbox worth at least 400 gp)",
+    "Description": "You call forth the spirit of a construct. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Construct Spirit** stat block. When you cast the spell, choose a material: **Clay**, **Metal**, or **Stone**. The creature resembles a golem or a modron (your choice) madeof the chosen material, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "4",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605891761719
+  },
+  "Spells.xqcsmpqk": {
+    "Id": "xqcsmpqk",
+    "Version": "2.16.0",
+    "Name": "Summon Shadowspawn",
+    "Path": "",
+    "Source": "Tasha's Cauldron of Everything",
+    "CastingTime": "1 action",
+    "Classes": [
+      "Wizard",
+      "Warlock"
+    ],
+    "Components": "V, S, M (tears inside a gem worth at least 300 gp)",
+    "Description": "You call forth a shadowy spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the **Shadow Spirit** stat block. When you cast the spell, choose an emotion: **Fury**, **Despair**, or **Fear**. The creature resembles a misshapen biped marked by the chosen emotion, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.\nThe creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turns immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.\n\n-\n\n**At Higher Levels.** When you cast this spell using a spell slot of 4th level or higher, use the higher level whenever the spell's level appears in the stat block.\n",
+    "Duration": "Concentration, up to 1 hour",
+    "Level": "3",
+    "Range": "90 feet",
+    "Ritual": false,
+    "School": "Conjuration",
+    "LastUpdateMs": 1605884259612
+  }
+}

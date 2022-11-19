@@ -5,9 +5,8 @@ import {Alert} from './Alert'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {titleCase} from 'title-case'
 
-import dataSpells from './data/spellData.json'
-import dataDisciplines from './data/disciplines.json'
 
+import spells from './data'
 import HTML from './HTML'
 import {getCharacter, slugify} from './auth'
 import {colors, BaseText, B, H2, H3, Secondary,LightBox, showLightBox, Touchable, H1, Header, getPassProps} from './styles.js'
@@ -22,8 +21,6 @@ import {ExtractDieRolls} from './DieRoll'
 import {Loading} from './Loading'
 
 const numSlotLevels = 9
-
-const spells = dataSpells.concat(dataDisciplines)
 
 const spellMap = {}
 spells.forEach(spell => {
@@ -700,7 +697,7 @@ class SpellList extends React.PureComponent {
   }
 
   spellExtractor (spell) {
-    return spell.spell.name
+    return spell.spell.school + ";" + spell.spell.name
   }
 }
 

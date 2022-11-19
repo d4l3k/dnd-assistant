@@ -44,6 +44,7 @@ for (const key in dataTCOE) {
     "school": School,
     "level": levelStrs[Level],
     "casting_time": CastingTime,
+    "class": Classes.join(", "),
   })
 }
 

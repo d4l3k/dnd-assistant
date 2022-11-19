@@ -15,7 +15,7 @@ const defaultWildMagic = Object.keys(wildMagic).sort()[0]
 
 class WildMagicEffect extends React.PureComponent {
   render () {
-    const {effect, duration, time} = this.props.effect || {}
+    const {effect, time} = this.props.effect || {}
     return <View style={styles.item}>
       <View style={styles.flex}>
         <BaseText>
@@ -23,10 +23,8 @@ class WildMagicEffect extends React.PureComponent {
           {effect}
         </BaseText>
 
-        <BaseText>
-          <B>Until: </B>
-          {duration}
-        </BaseText>
+        {this.duration()}
+
         <BaseText>
           <Text style={styles.secondary}>{moment(time).fromNow()}</Text>
         </BaseText>
@@ -45,6 +43,17 @@ class WildMagicEffect extends React.PureComponent {
       }
 
     </View>
+  }
+
+  duration() {
+    const {duration} = this.props.effect || {}
+    if (!duration) {
+      return
+    }
+    return <BaseText>
+      <B>Until: </B>
+      {duration}
+    </BaseText>
   }
 
   @autobind
@@ -177,11 +186,13 @@ export class WildMagicScreen extends React.PureComponent {
       for (let i = 0; i < numRolls; i++) {
         const wildMagic = this.wildMagic()
         const effectI = Math.floor(Math.random() * wildMagic.effects.length)
-        const durationI = Math.floor(Math.random() * wildMagic.durations.length)
         state.effect = {
           effect: wildMagic.effects[effectI],
-          duration: wildMagic.durations[durationI],
           time: moment().toISOString()
+        }
+        if (wildMagic.durations) {
+          const durationI = Math.floor(Math.random() * wildMagic.durations.length)
+          state.effect[duration] = wildMagic.durations[durationI]
         }
         this.effects.add(state.effect)
       }

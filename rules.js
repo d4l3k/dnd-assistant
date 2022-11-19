@@ -268,17 +268,21 @@ export function dnd5e () {
       navigator={this.props.navigator}
     />
 
+    <View style={styles.rownoflex}>
     <MarkdownInput
       name={'Features & Traits'}
       value={this.state.character_featuresTraits}
       onChangeText={this.cache(featuresTraits => this.set({featuresTraits}))}
     />
+    </View>
 
+    <View style={styles.rownoflex}>
     <MarkdownInput
       name={'Other Proficiencies & Languages'}
       value={this.state.character_proficiencyLanguages}
       onChangeText={this.cache(proficiencyLanguages => this.set({proficiencyLanguages}))}
     />
+    </View>
 
     <MultiLineInput
       name={'Personality Traits'}

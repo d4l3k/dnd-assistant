@@ -270,6 +270,18 @@ class SpellItem extends React.PureComponent {
     const SpellView = this.props.expand
       ? Platform.select({default: View, web: ScrollView})
       : View
+
+    let properties = ""
+    if (this.props.spell.concentration == "yes") {
+      properties += "🅒"
+    }
+    if (this.props.spell.ritual == "yes") {
+      properties += "🅡"
+    }
+    if (this.state.spellData.prepared) {
+      properties += "🅟"
+    }
+
     return (
       <SpellView style={styles.item}>
         <Touchable onPress={this.onPress}>
@@ -282,7 +294,7 @@ class SpellItem extends React.PureComponent {
               </View>
               <View style={styles.right}>
                 <Secondary>{this.props.spell.page}</Secondary>
-                <Secondary>{this.props.spell.casting_time}</Secondary>
+                <Secondary>{this.props.spell.casting_time} {properties}</Secondary>
                 <Secondary>{this.props.spell.components}</Secondary>
               </View>
             </View>

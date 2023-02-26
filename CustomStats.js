@@ -246,9 +246,7 @@ const styles = StyleSheet.create({
     marginRight: 0
   },
   stat: {
-    minWidth: 150,
-    flex: 1,
+    minWidth: 200,
     flexDirection: 'row',
-    alignItems: 'flex-start'
   },
 })

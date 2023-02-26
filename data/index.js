@@ -55,7 +55,6 @@ function processDict (data, page) {
 function process5ETools(data) {
 
   function renderList(entries, f, separator) {
-    console.log(entries)
     const out = []
     for (const entry of entries) {
       out.push(f(entry))

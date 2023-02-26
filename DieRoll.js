@@ -2,6 +2,7 @@ import React from 'react'
 import autobind from 'autobind-decorator'
 import {StyleSheet, View, Text} from 'react-native'
 import {BaseText, Secondary, colors} from './styles.js'
+import {Hover} from './Hover'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Roll from 'roll'
 
@@ -12,6 +13,20 @@ export class DieRoll extends React.PureComponent {
     this.state = {
       roll: ''
     }
+  }
+
+  pattern () {
+    if (this.props.roll) {
+      return ''
+    }
+    if (this.props.pattern) {
+      return this.props.pattern.trim()
+    }
+    let out = '1d'+this.maxBase()
+    if (this.props.modifier) {
+      out += '+' + this.props.modifier
+    }
+    return out
   }
 
   render () {
@@ -28,19 +43,21 @@ export class DieRoll extends React.PureComponent {
     }
 
     return <View style={styles.row}>
-      <MaterialCommunityIcons.Button
-        name='dice-multiple'
-        color={colors.secondaryText}
-        iconStyle={styles.button}
-        backgroundColor='transparent'
-        onPress={this.roll}
-      />
+      <Hover title={this.pattern()}>
+        <MaterialCommunityIcons.Button
+          name='dice-multiple'
+          color={colors.secondaryText}
+          iconStyle={styles.button}
+          backgroundColor='transparent'
+          onPress={this.roll}
+        />
 
-      <BaseText>
-        <Text style={style}>
-        {displayRoll}
-        </Text>
-      </BaseText>
+        <BaseText>
+          <Text style={style}>
+          {displayRoll}
+          </Text>
+        </BaseText>
+      </Hover>
     </View>
   }
 

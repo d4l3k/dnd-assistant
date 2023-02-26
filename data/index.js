@@ -45,7 +45,7 @@ function processDict (data, page) {
       "concentration": concentration ? "yes" : "no",
       "ritual": Ritual ? "yes" : "no",
       "school": School,
-      "level": levelStrs[Level] || parseInt(Level),
+      "level": levelStrs[parseInt(Level)],
       "casting_time": CastingTime,
       "class": Classes.join(", "),
     })
@@ -111,7 +111,7 @@ function process5ETools(data) {
       "concentration": spell["duration"][0]["concentration"] ? "yes" : "no",
       "ritual": spell["ritual"],
       "school": spell["school"],
-      "level": spell["level"].toString(),
+      "level": levelStrs[spell["level"]],
       "casting_time": renderList(spell["time"], renderUnit, ", "),
       "class": spell["class"]
     })

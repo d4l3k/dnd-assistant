@@ -45,7 +45,7 @@ function processDict (data, page) {
       "concentration": concentration ? "yes" : "no",
       "ritual": Ritual ? "yes" : "no",
       "school": School,
-      "level": levelStrs[parseInt(Level)],
+      "level": levelStrs[parseInt(Level)] || Level,
       "casting_time": CastingTime,
       "class": Classes.join(", "),
     })
@@ -121,5 +121,16 @@ function process5ETools(data) {
 processDict(dataTCOE, "tcoe")
 processDict(dataEGTW, "egtw")
 process5ETools(dataSCC)
+
+function assert(condition, desc, spell) {
+  if (!condition) {
+    console.log(condition, desc, spell)
+    throw desc
+  }
+}
+
+for (const spell of spells) {
+  assert(spell.level, "level", spell)
+}
 
 export default spells

@@ -19,6 +19,7 @@ import {iconsMap} from './icons'
 import lunr from 'lunr'
 import {ExtractDieRolls} from './DieRoll'
 import {Loading} from './Loading'
+import {CheckBox} from './CheckBox'
 
 const numSlotLevels = 9
 
@@ -277,6 +278,8 @@ class SpellItem extends React.PureComponent {
     }
     if (this.state.spellData.prepared) {
       properties += "🅟"
+    } else if (this.props.hideNotPrepared) {
+      return
     }
 
     return (
@@ -595,12 +598,34 @@ class SpellList extends React.PureComponent {
       return
     }
 
+    const filters = []
+    const filterTypes = ["Action", "Bonus", "Reaction", "Ritual", "Prepared"]
+    for (const type of filterTypes) {
+      filters.push(
+        <View key={type} style={styles.filteroption}>
+          <CheckBox
+            isChecked={this.state[type]}
+            onClick={(e) => {
+            this.setState(state => {
+              const out = {}
+              out[type] = !state[type]
+              return out
+            })
+          }}/>
+          <BaseText>{type}</BaseText>
+        </View>
+      )
+    }
+
     return <View style={styles.filter}>
       <TextInput
         label='Search'
         value={this.state.search}
         onChangeText={this.setSearch}
       />
+      <View style={styles.filteroption}>
+        {filters}
+      </View>
     </View>
   }
 
@@ -625,6 +650,7 @@ class SpellList extends React.PureComponent {
       spell={item.spell}
       expand={item.expand}
       onExpand={this.onExpand}
+      hideNotPrepared={item.hideNotPrepared}
     />
   }
 
@@ -640,35 +666,58 @@ class SpellList extends React.PureComponent {
   }
 
   groupSpells (spells) {
-    if (this.props.filter && this.state.search) {
-      if (!this.lunr || this.spellsLen !== spells.length) {
-        this.spellsLen = spells.length
-        this.lunr = lunr(function () {
-          this.ref('index')
-          this.field('name')
-          this.field('school')
-          this.field('level')
-          this.field('class')
+    if (this.props.filter) {
+      if (this.state.search) {
+        if (!this.lunr || this.spellsLen !== spells.length) {
+          this.spellsLen = spells.length
+          this.lunr = lunr(function () {
+            this.ref('index')
+            this.field('name')
+            this.field('school')
+            this.field('level')
+            this.field('class')
 
-          spells.forEach((spell, i) => {
-            spell.index = i
-            this.add(spell)
+            spells.forEach((spell, i) => {
+              spell.index = i
+              this.add(spell)
+            })
           })
-        })
+        }
+
+        spells = this.lunr.search(this.state.search).map(
+          result => spells[result.ref]
+        )
       }
 
-      spells = this.lunr.search(this.state.search).map(
-        result => spells[result.ref]
-      )
+      spells = spells.filter(spell => {
+        const castingTime = spell.casting_time || ""
+        if (this.state.Action && castingTime !== "1 action") {
+          return false
+        }
+        if (this.state.Bonus && castingTime !== "1 bonus action") {
+          return false
+        }
+        if (this.state.Reaction && castingTime !== "1 reaction") {
+          return false
+        }
+        if (this.state.Ritual && spell.ritual !== "yes") {
+          return false
+        }
+        return true
+      })
     }
 
     const sections = {}
     spells.forEach(spell => {
       const level = titleCase(spell.level)
-      sections[level] = (sections[level] || []).concat({
+      const entry = {
         spell: spell,
         expand: !!(this.state.expanded[spell.name])
-      })
+      }
+      if (this.props.filter && this.state.Prepared) {
+        entry.hideNotPrepared = true
+      }
+      sections[level] = (sections[level] || []).concat(entry)
     })
 
     return Object.keys(sections).sort((a, b) => {
@@ -1143,6 +1192,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start'
+  },
+  filteroption: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   right: {
     alignItems: 'flex-end'

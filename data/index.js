@@ -104,7 +104,7 @@ function process5ETools(data) {
       "name": spell["name"],
       "desc": renderList(entries, renderEntry),
       "page": spell["source"] + " " + spell["page"],
-      "range": renderRange(data["range"]),
+      "range": renderRange(spell["range"]),
       "components": Object.keys(spell["components"]).join(", "),
       "material": spell["components"]["m"],
       "duration": renderDuration(spell["duration"][0]),
